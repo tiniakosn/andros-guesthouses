@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* --- CUSTOM SCROLLBAR (Luxury Look) --- */
+
+/* Το "αυλάκι" της μπάρας */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Το φόντο της μπάρας */
+::-webkit-scrollbar-track {
+  background: #fafaf9; /* stone-50 */
+}
+
+/* Η λαβή που κινείται */
+::-webkit-scrollbar-thumb {
+  background: #dceecf; /* olive-200 (απαλό) */
+  border-radius: 5px;
+  border: 2px solid #fafaf9; /* Δημιουργεί κενό γύρω γύρω */
+}
+
+/* Όταν πας το ποντίκι πάνω στη λαβή */
+::-webkit-scrollbar-thumb:hover {
+  background: #606c38; /* olive-500 (έντονο) */
+}
+
+/* Smooth Scrolling για όλο το site */
+/*html {
+  scroll-behavior: smooth;
+}*/
