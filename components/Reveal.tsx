@@ -6,12 +6,14 @@ import { motion, useInView, useAnimation } from "framer-motion";
 interface Props {
   children: React.ReactNode;
   width?: "fit-content" | "100%";
-  delay?: number; // Για να μπορούμε να καθυστερούμε λίγο κάποια στοιχεία
+  delay?: number;
+  // ΠΡΟΣΘΗΚΗ: Δηλώνουμε ότι το component δέχεται πλέον και className (προαιρετικά)
+  className?: string; 
 }
 
-export default function Reveal({ children, width = "fit-content", delay = 0.25 }: Props) {
+export const Reveal = ({ children, width = "fit-content", delay = 0.25, className = "" }: Props) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-20px" }); // Ενεργοποιείται λίγο πριν μπει τελείως
+  const isInView = useInView(ref, { once: true });
   const mainControls = useAnimation();
 
   useEffect(() => {
@@ -21,18 +23,21 @@ export default function Reveal({ children, width = "fit-content", delay = 0.25 }
   }, [isInView, mainControls]);
 
   return (
-    <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }}>
+    // ΠΡΟΣΘΗΚΗ: Περνάμε το className στο εξωτερικό div
+    <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }} className={className}>
       <motion.div
         variants={{
-          hidden: { opacity: 0, y: 75 }, // Ξεκινάει κάτω και αόρατο
-          visible: { opacity: 1, y: 0 }, // Ανεβαίνει στη θέση του
+          hidden: { opacity: 0, y: 75 },
+          visible: { opacity: 1, y: 0 },
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: 0.8, delay: delay, ease: [0.25, 0.25, 0.25, 0.75] }} // Cinematic κίνηση
+        transition={{ duration: 0.5, delay: delay }}
       >
         {children}
       </motion.div>
     </div>
   );
-}
+};
+
+export default Reveal;

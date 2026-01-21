@@ -1,129 +1,104 @@
 "use client";
 
 import Link from "next/link";
-import Reveal from "./Reveal";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
-  // Τα σωστά links για να δουλεύει η πλοήγηση
-  const footerLinks = [
-    { name: 'Αρχική', link: '/' },
-    { name: 'Δωμάτια', link: '/rooms' },
-    { name: 'Η Εμπειρία', link: '/experience' },
-    { name: 'Επικοινωνία', link: '/contact' }
-  ];
-
   return (
-    <footer className="bg-[#1c1917] text-[#e7e5e4] pt-24 pb-6 overflow-hidden relative">
+    <footer className="relative bg-stone-950 text-white pt-20 pb-10 overflow-hidden font-sans">
       
-      {/* --- TOP SECTION: CTA & LINKS --- */}
-      <div className="max-w-7xl mx-auto px-6 mb-20">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8">
+      {/* --- BACKGROUND TEXT "ANDROS" --- */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden z-0">
+        <span className="text-[15vw] md:text-[12vw] font-display font-bold text-olive-900/20 tracking-tighter leading-none whitespace-nowrap opacity-30 mix-blend-overlay">
+          ANDROS
+        </span>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-24 mb-16">
           
-          {/* 1. CTA (Call to Action) */}
-          <div className="md:col-span-5 space-y-6">
-            <Reveal>
-              <h3 className="font-display text-4xl md:text-5xl leading-tight">
-                Έτοιμοι για την <br/> <span className="text-olive-400">επόμενη απόδραση;</span>
-              </h3>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <p className="font-sans text-stone-400 font-light max-w-sm leading-relaxed">
-                Κάντε κράτηση απευθείας από το site μας για τις καλύτερες τιμές και προνόμια κατά την άφιξη.
-              </p>
-            </Reveal>
-            
-            {/* ΔΙΟΡΘΩΣΗ: Το Button έγινε Link και οδηγεί στο /contact */}
-            <Reveal delay={0.4}>
+          {/* CTA COLUMN */}
+          <div className="md:col-span-2 space-y-6">
+            <h2 className="text-3xl md:text-4xl font-display leading-tight text-olive-300/90 drop-shadow-sm">
+              Your next escape <br/> starts here.
+            </h2>
+            <p className="text-stone-400 text-sm max-w-md leading-relaxed">
+              Book directly through our website for the best rates and exclusive benefits.
+              Experience the authentic hospitality of Andros.
+            </p>
+            <div className="pt-4">
               <Link 
                 href="/contact" 
-                className="inline-block mt-4 px-8 py-3 bg-stone-100 text-stone-900 rounded-sm font-sans text-xs font-bold uppercase tracking-widest hover:bg-olive-500 hover:text-white transition-colors duration-300"
+                className="inline-block px-8 py-4 bg-olive-600 text-white text-xs font-bold uppercase tracking-widest hover:bg-olive-700 transition-all duration-300 rounded-sm shadow-lg hover:shadow-olive-900/50 hover:-translate-y-1"
               >
-                Book Your Stay
+                Book Now
               </Link>
-            </Reveal>
+            </div>
           </div>
 
-          {/* 2. NAVIGATION LINKS (Τώρα δουλεύουν) */}
-          <div className="md:col-span-3 md:col-start-7">
-            <Reveal delay={0.2}>
-              <h4 className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-stone-500 mb-6">
-                Explore
-              </h4>
-            </Reveal>
-            <ul className="space-y-4 font-sans text-sm font-medium tracking-wide">
-              {footerLinks.map((item, index) => (
-                <li key={index}>
-                  <Reveal delay={0.2 + (index * 0.1)}>
-                    <Link href={item.link} className="hover:text-olive-400 transition-colors duration-300 flex items-center gap-2 group">
-                      <span className="w-0 group-hover:w-2 h-[1px] bg-olive-400 transition-all duration-300"></span>
-                      {item.name}
-                    </Link>
-                  </Reveal>
-                </li>
-              ))}
+          {/* LINKS */}
+          <div className="space-y-6">
+            <h3 className="text-xs font-bold text-olive-500 uppercase tracking-widest">Explore</h3>
+            <ul className="space-y-4 font-display text-lg text-stone-200">
+              <li><Link href="/" className="hover:text-olive-400 transition-colors">Home</Link></li>
+              <li><Link href="/rooms" className="hover:text-olive-400 transition-colors">Rooms</Link></li>
+              <li><Link href="/experience" className="hover:text-olive-400 transition-colors">Experience</Link></li>
+              <li><Link href="/contact" className="hover:text-olive-400 transition-colors">Contact</Link></li>
             </ul>
           </div>
 
-          {/* 3. CONTACT & SOCIAL */}
-          <div className="md:col-span-3">
-            <Reveal delay={0.3}>
-              <h4 className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-stone-500 mb-6">
-                Contact
-              </h4>
-            </Reveal>
-            <div className="space-y-6 font-sans text-sm font-light text-stone-300">
-              <Reveal delay={0.4}>
-                <div>
-                  <p className="block mb-1 text-stone-500 text-xs uppercase font-bold">Διευθυνση</p>
-                  <p>Χώρα Άνδρου, Κυκλάδες</p>
-                  <p>84500, Ελλάδα</p>
-                </div>
-              </Reveal>
-              
-              <Reveal delay={0.5}>
-                <div>
-                  <p className="block mb-1 text-stone-500 text-xs uppercase font-bold">Επικοινωνια</p>
-                  <a href="tel:+302282000000" className="block hover:text-olive-400 transition-colors">+30 22820 00000</a>
-                  <a href="mailto:info@androsguesthouses.gr" className="block hover:text-olive-400 transition-colors">info@androsguesthouses.gr</a>
-                </div>
-              </Reveal>
-
-              <Reveal delay={0.6}>
-                <div className="flex gap-4 pt-2">
-                  <a href="#" className="w-10 h-10 border border-stone-700 rounded-full flex items-center justify-center hover:border-olive-400 hover:text-olive-400 transition-all">
-                    Instagram
-                  </a>
-                  <a href="#" className="w-10 h-10 border border-stone-700 rounded-full flex items-center justify-center hover:border-olive-400 hover:text-olive-400 transition-all">
-                    Facebook
-                  </a>
-                </div>
-              </Reveal>
+          {/* CONTACT INFO */}
+          <div className="space-y-6">
+            <h3 className="text-xs font-bold text-olive-500 uppercase tracking-widest">Contact</h3>
+            <div className="space-y-4 text-sm text-stone-400">
+              <div>
+                <p className="text-white mb-1 font-medium">Address</p>
+                <p>Neimporio, Chora Andros</p>
+                <p>84500, Cyclades, Greece</p>
+              </div>
+              <div>
+                <p className="text-white mb-1 font-medium">Get in Touch</p>
+                <a href="tel:+306972127884" className="block hover:text-olive-400 transition-colors">+30 697 212 7884</a>
+                <a href="mailto:androsguesthouses@gmail.com" className="block hover:text-olive-400 transition-colors">androsguesthouses@gmail.com</a>
+              </div>
+            </div>
+            
+            {/* Social Icons - ΤΑ ΒΑΛΑΜΕ ΕΔΩ! */}
+            <div className="flex gap-4 pt-2">
+              <a 
+                href="https://www.facebook.com/people/Andros-Guesthouses/100090625075763/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-10 h-10 rounded-full border border-stone-800 flex items-center justify-center text-xs text-stone-400 hover:bg-[#1877F2] hover:border-[#1877F2] hover:text-white transition-all"
+                aria-label="Facebook"
+              >
+                FB
+              </a>
+              <a 
+                href="https://www.instagram.com/andros.guesthouses/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-10 h-10 rounded-full border border-stone-800 flex items-center justify-center text-xs text-stone-400 hover:bg-[#C13584] hover:border-[#C13584] hover:text-white transition-all"
+                aria-label="Instagram"
+              >
+                IG
+              </a>
             </div>
           </div>
 
         </div>
-      </div>
 
-      {/* --- BIG TYPOGRAPHY FOOTER --- */}
-      <div className="border-t border-stone-800 pt-10">
-        <div className="w-full overflow-hidden flex justify-center items-end opacity-20 hover:opacity-40 transition-opacity duration-700 select-none">
-          <h1 className="font-display text-[18vw] leading-[0.8] text-stone-500 tracking-tighter">
-            ANDROS
-          </h1>
-        </div>
-        
-        {/* Copyright Line */}
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-[10px] text-stone-600 font-sans uppercase tracking-widest py-6">
-          <span>© {currentYear} Andros Guesthouses.</span>
-          <div className="flex gap-6 mt-2 md:mt-0">
-            <Link href="#" className="hover:text-stone-400">Privacy Policy</Link>
-            <Link href="#" className="hover:text-stone-400">Terms & Conditions</Link>
+        {/* BOTTOM BAR */}
+        <div className="pt-8 border-t border-stone-900/50 flex flex-col md:flex-row justify-between items-center text-[10px] text-stone-500 uppercase tracking-wider">
+          <p>© {new Date().getFullYear()} Andros Guesthouses. All rights reserved.</p>
+          
+          <div className="flex flex-col md:flex-row gap-4 md:gap-8 mt-4 md:mt-0 items-center">
+             <span className="flex items-center gap-1 opacity-70 hover:opacity-100 transition-opacity">
+               Handcrafted by <span className="text-stone-300 font-bold ml-1">Nikos Tiniakos</span>
+             </span>
           </div>
         </div>
-      </div>
 
+      </div>
     </footer>
   );
 }
