@@ -18,35 +18,37 @@ const manrope = Manrope({
   display: 'swap',
 });
 
-// ΕΔΩ ΕΒΑΛΑ ΤΑ EXTRA ΣΤΟΙΧΕΙΑ ΓΙΑ ΤΗ GOOGLE
 export const metadata: Metadata = {
-  // ... (τα υπόλοιπα: title, description, metadataBase κλπ μένουν όπως είναι)
-  metadataBase: new URL("https://andros-guesthouses.vercel.app"), // Βεβαιώσου ότι έχεις το σωστό Link εδώ
-  title: "Andros Guesthouses | Luxury Living",
-  description: "Πολυτελείς κατοικίες και αυθεντική φιλοξενία στη Χώρα της Άνδρου.",
-  keywords: ["Andros", "Guesthouses", "Accommodation", "Neimporio", "Rooms", "Suites"],
+  metadataBase: new URL("https://androsguesthouses.gr"), // Βάλε το τελικό σου domain (ή το vercel app)
   
+  // --- GOOGLE SEO (ENGLISH) ---
+  title: "Andros Guesthouses | Luxury Living & Authentic Hospitality",
+  description: "Experience the hidden gems of Andros. Stay in our traditional guesthouses in Chora with panoramic views. Book your authentic Greek summer now.",
+  keywords: ["Andros", "Guesthouses", "Accommodation", "Neimporio", "Chora", "Luxury Rooms", "Suites"],
+  
+  // --- SOCIAL MEDIA (Open Graph) ---
   openGraph: {
-    title: "Andros Guesthouses | Luxury Living",
-    description: "Ζήστε την αυθεντική φιλοξενία της Άνδρου. Πολυτελή δωμάτια στο Νειμποριό.",
-    url: "https://andros-guesthouses.vercel.app",
+    title: "Andros Guesthouses | Your Escape to Andros",
+    description: "Discover the authentic side of Greece. Panoramic views, traditional hospitality, and hidden beaches.",
+    url: "https://androsguesthouses.gr",
     siteName: "Andros Guesthouses",
     images: [
       {
-        url: "/images/hero.jpg",
+        url: "/opengraph-image.jpg", // Η εικόνα που έβαλες στο public
         width: 1200,
         height: 630,
         alt: "Andros Guesthouses View",
       },
     ],
-    locale: "el_GR",
+    locale: "en_US",
     type: "website",
   },
+  
   icons: {
     icon: "/favicon.ico",
   },
 
-  // --- ΕΔΩ ΜΠΑΙΝΕΙ Ο ΚΩΔΙΚΟΣ GOOGLE ΠΟΥ ΜΟΥ ΕΔΩΣΕΣ ---
+  // --- GOOGLE VERIFICATION CODE ---
   verification: {
     google: "-yRKvY_-TqJiBkK8AtG5_K8_732TAzNcNBRQlArJzyw",
   },

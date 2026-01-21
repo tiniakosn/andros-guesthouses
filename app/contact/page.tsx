@@ -79,7 +79,7 @@ export default function ContactPage() {
                     <div className="w-full h-full transition-transform duration-700 ease-in-out group-hover:scale-105">
                       <iframe 
                         /* Αυτό το link δείχνει κεντρικά τη Χώρα της Άνδρου */
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6296.974637651036!2d24.934255642874135!3d37.83783781534438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1a30a0815c4d5%3A0x6c6e755255474665!2sChora%20of%20Andros!5e0!3m2!1sen!2sgr!4v1705912345678!5m2!1sen!2sgr" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.032569835595!2d24.929867476614245!3d37.8361233719699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a2ff3fd9c3115b%3A0xb694eabb08bdd45!2sAndros%20Guesthouses!5e0!3m2!1sel!2sgr!4v1768997906852!5m2!1sel!2sgr" 
                         width="100%" 
                         height="100%" 
                         style={{ border: 0 }} 
