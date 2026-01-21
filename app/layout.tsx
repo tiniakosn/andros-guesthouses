@@ -30,11 +30,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Andros Guesthouses | Your Escape to Andros",
     description: "Discover the authentic side of Greece. Panoramic views, traditional hospitality, and hidden beaches.",
-    url: "https://androsguesthouses.gr",
+    url: "https://andros-guesthouses.vercel.app",
     siteName: "Andros Guesthouses",
     images: [
       {
-        url: "/opengraph-image-v3.jpg", // Η εικόνα που έβαλες στο public
+        // Χρησιμοποιούμε το πλήρες URL για να μην μπερδεύεται το Facebook
+        url: "https://andros-guesthouses.vercel.app/opengraph-image-v3.jpg", 
         width: 1200,
         height: 630,
         alt: "Andros Guesthouses View",
