@@ -6,11 +6,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
 import SmoothScrolling from "@/components/SmoothScrolling";
-import WhatsAppBtn from "@/components/WhatsAppBtn"; // <--- Import
-import ShareBtn from "@/components/ShareBtn"; // <--- Import
+import WhatsAppBtn from "@/components/WhatsAppBtn";
+import ShareBtn from "@/components/ShareBtn";
 import CookieConsent from "@/components/CookieConsent";
 
-// Φορτώνουμε την Manrope
 const manrope = Manrope({ 
   subsets: ["latin", "greek"],
   variable: '--font-sans',
@@ -19,37 +18,25 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://andros-guesthouses.vercel.app"), // Βάλε το τελικό σου domain (ή το vercel app)
-  
-  // --- GOOGLE SEO (ENGLISH) ---
+  metadataBase: new URL("https://andros-guesthouses.vercel.app"),
   title: "Andros Guesthouses | Luxury Living & Authentic Hospitality",
   description: "Experience the hidden gems of Andros. Stay in our traditional guesthouses in Chora with panoramic views. Book your authentic Greek summer now.",
   keywords: ["Andros", "Guesthouses", "Accommodation", "Neimporio", "Chora", "Luxury Rooms", "Suites"],
   
-  // --- SOCIAL MEDIA (Open Graph) ---
   openGraph: {
     title: "Andros Guesthouses | Your Escape to Andros",
     description: "Discover the authentic side of Greece. Panoramic views, traditional hospitality, and hidden beaches.",
     url: "https://andros-guesthouses.vercel.app",
     siteName: "Andros Guesthouses",
-    images: [
-      {
-        // Χρησιμοποιούμε το πλήρες URL για να μην μπερδεύεται το Facebook
-        url: "https://andros-guesthouses.vercel.app/opengraph-image-v3.jpg", 
-        width: 1200,
-        height: 630,
-        alt: "Andros Guesthouses View",
-      },
-    ],
     locale: "en_US",
     type: "website",
+    // Αφήνουμε το images κενό εδώ γιατί θα το βάλουμε χειροκίνητα στο head παρακάτω
   },
   
   icons: {
     icon: "/favicon.ico",
   },
 
-  // --- GOOGLE VERIFICATION CODE ---
   verification: {
     google: "-yRKvY_-TqJiBkK8AtG5_K8_732TAzNcNBRQlArJzyw",
   },
@@ -62,6 +49,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="el" className="scroll-smooth">
+      <head>
+        {/* Χειροκίνητα tags για να μην κάνει λάθος το Facebook */}
+        <meta property="og:image" content="https://andros-guesthouses.vercel.app/opengraph-image-v3.jpg" />
+        <meta property="og:image:secure_url" content="https://andros-guesthouses.vercel.app/opengraph-image-v3.jpg" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+      </head>
       <body className={`${manrope.variable} antialiased text-stone-900 bg-stone-50`}>
         
         <style>{`
@@ -71,7 +66,6 @@ export default function RootLayout({
             --font-sans: ${manrope.style.fontFamily};
           }
 
-          /* Απαλό Gradient στο φόντο */
           body {
             font-family: var(--font-sans);
             background-color: #fafaf9; 
@@ -81,13 +75,11 @@ export default function RootLayout({
             background-attachment: fixed;
           }
 
-          /* Selection Color */
           ::selection {
             background-color: #4d7c0f; 
             color: white;
           }
 
-          /* ΤΥΠΟΓΡΑΦΙΑ */
           h1, h2, h3, h4, h5, h6 {
             font-weight: 600 !important;
             letter-spacing: -0.02em !important; 
@@ -100,7 +92,6 @@ export default function RootLayout({
             line-height: 1.8; 
           }
 
-          /* SHADOWS */
           input, textarea, .bg-white {
             box-shadow: 0 4px 20px -5px rgba(0,0,0,0.05) !important;
             border: 1px solid rgba(0,0,0,0.05) !important;
@@ -120,27 +111,23 @@ export default function RootLayout({
         <SmoothScrolling />
         <Preloader />
         
-        {/* Αφού τα έχεις εδώ, θα φαίνονται ΠΑΝΤΟΥ */}
         <Navbar />
         {children}
-        {/* ... Navbar, Children, Footer ... */}
-        
         <Footer />
 
         <ShareBtn />
         <WhatsAppBtn />
         <CookieConsent />
         
-        {/* --- ΤΟ ΜΥΣΤΙΚΟ ΟΠΛΟ SEO --- */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "LodgingBusiness", // Λέμε στη Google ότι είμαστε κατάλυμα
+              "@type": "LodgingBusiness",
               "name": "Andros Guesthouses",
               "image": [
-                "https://andros-guesthouses.vercel.app/images/hero.jpg"
+                "https://andros-guesthouses.vercel.app/opengraph-image-v3.jpg"
               ],
               "@id": "https://andros-guesthouses.vercel.app",
               "url": "https://andros-guesthouses.vercel.app",
@@ -155,14 +142,13 @@ export default function RootLayout({
               },
               "geo": {
                 "@type": "GeoCoordinates",
-                "latitude": 37.839, // Βάλε τις ακριβείς συντεταγμένες αν τις ξέρεις (από Google Maps)
+                "latitude": 37.839, 
                 "longitude": 24.936
               },
               "priceRange": "$$"
             }),
           }}
         />
-
       </body>
     </html>
   );
