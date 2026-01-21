@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     siteName: "Andros Guesthouses",
     images: [
       {
-        url: "/opengraph-image.jpg", // Η εικόνα που έβαλες στο public
+        url: "/opengraph-image-v2.jpg", // Η εικόνα που έβαλες στο public
         width: 1200,
         height: 630,
         alt: "Andros Guesthouses View",
