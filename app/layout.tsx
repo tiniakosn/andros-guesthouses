@@ -19,7 +19,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://androsguesthouses.gr"), // Βάλε το τελικό σου domain (ή το vercel app)
+  metadataBase: new URL("https://andros-guesthouses.vercel.app"), // Βάλε το τελικό σου domain (ή το vercel app)
   
   // --- GOOGLE SEO (ENGLISH) ---
   title: "Andros Guesthouses | Luxury Living & Authentic Hospitality",
