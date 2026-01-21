@@ -57,7 +57,7 @@ export default function Footer() {
               </div>
               <div>
                 <p className="text-white mb-1 font-medium">Get in Touch</p>
-                <a href="tel:+306972127884" className="block hover:text-olive-400 transition-colors">+30 697 212 7884</a>
+                <a href="tel:+306972127884" className="block hover:text-olive-400 transition-colors">+30 693 693 4390</a>
                 <a href="mailto:androsguesthouses@gmail.com" className="block hover:text-olive-400 transition-colors">androsguesthouses@gmail.com</a>
               </div>
             </div>
