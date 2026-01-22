@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image"; // Προσθήκη για σωστή διαχείριση εικόνας
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import LanguageSwitcher from "./LanguageSwitcher"; 
 
+// Ορίζουμε τα NavLinks με κλειδιά για τις μεταφράσεις
 const navLinks = [
   { en: "Home", el: "Αρχική", href: "/" },
   { en: "Rooms", el: "Δωμάτια", href: "/#rooms" },
@@ -54,22 +54,19 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         
-        {/* LOGO - Μεγαλύτερο μέγεθος */}
+        {/* LOGO ΩΣ ΚΕΙΜΕΝΟ - Επαναφορά στην αρχική μορφή */}
         <Link href="/" className="relative z-[101] group block">
-          <div className="relative w-40 h-16 md:w-56 md:h-20 flex items-center">
-            <Image 
-              src="/logo.png" 
-              alt="Andros Guesthouses"
-              fill
-              className={`object-contain object-left transition-all duration-300 ${
-                isDarkText ? "brightness-100" : "brightness-0 invert"
-              }`}
-              priority
-            />
+          <div className="flex flex-col leading-none">
+            <span className={`font-display text-2xl tracking-tighter transition-colors duration-300 ${isDarkText ? "text-stone-900" : "text-white"}`}>
+              ANDROS
+            </span>
+            <span className={`text-[10px] font-sans font-bold tracking-[0.25em] uppercase transition-colors duration-300 ${isDarkText ? "text-stone-500" : "text-white/90"}`}>
+              {lang === "el" ? "Ξενωνες" : "Guesthouses"}
+            </span>
           </div>
         </Link>
 
-        {/* DESKTOP MENU - Διορθωμένη εναλλαγή γλώσσας */}
+        {/* DESKTOP MENU - Με σωστή γλώσσα */}
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
@@ -109,22 +106,13 @@ export default function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle Menu"
           >
-            <motion.span 
-              animate={{ rotate: isOpen ? 45 : 0, y: isOpen ? 8 : 0 }} 
-              className={`w-8 h-[2px] block rounded-full transition-colors ${isDarkText ? "bg-stone-900" : "bg-white"}`}
-            ></motion.span>
-            <motion.span 
-              animate={{ opacity: isOpen ? 0 : 1 }} 
-              className={`w-6 h-[2px] block rounded-full transition-colors ${isDarkText ? "bg-stone-900" : "bg-white"}`}
-            ></motion.span>
-            <motion.span 
-              animate={{ rotate: isOpen ? -45 : 0, y: isOpen ? -8 : 0, width: isOpen ? "2rem" : "1.5rem" }} 
-              className={`w-6 h-[2px] block rounded-full transition-colors ${isDarkText ? "bg-stone-900" : "bg-white"}`}
-            ></motion.span>
+            <motion.span animate={{ rotate: isOpen ? 45 : 0, y: isOpen ? 8 : 0 }} className={`w-8 h-[2px] block rounded-full transition-colors ${isDarkText ? "bg-stone-900" : "bg-white"}`}></motion.span>
+            <motion.span animate={{ opacity: isOpen ? 0 : 1 }} className={`w-6 h-[2px] block rounded-full transition-colors ${isDarkText ? "bg-stone-900" : "bg-white"}`}></motion.span>
+            <motion.span animate={{ rotate: isOpen ? -45 : 0, y: isOpen ? -8 : 0, width: isOpen ? "2rem" : "1.5rem" }} className={`w-6 h-[2px] block rounded-full transition-colors ${isDarkText ? "bg-stone-900" : "bg-white"}`}></motion.span>
           </button>
         </div>
 
-        {/* MOBILE MENU OVERLAY - Διορθωμένη εναλλαγή γλώσσας */}
+        {/* MOBILE MENU OVERLAY - Με σωστή γλώσσα */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -140,7 +128,7 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="text-4xl font-display font-bold text-stone-900 hover:text-olive-700 transition-colors"
+                    className="text-4xl font-display font-bold text-stone-900"
                   >
                     {lang === "el" ? link.el : link.en}
                   </Link>
