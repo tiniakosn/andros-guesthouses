@@ -30,7 +30,15 @@ export const metadata: Metadata = {
     siteName: "Andros Guesthouses",
     locale: "en_US",
     type: "website",
-    // Αφήνουμε το images κενό εδώ γιατί θα το βάλουμε χειροκίνητα στο head παρακάτω
+    // Εδώ προσθέτουμε την εικόνα δείχνοντας στο public folder
+    images: [
+      {
+        url: "/opengraph-image-v3.jpg", // Θα το διαβάσει από το public/opengraph-image-v3.jpg
+        width: 1200,
+        height: 630,
+        alt: "Andros Guesthouses View",
+      },
+    ],
   },
   
   icons: {
