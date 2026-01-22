@@ -54,14 +54,14 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         
-        {/* LOGO - Διορθωμένο μέγεθος και αναλογία */}
+        {/* LOGO - Μεγαλύτερο μέγεθος */}
         <Link href="/" className="relative z-[101] group block">
-          <div className="relative w-32 h-12 md:w-48 md:h-16 flex items-center">
+          <div className="relative w-40 h-16 md:w-56 md:h-20 flex items-center">
             <Image 
               src="/logo.png" 
               alt="Andros Guesthouses"
               fill
-              className={`object-contain transition-all duration-300 ${
+              className={`object-contain object-left transition-all duration-300 ${
                 isDarkText ? "brightness-100" : "brightness-0 invert"
               }`}
               priority
