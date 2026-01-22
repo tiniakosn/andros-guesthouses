@@ -44,7 +44,7 @@ export default function Footer() {
       country: "84500, Κυκλάδες, Ελλάδα",
       touch: "Επικοινωνία",
       rights: "Με επιφύλαξη παντός δικαιώματος.",
-      builtBy: "Σχεδιασμός από"
+      builtBy: "Handcrafted by"
     }
   };
 

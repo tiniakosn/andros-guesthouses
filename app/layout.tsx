@@ -20,9 +20,10 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL("https://andros-guesthouses.vercel.app"),
   title: "Andros Guesthouses | Luxury Living & Authentic Hospitality",
-  description: "Experience the hidden gems of Andros. Stay in our traditional guesthouses in Chora with panoramic views. Book your authentic Greek summer now.",
-  keywords: ["Andros", "Guesthouses", "Accommodation", "Neimporio", "Chora", "Luxury Rooms", "Suites"],
+  description: "Experience the hidden gems of Andros. Stay in our traditional guesthouses in Chora with panoramic views.",
+  keywords: ["Andros", "Guesthouses", "Accommodation", "Neimporio", "Chora"],
   
+  // 1. Ρύθμιση για το Facebook (Open Graph)
   openGraph: {
     title: "Andros Guesthouses | Your Escape to Andros",
     description: "Discover the authentic side of Greece. Panoramic views, traditional hospitality, and hidden beaches.",
@@ -30,10 +31,9 @@ export const metadata: Metadata = {
     siteName: "Andros Guesthouses",
     locale: "en_US",
     type: "website",
-    // Εδώ προσθέτουμε την εικόνα δείχνοντας στο public folder
     images: [
       {
-        url: "/opengraph-image-v3.jpg", // Θα το διαβάσει από το public/opengraph-image-v3.jpg
+        url: "/opengraph-image-v3.jpg", // Διαβάζεται από το public/
         width: 1200,
         height: 630,
         alt: "Andros Guesthouses View",
@@ -41,8 +41,10 @@ export const metadata: Metadata = {
     ],
   },
   
+  // 2. Ρύθμιση για το Favicon (Browser Tab)
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.ico", // Διαβάζεται από το public/
+    apple: "/apple-touch-icon.png", // Αν έχεις και για iPhone
   },
 
   verification: {
