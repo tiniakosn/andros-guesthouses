@@ -60,7 +60,7 @@ export default function Navbar() {
             */}
             <img 
               src="/logo.png" // Αντικατάστησε με τη σωστή διαδρομή του αρχείου σου
-              alt="Andros Guesthouses"
+              alt="Andros Guesthousess"
               className={`h-12 md:h-16 w-auto transition-all duration-300 ${
                 isDarkText ? "brightness-100" : "brightness-0 invert"
               }`}
