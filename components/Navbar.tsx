@@ -54,13 +54,17 @@ export default function Navbar() {
         
         {/* LOGO */}
         <Link href="/" className="relative z-[101] group block">
-          <div className="flex flex-col leading-none">
-            <span className={`font-display text-2xl tracking-tighter transition-colors duration-300 ${isDarkText ? "text-stone-900" : "text-white"}`}>
-              ANDROS
-            </span>
-            <span className={`text-[10px] font-sans font-bold tracking-[0.25em] uppercase transition-colors duration-300 ${isDarkText ? "text-stone-500" : "text-white/90"}`}>
-              {lang === "en" ? "Guesthouses" : "Ξενωνες"}
-            </span>
+          <div className="flex items-center">
+            {/* Χρησιμοποιούμε το Image για το λογότυπο. 
+               Αν το φόντο σου είναι σκοτεινό, βεβαιώσου ότι το αρχείο έχει καλό contrast.
+            */}
+            <img 
+              src="/logo.png" // Αντικατάστησε με τη σωστή διαδρομή του αρχείου σου
+              alt="Andros Guesthouses"
+              className={`h-12 md:h-16 w-auto transition-all duration-300 ${
+                isDarkText ? "brightness-100" : "brightness-0 invert"
+              }`}
+            />
           </div>
         </Link>
 
