@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image"; // Προσθήκη για σωστή διαχείριση εικόνας
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import LanguageSwitcher from "./LanguageSwitcher"; 
 
-// Ορίζουμε τα NavLinks με κλειδιά για τις μεταφράσεις
 const navLinks = [
   { en: "Home", el: "Αρχική", href: "/" },
   { en: "Rooms", el: "Δωμάτια", href: "/#rooms" },
@@ -23,6 +23,9 @@ export default function Navbar() {
   const isContactPage = pathname === "/contact";
 
   useEffect(() => {
+    // Συγχρονισμός αρχικής γλώσσας
+    setLang(document.documentElement.lang || "en");
+
     const handleLangChange = (e: any) => setLang(e.detail);
     window.addEventListener("langChange", handleLangChange);
     
@@ -39,7 +42,6 @@ export default function Navbar() {
     setIsOpen(false);
   }, [pathname]);
 
-  // Το χρώμα των γραμμάτων εξαρτάται από το scroll, τη σελίδα ή αν είναι ανοιχτό το μενού
   const isDarkText = scrolled || isContactPage || isOpen;
 
   return (
@@ -52,23 +54,22 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         
-        {/* LOGO */}
+        {/* LOGO - Διορθωμένο μέγεθος και αναλογία */}
         <Link href="/" className="relative z-[101] group block">
-          <div className="flex items-center">
-            {/* Χρησιμοποιούμε το Image για το λογότυπο. 
-               Αν το φόντο σου είναι σκοτεινό, βεβαιώσου ότι το αρχείο έχει καλό contrast.
-            */}
-            <img 
-              src="/logo.png" // Αντικατάστησε με τη σωστή διαδρομή του αρχείου σου
-              alt="Andros Guesthousess"
-              className={`h-12 md:h-16 w-auto transition-all duration-300 ${
+          <div className="relative w-32 h-12 md:w-48 md:h-16 flex items-center">
+            <Image 
+              src="/logo.png" 
+              alt="Andros Guesthouses"
+              fill
+              className={`object-contain transition-all duration-300 ${
                 isDarkText ? "brightness-100" : "brightness-0 invert"
               }`}
+              priority
             />
           </div>
         </Link>
 
-        {/* DESKTOP MENU */}
+        {/* DESKTOP MENU - Διορθωμένη εναλλαγή γλώσσας */}
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
@@ -78,7 +79,7 @@ export default function Navbar() {
                 isDarkText ? "text-stone-800 hover:text-olive-700" : "text-white hover:text-white/80"
               }`}
             >
-              {lang === "en" ? link.en : link.el}
+              {lang === "el" ? link.el : link.en}
               <span className={`absolute bottom-0 left-0 w-full h-[2px] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ${isDarkText ? "bg-olive-600" : "bg-white"}`}></span>
             </Link>
           ))}
@@ -95,13 +96,12 @@ export default function Navbar() {
                 : "bg-white text-stone-900 hover:bg-stone-100"
             }`}
           >
-            {lang === "en" ? "Book Now" : "Κρατηση"}
+            {lang === "el" ? "Κρατηση" : "Book Now"}
           </Link>
         </nav>
 
         {/* MOBILE TOGGLE & LANGUAGE */}
         <div className="flex items-center gap-4 md:hidden z-[101]">
-          {/* Δείχνουμε το LanguageSwitcher μόνο όταν το μενού είναι κλειστό για καθαρό UI */}
           {!isOpen && <LanguageSwitcher isDark={isDarkText} />}
           
           <button
@@ -124,7 +124,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* MOBILE MENU OVERLAY */}
+        {/* MOBILE MENU OVERLAY - Διορθωμένη εναλλαγή γλώσσας */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -142,7 +142,7 @@ export default function Navbar() {
                     onClick={() => setIsOpen(false)}
                     className="text-4xl font-display font-bold text-stone-900 hover:text-olive-700 transition-colors"
                   >
-                    {lang === "en" ? link.en : link.el}
+                    {lang === "el" ? link.el : link.en}
                   </Link>
                 ))}
                 
@@ -151,7 +151,7 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className="px-10 py-4 bg-stone-900 text-white font-bold uppercase tracking-widest text-sm shadow-xl rounded-full block active:scale-95 transition-transform mt-4"
                 >
-                  {lang === "en" ? "Book Now" : "Κρατηση"}
+                  {lang === "el" ? "Κρατηση" : "Book Now"}
                 </Link>
               </nav>
             </motion.div>
