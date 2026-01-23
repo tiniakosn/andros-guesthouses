@@ -116,13 +116,14 @@ export default function ExperiencePage() {
         />
         <div className="absolute inset-0 bg-black/40"></div>
         
-        <div className="relative z-10 text-center px-4 mt-10">
+        <div className="relative z-10 text-center px-4 mt-10 w-full flex flex-col items-center">
           <Reveal>
             <h1 key={lang + "h1"} className="text-5xl md:text-8xl font-display text-white mb-4 drop-shadow-2xl shadow-black tracking-tight">
               {t.heroTitle}
             </h1>
           </Reveal>
           <Reveal delay={0.2}>
+          {/* Προσθήκη mx-auto για να κεντραριστεί το max-w-2xl */}
             <p key={lang + "hsub"} className="text-white/95 text-lg md:text-2xl max-w-3xl mx-auto font-sans font-light tracking-wide drop-shadow-md text-center leading-relaxed">
               {t.heroSub}
             </p>

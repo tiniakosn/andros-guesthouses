@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useCompletion } from "ai/react"; // <--- Νέο import για το streaming
+import { useCompletion } from "ai/react";
 
 export default function AIPlanner({ lang }: { lang: string }) {
   const [days, setDays] = useState("3");
