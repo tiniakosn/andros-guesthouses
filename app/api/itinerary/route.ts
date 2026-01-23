@@ -1,28 +1,39 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
-import { GoogleGenerativeAIStream, StreamingTextResponse } from "ai";
-
-// Δήλωση του κλειδιού
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GENERATIVE_AI_API_KEY!);
-
 export async function POST(req: Request) {
   try {
     const { days, style, lang } = await req.json();
+    const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
 
-    // Χρησιμοποιούμε το μοντέλο gemini-1.5-flash-latest που είναι το πλέον συμβατό
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest" });
+    // Χτυπάμε το STABLE v1 endpoint απευθείας, όχι το beta
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{
+              text: `Είσαι ο τοπικός οδηγός για τα Andros Guesthouses στην Άνδρο. 
+                     Πρότεινε ένα πρόγραμμα ${days} ημερών για ${style} στα ${lang === 'el' ? 'Ελληνικά' : 'Αγγλικά'}.`
+            }]
+          }]
+        })
+      }
+    );
 
-    const prompt = `Είσαι ο τοπικός οδηγός για τα Andros Guesthouses στη Χώρα της Άνδρου. 
-                    Πρότεινε ένα πρόγραμμα ${days} ημερών για ${style} στα ${lang === 'el' ? 'Ελληνικά' : 'Αγγλικά'}.`;
+    const data = await response.json();
 
-    // Καλούμε το stream απευθείας από το Google SDK
-    const result = await model.generateContentStream(prompt);
+    if (!response.ok) {
+      throw new Error(data.error?.message || 'Google API Error');
+    }
 
-    // Μετατροπή σε stream συμβατό με Vercel
-    const stream = GoogleGenerativeAIStream(result);
-    
-    return new StreamingTextResponse(stream);
+    // Επιστρέφουμε το κείμενο απλά (χωρίς streaming για να σιγουρευτούμε ότι δουλεύει)
+    const text = data.candidates[0].content.parts[0].text;
+    return new Response(JSON.stringify({ text }), {
+      headers: { 'Content-Type': 'application/json' }
+    });
+
   } catch (error: any) {
-    console.error("FULL AI ERROR:", error);
+    console.error("RAW API ERROR:", error.message);
     return new Response(JSON.stringify({ error: error.message }), { status: 500 });
   }
 }
