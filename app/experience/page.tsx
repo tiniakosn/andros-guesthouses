@@ -3,7 +3,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer"; 
 import Reveal from "@/components/Reveal";
-import AIPlanner from "@/components/AIPlanner";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
@@ -131,10 +130,6 @@ export default function ExperiencePage() {
         </div>
       </div>
 
-      {/* --- AI ITINERARY SECTION (ΕΔΩ ΤΟ ΠΡΟΣΘΕΣΑΜΕ) --- */}
-      <div className="max-w-7xl mx-auto px-6 pt-16 -mb-12">
-         <AIPlanner lang={lang} />
-      </div>
 
       {/* --- CONTENT SECTIONS --- */}
       <div className="max-w-7xl mx-auto px-6 py-24 space-y-32">
