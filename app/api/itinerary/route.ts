@@ -1,27 +1,32 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { NextResponse } from "next/server";
+import { GoogleGenerativeAIStream, StreamingTextResponse } from "ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GENERATIVE_AI_API_KEY!);
 
 export async function POST(req: Request) {
   try {
     const { days, style, lang } = await req.json();
-
-    // Χρησιμοποιούμε το 1.0 Pro που είναι το πιο "παλιό" και σταθερό μοντέλο
-    const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro" });
+    
+    // Χρησιμοποιούμε το 1.5 Flash που είναι ταχύτατο και δωρεάν
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     const prompt = `
       Είσαι ο τοπικός οδηγός για τα Andros Guesthouses στη Χώρα της Άνδρου.
       Πρότεινε ένα πρόγραμμα ${days} ημερών για ${style} στα ${lang === 'el' ? 'Ελληνικά' : 'Αγγλικά'}.
+      Δώσε έμφαση στην αρχοντιά της Χώρας και την τοπική γαστρονομία.
     `;
 
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
+    // 1. Καλούμε το Stream
+    const result = await model.generateContentStream(prompt);
+    
+    // 2. Μετατρέπουμε την απάντηση σε Stream συμβατό με Vercel
+    const stream = GoogleGenerativeAIStream(result);
+    
+    // 3. Επιστρέφουμε την "ζωντανή" απάντηση
+    return new StreamingTextResponse(stream);
 
-    return NextResponse.json({ text });
   } catch (error: any) {
-    console.error("DEBUG LOG:", error.message);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    console.error("AI STREAM ERROR:", error.message);
+    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
   }
 }
