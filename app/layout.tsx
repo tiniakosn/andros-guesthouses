@@ -44,8 +44,13 @@ export const metadata: Metadata = {
   
   // 2. Ρύθμιση για το Favicon (Browser Tab)
   icons: {
-    icon: "/favicon-v3.png", // Διαβάζεται από το public/
-    apple: "/apple-touch-icon2.png", // Αν έχεις και για iPhone
+    icon: [
+      { url: "/favicon-v3.png", sizes: "32x32" },
+      { url: "/favicon-v3.png", sizes: "16x16" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon2.png", sizes: "180x180", type: "image/png" },
+    ],
   },
 
   verification: {
