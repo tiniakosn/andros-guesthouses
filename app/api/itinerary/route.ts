@@ -9,7 +9,7 @@ export async function POST(req: Request) {
   console.log("LOGGING KEY LENGTH:", process.env.GOOGLE_GENERATIVE_AI_API_KEY?.length);
   try {
     const { days, style, lang } = await req.json();
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     const prompt = `Είσαι ο τοπικός οδηγός για τα Andros Guesthouses στη Χώρα της Άνδρου. 
                     Πρότεινε ένα πρόγραμμα ${days} ημερών για ${style} στα ${lang === 'el' ? 'Ελληνικά' : 'Αγγλικά'}.`;
