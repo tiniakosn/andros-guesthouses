@@ -56,6 +56,8 @@ export const metadata: Metadata = {
   verification: {
     google: "-yRKvY_-TqJiBkK8AtG5_K8_732TAzNcNBRQlArJzyw",
   },
+
+  manifest: '/site.webmanifest',
 };
 
 export default function RootLayout({
