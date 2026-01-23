@@ -66,7 +66,7 @@ export default function Home() {
               fill
               className="object-cover object-top"
               priority
-              quality={100}
+              quality={75}
             />
           </motion.div>
           <div className="absolute inset-0 bg-black/30" />
