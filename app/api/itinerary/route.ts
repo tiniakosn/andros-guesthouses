@@ -10,8 +10,8 @@ export async function POST(req: Request) {
   try {
     const { days, style, lang } = await req.json();
     const model = genAI.getGenerativeModel(
-      { model: "gemini-1.5-flash" },
-      { apiVersion: 'v1' } // <--- ΑΥΤΟ ΘΑ ΛΥΣΕΙ ΤΟ 404
+      { model: "gemini-pro" },
+      { apiVersion: 'v1' }
     );
 
     const prompt = `Είσαι ο τοπικός οδηγός για τα Andros Guesthouses στη Χώρα της Άνδρου. 
