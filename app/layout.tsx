@@ -10,6 +10,7 @@ import WhatsAppBtn from "@/components/WhatsAppBtn";
 import ShareBtn from "@/components/ShareBtn";
 import CookieConsent from "@/components/CookieConsent";
 
+
 const manrope = Manrope({ 
   subsets: ["latin", "greek"],
   variable: '--font-sans',
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
   // 2. Ρύθμιση για το Favicon (Browser Tab)
   icons: {
     icon: "/favicon-v3.png", // Διαβάζεται από το public/
-    apple: "/apple-touch-icon.png", // Αν έχεις και για iPhone
+    apple: "/apple-touch-icon2.png", // Αν έχεις και για iPhone
   },
 
   verification: {
@@ -128,6 +129,7 @@ export default function RootLayout({
         <ShareBtn />
         <WhatsAppBtn />
         <CookieConsent />
+        
         
         <script
           type="application/ld+json"
