@@ -5,15 +5,14 @@ export async function POST(req: Request) {
 
     // Χτυπάμε το STABLE v1 endpoint απευθείας, όχι το beta
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contents: [{
             parts: [{
-              text: `Είσαι ο τοπικός οδηγός για τα Andros Guesthouses στην Άνδρο. 
-                     Πρότεινε ένα πρόγραμμα ${days} ημερών για ${style} στα ${lang === 'el' ? 'Ελληνικά' : 'Αγγλικά'}.`
+              text: "Γεια σου, πες μου μια λέξη για την Άνδρο." 
             }]
           }]
         })
