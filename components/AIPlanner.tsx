@@ -2,22 +2,37 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useCompletion } from "ai/react";
 
 export default function AIPlanner({ lang }: { lang: string }) {
   const [days, setDays] = useState("3");
-  const [style, setStyle] = useState(lang === "el" ? "Relaxation" : "Relaxation");
-
-  // Χρησιμοποιούμε το useCompletion που διαχειρίζεται το stream αυτόματα
-  const { completion, complete, isLoading, error } = useCompletion({
-    api: "/api/itinerary",
-  });
+  const [style, setStyle] = useState("Relaxation");
+  const [completion, setCompletion] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleGenerate = async () => {
-    // Στέλνουμε τις παραμέτρους στο backend
-    complete("", {
-      body: { days, style, lang }
-    });
+    setIsLoading(true);
+    setError(false);
+    setCompletion("");
+
+    try {
+      const response = await fetch("/api/itinerary", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ days, style, lang }),
+      });
+
+      if (!response.ok) throw new Error("API Error");
+
+      const data = await response.json();
+      // Εδώ παίρνουμε το κείμενο από το 'text' πεδίο του Mock Data που φτιάξαμε στο route.ts
+      setCompletion(data.text);
+    } catch (err) {
+      console.error(err);
+      setError(true);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -30,7 +45,7 @@ export default function AIPlanner({ lang }: { lang: string }) {
         <select 
           value={days} 
           onChange={(e) => setDays(e.target.value)}
-          className="p-3 rounded-lg border border-stone-300 bg-white focus:ring-2 focus:ring-olive-500 outline-none"
+          className="p-3 rounded-lg border border-stone-300 bg-white focus:ring-2 focus:ring-olive-500 outline-none text-black"
         >
           <option value="1">1 {lang === "el" ? "Ημέρα" : "Day"}</option>
           <option value="3">3 {lang === "el" ? "Ημέρες" : "Days"}</option>
@@ -40,7 +55,7 @@ export default function AIPlanner({ lang }: { lang: string }) {
         <select 
           value={style} 
           onChange={(e) => setStyle(e.target.value)}
-          className="p-3 rounded-lg border border-stone-300 bg-white focus:ring-2 focus:ring-olive-500 outline-none"
+          className="p-3 rounded-lg border border-stone-300 bg-white focus:ring-2 focus:ring-olive-500 outline-none text-black"
         >
           <option value="Relaxation">{lang === "el" ? "Χαλάρωση" : "Relaxation"}</option>
           <option value="Adventure">{lang === "el" ? "Πεζοπορία & Περιπέτεια" : "Adventure & Hiking"}</option>
@@ -56,14 +71,12 @@ export default function AIPlanner({ lang }: { lang: string }) {
         </button>
       </div>
 
-      {/* Εμφάνιση Σφάλματος (αν υπάρξει) */}
       {error && (
         <div className="text-red-500 text-center mb-4">
           {lang === "el" ? "Κάτι πήγε στραβά. Δοκιμάστε ξανά." : "Something went wrong. Please try again."}
         </div>
       )}
 
-      {/* Εμφάνιση Αποτελέσματος που "ρέει" */}
       <AnimatePresence>
         {completion && (
           <motion.div 
