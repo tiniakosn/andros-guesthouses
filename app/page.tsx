@@ -61,12 +61,12 @@ export default function Home() {
             className="relative w-full h-full"
           >
             <Image
-              src="/images/no5.5.jpg"
+              src="/images/no5.5.webp"
               alt="Andros Guesthouses View"
               fill
               className="object-cover object-top"
               priority
-              quality={75}
+              quality={65}
             />
           </motion.div>
           <div className="absolute inset-0 bg-black/30" />
