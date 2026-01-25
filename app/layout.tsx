@@ -9,6 +9,7 @@ import SmoothScrolling from "@/components/SmoothScrolling";
 import WhatsAppBtn from "@/components/WhatsAppBtn";
 import ShareBtn from "@/components/ShareBtn";
 import CookieConsent from "@/components/CookieConsent";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 
 const manrope = Manrope({ 
@@ -68,6 +69,19 @@ export default function RootLayout({
   return (
     <html lang="el" className="scroll-smooth">
       <head>
+        {/* Microsoft Clarity - Monitoring & User Behavior */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "v6wxwu35gn");
+            `,
+          }}
+        />
+        
         {/* Χειροκίνητα tags για να μην κάνει λάθος το Facebook */}
         <meta property="og:image" content="https://andros-guesthouses.vercel.app/opengraph-image-v3.jpg" />
         <meta property="og:image:secure_url" content="https://andros-guesthouses.vercel.app/opengraph-image-v3.jpg" />
@@ -131,6 +145,7 @@ export default function RootLayout({
         
         <Navbar />
         {children}
+        <SpeedInsights />
         <Footer />
 
         <ShareBtn />
