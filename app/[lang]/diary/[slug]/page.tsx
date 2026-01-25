@@ -46,28 +46,52 @@ const DIARY_CONTENT = {
     }
   },
   en: {
-    "chora-and-wind": {
-      tag: "KNOW-HOW",
-      title: "Chora & The Wind: A Survivor's Guide",
-      subtitle: "Where to hide from the meltemi and what to see in the capital.",
-      image: "/images/chora-guide-v2.jpg",
-      content: "In Chora, wind is part of life. When a strong north wind blows, locals find shelter at Piso Gialia or Neimporio. For a short drive, Apothikes and Golden Sand are your best bets for calm waters. Visit the Invisible Sailor statue at sunset and our world-class museums."
-    },
-    "local-flavors": {
-      tag: "GASTRONOMY",
-      title: "Taste of Andros: From Neimporio to the Market",
-      subtitle: "Local recommendations for authentic food and traditional sweets.",
-      image: "/images/food-guide.jpg",
-      content: "In Neimporio, try Madouris for seaside dining or Nonas for seafood. In the main Market (Agora), Platanos and Nostalgia are great for Ouzo, while Skalakia and Endochora offer refined local dishes. Don't forget to try Froutalia and our famous almond sweets!"
-    },
-    "secret-beaches": {
-      tag: "NATURE",
-      title: "Beaches Near Chora & Hidden Gems",
-      subtitle: "From the cinematic Sineti to the secluded Lidi.",
-      image: "/images/beaches-guide.jpg",
-      content: "Near Chora, you can enjoy Paraporti, Neimporio, and Gialia. For something unique, visit Sineti—the beach featured in 'Little England' with its deep waters and caves. For ultimate peace, hike down to Lidi, a secluded paradise that's worth the effort."
-    }
+  "chora-and-wind": {
+    tag: "KNOW-HOW",
+    title: "Chora & The Wind: A Survivor's Guide",
+    subtitle: "Where to hide from the meltemi and how to experience the noble capital like a local.",
+    image: "/images/chora-guide-v2.jpg",
+    content: `In Chora, the wind isn't an enemy; it’s an essential part of our island's soul. When the strong North wind (meltemi) kicks in, we locals don't stay home—we simply head to our "wind-shelters." 
+
+    Your best bets for a calm swim are **Neimporio** —literally at your doorstep— or the scenic **Piso Gialia**. If you’re up for a short drive, **Apothikes** and **Golden Sand** (Chrisi Ammos) offer crystal clear, tranquil waters even on the windiest days.
+
+    The town itself offers a cinematic, aristocratic experience. Start your walk from the **Invisible Sailor** square, wander through the marble-paved market alleys, and make sure to stop at our world-class museums: the **Museum of Contemporary Art** and the **Archaeological Museum**.
+
+    **Insider Tips:**
+    • **Lidi Beach:** For the adventurous souls, the hike down the slope reveals one of the most secluded and quiet spots on the island.
+    • **Sineti:** The bay that "starred" in the movie 'Little England'. Its wild beauty and mysterious sea caves are unforgettable.
+    • **Evening Magic:** Walk down to the main square at sunset. This is when the noble architecture of Chora truly shines.`
+  },
+  "local-flavors": {
+    tag: "GASTRONOMY",
+    title: "Taste of Andros: From Neimporio to the Market",
+    subtitle: "Our personal recommendations for authentic 'froutalia', fresh seafood, and local treats.",
+    image: "/images/food-guide.jpg",
+    content: `When guests ask us where to eat, we point them to the spots we’ve trusted for generations. Andros' cuisine is all about simple, high-quality local ingredients.
+
+    Down at the **Neimporio promenade**, right by the waves, **Madouris** is a classic choice for traditional dishes, while **Nonas** is the go-to place for fresh seafood and creative appetizers. 
+
+    As you move up to the **Main Market (Agora)**, the vibe changes. Under the cool shade of the alleys, **Platanos** and **Nostalgia** are perfect for an afternoon Ouzo with a variety of small plates ("poikilies"). For a more refined dining experience that blends tradition with modern touches, **Skalakia** and **Endochora** are absolute must-visits.
+
+    Don't leave without trying our signature dish, **Froutalia** — a slow-cooked omelet with local sausages and potatoes. For dessert, the pastry shops in the Agora offer famous **almond sweets** (amygdalota) and traditional "pastes" that have been local favorites for decades.
+
+    **Insider Tip:** If you venture outside Chora, **Kossis** in Ano Fellos is a legendary meat-lover's paradise, and **Stamatis** in Batsi is a guarantee for well-cooked, authentic Greek food.`
+  },
+  "secret-beaches": {
+    tag: "NATURE",
+    title: "Beaches Near Chora & Hidden Secrets",
+    subtitle: "From the cinematic Sineti to the rugged beauty of Lidi.",
+    image: "/images/beaches-guide.jpg",
+    content: `Andros is an island of endless coastlines, but the best spots often require a bit of local knowledge. Near Chora, your most convenient options for a quick dip are **Paraporti**, **Neimporio**, and the twin beaches of **Gialia** (Front and Back).
+
+    However, if you are looking for something truly cinematic, **Sineti** is a must. Known for its deep turquoise waters and impressive sea caves, it served as the backdrop for the famous Greek film "Little England." Its wild, untamed beauty is breathtaking.
+
+    For those seeking total seclusion, we recommend **Lidi**. It requires a bit of a hike down a steep path, but the absolute silence and the feeling of having the Aegean all to yourself is the ultimate reward. Just remember to bring your own water and supplies!
+
+    **Explore More:**
+    Beyond the sand, visit the **Tower of Agios Petros** or the ancient settlement of **Strofilas** —the largest Neolithic settlement in the Aegean— to see a different side of our island's history.`
   }
+}
 };
 
 export default function DiaryPage() {
@@ -87,13 +111,29 @@ export default function DiaryPage() {
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative h-[65vh] w-full overflow-hidden">
-        <Image src={article.image} alt={article.title} fill className="object-cover" priority />
+        <Image 
+          src={article.image} 
+          alt={article.title} 
+          fill 
+          className="object-cover" 
+          priority 
+        />
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 flex items-center justify-center p-6 text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl">
-            <span className="text-lime-400 font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase mb-4 block">{article.tag}</span>
-            <h1 className="text-4xl md:text-6xl font-serif text-white mb-6 leading-tight">{article.title}</h1>
-            <p className="text-lg md:text-xl text-white/90 font-light italic">{article.subtitle}</p>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            className="max-w-4xl"
+          >
+            <span className="text-lime-400 font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase mb-4 block">
+              {article.tag}
+            </span>
+            <h1 className="text-4xl md:text-6xl font-serif text-white mb-6 leading-tight">
+              {article.title}
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 font-light italic">
+              {article.subtitle}
+            </p>
           </motion.div>
         </div>
       </section>
@@ -101,20 +141,34 @@ export default function DiaryPage() {
       {/* Content Section */}
       <section className="py-16 md:py-24 px-6 bg-white relative z-10">
         <div className="max-w-3xl mx-auto">
-          <div className="prose prose-stone prose-lg leading-relaxed text-stone-700 whitespace-pre-line font-light">
-            {article.content}
-          </div>
+          <div 
+            className="prose prose-stone prose-lg leading-relaxed text-stone-700 font-light"
+            dangerouslySetInnerHTML={{ 
+              __html: article.content
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Μετατρέπει τα **Bold** σε <strong>
+                .replace(/\n/g, '<br />') // Μετατρέπει τις αλλαγές γραμμής σε <br />
+            }} 
+          />
 
-          <div className="mt-20 pt-10 border-t border-stone-100 flex flex-col md:flex-row justify-between items-center gap-6">
-            <Link href={`/${lang}`} className="group flex items-center gap-3 text-stone-900 font-bold text-xs uppercase tracking-[0.2em] transition-all">
+          {/* Navigation Section */}
+          <div className="pt-10 border-t border-stone-100 flex flex-col md:flex-row justify-between items-center gap-8">
+            <Link 
+              href="/" 
+                className="group flex items-center gap-3 text-stone-900 font-bold text-[10px] uppercase tracking-[0.2em] transition-all"
+            >
               <span className="group-hover:-translate-x-1 transition-transform">←</span> 
-              {lang === 'el' ? "Επιστροφη στην αρχικη" : "Back to Home"}
+              {lang === 'el' ? "Αρχική" : "Home"}
+          </Link>
+
+            <Link 
+              href={`/${lang}/diary`} 
+              className="px-8 py-3 border border-stone-200 rounded-full text-stone-800 font-bold text-[10px] uppercase tracking-widest hover:bg-stone-900 hover:text-white hover:border-stone-900 transition-all shadow-sm"
+            >
+              {lang === 'el' ? "Δείτε όλα τα άρθρα" : "View All Articles"}
             </Link>
             
-            <div className="flex gap-4">
-               <div className="text-stone-300 text-[10px] tracking-widest uppercase font-bold italic">
-                 Andros Guesthouses Insider Guide
-               </div>
+            <div className="text-stone-300 text-[10px] tracking-widest uppercase font-bold italic">
+              Andros Insider Guide
             </div>
           </div>
         </div>

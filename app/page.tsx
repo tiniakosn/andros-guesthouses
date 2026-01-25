@@ -141,7 +141,7 @@ export default function Home() {
       </section>
 
       <section className="bg-white relative z-20">
-        <LocalInsider />
+        <LocalInsider lang={lang} /> {/* <--- Πέρνα το lang εδώ αν χρειαστεί */}
       </section>
       {/* ------------------------- */}
     
