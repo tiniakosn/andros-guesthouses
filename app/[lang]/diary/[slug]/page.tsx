@@ -75,8 +75,12 @@ export default function DiaryPage() {
   const lang = (params?.lang as "el" | "en") || "el";
   const slug = params?.slug as string;
 
+  // QA Fix: Περιμένουμε να υπάρχουν τα params πριν κάνουμε το check
+  if (!slug || !lang) return null; 
+
   const article = DIARY_CONTENT[lang]?.[slug as keyof typeof DIARY_CONTENT['el']];
 
+  // Αν όντως το slug δεν υπάρχει στα δεδομένα μας, τότε μόνο δείξε 404
   if (!article) return notFound();
 
   return (
