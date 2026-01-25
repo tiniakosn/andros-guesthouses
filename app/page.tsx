@@ -11,6 +11,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import InstaFeed from "@/components/InstaFeed";
 import Testimonials from "@/components/Testimonials";
+import LocalInsider from "@/components/LocalInsider";
 
 export default function Home() {
   const [lang, setLang] = useState("en");
@@ -133,10 +134,17 @@ export default function Home() {
         <Rooms />
       </section>
 
+
+
       <section className="bg-stone-50 relative z-20">
         <Amenities />
       </section>
 
+      <section className="bg-white relative z-20">
+        <LocalInsider />
+      </section>
+      {/* ------------------------- */}
+    
       <Testimonials />
       
       <section className="relative z-20">
