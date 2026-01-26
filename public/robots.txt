@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://andros-guesthouses.vercel.app/sitemap.xml
