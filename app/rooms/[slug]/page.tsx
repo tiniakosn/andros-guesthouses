@@ -111,6 +111,8 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
           fill
           className="object-cover"
           priority
+          sizes="100vw" // 2. Λέει στον browser ότι είναι full-width
+          quality={85}
         />
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 bg-gradient-to-t from-black/80 to-transparent">
@@ -156,7 +158,9 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
                       src={img} 
                       alt={`${t.title} ${i + 1}`} 
                       fill 
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover hover:scale-105 transition-transform duration-700"
+                      loading="lazy"
                     />
                   </div>
                 ))}
@@ -191,6 +195,7 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
 
               <Link 
                 href="/contact" 
+                aria-label={`Book your stay in ${t.title}`}
                 className="block w-full py-4 bg-stone-900 text-white text-center rounded-full font-bold uppercase tracking-widest hover:bg-olive-600 transition-colors shadow-lg hover:-translate-y-1 transform duration-200 text-sm"
               >
                 {t.sidebar.button}

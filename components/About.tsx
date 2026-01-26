@@ -62,6 +62,9 @@ export default function About() {
                   alt="Leonidas and family"
                   fill
                   className="object-cover transition-transform duration-1000 ease-in-out group-hover:scale-110"
+                  priority 
+                  quality={75}
+                  sizes="100vw"
                 />
                 <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none"></div>
               </div>
