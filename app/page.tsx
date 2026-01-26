@@ -66,8 +66,9 @@ export default function Home() {
               alt="Andros Guesthouses View"
               fill
               className="object-cover object-top"
-              priority
-              quality={65}
+              priority // Σωστά το έχεις, το κρατάμε
+              quality={75} // Ανέβασέ το λίγο από το 65 στο 75 για να μην φαίνονται "pixel" στο zoom
+              sizes="100vw" // Κρίσιμο: Λέει στον browser ότι η εικόνα θα πιάνει όλο το πλάτος
             />
           </motion.div>
           <div className="absolute inset-0 bg-black/30" />

@@ -54,9 +54,9 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         
-        {/* LOGO - Μεγαλύτερο μέγεθος */}
+        {/* LOGO - Βελτιστοποιημένο για PageSpeed */}
         <Link href="/" className="relative z-[101] group block">
-          <div className="relative w-40 h-16 md:w-56 md:h-20 flex items-center">
+          <div className="relative w-32 h-12 md:w-40 md:h-16 flex items-center">
             <Image 
               src="/logo.png" 
               alt="Andros Guesthouses"
@@ -64,7 +64,9 @@ export default function Navbar() {
               className={`object-contain object-left transition-all duration-300 ${
                 isDarkText ? "brightness-100" : "brightness-0 invert"
               }`}
-              priority
+              priority // 1. Λέει στον browser να το κατεβάσει ΠΡΩΤΟ από όλα
+              sizes="(max-width: 768px) 128px, 160px" // 2. Περιορίζει το μέγεθος που κατεβάζει το Next.js
+              quality={80} // 3. Μειώνει το βάρος του αρχείου χωρίς να χάσει σε ποιότητα
             />
           </div>
         </Link>

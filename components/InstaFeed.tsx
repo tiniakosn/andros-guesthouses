@@ -20,12 +20,13 @@ export default function InstaFeed() {
             Follow the Vibe
          </span>
          <Link 
-           href="https://www.instagram.com/andros.guesthouses/" 
-           target="_blank" 
-           className="inline-flex items-center gap-2 text-3xl font-display text-stone-900 hover:text-olive-700 transition-colors"
-         >
-            <FaInstagram /> @andros.guesthouses
-         </Link>
+          href="https://www.instagram.com/andros.guesthouses/" 
+          target="_blank" 
+          aria-label="Visit our Instagram profile @andros.guesthouses" // ΠΡΟΣΘΕΣΕ ΑΥΤΟ
+          className="inline-flex items-center gap-2 text-3xl font-display text-stone-900 hover:text-olive-700 transition-colors"
+        >
+          <FaInstagram /> @andros.guesthouses
+        </Link>
       </div>
 
       {/* Grid: 2 στήλες στο κινητό, 4 στήλες στο PC -> Τέλεια σειρά */}
@@ -40,13 +41,15 @@ export default function InstaFeed() {
              />
              
              {/* Overlay */}
-             <a 
-               href="https://www.instagram.com/andros.guesthouses/" 
-               target="_blank"
-               className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white"
-             >
-                <FaInstagram className="w-8 h-8 drop-shadow-lg" />
-             </a>
+            <a 
+              href="https://www.instagram.com/andros.guesthouses/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View photo on Instagram" // ΠΡΟΣΘΕΣΕ ΑΥΤΟ
+              className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white"
+            >
+              <FaInstagram className="w-8 h-8 drop-shadow-lg" />
+            </a>
           </div>
         ))}
       </div>

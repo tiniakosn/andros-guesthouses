@@ -95,13 +95,13 @@ export default function Footer() {
           {/* CONTACT INFO */}
           <div className="space-y-6">
             <h3 key={lang + "f-co"} className="text-xs font-bold text-olive-500 uppercase tracking-widest">{t.contact}</h3>
-            <div className="space-y-4 text-sm text-stone-400 font-light">
+            <div className="space-y-4 text-sm text-stone-300 font-light">
               <div>
                 <p key={lang + "f-ad"} className="text-white mb-1 font-medium">{t.addressLabel}</p>
                 <p>{t.address}</p>
                 <p>{t.country}</p>
               </div>
-              <div>
+              <div className="flex flex-col gap-3">
                 <p key={lang + "f-gt"} className="text-white mb-1 font-medium">{t.touch}</p>
                 <a href="tel:+306936934390" className="block hover:text-olive-400 transition-colors">+30 693 693 4390</a>
                 <a href="mailto:androsguesthouses@gmail.com" className="block hover:text-olive-400 transition-colors">androsguesthouses@gmail.com</a>
@@ -111,20 +111,20 @@ export default function Footer() {
             {/* Social Icons */}
             <div className="flex gap-4 pt-2">
               <a 
-                href="https://www.facebook.com/people/Andros-Guesthouses/100090625075763/" 
+                href="https://www.facebook.com/..." 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-10 h-10 rounded-full border border-stone-800 flex items-center justify-center text-xs text-stone-400 hover:bg-[#1877F2] hover:border-[#1877F2] hover:text-white transition-all"
-                aria-label="Facebook"
+                className="w-10 h-10 rounded-full border border-stone-800 flex items-center justify-center text-xs text-stone-200 hover:bg-[#1877F2] hover:border-[#1877F2] hover:text-white transition-all" // ΑΛΛΑΓΗ ΣΕ text-stone-200
+                aria-label="Visit our Facebook page"
               >
                 FB
               </a>
               <a 
-                href="https://www.instagram.com/andros.guesthouses/" 
+                href="https://www.instagram.com/..." 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-10 h-10 rounded-full border border-stone-800 flex items-center justify-center text-xs text-stone-400 hover:bg-[#C13584] hover:border-[#C13584] hover:text-white transition-all"
-                aria-label="Instagram"
+                className="w-10 h-10 rounded-full border border-stone-800 flex items-center justify-center text-xs text-stone-200 hover:bg-[#C13584] hover:border-[#C13584] hover:text-white transition-all" // ΑΛΛΑΓΗ ΣΕ text-stone-200
+                aria-label="Visit our Instagram profile"
               >
                 IG
               </a>
