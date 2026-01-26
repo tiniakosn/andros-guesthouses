@@ -61,7 +61,10 @@ export default function LocalInsider({ lang }: LocalInsiderProps) {
               <motion.div className="relative h-full w-full group overflow-hidden rounded-lg bg-stone-200 shadow-sm border border-stone-100">
                 <Image 
                   src={dict.guides[0].img} 
-                  alt="" fill className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  alt={dict.guides[0].title} // Πρόσθεσε alt για το SEO!
+                  fill 
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90" />
                 <div className="absolute bottom-6 left-6 right-6">
@@ -76,11 +79,18 @@ export default function LocalInsider({ lang }: LocalInsiderProps) {
           <div className="md:col-span-5 flex flex-col gap-4">
             {dict.guides.slice(1).map((guide, i) => (
               <div key={i} className="flex-1 min-h-[220px]">
-                <Link href={`/${lang}/diary/${guide.slug}`} className="block h-full w-full">
+                <Link 
+                  href={`/${lang}/diary/${guide.slug}`} 
+                  aria-label={`Read our guide: ${guide.title}`} // ΑΥΤΟ ΕΙΝΑΙ ΤΟ ΚΛΕΙΔΙ
+                  className="block h-full w-full"
+                >
                   <div className="relative h-full w-full group overflow-hidden rounded-lg bg-stone-200 shadow-sm border border-stone-100">
                     <Image 
                       src={guide.img} 
-                      alt="" fill className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      alt={guide.title} // Πρόσθεσε alt!
+                      fill 
+                      sizes="(max-width: 768px) 100vw, 30vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-90" />
                     <div className="absolute bottom-5 left-5">

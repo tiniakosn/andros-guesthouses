@@ -109,20 +109,28 @@ export default function Navbar() {
           <button
             className="relative w-10 h-10 flex flex-col justify-center items-end gap-1.5 focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle Menu"
+            aria-label={isOpen ? "Close Menu" : "Open Menu"} // Βελτιωμένο Accessibility
           >
-            <motion.span 
-              animate={{ rotate: isOpen ? 45 : 0, y: isOpen ? 8 : 0 }} 
-              className={`w-8 h-[2px] block rounded-full transition-colors ${isDarkText ? "bg-stone-900" : "bg-white"}`}
-            ></motion.span>
-            <motion.span 
-              animate={{ opacity: isOpen ? 0 : 1 }} 
-              className={`w-6 h-[2px] block rounded-full transition-colors ${isDarkText ? "bg-stone-900" : "bg-white"}`}
-            ></motion.span>
-            <motion.span 
-              animate={{ rotate: isOpen ? -45 : 0, y: isOpen ? -8 : 0, width: isOpen ? "2rem" : "1.5rem" }} 
-              className={`w-6 h-[2px] block rounded-full transition-colors ${isDarkText ? "bg-stone-900" : "bg-white"}`}
-            ></motion.span>
+            {/* Πάνω γραμμή */}
+            <span 
+              className={`h-[2px] block rounded-full transition-all duration-300 ease-in-out ${
+                isDarkText ? "bg-stone-900" : "bg-white"
+              } ${isOpen ? "w-8 rotate-45 translate-y-[8px]" : "w-8"}`}
+            ></span>
+  
+            {/* Μεσαία γραμμή */}
+            <span 
+              className={`w-6 h-[2px] block rounded-full transition-all duration-300 ease-in-out ${
+                isDarkText ? "bg-stone-900" : "bg-white"
+              } ${isOpen ? "opacity-0" : "opacity-1"}`}
+            ></span>
+  
+            {/* Κάτω γραμμή */}
+            <span 
+              className={`h-[2px] block rounded-full transition-all duration-300 ease-in-out ${
+                isDarkText ? "bg-stone-900" : "bg-white"
+              } ${isOpen ? "w-8 -rotate-45 -translate-y-[8px]" : "w-6"}`}
+            ></span>
           </button>
         </div>
 

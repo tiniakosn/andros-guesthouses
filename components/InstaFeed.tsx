@@ -16,7 +16,7 @@ export default function InstaFeed() {
   return (
     <section className="py-24 bg-white border-t border-stone-100">
       <div className="max-w-7xl mx-auto px-6 text-center mb-12">
-         <span className="text-xs font-bold text-stone-200 uppercase tracking-widest block mb-2">
+         <span className="text-xs font-bold text-white uppercase tracking-widest block mb-2">
             Follow the Vibe
          </span>
          <Link 
