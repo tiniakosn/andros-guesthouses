@@ -43,7 +43,7 @@ const roomTypes = [
     id: 3,
     slug: "grand-residence",
     price: "60€",
-    images: ["/images/no5.4.jpg", "/images/no5.5.jpg", "/images/no5.7.jpg"],
+    images: ["/images/no5.4.jpg", "/images/no5.5.webp", "/images/no5.7.jpg"],
     en: {
       title: "Grand Residence",
       desc: "2nd Floor • 4+ Guests • Harbor View",
