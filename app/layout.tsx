@@ -88,7 +88,8 @@ export default function RootLayout({
           rel="preload"
           as="image"
           href="/hero3.jpg"
-          imageSrcSet="/_next/image?url=%2Fhero3.jpg&w=750&q=50 1x, /_next/image?url=%2Fhero3.jpg&w=1080&q=50 2x"
+          // Άλλαξε το q=50 σε q=40 για να ταυτίζεται με το About.tsx
+          imageSrcSet="/_next/image?url=%2Fhero3.jpg&w=750&q=40 1x, /_next/image?url=%2Fhero3.jpg&w=1080&q=40 2x"
         />
 
         {/* Χειροκίνητα tags για να μην κάνει λάθος το Facebook */}

@@ -61,11 +61,11 @@ export default function About() {
                   src="/hero3.jpg"
                   alt="Leonidas and family"
                   fill
-                  loading="eager"
                   priority={true} 
-                  quality={50}
+                  fetchPriority="high" // ΠΡΟΣΘΕΣΕ ΤΟ ΑΥΤΟ
+                  quality={40} // Κατέβασέ το στο 40 προσωρινά
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-1000 ease-in-out group-hover:scale-110"
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none"></div>
               </div>
@@ -74,9 +74,14 @@ export default function About() {
             {/* Floating Badge - Review Score */}
             <div className="absolute -bottom-6 -right-6 md:bottom-10 md:-right-10 z-10">
               <Reveal delay={0.4}>
-                <div className="bg-white p-6 md:p-8 shadow-xl flex flex-col items-center justify-center gap-1 rounded-full aspect-square border-4 border-stone-100 hover:scale-105 transition-transform duration-300">
+              {/* Προσθήκη aria-label για Accessibility */}
+                <div 
+                  aria-label="Rating score 9.5 out of 10 on Booking.com"
+                  className="bg-white p-6 md:p-8 shadow-xl flex flex-col items-center justify-center gap-1 rounded-full aspect-square border-4 border-stone-100 hover:scale-105 transition-transform duration-300"
+                >
                   <span className="font-display text-5xl md:text-6xl text-olive-600 leading-none font-bold">9.5</span>
-                  <span key={lang + "-rev"} className="font-sans text-[10px] font-bold tracking-widest uppercase text-center text-stone-400">
+                  {/* Αλλαγή σε text-stone-500 για καλύτερο Contrast */}
+                  <span key={lang + "-rev"} className="font-sans text-[10px] font-bold tracking-widest uppercase text-center text-stone-500">
                     {t.reviews}
                   </span>
                 </div>
