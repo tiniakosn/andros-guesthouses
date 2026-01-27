@@ -61,8 +61,9 @@ export default function About() {
                   src="/hero3.jpg"
                   alt="Leonidas and family"
                   fill
-                  priority 
-                  quality={60}
+                  loading="eager"
+                  priority={true} 
+                  quality={50}
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover transition-transform duration-1000 ease-in-out group-hover:scale-110"
                 />

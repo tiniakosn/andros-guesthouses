@@ -83,6 +83,14 @@ export default function RootLayout({
           }}
         />
         
+
+        <link
+          rel="preload"
+          as="image"
+          href="/hero3.jpg"
+          imageSrcSet="/_next/image?url=%2Fhero3.jpg&w=750&q=50 1x, /_next/image?url=%2Fhero3.jpg&w=1080&q=50 2x"
+        />
+
         {/* Χειροκίνητα tags για να μην κάνει λάθος το Facebook */}
         <meta property="og:image" content="https://andros-guesthouses.vercel.app/opengraph-image-v3.jpg" />
         <meta property="og:image:secure_url" content="https://andros-guesthouses.vercel.app/opengraph-image-v3.jpg" />
