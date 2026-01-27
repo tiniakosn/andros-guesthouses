@@ -133,7 +133,7 @@ export default function ContactPage() {
                   <div className="group w-full h-[300px] rounded-2xl overflow-hidden shadow-xl border-4 border-white relative cursor-pointer">
                     <div className="w-full h-full transition-transform duration-700 ease-in-out group-hover:scale-105">
                       <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6302.023908776031!2d24.932668!3d37.836606!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a2ff3fd9c3115b%3A0xb694eabb08bdd45!2sAndros%20Guesthouses!5e0!3m2!1sel!2sgr!4v1769015190383!5m2!1sel!2sgr" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.032569835595!2d24.929867476614245!3d37.8361233719699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a2ff3fd9c3115b%3A0xb694eabb08bdd45!2sAndros%20Guesthouses!5e0!3m2!1sel!2sgr!4v1769521733657!5m2!1sel!2sgr" 
                         width="100%" 
                         height="100%" 
                         style={{ border: 0 }} 
