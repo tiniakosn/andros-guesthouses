@@ -10,7 +10,7 @@ import WhatsAppBtn from "@/components/WhatsAppBtn";
 import ShareBtn from "@/components/ShareBtn";
 import CookieConsent from "@/components/CookieConsent";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-
+import { Analytics } from "@vercel/analytics/react";
 
 const manrope = Manrope({ 
   subsets: ["latin", "greek"],
@@ -18,6 +18,7 @@ const manrope = Manrope({
   weight: ["300", "400", "500", "600", "700"], 
   display: 'swap',
 });
+
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://andros-guesthouses.vercel.app"),
@@ -146,6 +147,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <SpeedInsights />
+        <Analytics />
         <Footer />
 
         <ShareBtn />
