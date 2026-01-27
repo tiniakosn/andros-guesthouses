@@ -6,6 +6,13 @@ import Reveal from "@/components/Reveal";
 import { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 
+
+declare global {
+  interface Window {
+    clarity: any;
+  }
+}
+
 export default function ContactPage() {
   const form = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = useState(false);
@@ -26,6 +33,11 @@ export default function ContactPage() {
     setError(false);
     setSuccess(false);
 
+    // Σήμα στο Clarity ότι ξεκίνησε η προσπάθεια αποστολής
+    if (typeof window !== "undefined" && window.clarity) {
+      window.clarity("set", "Form_Status", "Attempt_Send");
+    }
+
     if (!form.current) return;
 
     const SERVICE_ID = "service_te6x5kf"; 
@@ -41,11 +53,21 @@ export default function ContactPage() {
           setSuccess(true);
           setLoading(false);
           form.current?.reset(); 
+          
+          // Σήμα στο Clarity ότι η κράτηση/μήνυμα ολοκληρώθηκε!
+          if (typeof window !== "undefined" && window.clarity) {
+            window.clarity("set", "Conversion", "Booking_Success");
+          }
         },
         (error) => {
           console.error("FAILED...", error.text);
           setError(true);
           setLoading(false);
+          
+          // Σήμα στο Clarity ότι υπήρξε σφάλμα (για να δεις τι πήγε λάθος)
+          if (typeof window !== "undefined" && window.clarity) {
+            window.clarity("set", "Form_Error", "EmailJS_Fail");
+          }
         }
       );
   };
@@ -133,13 +155,15 @@ export default function ContactPage() {
                   <div className="group w-full h-[300px] rounded-2xl overflow-hidden shadow-xl border-4 border-white relative cursor-pointer">
                     <div className="w-full h-full transition-transform duration-700 ease-in-out group-hover:scale-105">
                       <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.032569835595!2d24.929867476614245!3d37.8361233719699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a2ff3fd9c3115b%3A0xb694eabb08bdd45!2sAndros%20Guesthouses!5e0!3m2!1sel!2sgr!4v1769521733657!5m2!1sel!2sgr" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3167.334346452243!2d24.9333!3d37.84!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a26189912f2771%3A0x67319983427181c!2sNeimporio%20Beach!5e0!3m2!1sen!2sgr!4v1710000000000!5m2!1sen!2sgr" 
                         width="100%" 
                         height="100%" 
                         style={{ border: 0 }} 
                         allowFullScreen={true} 
                         loading="lazy" 
+                        referrerPolicy="no-referrer-when-downgrade"
                         className="w-full h-full"
+                        title="Andros Guesthouses Location"
                       ></iframe>
                     </div>
                   </div>
