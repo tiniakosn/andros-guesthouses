@@ -83,7 +83,7 @@ export default function Footer() {
 
           {/* LINKS */}
           <div className="space-y-6">
-            <h3 key={lang + "f-ex"} className="text-xs font-bold text-olive-500 uppercase tracking-widest">{t.explore}</h3>
+            <h3 key={lang + "f-ex"} className="text-xs font-bold text-lime-400 uppercase tracking-widest">{t.explore}</h3>
             <ul className="space-y-4 font-display text-lg text-stone-200">
               <li><Link href="/" className="hover:text-olive-400 transition-colors">{t.home}</Link></li>
               <li><Link href="/rooms" className="hover:text-olive-400 transition-colors">{t.rooms}</Link></li>
@@ -134,7 +134,7 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM BAR */}
-        <div className="pt-8 border-t border-stone-900/50 flex flex-col md:flex-row justify-between items-center text-[10px] text-stone-500 uppercase tracking-wider">
+        <div className="pt-8 border-t border-stone-900/50 flex flex-col md:flex-row justify-between items-center text-[10px] text-stone-400 uppercase tracking-wider">
           <p key={lang + "f-rights"}>© {new Date().getFullYear()} Andros Guesthouses. {t.rights}</p>
           
           <div className="flex flex-col md:flex-row gap-4 md:gap-8 mt-4 md:mt-0 items-center">

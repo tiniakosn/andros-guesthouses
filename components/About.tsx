@@ -62,7 +62,7 @@ export default function About() {
                   alt="Leonidas and family"
                   fill
                   priority 
-                  quality={65}
+                  quality={60}
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover transition-transform duration-1000 ease-in-out group-hover:scale-110"
                 />
