@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google"; 
 import "./globals.css";
-
+import Script from 'next/script';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
@@ -70,25 +70,13 @@ export default function RootLayout({
   return (
     <html lang="el" className="scroll-smooth">
       <head>
-        {/* Microsoft Clarity - Monitoring & User Behavior */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "v6wxwu35gn");
-            `,
-          }}
-        />
+        
         
 
         <link
           rel="preload"
           as="image"
           href="/hero3.jpg"
-          // Άλλαξε το q=50 σε q=40 για να ταυτίζεται με το About.tsx
           imageSrcSet="/_next/image?url=%2Fhero3.jpg&w=750&q=40 1x, /_next/image?url=%2Fhero3.jpg&w=1080&q=40 2x"
         />
 
@@ -155,6 +143,18 @@ export default function RootLayout({
         
         <Navbar />
         {children}
+
+        {/* Μεταφορά Clarity εδώ για να μην κολλάει το Performance */}
+        <Script id="microsoft-clarity" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "v6wxwu35gn");
+          `}
+        </Script>
+
         <SpeedInsights />
         <Analytics />
         <Footer />
