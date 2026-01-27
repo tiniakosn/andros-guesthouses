@@ -94,7 +94,7 @@ export default function Footer() {
 
           {/* CONTACT INFO */}
           <div className="space-y-6">
-            <h3 key={lang + "f-co"} className="text-xs font-bold text-olive-500 uppercase tracking-widest">{t.contact}</h3>
+            <h3 key={lang + "f-co"} className="text-xs font-bold text-white uppercase tracking-widest">{t.contact}</h3>
             <div className="space-y-4 text-sm text-stone-300 font-light">
               <div>
                 <p key={lang + "f-ad"} className="text-white mb-1 font-medium">{t.addressLabel}</p>
@@ -138,7 +138,7 @@ export default function Footer() {
           <p key={lang + "f-rights"}>© {new Date().getFullYear()} Andros Guesthouses. {t.rights}</p>
           
           <div className="flex flex-col md:flex-row gap-4 md:gap-8 mt-4 md:mt-0 items-center">
-             <span className="flex items-center gap-1 opacity-70 hover:opacity-100 transition-opacity">
+             <span className="flex items-center gap-1 opacity-100 hover:opacity-100 transition-opacity">
                 {t.builtBy} <span className="text-stone-300 font-bold ml-1">Nikos Tiniakos</span>
              </span>
           </div>
