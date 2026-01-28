@@ -61,9 +61,9 @@ export default function About() {
                   src="/hero3.jpg"
                   alt="Leonidas and family"
                   fill
-                  priority={true} 
-                  fetchPriority="high"
-                  quality={40} // ΕΔΩ
+                  // Αφαίρεσε το priority={true} αν υπάρχει άλλη εικόνα πιο πάνω
+                  loading="lazy" 
+                  quality={35} // Πολύ χαμηλό quality για να "εξαφανίσουμε" το μέγεθος
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />

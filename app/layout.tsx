@@ -70,13 +70,6 @@ export default function RootLayout({
   return (
     <html lang="el" className="scroll-smooth">
       <head>
-        
-        <link
-          rel="preload"
-          as="image"
-          href="/_next/image?url=%2Fhero3.jpg&w=750&q=40" // Άμεσο link στην επεξεργασμένη εικόνα
-          imageSrcSet="/_next/image?url=%2Fhero3.jpg&w=750&q=40 1x, /_next/image?url=%2Fhero3.jpg&w=1080&q=40 2x"
-        />
 
         {/* Χειροκίνητα tags για να μην κάνει λάθος το Facebook */}
         <meta property="og:image" content="https://andros-guesthouses.vercel.app/opengraph-image-v3.jpg" />
@@ -116,7 +109,8 @@ export default function RootLayout({
           
           p {
             font-weight: 400;
-            color: #57534e; 
+            /* Από #57534e άλλαξέ το σε #44403c για καλύτερο contrast */
+            color: #44403c; 
             line-height: 1.8; 
           }
 

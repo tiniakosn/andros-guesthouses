@@ -134,7 +134,7 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM BAR */}
-        <div className="pt-8 border-t border-stone-900/50 flex flex-col md:flex-row justify-between items-center text-[10px] text-stone-400 uppercase tracking-wider">
+        <div className="pt-8 border-t border-stone-900/50 flex flex-col md:flex-row justify-between items-center text-[10px] text-stone-300 uppercase tracking-wider">
           <p key={lang + "f-rights"}>© {new Date().getFullYear()} Andros Guesthouses. {t.rights}</p>
           
           <div className="flex flex-col md:flex-row gap-4 md:gap-8 mt-4 md:mt-0 items-center">
