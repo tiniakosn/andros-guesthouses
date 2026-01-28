@@ -58,12 +58,12 @@ export default function About() {
             <Reveal width="100%">
               <div className="relative h-[500px] md:h-[600px] w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white group cursor-pointer">
                 <Image
-                  src="/hero3.jpg"
+                  src="/hero3-v2.jpg"
                   alt="Leonidas and family"
                   fill
-                  // Αφαίρεσε το priority={true} αν υπάρχει άλλη εικόνα πιο πάνω
-                  loading="lazy" 
-                  quality={35} // Πολύ χαμηλό quality για να "εξαφανίσουμε" το μέγεθος
+                  loading="lazy"      // ΠΟΛΥ ΣΗΜΑΝΤΙΚΟ: lazy
+                  quality={30}        // ΠΟΛΥ ΣΗΜΑΝΤΙΚΟ: 30
+                  decoding="async"    // ΠΡΟΣΘΕΣΕ ΤΟ: async
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
