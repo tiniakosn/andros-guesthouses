@@ -71,6 +71,9 @@ export default function RootLayout({
     <html lang="el" className="scroll-smooth">
       <head>
 
+        <link rel="preload" as="image" href="/images/no5.5.webp" fetchPriority="high" />
+        
+
         {/* Χειροκίνητα tags για να μην κάνει λάθος το Facebook */}
         <meta property="og:image" content="https://andros-guesthouses.vercel.app/opengraph-image-v3.jpg" />
         <meta property="og:image:secure_url" content="https://andros-guesthouses.vercel.app/opengraph-image-v3.jpg" />
@@ -131,21 +134,10 @@ export default function RootLayout({
         `}</style>
 
         <SmoothScrolling />
-        <Preloader />
+        {/* <Preloader /> */}
         
         <Navbar />
         {children}
-
-        {/* Μεταφορά Clarity εδώ για να μην κολλάει το Performance */}
-        <Script id="microsoft-clarity" strategy="lazyOnload">
-          {`
-            (function(c,l,a,r,i,t,y){
-              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script", "v6wxwu35gn");
-          `}
-        </Script>
 
         <SpeedInsights />
         <Analytics />

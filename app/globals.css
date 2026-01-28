@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+@font-face {
+  font-display: swap;
+}
 
 /* --- CUSTOM SCROLLBAR (Luxury Look) --- */
 
@@ -16,11 +18,10 @@
   background: #fafaf9; /* stone-50 */
 }
 
-/* Η λαβή που κινείται */
 ::-webkit-scrollbar-thumb {
-  background: #dceecf; /* olive-200 (απαλό) */
+  background: #a3b18a; /* Πιο σκούρο olive για καλύτερο contrast */
   border-radius: 5px;
-  border: 2px solid #fafaf9; /* Δημιουργεί κενό γύρω γύρω */
+  border: 2px solid #fafaf9;
 }
 
 /* Όταν πας το ποντίκι πάνω στη λαβή */
@@ -32,3 +33,10 @@
 /*html {
   scroll-behavior: smooth;
 }*/
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+

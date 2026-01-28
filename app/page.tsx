@@ -56,9 +56,8 @@ export default function Home() {
       <div className="relative h-screen flex flex-col items-center justify-center p-6 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <motion.div
-            initial={{ scale: 1.15 }}
+            initial={false} // Καταργεί το αρχικό scale 1.15 που μπερδεύει το Lighthouse
             animate={{ scale: 1 }}
-            transition={{ duration: 12, ease: "easeOut" }}
             className="relative w-full h-full"
           >
             <Image
@@ -66,9 +65,10 @@ export default function Home() {
               alt="Andros Guesthouses View"
               fill
               className="object-cover object-top"
-              priority // Σωστά το έχεις, το κρατάμε
-              quality={75} // Ανέβασέ το λίγο από το 65 στο 75 για να μην φαίνονται "pixel" στο zoom
-              sizes="100vw" // Κρίσιμο: Λέει στον browser ότι η εικόνα θα πιάνει όλο το πλάτος
+              priority // Απαραίτητο
+              fetchPriority="high" // ΠΡΟΣΘΕΣΕ ΑΥΤΟ: Λέει στον browser "φέρε την πρώτη από όλα"
+              quality={85} // Ανέβασέ το στο 85, είναι η πρώτη εικόνα που βλέπουν, πρέπει να είναι τέλεια
+              sizes="100vw"
             />
           </motion.div>
           <div className="absolute inset-0 bg-black/30" />
@@ -76,14 +76,14 @@ export default function Home() {
 
         <div className="relative z-10 max-w-5xl text-center space-y-8 mt-10">
           <div className="flex justify-center">
-            <Reveal width="100%">
+            
               <span key={lang + "-welcome"} className="inline-block text-white/95 font-sans font-bold tracking-[0.3em] text-xs md:text-sm uppercase drop-shadow-md mb-2 border-b border-white/30 pb-2">
                 {t.welcome}
               </span>
-            </Reveal>
+            
           </div>
           <div className="flex justify-center">
-            <Reveal width="100%" delay={0.2}>
+            
               <h1 key={lang + "-title"} className="text-5xl md:text-8xl font-display text-white tracking-tighter leading-none drop-shadow-2xl shadow-black">
                 {lang === "en" ? (
                   <>Andros <br className="md:hidden" /> Guesthouses</>
@@ -91,18 +91,18 @@ export default function Home() {
                   <>Andros <br className="md:hidden" /> Guesthouses</>
                 )}
               </h1>
-            </Reveal>
+            
           </div>
           <div className="flex justify-center">
-            <Reveal width="100%" delay={0.4}>
+            
               <p key={lang + "-sub"} className="text-lg md:text-2xl text-stone-100 font-sans font-medium max-w-2xl mx-auto leading-relaxed drop-shadow-lg text-shadow-sm">
                 {t.subtitle}
               </p>
-            </Reveal>
+            
           </div>
           
           <div className="flex justify-center pt-8">
-            <Reveal width="100%" delay={0.6}>
+            
               <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
                 <a href="#rooms" className="px-10 py-4 bg-white text-stone-900 rounded-full hover:bg-olive-700 hover:text-white transition duration-300 shadow-2xl font-sans text-xs font-bold tracking-[0.15em] uppercase hover:-translate-y-1">
                   {t.viewRooms}
@@ -111,14 +111,14 @@ export default function Home() {
                   {t.experience}
                 </a>
               </div>
-            </Reveal>
+            
           </div>
         </div>
         
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 1 }}
+          transition={{ delay: 0.5, duration: 1 }}
           className="absolute bottom-10 z-10 animate-bounce text-white/80"
         >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
