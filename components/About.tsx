@@ -61,9 +61,9 @@ export default function About() {
                   src="/hero3.jpg"
                   alt="Leonidas and family"
                   fill
-                  loading="eager" 
+                  priority={true} 
                   fetchPriority="high"
-                  quality={40} // ΕΔΩ ΤΟ ΚΛΕΙΔΙ
+                  quality={40} // ΕΔΩ
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />

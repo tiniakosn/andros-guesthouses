@@ -71,12 +71,10 @@ export default function RootLayout({
     <html lang="el" className="scroll-smooth">
       <head>
         
-        
-
         <link
           rel="preload"
           as="image"
-          href="/hero3.jpg"
+          href="/_next/image?url=%2Fhero3.jpg&w=750&q=40" // Άμεσο link στην επεξεργασμένη εικόνα
           imageSrcSet="/_next/image?url=%2Fhero3.jpg&w=750&q=40 1x, /_next/image?url=%2Fhero3.jpg&w=1080&q=40 2x"
         />
 
