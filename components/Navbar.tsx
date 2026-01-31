@@ -54,13 +54,13 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         
+        {/* LOGO - Fixed Build Version */}
         <Link href="/" className="relative z-[101] group block">
           <div className="relative w-32 h-12 md:w-40 md:h-16 flex items-center">
             <Image 
               src="/logo.png" 
               alt="Andros Guesthouses"
               fill
-              {/* Χρησιμοποιούμε opacity αντί για invert για να περάσουμε το test */}
               className={`object-contain object-left transition-opacity duration-300 ${
                 isDarkText ? "opacity-100" : "opacity-90 brightness-[100]"
               }`}
