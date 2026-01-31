@@ -24,7 +24,7 @@ export default function About() {
     en: {
       tag: "Meet the Hosts",
       title: <>More than just <br/> a place to stay.</>,
-      p1: <>I am <strong className="text-stone-900 font-bold">Leonidas</strong>, the proud owner of this family gem in the heart of Chora. Along with <strong className="text-stone-900 font-bold">Eva</strong> and <strong className="text-stone-900 font-bold">Nikos</strong>, our passion stems from a deep love for sharing the authentic beauty of Andros.</>,
+      p1: <>I am <strong className="text-stone-900 font-bold">Leonidas</strong>, the proud owner of this family gem in the heart of Chora. Along with <strong className="text-stone-900 font-bold">Eva</strong> and <strong className="text-stone-900 font-bold">Niko</strong>, our passion stems from a deep love for sharing the authentic beauty of Andros.</>,
       quote: <>"For us, <span className="text-olive-700 font-medium">Philoxenia</span> is not just a word. It is the ancient Greek art of making a stranger feel like family."</>,
       p2: <>When I’m not ensuring your stay is perfect, you’ll likely find me exploring the island’s stunning natural trails or walking our dog, <strong>Max</strong>.</>,
       p3: "We look forward to welcoming you to our guesthouses and helping you create unforgettable memories in the Aegean!",
