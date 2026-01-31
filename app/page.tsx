@@ -12,6 +12,7 @@ import Footer from "@/components/Footer";
 import InstaFeed from "@/components/InstaFeed";
 import Testimonials from "@/components/Testimonials";
 import LocalInsider from "@/components/LocalInsider";
+import { track } from "@vercel/analytics";
 
 export default function Home() {
   const [lang, setLang] = useState("en");
@@ -104,10 +105,18 @@ export default function Home() {
           <div className="flex justify-center pt-8">
             
               <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-                <a href="#rooms" className="px-10 py-4 bg-white text-stone-900 rounded-full hover:bg-olive-700 hover:text-white transition duration-300 shadow-2xl font-sans text-xs font-bold tracking-[0.15em] uppercase hover:-translate-y-1">
+                <a 
+                  href="#rooms" 
+                  onClick={() => track('Hero_ViewRooms_Click', { language: lang })}
+                  className="px-10 py-4 bg-white text-stone-900 rounded-full hover:bg-olive-700 hover:text-white transition duration-300 shadow-2xl font-sans text-xs font-bold tracking-[0.15em] uppercase hover:-translate-y-1"
+                >
                   {t.viewRooms}
                 </a>
-                <a href="/experience" className="px-10 py-4 border border-white text-white rounded-full hover:bg-white hover:text-stone-900 transition duration-300 backdrop-blur-sm bg-white/10 font-sans text-xs font-bold tracking-[0.15em] uppercase">
+                <a 
+                  href="/experience" 
+                  onClick={() => track('Hero_Experience_Click', { language: lang })}
+                  className="px-10 py-4 border border-white text-white rounded-full hover:bg-white hover:text-stone-900 transition duration-300 backdrop-blur-sm bg-white/10 font-sans text-xs font-bold tracking-[0.15em] uppercase"
+                >
                   {t.experience}
                 </a>
               </div>
