@@ -58,7 +58,7 @@ export default function About() {
             <Reveal width="100%">
               <div className="relative h-[500px] md:h-[600px] w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white group cursor-pointer">
                 <Image
-                  src="/outside.jpg"
+                  src="/outside.webp"
                   alt="Leonidas and family"
                   fill
                   unoptimized={true} // ΑΥΤΟ ΕΙΝΑΙ ΤΟ ΚΛΕΙΔΙ: Παρακάμπτει τη βελτιστοποίηση που μπορεί να κολλάει
