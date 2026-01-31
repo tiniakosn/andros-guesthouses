@@ -133,7 +133,7 @@ export default function RootLayout({
           }
         `}</style>
 
-        <SmoothScrolling />
+        {/*<SmoothScrolling />*/}
         {/* <Preloader /> */}
         
         <Navbar />
