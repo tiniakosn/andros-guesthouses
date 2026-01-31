@@ -58,7 +58,7 @@ export default function About() {
             <Reveal width="100%">
               <div className="relative h-[500px] md:h-[600px] w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white group cursor-pointer">
                 <Image
-                  src="/hero3-v2.jpg"
+                  src="/hero3-v3.jpg"
                   alt="Leonidas and family"
                   fill
                   loading="lazy"      // ΠΟΛΥ ΣΗΜΑΝΤΙΚΟ: lazy
