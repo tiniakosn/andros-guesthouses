@@ -61,10 +61,7 @@ export default function About() {
                   src="/outside.jpg"
                   alt="Leonidas and family"
                   fill
-                  loading="lazy"      // ΠΟΛΥ ΣΗΜΑΝΤΙΚΟ: lazy
-                  quality={30}        // ΠΟΛΥ ΣΗΜΑΝΤΙΚΟ: 30
-                  decoding="async"    // ΠΡΟΣΘΕΣΕ ΤΟ: async
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  unoptimized={true} // ΑΥΤΟ ΕΙΝΑΙ ΤΟ ΚΛΕΙΔΙ: Παρακάμπτει τη βελτιστοποίηση που μπορεί να κολλάει
                   className="object-cover"
                 />
                 <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none"></div>
