@@ -56,51 +56,39 @@ export default function Home() {
       {/* HERO SECTION */}
       <div className="relative h-screen flex flex-col items-center justify-center p-6 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <motion.div
-            initial={false} // Καταργεί το αρχικό scale 1.15 που μπερδεύει το Lighthouse
-            animate={{ scale: 1 }}
-            className="relative w-full h-full"
-          >
-            <Image
-              src="/images/no5.5.webp"
-              alt="Andros Guesthouses View"
-              fill
-              className="object-cover object-top"
-              priority // Απαραίτητο
-              fetchPriority="high" // ΠΡΟΣΘΕΣΕ ΑΥΤΟ: Λέει στον browser "φέρε την πρώτη από όλα"
-              quality={85} // Ανέβασέ το στο 85, είναι η πρώτη εικόνα που βλέπουν, πρέπει να είναι τέλεια
-              sizes="100vw"
-            />
-          </motion.div>
+        {/* ΑΦΑΙΡΕΣΗ ΤΟΥ motion.div ΓΥΡΩ ΑΠΟ ΤΗΝ ΕΙΚΟΝΑ */}
+          <Image
+            src="/images/no5.5.webp"
+            alt="Andros Guesthouses View"
+            fill
+            className="object-cover object-top"
+            priority
+            fetchPriority="high"
+            quality={80} // Κατέβασέ το λίγο από 85 στο 80 για να κερδίσεις KB
+            sizes="100vw"
+          />
           <div className="absolute inset-0 bg-black/30" />
         </div>
 
-        <div className="relative z-10 max-w-5xl text-center space-y-8 mt-10">
-          <div className="flex justify-center">
-            
-              <span key={lang + "-welcome"} className="inline-block text-white/95 font-sans font-bold tracking-[0.3em] text-xs md:text-sm uppercase drop-shadow-md mb-2 border-b border-white/30 pb-2">
-                {t.welcome}
-              </span>
-            
-          </div>
-          <div className="flex justify-center">
-            
-              <h1 key={lang + "-title"} className="text-5xl md:text-8xl font-display text-white tracking-tighter leading-none drop-shadow-2xl shadow-black">
-                {lang === "en" ? (
-                  <>Andros <br className="md:hidden" /> Guesthouses</>
-                ) : (
-                  <>Andros <br className="md:hidden" /> Guesthouses</>
-                )}
-              </h1>
-            
-          </div>
-          <div className="flex justify-center">
-            
-              <p key={lang + "-sub"} className="text-lg md:text-2xl text-stone-100 font-sans font-medium max-w-2xl mx-auto leading-relaxed drop-shadow-lg text-shadow-sm">
-                {t.subtitle}
-              </p>
-            
-          </div>
+      <div className="relative z-10 max-w-5xl text-center space-y-8 mt-10">
+        <div className="flex justify-center">
+          <span className="inline-block text-white/95 font-sans font-bold tracking-[0.3em] text-xs md:text-sm uppercase drop-shadow-md mb-2 border-b border-white/30 pb-2">
+            {t.welcome}
+          </span>
+        </div>
+    
+        <div className="flex justify-center">
+          {/* ΚΑΘΑΡΟ H1 ΧΩΡΙΣ ΚΑΝΕΝΑΝ MOTION WRAPPER */}
+          <h1 className="text-5xl md:text-8xl font-display text-white tracking-tighter leading-none shadow-md shadow-black">
+            Andros <br className="md:hidden" /> Guesthouses
+          </h1>
+        </div>
+
+        <div className="flex justify-center">
+          <p className="text-lg md:text-2xl text-stone-100 font-sans font-medium max-w-2xl mx-auto leading-relaxed drop-shadow-lg text-shadow-sm">
+            {t.subtitle}
+          </p>
+        </div>
           
           <div className="flex justify-center pt-8">
             
@@ -124,14 +112,11 @@ export default function Home() {
           </div>
         </div>
         
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 1 }}
-          className="absolute bottom-10 z-10 animate-bounce text-white/80"
-        >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
-        </motion.div>
+        <div className="absolute bottom-10 z-10 animate-bounce text-white/80">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+          </svg>
+      </div>
       </div>
 
       {/* --- SECTIONS --- */}
