@@ -78,8 +78,8 @@ export default function Home() {
         </div>
     
         <div className="flex justify-center">
-          {/* ΚΑΘΑΡΟ H1 ΧΩΡΙΣ ΚΑΝΕΝΑΝ MOTION WRAPPER */}
-          <h1 className="text-5xl md:text-8xl font-display text-white tracking-tighter leading-none shadow-md shadow-black">
+        {/* ΚΑΘΑΡΟ H1 - Χωρίς το άσχημο μαύρο πλαίσιο */}
+          <h1 className="text-5xl md:text-8xl font-display text-white tracking-tighter leading-none drop-shadow-[0_5px_15px_rgba(0,0,0,0.4)]">
             Andros <br className="md:hidden" /> Guesthouses
           </h1>
         </div>
