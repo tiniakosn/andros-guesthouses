@@ -63,8 +63,8 @@ export default function Home() {
             className="object-cover object-top"
             priority
             fetchPriority="high"
-            quality={80}
-            sizes="100vw"
+            quality={75} 
+            sizes="(max-width: 768px) 100vw, 100vw" // Αυτό βοηθάει το Next.js να επιλέξει το σωστό μέγεθος
           />
           <div className="absolute inset-0 bg-black/30" />
         </div>

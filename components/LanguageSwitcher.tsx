@@ -26,13 +26,13 @@ export default function LanguageSwitcher({ isDark }: LanguageSwitcherProps) {
       onClick={toggleLanguage}
       // Προσθήκη aria-label για το 100 στο Accessibility
       aria-label={lang === 'en' ? "Αλλαγή γλώσσας στα Ελληνικά" : "Switch to English"}
-      className={`flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all duration-300 ${
+      className={`flex items-center gap-2 px-3 py-1.5 rounded-full border  ${
         isDark 
           ? "border-stone-300 bg-stone-100 hover:border-stone-500" 
           : "border-white/30 bg-white/10 hover:border-white/60"
       }`}
     >
-      <span className={`text-[10px] font-bold tracking-tighter transition-colors ${
+      <span className={`text-[10px] font-bold tracking-tighter  ${
         lang === 'el' 
           ? (isDark ? "text-stone-900" : "text-white") 
           // Αύξηση αντίθεσης: stone-400 -> stone-500 και white/40 -> white/70
@@ -43,7 +43,7 @@ export default function LanguageSwitcher({ isDark }: LanguageSwitcherProps) {
       
       <div className={`w-[1px] h-3 transition-colors ${isDark ? "bg-stone-300" : "bg-white/30"}`}></div>
       
-      <span className={`text-[10px] font-bold tracking-tighter transition-colors ${
+      <span className={`text-[10px] font-bold tracking-tighter  ${
         lang === 'en' 
           ? (isDark ? "text-stone-900" : "text-white") 
           // Αύξηση αντίθεσης: stone-400 -> stone-500 και white/40 -> white/70

@@ -77,7 +77,7 @@ export default function Navbar() {
             <Link
               key={link.en}
               href={link.href}
-              className={`text-sm font-bold uppercase tracking-widest px-2 py-2 transition-colors duration-300 relative group ${
+              className={`text-sm font-bold uppercase tracking-widest px-2 py-2 transition-colors relative group ${
                 isDarkText ? "text-stone-800 hover:text-olive-700" : "text-white hover:text-white/80"
               }`}
             >
@@ -92,7 +92,7 @@ export default function Navbar() {
           
           <Link
             href="/contact"
-            className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-md hover:shadow-lg hover:scale-105 active:scale-95 ${
+            className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-md hover:shadow-lg  ${
               isDarkText
                 ? "bg-stone-900 text-white hover:bg-olive-700"
                 : "bg-white text-stone-900 hover:bg-stone-100"
