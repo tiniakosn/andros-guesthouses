@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Reveal from "./Reveal";
 import { useState, useEffect } from "react";
 
 export default function About() {
@@ -61,8 +60,10 @@ export default function About() {
                   src="/outside.webp"
                   alt="Leonidas and family"
                   fill
-                  unoptimized={true} // ΑΥΤΟ ΕΙΝΑΙ ΤΟ ΚΛΕΙΔΙ: Παρακάμπτει τη βελτιστοποίηση που μπορεί να κολλάει
+                  //unoptimized={true} // ΑΥΤΟ ΕΙΝΑΙ ΤΟ ΚΛΕΙΔΙ: Παρακάμπτει τη βελτιστοποίηση που μπορεί να κολλάει
                   className="object-cover"
+                  priority={false} // Δεν είναι Hero, οπότε false
+                  quality={60} // Μείωση βάρους
                   sizes="(max-width: 768px) 100vw, 50vw"
                   loading="lazy"
                 />

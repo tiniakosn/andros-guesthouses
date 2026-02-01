@@ -6,7 +6,6 @@ import About from "@/components/About";
 import Rooms from "@/components/Rooms"; 
 import Amenities from "@/components/Amenities";
 import { motion } from "framer-motion";
-import Reveal from "@/components/Reveal";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import InstaFeed from "@/components/InstaFeed";
