@@ -1,5 +1,5 @@
 "use client";
-
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import About from "@/components/About";
@@ -8,10 +8,20 @@ import Amenities from "@/components/Amenities";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import InstaFeed from "@/components/InstaFeed";
-import Testimonials from "@/components/Testimonials";
+
+
 import LocalInsider from "@/components/LocalInsider";
 import { track } from "@vercel/analytics";
+// Αυτά τα κάνεις DYNAMIC (φορτώνουν μόνο όταν χρειαστεί)
+const Testimonials = dynamic(() => import("@/components/Testimonials"), { 
+  ssr: false,
+  loading: () => <div className="h-20" /> // Προαιρετικό placeholder
+});
+
+const InstaFeed = dynamic(() => import("@/components/InstaFeed"), { 
+  ssr: false 
+});
+
 
 export default function Home() {
   const [lang, setLang] = useState("en");
@@ -62,6 +72,7 @@ export default function Home() {
             fill
             className="object-cover object-top"
             priority
+            loading="eager"
             fetchPriority="high"
             quality={75} 
             sizes="(max-width: 768px) 100vw, 100vw" // Αυτό βοηθάει το Next.js να επιλέξει το σωστό μέγεθος
