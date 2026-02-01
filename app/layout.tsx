@@ -5,7 +5,6 @@ import Script from 'next/script';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
-import SmoothScrolling from "@/components/SmoothScrolling";
 import WhatsAppBtn from "@/components/WhatsAppBtn";
 import ShareBtn from "@/components/ShareBtn";
 import CookieConsent from "@/components/CookieConsent";

@@ -55,7 +55,7 @@ export default function About() {
           
           {/* --- LEFT: IMAGE & BADGE --- */}
           <div className="relative order-2 lg:order-1">
-            <Reveal width="100%">
+            
               <div className="relative h-[500px] md:h-[600px] w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white group cursor-pointer">
                 <Image
                   src="/outside.webp"
@@ -63,14 +63,16 @@ export default function About() {
                   fill
                   unoptimized={true} // ΑΥΤΟ ΕΙΝΑΙ ΤΟ ΚΛΕΙΔΙ: Παρακάμπτει τη βελτιστοποίηση που μπορεί να κολλάει
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none"></div>
               </div>
-            </Reveal>
+            
             
             {/* Floating Badge - Review Score */}
             <div className="absolute -bottom-6 -right-6 md:bottom-10 md:-right-10 z-10">
-              <Reveal delay={0.4}>
+              
               {/* Προσθήκη aria-label για Accessibility */}
                 <div 
                   aria-label="Rating score 9.5 out of 10 on Booking.com"
@@ -82,26 +84,26 @@ export default function About() {
                     {t.reviews}
                   </span>
                 </div>
-              </Reveal>
+              
             </div>
           </div>
 
           {/* --- RIGHT: TEXT (STORY) --- */}
           <div className="space-y-8 md:pl-10 order-1 lg:order-2">
-            <Reveal>
+            
                <span key={lang + "-tag"} className="text-olive-600 font-sans text-xs font-bold tracking-[0.2em] uppercase flex items-center gap-3">
                 <span className="w-10 h-[2px] bg-olive-600"></span>
                 {t.tag}
               </span>
-            </Reveal>
+            
 
-            <Reveal delay={0.2}>
+            
               <h2 key={lang + "-title"} className="text-4xl md:text-6xl font-display text-stone-900 leading-[1.1] pb-2">
                 {t.title}
               </h2>
-            </Reveal>
+            
 
-            <Reveal delay={0.3}>
+            
               <div className="space-y-6 text-stone-600 font-sans text-lg leading-relaxed font-light">
                 <p key={lang + "-p1"}>{t.p1}</p>
                 
@@ -112,9 +114,9 @@ export default function About() {
                 <p key={lang + "-p2"}>{t.p2}</p>
                 <p key={lang + "-p3"}>{t.p3}</p>
               </div>
-            </Reveal>
+            
 
-            <Reveal delay={0.4}>
+            
               <div className="pt-8 flex items-center gap-6">
                  <div>
                     <p key={lang + "-sig"} className="font-handwriting text-3xl text-stone-900">{t.signature}</p>
@@ -123,7 +125,7 @@ export default function About() {
                     </span>
                  </div>
               </div>
-            </Reveal>
+            
           </div>
         </div>
       </div>
