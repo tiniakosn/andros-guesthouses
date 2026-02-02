@@ -134,39 +134,33 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* MOBILE MENU OVERLAY - Διορθωμένη εναλλαγή γλώσσας */}
-        <AnimatePresence initial={false}>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, x: "100%" }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: "100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
-              className="fixed inset-0 z-50 bg-[#fafaf9] w-full h-screen flex flex-col items-center justify-center"
+        {/* MOBILE MENU OVERLAY - 100 Score Version */}
+        <div 
+          className={`fixed inset-0 z-50 bg-[#fafaf9] w-full h-screen flex flex-col items-center justify-center transition-all duration-500 ease-in-out ${
+            isOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"
+          }`}
+        >
+          <nav className="flex flex-col items-center space-y-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="text-4xl font-display font-bold text-stone-900 hover:text-olive-700 transition-colors"
+              >
+                {lang === "el" ? link.el : link.en}
+              </Link>
+            ))}
+            
+            <Link
+              href="/contact"
+              onClick={() => setIsOpen(false)}
+              className="px-10 py-4 bg-stone-900 text-white font-bold uppercase tracking-widest text-sm shadow-xl rounded-full block active:scale-95 transition-transform mt-4"
             >
-              <nav className="flex flex-col items-center space-y-8">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="text-4xl font-display font-bold text-stone-900 hover:text-olive-700 transition-colors"
-                  >
-                    {lang === "el" ? link.el : link.en}
-                  </Link>
-                ))}
-                
-                <Link
-                  href="/contact"
-                  onClick={() => setIsOpen(false)}
-                  className="px-10 py-4 bg-stone-900 text-white font-bold uppercase tracking-widest text-sm shadow-xl rounded-full block active:scale-95 transition-transform mt-4"
-                >
-                  {lang === "el" ? "Κρατηση" : "Book Now"}
-                </Link>
-              </nav>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              {lang === "el" ? "Κρατηση" : "Book Now"}
+            </Link>
+          </nav>
+        </div>
       </div>
     </header>
   );

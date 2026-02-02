@@ -122,8 +122,8 @@ export default function Home() {
         {/* CSS Animations για 100 Score */}
         <style jsx>{`
           @keyframes entrance {
-            0% { transform: translateY(100px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
+            0% { transform: translate3d(0, 40px, 0); opacity: 0; }
+            100% { transform: translate3d(0, 0, 0); opacity: 1; }
           }
           @keyframes fadein {
             0% { opacity: 0; }
