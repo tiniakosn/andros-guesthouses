@@ -75,7 +75,7 @@ function RoomCardSlider({ room, lang }: { room: typeof roomTypes[0], lang: strin
   return (
     <Link 
       href={`/rooms/${room.slug}`} 
-      className="group flex flex-col h-full bg-white rounded-xl overflow-hidden shadow-[0_10px_30px_-10px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)] border border-stone-100 transition-all duration-500 hover:-translate-y-2 relative"
+      className="group flex flex-col h-full bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl border border-stone-100 transition-all duration-500 hover:-translate-y-2 relative"
     >
       <div className="relative aspect-video w-full overflow-hidden bg-stone-200 shrink-0">
         <Image
@@ -86,8 +86,11 @@ function RoomCardSlider({ room, lang }: { room: typeof roomTypes[0], lang: strin
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         
-        <div className="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1 rounded-sm text-sm font-bold text-stone-900 shadow-md border border-stone-100 z-20 pointer-events-none">
-          <span className="text-[10px] uppercase text-stone-400 mr-1">{lang === "el" ? "από" : "from"}</span> {room.price}
+        <div className="absolute top-5 right-5 bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-bold text-stone-900 shadow-sm border border-stone-100/50 z-20">
+          <span className="text-[10px] uppercase text-stone-500 tracking-wider mr-1">
+            {lang === "el" ? "από" : "from"}
+          </span> 
+          {room.price}
         </div>
 
         {hasMultipleImages && (
@@ -115,8 +118,8 @@ function RoomCardSlider({ room, lang }: { room: typeof roomTypes[0], lang: strin
         )}
       </div>
       
-      <div className="p-8 flex flex-col flex-1">
-        <h3 key={lang + room.id} className="text-2xl font-display text-stone-900 group-hover:text-olive-700 transition-colors mb-2">
+      <div className="p-10 flex flex-col flex-1"> {/* Αυξήσαμε το padding σε 10 για περισσότερο αέρα */}
+        <h3 className="text-2xl font-display text-stone-900 group-hover:text-olive-700 transition-colors mb-3">
           {t.title}
         </h3>
         <p key={lang + room.id + "desc"} className="text-olive-600 text-xs font-bold uppercase tracking-wider mb-4">
@@ -147,8 +150,8 @@ export default function Rooms() {
   }, []);
 
   return (
-    <section id="rooms" className="py-24 px-6 max-w-7xl mx-auto bg-[#fafaf9]">
-      <div className="text-left mb-16 border-b border-stone-200 pb-8">
+    <section id="rooms" className="py-32 px-6 max-w-7xl mx-auto bg-[#fafaf9]">
+      <div className="text-center mb-20 border-b border-stone-100 pb-12">
         <Reveal>
           <span key={lang + "acc"} className="text-olive-700 font-bold tracking-widest text-xs uppercase block mb-3">
             {lang === "el" ? "ΔΙΑΜΟΝΗ" : "ACCOMMODATION"}
