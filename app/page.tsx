@@ -87,14 +87,14 @@ export default function Home() {
             </span>
           </div>
 
-          <div className="flex justify-center">
-            <h1 className="text-5xl md:text-8xl font-display text-white tracking-tighter leading-none drop-shadow-md">
+          <div className="flex justify-center overflow-hidden">
+            <h1 className="text-5xl md:text-8xl font-display text-white tracking-tighter leading-none drop-shadow-md animate-entrance">
               Andros <br className="md:hidden" /> Guesthouses
             </h1>
           </div>
 
           <div className="flex justify-center">
-            <p className="text-lg md:text-2xl text-stone-100 font-sans font-medium max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-2xl text-stone-100 font-sans font-medium max-w-2xl mx-auto leading-relaxed animate-fadein">
               {t.subtitle}
             </p>
           </div>
@@ -119,8 +119,27 @@ export default function Home() {
           </div>
         </div> {/* Τέλος του Content Container */}
         
+        {/* CSS Animations για 100 Score */}
+        <style jsx>{`
+          @keyframes entrance {
+            0% { transform: translateY(100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+          }
+          @keyframes fadein {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+          }
+          .animate-entrance {
+            animation: entrance 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+          }
+          .animate-fadein {
+            animation: fadein 1s ease-out 0.5s forwards;
+            opacity: 0;
+          }
+        `}</style>
+        
         {/* Scroll Arrow */}
-        <div className="absolute bottom-10 z-10 text-white/80">
+        <div className="absolute bottom-10 z-10 text-white/40">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
           </svg>
@@ -129,30 +148,21 @@ export default function Home() {
 
       {/* --- SECTIONS --- */}
       {/* Σημείωση: Πρέπει να περάσεις το lang prop στα παρακάτω components αν θέλεις να μεταφράζονται και αυτά εσωτερικά */}
-      <section className="bg-stone-50 relative z-20">
-        <About />
-      </section>
+      {/* --- SECTIONS --- */}
+      {/* Ενοποιημένη ροή χωρίς περιττά ενδιάμεσα tags */}
+      
+      <About />
+      
+      {/* Το Rooms διαχειρίζεται το bg-[#fafaf9] εσωτερικά όπως είπαμε */}
+      <Rooms />
 
-      <section className="bg-white py-10 relative z-20">
-        <Rooms />
-      </section>
+      <Amenities />
 
-
-
-      <section className="bg-stone-50 relative z-20">
-        <Amenities />
-      </section>
-
-      <section className="bg-white relative z-20">
-        <LocalInsider lang={lang} /> {/* <--- Πέρνα το lang εδώ αν χρειαστεί */}
-      </section>
-      {/* ------------------------- */}
+      <LocalInsider lang={lang} />
     
       <Testimonials />
       
-      <section className="relative z-20">
-        <InstaFeed />
-      </section>
+      <InstaFeed />
       
     </main>
   );
