@@ -150,26 +150,31 @@ export default function Rooms() {
   }, []);
 
   return (
-    <section id="rooms" className="py-32 px-6 max-w-7xl mx-auto bg-[#fafaf9]">
-      <div className="text-center mb-20 border-b border-stone-100 pb-12">
-        <Reveal>
-          <span key={lang + "acc"} className="text-olive-700 font-bold tracking-widest text-xs uppercase block mb-3">
-            {lang === "el" ? "ΔΙΑΜΟΝΗ" : "ACCOMMODATION"}
-          </span>
-          <h2 key={lang + "title"} className="text-5xl md:text-6xl font-display text-stone-900">
-            {lang === "el" ? "Επιλεγμένες Κατοικίες" : "Curated Residences"}
-          </h2>
-        </Reveal>
-      </div>
+    <section id="rooms" className="py-24 md:py-32 bg-[#fafaf9]"> {/* Το φόντο εδώ πιάνει όλο το πλάτος */}
+      <div className="max-w-7xl mx-auto px-6"> {/* Μόνο το περιεχόμενο περιορίζεται εδώ */}
+        
+        {/* HEADER SECTION - Καθαρό και στοιχισμένο */}
+        <div className="text-left mb-16 border-b border-stone-200 pb-12">
+          <Reveal>
+            <span key={lang + "acc"} className="text-olive-700 font-bold tracking-widest text-xs uppercase block mb-3">
+              {lang === "el" ? "ΔΙΑΜΟΝΗ" : "ACCOMMODATION"}
+            </span>
+            <h2 key={lang + "title"} className="text-5xl md:text-6xl font-display text-stone-900">
+              {lang === "el" ? "Επιλεγμένες Κατοικίες" : "Curated Residences"}
+            </h2>
+          </Reveal>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-        {roomTypes.map((room, index) => (
-          <div key={room.id} className="h-full">
-            <Reveal delay={index * 0.1} width="100%" className="h-full">
-              <RoomCardSlider room={room} lang={lang} />
-            </Reveal>
-          </div>
-        ))}
+        {/* GRID SECTION */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+          {roomTypes.map((room, index) => (
+            <div key={room.id} className="h-full">
+              <Reveal delay={index * 0.1} width="100%" className="h-full">
+                <RoomCardSlider room={room} lang={lang} />
+              </Reveal>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
