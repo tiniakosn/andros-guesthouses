@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import About from "@/components/About";
 import Rooms from "@/components/Rooms"; 
 import Amenities from "@/components/Amenities";
-import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -121,7 +120,7 @@ export default function Home() {
         </div> {/* Τέλος του Content Container */}
         
         {/* Scroll Arrow */}
-        <div className="absolute bottom-10 z-10 animate-bounce text-white/80">
+        <div className="absolute bottom-10 z-10 text-white/80">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
           </svg>
