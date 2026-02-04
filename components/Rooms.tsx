@@ -153,7 +153,7 @@ export default function Rooms() {
     /* 1. Εδώ είναι το "κλειδί": Το bg-[#fafaf9] και το w-full πρέπει να είναι στο section */
     <section id="rooms" className="w-full bg-[#fafaf9] border-y border-stone-100 overflow-hidden"> 
       
-      /* 2. Εδώ κεντράρουμε το περιεχόμενο και δίνουμε το padding (αέρα) */
+      
       <div className="py-24 md:py-32 px-6 max-w-7xl mx-auto">
         
         {/* HEADER SECTION */}
