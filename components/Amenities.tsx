@@ -71,39 +71,45 @@ export default function Amenities() {
   }, []);
 
   return (
-    <section className="py-24 md:py-32 bg-white w-full overflow-hidden">
-      {/* Header */}
-      <div className="mb-16 md:mb-24">
-        <Reveal>
-          <span key={lang + "comf"} className="text-olive-700 font-bold tracking-widest text-xs uppercase block mb-3">
-            {lang === "el" ? "ΑΝΕΣΗ" : "Comfort"}
-          </span>
-          <h2 key={lang + "amen"} className="text-4xl md:text-5xl font-display text-stone-900">
-            {lang === "el" ? "Παροχές & Υπηρεσίες" : "Amenities & Services"}
-          </h2>
-        </Reveal>
-      </div>
+    /* Το εξωτερικό section δίνει το χρώμα σε όλο το πλάτος (Full Width) */
+    <section className="bg-white w-full overflow-hidden border-t border-stone-100">
+      
+      /* Το εσωτερικό div περιορίζει το περιεχόμενο στο κέντρο */
+      <div className="py-24 px-6 max-w-7xl mx-auto">
+        
+        {/* Header */}
+        <div className="mb-16 md:mb-24">
+          <Reveal>
+            <span key={lang + "comf"} className="text-olive-700 font-bold tracking-widest text-xs uppercase block mb-3">
+              {lang === "el" ? "ΑΝΕΣΗ" : "Comfort"}
+            </span>
+            <h2 key={lang + "amen"} className="text-4xl md:text-5xl font-display text-stone-900">
+              {lang === "el" ? "Παροχές & Υπηρεσίες" : "Amenities & Services"}
+            </h2>
+          </Reveal>
+        </div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
-        {amenitiesData.map((item, index) => {
-          const t = lang === "el" ? item.el : item.en;
-          return (
-            <Reveal key={index + lang} delay={index * 0.1}>
-              <div className="flex flex-col gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center text-stone-900 group-hover:bg-olive-600 group-hover:text-white transition-colors duration-300 shadow-sm">
-                  {item.icon}
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+          {amenitiesData.map((item, index) => {
+            const t = lang === "el" ? item.el : item.en;
+            return (
+              <Reveal key={index + lang} delay={index * 0.1}>
+                <div className="flex flex-col gap-4 group">
+                  <div className="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center text-stone-900 group-hover:bg-olive-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-display text-stone-900 mb-2">{t.title}</h3>
+                    <p className="text-stone-600 text-sm leading-relaxed font-sans font-light">
+                      {t.description}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-xl font-display text-stone-900 mb-2">{t.title}</h3>
-                  <p className="text-stone-600 text-sm leading-relaxed font-sans font-light">
-                    {t.description}
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-          );
-        })}
+              </Reveal>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
