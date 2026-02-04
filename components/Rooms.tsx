@@ -150,8 +150,8 @@ export default function Rooms() {
   }, []);
 
   return (
+    /* Το bg-[#fafaf9] τώρα πιάνει όλο το πλάτος και ξεχωρίζει από το About */
     <section id="rooms" className="py-24 md:py-32 bg-[#fafaf9] w-full overflow-hidden border-y border-stone-100"> 
-      {/* Το w-full και overflow-hidden κλειδώνουν το πλάτος */}
       <div className="max-w-7xl mx-auto px-6">
         
         {/* HEADER SECTION */}
@@ -170,7 +170,6 @@ export default function Rooms() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {roomTypes.map((room, index) => (
             <div key={room.id} className="h-full">
-              {/* Το width="100%" είναι σωστό εδώ */}
               <Reveal delay={index * 0.1} width="100%" className="h-full">
                 <RoomCardSlider room={room} lang={lang} />
               </Reveal>
