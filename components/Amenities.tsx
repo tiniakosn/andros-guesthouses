@@ -71,7 +71,7 @@ export default function Amenities() {
   }, []);
 
   return (
-    <section className="py-24 px-6 max-w-7xl mx-auto border-t border-stone-200 bg-[#fafaf9]">
+    <section className="py-24 md:py-32 bg-white w-full overflow-hidden">
       {/* Header */}
       <div className="mb-16 md:mb-24">
         <Reveal>

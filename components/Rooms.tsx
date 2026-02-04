@@ -150,7 +150,7 @@ export default function Rooms() {
   }, []);
 
   return (
-    <section id="rooms" className="py-24 md:py-32 bg-[#fafaf9] w-full overflow-hidden"> 
+    <section id="rooms" className="py-24 md:py-32 bg-[#fafaf9] w-full overflow-hidden border-y border-stone-100"> 
       {/* Το w-full και overflow-hidden κλειδώνουν το πλάτος */}
       <div className="max-w-7xl mx-auto px-6">
         
