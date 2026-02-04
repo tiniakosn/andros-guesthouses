@@ -71,10 +71,7 @@ export default function Amenities() {
   }, []);
 
   return (
-    /* Το εξωτερικό section δίνει το χρώμα σε όλο το πλάτος (Full Width) */
-    <section className="bg-white w-full overflow-hidden border-t border-stone-100">
-      
-      /* Το εσωτερικό div περιορίζει το περιεχόμενο στο κέντρο */
+    <section className="bg-[#fafaf9] w-full overflow-hidden border-t border-stone-100">
       <div className="py-24 px-6 max-w-7xl mx-auto">
         
         {/* Header */}
@@ -96,7 +93,7 @@ export default function Amenities() {
             return (
               <Reveal key={index + lang} delay={index * 0.1}>
                 <div className="flex flex-col gap-4 group">
-                  <div className="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center text-stone-900 group-hover:bg-olive-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-stone-900 group-hover:bg-olive-600 group-hover:text-white transition-colors duration-300 shadow-sm border border-stone-100">
                     {item.icon}
                   </div>
                   <div>
