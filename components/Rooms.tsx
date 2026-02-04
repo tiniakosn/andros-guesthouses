@@ -150,10 +150,11 @@ export default function Rooms() {
   }, []);
 
   return (
-    <section id="rooms" className="py-24 md:py-32 bg-[#fafaf9]"> {/* Το φόντο εδώ πιάνει όλο το πλάτος */}
-      <div className="max-w-7xl mx-auto px-6"> {/* Μόνο το περιεχόμενο περιορίζεται εδώ */}
+    <section id="rooms" className="py-24 md:py-32 bg-[#fafaf9] w-full overflow-hidden"> 
+      {/* Το w-full και overflow-hidden κλειδώνουν το πλάτος */}
+      <div className="max-w-7xl mx-auto px-6">
         
-        {/* HEADER SECTION - Καθαρό και στοιχισμένο */}
+        {/* HEADER SECTION */}
         <div className="text-left mb-16 border-b border-stone-200 pb-12">
           <Reveal>
             <span key={lang + "acc"} className="text-olive-700 font-bold tracking-widest text-xs uppercase block mb-3">
@@ -169,6 +170,7 @@ export default function Rooms() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {roomTypes.map((room, index) => (
             <div key={room.id} className="h-full">
+              {/* Το width="100%" είναι σωστό εδώ */}
               <Reveal delay={index * 0.1} width="100%" className="h-full">
                 <RoomCardSlider room={room} lang={lang} />
               </Reveal>

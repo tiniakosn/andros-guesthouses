@@ -58,7 +58,7 @@ export default function Home() {
   const t = lang === "el" ? heroContent.el : heroContent.en;
 
   return (
-    <main className="min-h-screen bg-[#fafaf9]">
+    <main className="min-h-screen bg-[#fafaf9] overflow-x-hidden">
       <Navbar />
       
       {/* HERO SECTION */}

@@ -92,7 +92,7 @@ export default function About() {
           {/* --- RIGHT: TEXT (STORY) --- */}
           <div className="space-y-8 md:pl-10 order-1 lg:order-2">
             
-               <span key={lang + "-tag"} className="text-olive-600 font-sans text-xs font-bold tracking-[0.2em] uppercase flex items-center gap-3">
+              <span key={lang + "-tag"} className="text-olive-600 font-sans text-xs font-bold tracking-[0.2em] uppercase flex items-center gap-3">
                 <span className="w-10 h-[2px] bg-olive-600"></span>
                 {t.tag}
               </span>
