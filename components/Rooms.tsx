@@ -150,9 +150,11 @@ export default function Rooms() {
   }, []);
 
   return (
-    /* Το bg-[#fafaf9] τώρα πιάνει όλο το πλάτος και ξεχωρίζει από το About */
-    <section id="rooms" className="py-24 md:py-32 bg-[#fafaf9] w-full overflow-hidden border-y border-stone-100"> 
-      <div className="max-w-7xl mx-auto px-6">
+    /* 1. Εδώ είναι το "κλειδί": Το bg-[#fafaf9] και το w-full πρέπει να είναι στο section */
+    <section id="rooms" className="w-full bg-[#fafaf9] border-y border-stone-100 overflow-hidden"> 
+      
+      /* 2. Εδώ κεντράρουμε το περιεχόμενο και δίνουμε το padding (αέρα) */
+      <div className="py-24 md:py-32 px-6 max-w-7xl mx-auto">
         
         {/* HEADER SECTION */}
         <div className="text-left mb-16 border-b border-stone-200 pb-12">
