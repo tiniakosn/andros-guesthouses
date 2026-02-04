@@ -47,86 +47,71 @@ export default function About() {
   const t = lang === "el" ? content.el : content.en;
 
   return (
-    <section className="py-24 md:py-32 overflow-hidden relative bg-stone-50/50">
+    /* Το χρώμα bg-[#fafaf9] τώρα πιάνει όλο το πλάτος και το overflow-hidden κλειδώνει τη μπάρα */
+    <section className="w-full bg-[#fafaf9] py-24 md:py-32 overflow-hidden relative border-b border-stone-100">
       <div className="max-w-7xl mx-auto px-6">
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-center">
           
           {/* --- LEFT: IMAGE & BADGE --- */}
           <div className="relative order-2 lg:order-1">
-            
-              <div className="relative h-[500px] md:h-[600px] w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white group cursor-pointer">
-                <Image
-                  src="/outside.webp"
-                  alt="Leonidas and family"
-                  fill
-                  className="object-cover"
-                  priority={false} // Δεν είναι Hero, οπότε false
-                  quality={60} // Μείωση βάρους
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none"></div>
-              </div>
-            
-            
-            {/* Floating Badge - Review Score */}
+            <div className="relative h-[500px] md:h-[600px] w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white group cursor-pointer">
+              <Image
+                src="/outside.webp"
+                alt="Leonidas and family"
+                fill
+                className="object-cover"
+                priority={false}
+                quality={60}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none"></div>
+            </div>
+
+            {/* Floating Badge */}
             <div className="absolute -bottom-6 -right-6 md:bottom-10 md:-right-10 z-10">
-              
-              {/* Προσθήκη aria-label για Accessibility */}
-                <div 
-                  aria-label="Rating score 9.5 out of 10 on Booking.com"
-                  className="bg-white p-6 md:p-8 shadow-xl flex flex-col items-center justify-center gap-1 rounded-full aspect-square border-4 border-stone-100 hover:scale-105 transition-transform duration-300"
-                >
-                  <span className="font-display text-5xl md:text-6xl text-olive-600 leading-none font-bold">9.5</span>
-                  {/* Αλλαγή σε text-stone-500 για καλύτερο Contrast */}
-                  <span key={lang + "-rev"} className="font-sans text-[10px] font-bold tracking-widest uppercase text-center text-stone-500">
-                    {t.reviews}
-                  </span>
-                </div>
-              
+              <div 
+                aria-label="Rating score 9.5 out of 10 on Booking.com"
+                className="bg-white p-6 md:p-8 shadow-xl flex flex-col items-center justify-center gap-1 rounded-full aspect-square border-4 border-stone-100 hover:scale-105 transition-transform duration-300"
+              >
+                <span className="font-display text-5xl md:text-6xl text-olive-600 leading-none font-bold">9.5</span>
+                <span key={lang + "-rev"} className="font-sans text-[10px] font-bold tracking-widest uppercase text-center text-stone-500">
+                  {t.reviews}
+                </span>
+              </div>
             </div>
           </div>
 
           {/* --- RIGHT: TEXT (STORY) --- */}
           <div className="space-y-8 md:pl-10 order-1 lg:order-2">
-            
-              <span key={lang + "-tag"} className="text-olive-600 font-sans text-xs font-bold tracking-[0.2em] uppercase flex items-center gap-3">
-                <span className="w-10 h-[2px] bg-olive-600"></span>
-                {t.tag}
-              </span>
-            
+            <span key={lang + "-tag"} className="text-olive-600 font-sans text-xs font-bold tracking-[0.2em] uppercase flex items-center gap-3">
+              <span className="w-10 h-[2px] bg-olive-600"></span>
+              {t.tag}
+            </span>
 
-            
-              <h2 key={lang + "-title"} className="text-4xl md:text-6xl font-display text-stone-900 leading-[1.1] pb-2">
-                {t.title}
-              </h2>
-            
+            <h2 key={lang + "-title"} className="text-4xl md:text-6xl font-display text-stone-900 leading-[1.1] pb-2">
+              {t.title}
+            </h2>
 
-            
-              <div className="space-y-6 text-stone-600 font-sans text-lg leading-relaxed font-light">
-                <p key={lang + "-p1"}>{t.p1}</p>
-                
-                <div key={lang + "-quote"} className="pl-6 border-l-2 border-olive-300 italic text-stone-500 my-6">
-                  {t.quote}
-                </div>
-
-                <p key={lang + "-p2"}>{t.p2}</p>
-                <p key={lang + "-p3"}>{t.p3}</p>
+            <div className="space-y-6 text-stone-600 font-sans text-lg leading-relaxed font-light">
+              <p key={lang + "-p1"}>{t.p1}</p>
+              <div key={lang + "-quote"} className="pl-6 border-l-2 border-olive-300 italic text-stone-500 my-6">
+                {t.quote}
               </div>
-            
+              <p key={lang + "-p2"}>{t.p2}</p>
+              <p key={lang + "-p3"}>{t.p3}</p>
+            </div>
 
-            
-              <div className="pt-8 flex items-center gap-6">
-                 <div>
-                    <p key={lang + "-sig"} className="font-handwriting text-3xl text-stone-900">{t.signature}</p>
-                    <span key={lang + "-sigsub"} className="text-[10px] font-sans font-bold text-stone-400 tracking-widest uppercase mt-1 block">
-                      {t.signatureSub}
-                    </span>
-                 </div>
-              </div>
-            
+            <div className="pt-8 flex items-center gap-6">
+               <div>
+                  <p key={lang + "-sig"} className="font-handwriting text-3xl text-stone-900">{t.signature}</p>
+                  <span key={lang + "-sigsub"} className="text-[10px] font-sans font-bold text-stone-400 tracking-widest uppercase mt-1 block">
+                    {t.signatureSub}
+                  </span>
+               </div>
+            </div>
           </div>
         </div>
       </div>
