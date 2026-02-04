@@ -150,10 +150,8 @@ export default function Rooms() {
   }, []);
 
   return (
-    /* 1. Εδώ είναι το "κλειδί": Το bg-[#fafaf9] και το w-full πρέπει να είναι στο section */
-    <section id="rooms" className="w-full bg-[#fafaf9] border-y border-stone-100 overflow-hidden"> 
-      
-      
+    /* Το section είναι πλέον λευκό για να κάνει αντίθεση με το About */
+    <section id="rooms" className="w-full bg-white border-b border-stone-100 overflow-hidden"> 
       <div className="py-24 md:py-32 px-6 max-w-7xl mx-auto">
         
         {/* HEADER SECTION */}
