@@ -1,38 +1,41 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Αντικατάστησε αυτά: */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-@font-face {
-  font-display: swap;
+/* Αφαιρέσαμε το άδειο @font-face. 
+   Το Next.js διαχειρίζεται αυτόματα τα fonts μέσω του layout.tsx 
+*/
+
+/* --- Η ΑΠΟΛΥΤΗ ΔΙΟΡΘΩΣΗ ΓΙΑ ΤΗ ΜΠΑΡΑ (OVERFLOW) --- */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden !important;
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* --- CUSTOM SCROLLBAR (Luxury Look) --- */
-
-/* Το "αυλάκι" της μπάρας */
+/* --- CUSTOM SCROLLBAR --- */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
-/* Το φόντο της μπάρας */
 ::-webkit-scrollbar-track {
-  background: #fafaf9; /* stone-50 */
+  background: #fafaf9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #a3b18a; /* Πιο σκούρο olive για καλύτερο contrast */
+  background: #a3b18a;
   border-radius: 5px;
   border: 2px solid #fafaf9;
 }
 
-/* Όταν πας το ποντίκι πάνω στη λαβή */
 ::-webkit-scrollbar-thumb:hover {
-  background: #606c38; /* olive-500 (έντονο) */
+  background: #606c38;
 }
-
-/* Smooth Scrolling για όλο το site */
-/*html {
-  scroll-behavior: smooth;
-}*/
 
 body {
   text-rendering: optimizeLegibility;
@@ -40,3 +43,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  box-sizing: border-box;
+}

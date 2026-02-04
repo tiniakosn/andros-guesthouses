@@ -88,6 +88,17 @@ export default function RootLayout({
             --font-sans: ${manrope.style.fontFamily};
           }
 
+          /* Η ΑΠΟΛΥΤΗ ΔΙΟΡΘΩΣΗ ΓΙΑ ΤΗ ΜΠΑΡΑ */
+          html, body {
+            overflow-x: hidden !important;
+            max-width: 100% !important;
+            position: relative;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+
           body {
             font-family: var(--font-sans);
             background-color: #fafaf9; 
@@ -96,7 +107,6 @@ export default function RootLayout({
               radial-gradient(at 100% 100%, rgba(168, 162, 158, 0.1) 0px, transparent 50%);
             background-attachment: fixed;
           }
-
           ::selection {
             background-color: #4d7c0f; 
             color: white;
