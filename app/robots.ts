@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://andros-guesthouses.vercel.app/sitemap.xml', // ΑΛΛΑΞΕ ΤΟ LINK ΕΔΩ
+    sitemap: 'https://andros-guesthouses.vercel.app/sitemap.xml',
   };
 }

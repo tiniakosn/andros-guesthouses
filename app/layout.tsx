@@ -20,29 +20,39 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://andros-guesthouses.vercel.app"),
-  title: "Andros Guesthouses | Luxury Living & Authentic Hospitality",
-  description: "Experience the hidden gems of Andros. Stay in our traditional guesthouses in Chora with panoramic views.",
-  keywords: ["Andros", "Guesthouses", "Accommodation", "Neimporio", "Chora"],
   
-  // 1. Ρύθμιση για το Facebook (Open Graph)
+  // --- SEO: Τίτλοι που "πουλάνε" ---
+  title: {
+    default: "Andros Guesthouses | Luxury Apartments in Chora with Sea View",
+    template: "%s | Andros Guesthouses"
+  },
+  description: "Stay at the best stone guesthouses in Chora, Andros. Walking distance to Neimporio beach, panoramic Aegean views, and authentic hospitality. Book your escape now.",
+  
+  keywords: [
+    "Andros", "Chora", "Neimporio", "Guesthouses", "Accommodation", 
+    "Vacation Rentals", "Apartments", "Sea View", "Cyclades", "Holidays in Greece",
+    "Luxury Stay", "Family Friendly", "Pet Friendly", "Andros Island", "Rooms to let"
+  ],
+  
+  // --- Social Media (Facebook / WhatsApp) ---
   openGraph: {
-    title: "Andros Guesthouses | Your Escape to Andros",
-    description: "Discover the authentic side of Greece. Panoramic views, traditional hospitality, and hidden beaches.",
+    title: "Andros Guesthouses | Dreamy Stay in Chora",
+    description: "Your private stone retreat in Andros. Panoramic views, local tips, and authentic Greek hospitality just steps from the beach.",
     url: "https://andros-guesthouses.vercel.app",
     siteName: "Andros Guesthouses",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "/opengraph-image-v3.jpg", // Διαβάζεται από το public/
+        url: "/opengraph-image-v3.jpg", // Κρατάμε την εικόνα που έχεις
         width: 1200,
         height: 630,
-        alt: "Andros Guesthouses View",
+        alt: "Andros Guesthouses Panoramic View",
       },
     ],
   },
   
-  // 2. Ρύθμιση για το Favicon (Browser Tab)
+  // --- Τεχνικά (ΜΗΝ ΤΑ ΠΕΙΡΑΞΕΙΣ) ---
   icons: {
     icon: [
       { url: "/favicon-v4.png", sizes: "32x32" },
@@ -54,10 +64,23 @@ export const metadata: Metadata = {
   },
 
   verification: {
-    google: "-yRKvY_-TqJiBkK8AtG5_K8_732TAzNcNBRQlArJzyw",
+    google: "-yRKvY_-TqJiBkK8AtG5_K8_732TAzNcNBRQlArJzyw", // Το κρατάμε όπως είναι!
   },
 
   manifest: '/site.webmanifest',
+
+  // --- Εντολή για τη Google ---
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({

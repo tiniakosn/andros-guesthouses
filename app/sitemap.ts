@@ -28,9 +28,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    // Βάζουμε 'weekly' γιατί το περιεχόμενο (ειδικά το Diary) μπορεί να ανανεώνεται
     changeFrequency: 'weekly',
-    // Η αρχική παίρνει 1, τα δωμάτια/diary 0.8, τα υπόλοιπα 0.5
-    priority: route === '' ? 1 : (route.includes('/rooms/') || route.includes('/diary/') ? 0.8 : 0.5),
+    // ΔΙΟΡΘΩΣΗ: Απλοποιήσαμε το logic για να πιάνει σωστά και το '/rooms' και το '/diary'
+    priority: route === '' ? 1 : (route.includes('rooms') || route.includes('diary') ? 0.8 : 0.5),
   }));
 }
