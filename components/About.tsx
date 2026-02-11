@@ -61,10 +61,10 @@ export default function About() {
                 alt="Leonidas and family"
                 fill
                 className="object-cover"
-                priority={false}
-                quality={60}
+                priority={true}
+                quality={70}
                 sizes="(max-width: 768px) 100vw, 50vw"
-                loading="lazy"
+                
                 decoding="async"
               />
               <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none"></div>
@@ -77,7 +77,7 @@ export default function About() {
                 className="bg-white p-6 md:p-8 shadow-xl flex flex-col items-center justify-center gap-1 rounded-full aspect-square border-4 border-stone-100 hover:scale-105 transition-transform duration-300"
               >
                 <span className="font-display text-5xl md:text-6xl text-olive-600 leading-none font-bold">9.5</span>
-                <span key={lang + "-rev"} className="font-sans text-[10px] font-bold tracking-widest uppercase text-center text-stone-500">
+                <span key={lang + "-rev"} className="font-sans text-[10px] font-bold tracking-widest uppercase text-center text-stone-600">
                   {t.reviews}
                 </span>
               </div>
@@ -107,7 +107,7 @@ export default function About() {
             <div className="pt-8 flex items-center gap-6">
                <div>
                   <p key={lang + "-sig"} className="font-handwriting text-3xl text-stone-900">{t.signature}</p>
-                  <span key={lang + "-sigsub"} className="text-[10px] font-sans font-bold text-stone-400 tracking-widest uppercase mt-1 block">
+                  <span key={lang + "-sigsub"} className="text-[10px] font-sans font-bold text-stone-600 tracking-widest uppercase mt-1 block">
                     {t.signatureSub}
                   </span>
                </div>
