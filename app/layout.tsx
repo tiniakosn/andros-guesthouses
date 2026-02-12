@@ -19,32 +19,26 @@ const manrope = Manrope({
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://andros-guesthouses.vercel.app"),
+  // 1. ΕΝΗΜΕΡΩΣΗ: Αλλαγή στο επίσημο domain
+  metadataBase: new URL("https://androsguesthouses.gr"),
   
-  // --- SEO: Τίτλοι που "πουλάνε" ---
   title: {
     default: "Andros Guesthouses | Luxury Apartments in Chora with Sea View",
     template: "%s | Andros Guesthouses"
   },
   description: "Stay at the best stone guesthouses in Chora, Andros. Walking distance to Neimporio beach, panoramic Aegean views, and authentic hospitality. Book your escape now.",
   
-  keywords: [
-    "Andros", "Chora", "Neimporio", "Guesthouses", "Accommodation", 
-    "Vacation Rentals", "Apartments", "Sea View", "Cyclades", "Holidays in Greece",
-    "Luxury Stay", "Family Friendly", "Pet Friendly", "Andros Island", "Rooms to let"
-  ],
-  
-  // --- Social Media (Facebook / WhatsApp) ---
   openGraph: {
     title: "Andros Guesthouses | Dreamy Stay in Chora",
     description: "Your private stone retreat in Andros. Panoramic views, local tips, and authentic Greek hospitality just steps from the beach.",
-    url: "https://andros-guesthouses.vercel.app",
+    // 2. ΕΝΗΜΕΡΩΣΗ: Αλλαγή URL εδώ
+    url: "https://androsguesthouses.gr",
     siteName: "Andros Guesthouses",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "/opengraph-image-v3.jpg", // Κρατάμε την εικόνα που έχεις
+        url: "/opengraph-image-v3.jpg", 
         width: 1200,
         height: 630,
         alt: "Andros Guesthouses Panoramic View",
@@ -91,13 +85,11 @@ export default function RootLayout({
   return (
     <html lang="el" className="scroll-smooth">
       <head>
-
         <link rel="preload" as="image" href="/images/no5.5.webp" fetchPriority="high" />
-        
-
-        {/* Χειροκίνητα tags για να μην κάνει λάθος το Facebook */}
-        <meta property="og:image" content="https://andros-guesthouses.vercel.app/opengraph-image-v3.jpg" />
-        <meta property="og:image:secure_url" content="https://andros-guesthouses.vercel.app/opengraph-image-v3.jpg" />
+  
+        {/* 3. ΕΝΗΜΕΡΩΣΗ: Χειροκίνητα tags με το ΝΕΟ domain */}
+        <meta property="og:image" content="https://androsguesthouses.gr/opengraph-image-v3.jpg" />
+        <meta property="og:image:secure_url" content="https://androsguesthouses.gr/opengraph-image-v3.jpg" />
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -197,10 +189,10 @@ export default function RootLayout({
               "@type": "LodgingBusiness",
               "name": "Andros Guesthouses",
               "image": [
-                "https://andros-guesthouses.vercel.app/opengraph-image-v3.jpg"
+                "https://androsguesthouses.gr/opengraph-image-v3.jpg" // ΔΙΟΡΘΩΘΗΚΕ
               ],
-              "@id": "https://andros-guesthouses.vercel.app",
-              "url": "https://andros-guesthouses.vercel.app",
+              "@id": "https://androsguesthouses.gr", // ΔΙΟΡΘΩΘΗΚΕ
+              "url": "https://androsguesthouses.gr", // ΔΙΟΡΘΩΘΗΚΕ
               "telephone": "+306936934390",
               "email": "androsguesthouses@gmail.com",
               "address": {
