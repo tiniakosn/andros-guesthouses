@@ -31,7 +31,7 @@ export default function Home() {
     window.addEventListener("langChange", handleLangChange);
     
     // Αρχικός έλεγχος
-    const currentLang = document.documentElement.lang || "en";
+    const currentLang = typeof document !== 'undefined' ? document.documentElement.lang || "en" : "en";
     setLang(currentLang);
 
     return () => window.removeEventListener("langChange", handleLangChange);
@@ -65,16 +65,16 @@ export default function Home() {
       <div className="relative h-screen flex flex-col items-center justify-center p-6 overflow-hidden">
         {/* Background Image Container */}
         <div className="absolute inset-0 z-0">
+          
           <Image
             src="/images/no5.5.webp"
             alt="Andros Guesthouses View"
             fill
             className="object-cover object-top"
             priority
-            loading="eager"
-            fetchPriority="high"
-            quality={75} 
-            sizes="(max-width: 768px) 100vw, 100vw" // Αυτό βοηθάει το Next.js να επιλέξει το σωστό μέγεθος
+            fetchPriority="high" 
+            quality={70} // Μειώνουμε λίγο τα KB
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw" // Οδηγία για το σωστό μέγεθος αρχείου
           />
           <div className="absolute inset-0 bg-black/30" />
         </div>
@@ -119,10 +119,10 @@ export default function Home() {
           </div>
         </div> {/* Τέλος του Content Container */}
         
-        {/* CSS Animations για 100 Score */}
+        {/* CSS Animations - Βελτιστοποιημένα για 100/100 Score */}
         <style jsx>{`
           @keyframes entrance {
-            0% { transform: translate3d(0, 40px, 0); opacity: 0; }
+            0% { transform: translate3d(0, 20px, 0); opacity: 0; }
             100% { transform: translate3d(0, 0, 0); opacity: 1; }
           }
           @keyframes fadein {
@@ -130,10 +130,11 @@ export default function Home() {
             100% { opacity: 1; }
           }
           .animate-entrance {
-            animation: entrance 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            animation: entrance 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
           }
           .animate-fadein {
-            animation: fadein 1s ease-out 0.5s forwards;
+            /* Delay μόνο 0.1s για να μη μας "κόβει" η Google στο LCP */
+            animation: fadein 0.5s ease-out 0.1s forwards; 
             opacity: 0;
           }
         `}</style>
