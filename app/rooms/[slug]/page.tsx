@@ -225,7 +225,7 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
           </div>
         </div>
       </div>
-      <Footer />
+      
     </main>
   );
 }
