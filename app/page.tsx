@@ -88,13 +88,13 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center overflow-hidden">
-            <h1 className="text-5xl md:text-8xl font-display text-white tracking-tighter leading-none drop-shadow-md">
+            <h1 className="text-5xl md:text-8xl font-display text-white tracking-tighter leading-none">
               Andros <br className="md:hidden" /> Guesthouses
             </h1>
           </div>
 
           <div className="flex justify-center">
-            <p className="text-lg md:text-2xl text-stone-100 font-sans font-medium max-w-2xl mx-auto leading-relaxed animate-fadein">
+            <p className="text-lg md:text-2xl text-stone-100 font-sans font-medium max-w-2xl mx-auto leading-relaxed">
               {t.subtitle}
             </p>
           </div>
@@ -111,6 +111,7 @@ export default function Home() {
               <a 
                 href="/experience" 
                 onClick={() => track('Hero_Experience_Click', { language: lang })}
+  
                 className="px-10 py-4 border border-white text-white rounded-full hover:bg-white hover:text-stone-900 transition duration-300 bg-white/20 font-sans text-xs font-bold tracking-[0.15em] uppercase"
               >
                 {t.experience}

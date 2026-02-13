@@ -89,7 +89,7 @@ export default function RootLayout({
         <link 
           rel="preload" 
           as="image" 
-          href="/_next/image?url=%2Flogo.png&w=256&q=75" 
+          href="/_next/image?url=%2Flogo.png&w=256&q=80" 
           fetchPriority="high" 
         />
 
