@@ -61,13 +61,11 @@ export default function Navbar() {
               src="/logo.png" 
               alt="Andros Guesthouses"
               fill
-              className={`object-contain object-left transition-opacity duration-300 ${
-                isDarkText ? "opacity-100" : "opacity-90 brightness-[100]"
-              }`}
+              // Αφαίρεσε το transition και το brightness. Κράτα το απλό.
+              className="object-contain object-left opacity-100" 
               priority
-              fetchPriority="high" // ΑΥΤΗ ΕΙΝΑΙ Η ΚΡΙΣΙΜΗ ΠΡΟΣΘΗΚΗ
+              fetchPriority="high"
               sizes="(max-width: 768px) 128px, 160px"
-              quality={80}
             />
           </div>
         </Link>

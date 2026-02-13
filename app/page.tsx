@@ -111,7 +111,7 @@ export default function Home() {
               <a 
                 href="/experience" 
                 onClick={() => track('Hero_Experience_Click', { language: lang })}
-                className="px-10 py-4 border border-white text-white rounded-full hover:bg-white hover:text-stone-900 transition duration-300 backdrop-blur-sm bg-white/10 font-sans text-xs font-bold tracking-[0.15em] uppercase"
+                className="px-10 py-4 border border-white text-white rounded-full hover:bg-white hover:text-stone-900 transition duration-300 bg-white/20 font-sans text-xs font-bold tracking-[0.15em] uppercase"
               >
                 {t.experience}
               </a>
@@ -126,9 +126,8 @@ export default function Home() {
             100% { transform: translateY(0); opacity: 1; }
           }
           .animate-entrance {
-            /* Μειώνουμε το χρόνο σε 0.3s για να εμφανιστεί ο τίτλος ακαριαία */
             animation: entrance 0.3s ease-out forwards;
-            will-change: transform, opacity;
+            will-change: transform, opacity; /* Βοηθάει την GPU */
           }
           @keyframes fadein {
             0% { opacity: 0; }
