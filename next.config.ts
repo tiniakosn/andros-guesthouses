@@ -5,6 +5,11 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === "production",
   },
   
+  // ΤΟ ΚΛΕΙΔΙ ΓΙΑ ΤΑ 50KiB: Αυτόματη βελτιστοποίηση των βιβλιοθηκών
+  experimental: {
+    optimizePackageImports: ['framer-motion', 'react-icons', 'lucide-react'],
+  },
+
   images: {
     remotePatterns: [
       {
@@ -13,38 +18,35 @@ const nextConfig = {
       },
     ],
     formats: ['image/avif', 'image/webp'],
+    // Δημιουργία πιο αποδοτικών μεγεθών για κινητά
+    deviceSizes: [480, 640, 750, 828, 1080, 1200, 1920],
   },
 
   env: {
     GOOGLE_GENERATIVE_AI_API_KEY: process.env.GOOGLE_GENERATIVE_AI_API_KEY,
   },
 
-  // --- ΕΔΩ ΠΡΟΣΘΕΤΟΥΜΕ ΤΑ REDIRECTS ΓΙΑ ΤΟ SEO ---
   async redirects() {
     return [
       {
-        // Παλιά σελίδα About (ID 309)
         source: '/',
         has: [{ type: 'query', key: 'page_id', value: '309' }],
         destination: '/about',
         permanent: true,
       },
       {
-        // Παλιές πληροφορίες για την Άνδρο (ID 386)
         source: '/',
         has: [{ type: 'query', key: 'page_id', value: '386' }],
         destination: '/', 
         permanent: true,
       },
       {
-        // Παλιά σελίδα Επικοινωνίας (ID 793)
         source: '/',
         has: [{ type: 'query', key: 'page_id', value: '793' }],
         destination: '/contact',
         permanent: true,
       },
       {
-        // Παλιά φόρμα κρατήσεων (ID 842)
         source: '/',
         has: [{ type: 'query', key: 'page_id', value: '842' }],
         destination: '/booking', 
@@ -74,10 +76,14 @@ const nextConfig = {
             key: 'Cross-Origin-Opener-Policy',
             value: 'same-origin',
           },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains; preload',
+          },
         ],
       },
     ]
   },
 }
 
-export default nextConfig
+module.exports = nextConfig;

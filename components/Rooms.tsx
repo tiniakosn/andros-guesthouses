@@ -11,7 +11,7 @@ const roomTypes = [
     id: 1,
     slug: "aegean-studio",
     price: "50€",
-    images: ["/images/no5.6.jpg", "/images/no5.1.jpg", "/images/no5.2.jpg", "/images/no5.3.jpg"],
+    images: ["/images/no5.6.webp", "/images/no5.1.webp", "/images/no5.2.webp", "/images/no5.3.webp"],
     en: {
       title: "Aegean Studio",
       desc: "1st Floor • Full Kitchen • 2-3 Guests",
@@ -27,7 +27,7 @@ const roomTypes = [
     id: 2,
     slug: "garden-suite",
     price: "50€",
-    images: ["/images/balcony1.jpg", "/images/no2.2.jpg", "/images/no2.3.jpg"],
+    images: ["/images/balcony1.webp", "/images/no2.2.webp", "/images/no2.3.webp"],
     en: {
       title: "Garden Suite",
       desc: "Ground Floor • 2 Bedrooms • Private Yard",
@@ -43,7 +43,7 @@ const roomTypes = [
     id: 3,
     slug: "grand-residence",
     price: "60€",
-    images: ["/images/no5.4.jpg", "/images/no5.5.webp", "/images/no5.7.jpg"],
+    images: ["/images/no5.4.webp", "/images/no5.5.webp", "/images/no5.7.webp"],
     en: {
       title: "Grand Residence",
       desc: "2nd Floor • 4+ Guests • Harbor View",
@@ -73,10 +73,15 @@ function RoomCardSlider({ room, lang }: { room: typeof roomTypes[0], lang: strin
   };
 
   return (
-    <Link 
-      href={`/rooms/${room.slug}`} 
-      className="group flex flex-col h-full bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl border border-stone-100 transition-all duration-500 hover:-translate-y-2 relative"
-    >
+    <div className="group flex flex-col h-full bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl border border-stone-100 transition-all duration-500 hover:-translate-y-2 relative">
+    
+      {/* ΑΥΤΟ ΕΙΝΑΙ ΤΟ ΝΕΟ LINK ΠΟΥ ΚΑΛΥΠΤΕΙ ΤΗΝ ΚΑΡΤΑ ΧΩΡΙΣ ΝΑ ΧΑΛΑΕΙ ΤΟ HTML */}
+      <Link 
+        href={`/rooms/${room.slug}`} 
+        className="absolute inset-0 z-10" 
+        aria-label={`View details for ${t.title}`}
+      />
+
       <div className="relative aspect-video w-full overflow-hidden bg-stone-200 shrink-0">
         <Image
           src={room.images[currentImageIndex]} 
@@ -125,7 +130,7 @@ function RoomCardSlider({ room, lang }: { room: typeof roomTypes[0], lang: strin
         <p key={lang + room.id + "desc"} className="text-olive-600 text-xs font-bold uppercase tracking-wider mb-4">
           {t.desc}
         </p>
-        <p key={lang + room.id + "det"} className="text-stone-500 text-sm font-sans leading-relaxed mb-8 flex-1">
+        <p key={lang + room.id + "det"} className="text-stone-600 text-sm font-sans leading-relaxed mb-8 flex-1">
           {t.details}
         </p>
         <div className="mt-auto pt-6 border-t border-stone-100">
@@ -135,7 +140,7 @@ function RoomCardSlider({ room, lang }: { room: typeof roomTypes[0], lang: strin
           </span>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
 
