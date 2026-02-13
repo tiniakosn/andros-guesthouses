@@ -56,7 +56,7 @@ export default function Navbar() {
         {/* LOGO - Optimized Version */}
         <Link href="/" className="relative z-[101] group block">
           
-          <div className="relative w-14 h-14 md:w-16 md:h-16 flex items-center">
+          <div className="relative w-16 h-16 md:w-16 md:h-16 flex items-center">
             <Image 
               src="/logo-navbar.png" // Το νέο αρχείο των 20.5 KB
               alt="Andros Guesthouses"
