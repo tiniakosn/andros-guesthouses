@@ -53,18 +53,19 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         
-        {/* LOGO - Fixed Build Version */}
+        {/* LOGO - Optimized Version */}
         <Link href="/" className="relative z-[101] group block">
-          <div className="relative w-32 h-12 md:w-40 md:h-16 flex items-center">
+          
+          <div className="relative w-12 h-12 md:w-16 md:h-16 flex items-center">
             <Image 
-              src="/logo.png" 
+              src="/logo-navbar.png" // Το νέο αρχείο των 20.5 KB
               alt="Andros Guesthouses"
               fill
-              // Αφαίρεσε το transition και το brightness. Κράτα το απλό.
               className="object-contain object-left opacity-100" 
               priority
               fetchPriority="high"
-              sizes="(max-width: 768px) 128px, 160px"
+              // Οι διαστάσεις που ενημερώνουν τον browser για το πλάτος εμφάνισης
+              sizes="(max-width: 768px) 48px, 64px" 
             />
           </div>
         </Link>
