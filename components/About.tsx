@@ -63,8 +63,8 @@ export default function About() {
                 className="object-cover"
                 priority={true}
                 fetchPriority="high"
-                quality={60}
-                sizes="(max-width: 768px) 100vw, 50vw"
+                quality={70} 
+                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 33vw" 
               />
               <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none"></div>
             </div>

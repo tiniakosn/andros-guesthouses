@@ -76,7 +76,7 @@ export default function Home() {
             quality={70} // Μειώνουμε λίγο τα KB
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw" // Οδηγία για το σωστό μέγεθος αρχείου
           />
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-black/45" />
         </div>
 
         {/* Content Container */}
