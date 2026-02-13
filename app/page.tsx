@@ -88,7 +88,7 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center overflow-hidden">
-            <h1 className="text-5xl md:text-8xl font-display text-white tracking-tighter leading-none drop-shadow-md animate-entrance">
+            <h1 className="text-5xl md:text-8xl font-display text-white tracking-tighter leading-none drop-shadow-md">
               Andros <br className="md:hidden" /> Guesthouses
             </h1>
           </div>
@@ -126,8 +126,8 @@ export default function Home() {
             100% { transform: translateY(0); opacity: 1; }
           }
           .animate-entrance {
-            /* Προσθήκη will-change για να βοηθήσουμε τον browser */
-            animation: entrance 0.4s ease-out forwards;
+            /* Μειώνουμε το χρόνο σε 0.3s για να εμφανιστεί ο τίτλος ακαριαία */
+            animation: entrance 0.3s ease-out forwards;
             will-change: transform, opacity;
           }
           @keyframes fadein {
@@ -135,8 +135,7 @@ export default function Home() {
             100% { opacity: 1; }
           }
           .animate-fadein {
-            /* Delay μόνο 0.1s για να μη μας "κόβει" η Google στο LCP */
-            animation: fadein 0.5s ease-out 0.1s forwards; 
+            animation: fadein 0.4s ease-out 0.1s forwards;
             opacity: 0;
           }
         `}</style>
