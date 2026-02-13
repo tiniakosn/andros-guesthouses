@@ -65,6 +65,7 @@ export default function Navbar() {
                 isDarkText ? "opacity-100" : "opacity-90 brightness-[100]"
               }`}
               priority
+              fetchPriority="high" // ΑΥΤΗ ΕΙΝΑΙ Η ΚΡΙΣΙΜΗ ΠΡΟΣΘΗΚΗ
               sizes="(max-width: 768px) 128px, 160px"
               quality={80}
             />
