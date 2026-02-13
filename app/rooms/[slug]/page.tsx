@@ -113,7 +113,7 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
       {/* ΠΡΟΣΘΗΚΗ: Κουμπί Επιστροφής στην Αρχική */}
       <div className="absolute top-28 left-6 z-20 md:left-12">
         <Link 
-          href={`/${lang}`} // Σε στέλνει στην αρχική (π.χ. /el ή /en)
+          href="/" // Σε στέλνει στην πραγματική αρχική σελίδα (androsguesthouses.gr/)
           className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-white/30 transition-all"
         >
           ← {lang === 'el' ? "ΠΙΣΩ ΣΤΗΝ ΑΡΧΙΚΗ" : "BACK TO HOME"}
