@@ -12,7 +12,7 @@ const roomsData = [
   {
     slug: "aegean-studio",
     price: "50€",
-    images: ["/images/no5.6.jpg", "/images/no5.1.jpg", "/images/no5.2.jpg", "/images/no5.3.jpg"],
+    images: ["/images/no5.6.webp", "/images/no5.1.webp", "/images/no5.2.webp", "/images/no5.3.webp"],
     en: {
       title: "Aegean Studio",
       size: "25 m²",
@@ -35,7 +35,7 @@ const roomsData = [
   {
     slug: "garden-suite",
     price: "50€",
-    images: ["/images/balcony1.jpg", "/images/no2.2.jpg", "/images/no2.3.jpg"],
+    images: ["/images/balcony1.webp", "/images/no2.2.webp", "/images/no2.3.webp"],
     en: {
       title: "Garden Suite",
       size: "40 m²",
@@ -58,7 +58,7 @@ const roomsData = [
   {
     slug: "grand-residence",
     price: "60€",
-    images: ["/images/no5.5.webp", "/images/no5.4.jpg", "/images/no5.7.jpg"],
+    images: ["/images/no5.5.webp", "/images/no5.4.webp", "/images/no5.7.webp"],
     en: {
       title: "Grand Residence",
       size: "55 m²",
@@ -90,8 +90,15 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
     const handleLangChange = (e: any) => setLang(e.detail);
     window.addEventListener("langChange", handleLangChange);
     setLang(document.documentElement.lang || "en");
+  
+    // ΠΡΟΣΘΗΚΗ ΕΔΩ: Ενημερώνει τον τίτλο του browser δυναμικά
+    if (room) {
+      const title = lang === "el" ? room.el.title : room.en.title;
+      document.title = `${title} | Andros Guesthouses`;
+    }
+
     return () => window.removeEventListener("langChange", handleLangChange);
-  }, []);
+  }, [lang, room]); // Πρόσθεσε τα lang και room στα dependencies
 
   if (!room) {
     notFound();
@@ -103,6 +110,16 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
     <main className="bg-[#fafaf9] min-h-screen pb-0">
       <Navbar />
 
+      {/* ΠΡΟΣΘΗΚΗ: Κουμπί Επιστροφής */}
+      <div className="absolute top-28 left-6 z-20 md:left-12">
+        <Link 
+          href={`/${lang}/rooms`} 
+          className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-white/30 transition-all"
+        >
+          ← {lang === 'el' ? "ΠΙΣΩ ΣΤΑ ΔΩΜΑΤΙΑ" : "BACK TO ROOMS"}
+        </Link>
+      </div>
+
       {/* --- HERO IMAGE --- */}
       <div className="relative h-[60vh] w-full">
         <Image
@@ -111,8 +128,9 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
           fill
           className="object-cover"
           priority
+          fetchPriority="high"
           sizes="100vw" // 2. Λέει στον browser ότι είναι full-width
-          quality={85}
+          quality={90}
         />
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 bg-gradient-to-t from-black/80 to-transparent">
@@ -140,7 +158,7 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {t.features.map((feature, i) => (
                   <div key={i + lang} className="flex items-center gap-3 text-stone-600">
-                    <svg className="w-5 h-5 text-olive-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-5 h-5 text-olive-600 shrink-0" fill="none" viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                     <span className="font-sans font-medium">{feature}</span>
@@ -173,7 +191,7 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
             <div className="sticky top-28 bg-white p-8 rounded-xl shadow-xl border border-stone-100">
               <div className="flex justify-between items-end mb-6 border-b border-stone-100 pb-6">
                 <div>
-                  <span key={lang + "start"} className="text-xs font-bold text-stone-400 uppercase tracking-wider">{t.sidebar.start}</span>
+                  <span key={lang + "start"} className="text-xs font-bold text-stone-500 uppercase tracking-wider">{t.sidebar.start}</span>
                   <div key={lang + "price"} className="text-3xl font-display text-stone-900"> {room.price} <span className="text-sm text-stone-500 font-sans">{t.sidebar.night}</span></div>
                 </div>
               </div>
@@ -207,7 +225,7 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
           </div>
         </div>
       </div>
-      
+      <Footer />
     </main>
   );
 }
