@@ -122,15 +122,17 @@ export default function Home() {
         {/* CSS Animations - Βελτιστοποιημένα για 100/100 Score */}
         <style jsx>{`
           @keyframes entrance {
-            0% { transform: translate3d(0, 20px, 0); opacity: 0; }
-            100% { transform: translate3d(0, 0, 0); opacity: 1; }
+            0% { transform: translateY(10px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+          }
+          .animate-entrance {
+            /* Προσθήκη will-change για να βοηθήσουμε τον browser */
+            animation: entrance 0.4s ease-out forwards;
+            will-change: transform, opacity;
           }
           @keyframes fadein {
             0% { opacity: 0; }
             100% { opacity: 1; }
-          }
-          .animate-entrance {
-            animation: entrance 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
           }
           .animate-fadein {
             /* Delay μόνο 0.1s για να μη μας "κόβει" η Google στο LCP */
