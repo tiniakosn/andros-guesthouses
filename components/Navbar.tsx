@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image"; // Προσθήκη για σωστή διαχείριση εικόνας
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
 import LanguageSwitcher from "./LanguageSwitcher"; 
 
 const navLinks = [

@@ -76,7 +76,7 @@ export default function Home() {
             quality={70} // Μειώνουμε λίγο τα KB
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw" // Οδηγία για το σωστό μέγεθος αρχείου
           />
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-black/40" />
         </div>
 
         {/* Content Container */}
@@ -94,7 +94,7 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center">
-            <p className="text-lg md:text-2xl text-stone-100 font-sans font-medium max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-2xl text-white font-sans font-medium max-w-2xl mx-auto leading-relaxed">
               {t.subtitle}
             </p>
           </div>
