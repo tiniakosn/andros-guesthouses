@@ -8,6 +8,12 @@
             "type": "image/png"
         },
         {
+            "src": "/favicon-v4.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
             "src": "/apple-touch-icon-v4.png",
             "sizes": "180x180",
             "type": "image/png"
@@ -15,5 +21,6 @@
     ],
     "theme_color": "#fafaf9",
     "background_color": "#fafaf9",
-    "display": "standalone"
+    "display": "standalone",
+    "start_url": "/"
 }

@@ -13,21 +13,21 @@ const ALL_ARTICLES = [
     slug: "chora-and-wind", 
     title: { el: "Η Αρχοντική Χώρα & ο Άνεμος", en: "Noble Chora & The Wind" }, 
     tag: "KNOW-HOW", 
-    img: "/images/chora-guide-v2.jpg" 
+    img: "/images/chora-guide-v2.webp" 
   },
   { 
     id: "02", 
     slug: "secret-beaches", 
     title: { el: "Παραλίες & Μυστικά", en: "Secret Beaches & Gems" }, 
     tag: "NATURE", 
-    img: "/images/beaches-guide.jpg" 
+    img: "/images/beaches-guide.webp" 
   },
   { 
     id: "03", 
     slug: "local-flavors", 
     title: { el: "Γεύση Άνδρου: Πού να φάτε", en: "Taste of Andros: Where to eat" }, 
     tag: "GASTRONOMY", 
-    img: "/images/food-guide.jpg" 
+    img: "/images/food-guide.webp" 
   },
 ];
 
@@ -62,6 +62,10 @@ export default function DiaryIndexPage() {
                     alt={article.title[lang as keyof typeof article.title]} 
                     fill 
                     className="object-cover transition-transform duration-700 group-hover:scale-110" 
+                    // ΠΡΟΣΘΕΣΗ ΠΡΟΤΕΡΑΙΟΤΗΤΑΣ ΜΟΝΟ ΣΤΗΝ ΠΡΩΤΗ ΕΙΚΟΝΑ
+                    priority={i === 0} 
+                    fetchPriority={i === 0 ? "high" : "low"}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw"
                   />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
                 </div>
@@ -77,9 +81,10 @@ export default function DiaryIndexPage() {
         </div>
 
         <div className="mt-24 text-center border-t border-stone-200 pt-10">
-           <Link href="/" className="text-stone-400 hover:text-stone-900 font-bold text-xs uppercase tracking-[0.2em] transition-colors">
-             ← {lang === 'el' ? "ΕΠΙΣΤΡΟΦΗ ΣΤΗΝ ΑΡΧΙΚΗ" : "BACK TO HOME"}
-           </Link>
+          {/* Στο κάτω μέρος της σελίδας (Back to Home) */}
+          <Link href="/" className="text-stone-600 hover:text-stone-900 font-bold text-xs uppercase tracking-[0.2em] transition-colors">
+            ← {lang === 'el' ? "ΕΠΙΣΤΡΟΦΗ ΣΤΗΝ ΑΡΧΙΚΗ" : "BACK TO HOME"}
+          </Link>
         </div>
       </section>
 

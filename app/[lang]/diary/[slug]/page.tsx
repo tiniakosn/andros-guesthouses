@@ -11,7 +11,7 @@ const DIARY_CONTENT = {
       tag: "KNOW-HOW",
       title: "Η Χώρα & ο Άνεμος: Οδηγός Επιβίωσης",
       subtitle: "Πού να κρυφτείτε από τα μελτέμια και τι να δείτε στην αρχοντική πρωτεύουσα.",
-      image: "/images/chora-guide-v2.jpg",
+      image: "/images/chora-guide-v2.webp",
       content: `Στη Χώρα της Άνδρου, ο αέρας δεν είναι εχθρός, είναι κομμάτι της ταυτότητάς μας. Όταν ο βοριάς επιμένει, εμείς οι Χωραΐτες δίνουμε ραντεβού στο Νειμποριό —ακριβώς μπροστά στα πόδια μας— ή στα Πίσω Γυαλιά. Αν έχετε όρεξη για μια μικρή βόλτα, οι Αποθήκες και η Χρυσή Άμμος είναι οι ιδανικές λύσεις για να βρείτε γαλήνια νερά.
 
       Μέσα στην πόλη, η εμπειρία είναι κινηματογραφική. Ξεκινήστε από τον Αφανή Ναύτη, περιπλανηθείτε στα στενά της αγοράς και κάντε μια στάση στα παγκόσμιας κλάσης μουσεία μας: το Μουσείο Σύγχρονης Τέχνης και το Αρχαιολογικό.
@@ -24,7 +24,7 @@ const DIARY_CONTENT = {
       tag: "GASTRONOMY",
       title: "Γεύση Άνδρου: Από το Νειμποριό στην Αγορά",
       subtitle: "Οι δικές μας στάσεις για αυθεντική φρουτάλια, θαλασσινά και γλυκά.",
-      image: "/images/food-guide.jpg",
+      image: "/images/food-guide.webp",
       content: `Όταν μας ρωτάνε πού να φάνε στην Άνδρο, ξεκινάμε από τα στέκια που ξέρουμε και εμπιστευόμαστε χρόνια.
 
       Στον πεζόδρομο στο Νειμποριό, ο Μαδούρης είναι κλασική αξία για φαγητό δίπλα στο κύμα, ενώ ο Νόνας είναι η στάση σας για φρέσκα θαλασσινά. Ανεβαίνοντας στην Αγορά (τον κεντρικό πεζόδρομο), ο Πλάτανος και η Νοσταλγία είναι ιδανικά για ποικιλίες και ουζάκι κάτω από τη σκιά. Για κάτι πιο προσεγμένο, η Σκαλάκια και η Ενδοχώρα προσφέρουν εξαιρετικά πιάτα.
@@ -37,7 +37,7 @@ const DIARY_CONTENT = {
       tag: "NATURE",
       title: "Παραλίες κοντά στη Χώρα & Μυστικά",
       subtitle: "Από το κινηματογραφικό Συνέτι μέχρι το απόκρημνο Λύδι.",
-      image: "/images/beaches-guide.jpg",
+      image: "/images/beaches-guide.webp",
       content: `Η Άνδρος έχει παραλίες για κάθε γούστο, αρκεί να ξέρεις πού να πας. Κοντά στη Χώρα, οι πιο άμεσες επιλογές είναι το Παραπόρτι, το Νειμποριό και τα Γυαλιά (Μπροστά και Πίσω).
 
       Αν ψάχνετε κάτι πραγματικά ιδιαίτερο, το Συνέτι είναι απαραίτητη στάση. Είναι η παραλία με τα βαθιά νερά και τις σπηλιές όπου γυρίστηκαν σκηνές από την ταινία "Μικρά Αγγλία". Η άγρια ομορφιά του τοπίου θα σας μαγέψει.
@@ -50,7 +50,7 @@ const DIARY_CONTENT = {
     tag: "KNOW-HOW",
     title: "Chora & The Wind: A Survivor's Guide",
     subtitle: "Where to hide from the meltemi and how to experience the noble capital like a local.",
-    image: "/images/chora-guide-v2.jpg",
+    image: "/images/chora-guide-v2.webp",
     content: `In Chora, the wind isn't an enemy; it’s an essential part of our island's soul. When the strong North wind (meltemi) kicks in, we locals don't stay home—we simply head to our "wind-shelters." 
 
     Your best bets for a calm swim are **Neimporio** —literally at your doorstep— or the scenic **Piso Gialia**. If you’re up for a short drive, **Apothikes** and **Golden Sand** (Chrisi Ammos) offer crystal clear, tranquil waters even on the windiest days.
@@ -66,7 +66,7 @@ const DIARY_CONTENT = {
     tag: "GASTRONOMY",
     title: "Taste of Andros: From Neimporio to the Market",
     subtitle: "Our personal recommendations for authentic 'froutalia', fresh seafood, and local treats.",
-    image: "/images/food-guide.jpg",
+    image: "/images/food-guide.webp",
     content: `When guests ask us where to eat, we point them to the spots we’ve trusted for generations. Andros' cuisine is all about simple, high-quality local ingredients.
 
     Down at the **Neimporio promenade**, right by the waves, **Madouris** is a classic choice for traditional dishes, while **Nonas** is the go-to place for fresh seafood and creative appetizers. 
@@ -81,7 +81,7 @@ const DIARY_CONTENT = {
     tag: "NATURE",
     title: "Beaches Near Chora & Hidden Secrets",
     subtitle: "From the cinematic Sineti to the rugged beauty of Lidi.",
-    image: "/images/beaches-guide.jpg",
+    image: "/images/beaches-guide.webp",
     content: `Andros is an island of endless coastlines, but the best spots often require a bit of local knowledge. Near Chora, your most convenient options for a quick dip are **Paraporti**, **Neimporio**, and the twin beaches of **Gialia** (Front and Back).
 
     However, if you are looking for something truly cinematic, **Sineti** is a must. Known for its deep turquoise waters and impressive sea caves, it served as the backdrop for the famous Greek film "Little England." Its wild, untamed beauty is breathtaking.
@@ -117,8 +117,10 @@ export default function DiaryPage() {
           fill 
           className="object-cover" 
           priority 
+          fetchPriority="high" // ΑΠΑΡΑΙΤΗΤΟ ΓΙΑ ΤΟ LCP
+          quality={80}
         />
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 flex items-center justify-center p-6 text-center">
           <motion.div 
             initial={{ opacity: 0, y: 20 }} 
@@ -142,7 +144,7 @@ export default function DiaryPage() {
       <section className="py-16 md:py-24 px-6 bg-white relative z-10">
         <div className="max-w-3xl mx-auto">
           <div 
-            className="prose prose-stone prose-lg leading-relaxed text-stone-700 font-light"
+            className="prose prose-stone prose-lg leading-relaxed text-stone-800 font-normal"
             dangerouslySetInnerHTML={{ 
               __html: article.content
                 .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Μετατρέπει τα **Bold** σε <strong>

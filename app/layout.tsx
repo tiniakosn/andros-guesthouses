@@ -49,6 +49,7 @@ export const metadata: Metadata = {
   // --- Τεχνικά (ΜΗΝ ΤΑ ΠΕΙΡΑΞΕΙΣ) ---
   icons: {
     icon: [
+      { url: "/favicon-v4.png", sizes: "512x512", type: "image/png" },
       { url: "/favicon-v4.png", sizes: "32x32" },
       { url: "/favicon-v4.png", sizes: "16x16" },
     ],
