@@ -55,7 +55,7 @@ export default function Footer() {
       
       {/* --- BACKGROUND TEXT --- */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden z-0">
-        <span className="text-[15vw] md:text-[12vw] font-display font-bold text-olive-900/10 tracking-tighter leading-none whitespace-nowrap opacity-20">
+        <span className="text-[15vw] md:text-[12vw] font-display font-bold text-olive-900/5 tracking-tighter leading-none whitespace-nowrap opacity-10">
           ANDROS
         </span>
       </div>
@@ -97,7 +97,7 @@ export default function Footer() {
           <div className="space-y-6">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">{t.contact}</h3>
             {/* ΔΙΟΡΘΩΣΗ: stone-100 για να "πετάει" πάνω στο μαύρο φόντο */}
-            <div className="space-y-4 text-sm text-stone-100 font-light">
+            <div className="space-y-4 text-sm text-white font-light">
               <div>
                 <p className="text-white mb-1 font-medium">{t.addressLabel}</p>
                 <p>{t.address}</p>
@@ -114,7 +114,7 @@ export default function Footer() {
 
         {/* BOTTOM BAR */}
         {/* ΔΙΟΡΘΩΣΗ: text-[11px] (αντί για 10px) και text-stone-100 */}
-        <div className="pt-8 border-t border-stone-900/50 flex flex-col md:flex-row justify-between items-center text-[11px] text-stone-100 uppercase tracking-wider">
+        <div className="pt-8 border-t border-stone-900/50 flex flex-col md:flex-row justify-between items-center text-xs text-stone-300 uppercase tracking-wider">
           <p>© {new Date().getFullYear()} Andros Guesthouses. {t.rights}</p>
           <div className="mt-4 md:mt-0">
              <span>{t.builtBy} <span className="text-white font-bold ml-1">Nikos Tiniakos</span></span>
