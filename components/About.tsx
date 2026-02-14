@@ -57,7 +57,7 @@ export default function About() {
           <div className="relative order-2 lg:order-1">
             <div className="relative h-[500px] md:h-[600px] w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white group cursor-pointer">
               <Image
-                src="/outside-final.webp" // Το νέο αρχείο των 45.7 KB
+                src="/outside-v2.webp" // Το νέο αρχείο των 45.7 KB
                 alt="Leonidas and family"
                 fill
                 className="object-cover"
