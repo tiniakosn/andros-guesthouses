@@ -87,7 +87,7 @@ export default function Home() {
             </span>
           </div>
 
-          <div className="flex justify-center overflow-hidden">
+          <div className="flex justify-center">
             <h1 className="text-5xl md:text-8xl font-display text-white tracking-tighter leading-none animate-entrance">
               Andros <br className="md:hidden" /> Guesthouses
             </h1>
