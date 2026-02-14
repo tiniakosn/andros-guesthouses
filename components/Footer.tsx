@@ -53,23 +53,22 @@ export default function Footer() {
   return (
     <footer className="relative bg-stone-950 text-white pt-20 pb-10 overflow-hidden font-sans">
       
-      {/* --- BACKGROUND TEXT --- */}
+      {/* --- BACKGROUND TEXT "ANDROS" ΕΠΑΝΑΦΟΡΑ --- */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden z-0">
-        <span className="text-[15vw] md:text-[12vw] font-display font-bold text-olive-900/5 tracking-tighter leading-none whitespace-nowrap opacity-10">
+        <span className="text-[15vw] md:text-[12vw] font-display font-bold text-white/[0.03] tracking-tighter leading-none whitespace-nowrap">
           ANDROS
         </span>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-24 mb-16">
-          
+    
           {/* CTA COLUMN */}
           <div className="md:col-span-2 space-y-6">
-            <h2 key={lang + "f-h2"} className="text-3xl md:text-4xl font-display leading-tight text-olive-100">
+            <h2 key={lang + "f-h2"} className="text-3xl md:text-4xl font-display leading-tight text-white">
               {t.hero}
             </h2>
-            {/* ΔΙΟΡΘΩΣΗ: Από stone-200 σε stone-100 για μέγιστο contrast */}
-            <p key={lang + "f-p"} className="text-stone-100 text-sm max-w-md leading-relaxed font-light">
+            <p key={lang + "f-p"} className="text-stone-300 text-sm max-w-md leading-relaxed font-light">
               {t.text}
             </p>
             <div className="pt-4">
@@ -93,31 +92,30 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* CONTACT INFO */}
+          {/* CONTACT INFO - ΕΔΩ ΕΙΝΑΙ ΤΟ ΣΦΑΛΜΑ CONTRAST */}
           <div className="space-y-6">
-            <h3 className="text-xs font-bold text-white uppercase tracking-widest">{t.contact}</h3>
-            {/* ΔΙΟΡΘΩΣΗ: stone-100 για να "πετάει" πάνω στο μαύρο φόντο */}
-            <div className="space-y-4 text-sm text-white font-light">
+            <h3 className="text-xs font-bold text-lime-400 uppercase tracking-widest">{t.contact}</h3>
+            <div className="space-y-4 text-sm text-stone-200 font-light">
               <div>
                 <p className="text-white mb-1 font-medium">{t.addressLabel}</p>
-                <p>{t.address}</p>
-                <p>{t.country}</p>
+                {/* Χρησιμοποιούμε text-stone-100 για να είναι πολύ κοντά στο λευκό */}
+                <p className="text-stone-100">{t.address}</p>
+                <p className="text-stone-100">{t.country}</p>
               </div>
               <div className="flex flex-col gap-3">
                 <p className="text-white mb-1 font-medium">{t.touch}</p>
-                <a href="tel:+306936934390" className="block hover:text-olive-400 transition-colors">+30 693 693 4390</a>
-                <a href="mailto:androsguesthouses@gmail.com" className="block hover:text-olive-400 transition-colors">androsguesthouses@gmail.com</a>
+                <a href="tel:+306936934390" className="block text-stone-100 hover:text-lime-400 transition-colors">+30 693 693 4390</a>
+                <a href="mailto:androsguesthouses@gmail.com" className="block text-stone-100 hover:text-lime-400 transition-colors">androsguesthouses@gmail.com</a>
               </div>
             </div>
           </div>
         </div>
 
-        {/* BOTTOM BAR */}
-        {/* ΔΙΟΡΘΩΣΗ: text-[11px] (αντί για 10px) και text-stone-100 */}
-        <div className="pt-8 border-t border-stone-900/50 flex flex-col md:flex-row justify-between items-center text-xs text-stone-300 uppercase tracking-wider">
-          <p>© {new Date().getFullYear()} Andros Guesthouses. {t.rights}</p>
+        {/* BOTTOM BAR - COPYRIGHTS */}
+        <div className="pt-8 border-t border-stone-800 flex flex-col md:flex-row justify-between items-center text-xs text-stone-400 uppercase tracking-wider">
+          <p>© {new Date().getFullYear()} ANDROS GUESTHOUSES. {t.rights}</p>
           <div className="mt-4 md:mt-0">
-             <span>{t.builtBy} <span className="text-white font-bold ml-1">Nikos Tiniakos</span></span>
+            <span className="text-stone-400">HANDCRAFTED BY <span className="text-white font-bold ml-1">NIKOS TINIAKOS</span></span>
           </div>
         </div>
       </div>
