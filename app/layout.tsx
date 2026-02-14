@@ -86,13 +86,6 @@ export default function RootLayout({
   return (
     <html lang="el" className="scroll-smooth">
       <head>
-  
-        <link 
-          rel="preload" 
-          as="image" 
-          href="/_next/image?url=%2Flogo.png&w=256&q=80" 
-          fetchPriority="high" 
-        />
 
         {/* 3. ΕΝΗΜΕΡΩΣΗ: Χειροκίνητα tags με το ΝΕΟ domain */}
         <meta property="og:image" content="https://androsguesthouses.gr/opengraph-image-v3.jpg" />
