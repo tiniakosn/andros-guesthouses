@@ -82,8 +82,9 @@ export default function Home() {
         {/* Content Container */}
         <div className="relative z-10 max-w-5xl text-center space-y-8 mt-10">
           <div className="flex justify-center">
-            <span className="inline-block text-white/95 font-sans font-bold tracking-[0.3em] text-xs md:text-sm uppercase mb-2 border-b border-white/30 pb-2">
-              {t.welcome}
+            <span className="inline-block text-white/95 font-sans font-bold tracking-[0.3em] text-xs md:text-sm uppercase mb-2 border-b border-white/30 pb-2 animate-fadein">
+              {/* Διόρθωση: Στατικό κείμενο και εδώ */}
+              {lang === "el" ? "Καλώς ήρθατε στη Χώρα" : "Welcome to Chora"}
             </span>
           </div>
 
@@ -93,28 +94,31 @@ export default function Home() {
             </h1>
           </div>
 
+          {/* --- ΥΠΟΤΙΤΛΟΣ (ΔΙΟΡΘΩΣΗ ΓΙΑ ΤΑ 1.040ms) --- */}
           <div className="flex justify-center">
-            <p className="text-lg md:text-2xl text-white font-sans font-medium max-w-2xl mx-auto leading-relaxed">
-              {t.subtitle}
+            <p className="text-lg md:text-2xl text-white font-sans font-medium max-w-2xl mx-auto leading-relaxed animate-fadein">
+              {lang === "el" 
+                ? "Αυθεντική Φιλοξενία. Απέραντο Γαλάζιο. Το ιδιωτικό σας πέτρινο καταφύγιο στο Αιγαίο." 
+                : "Authentic Hospitality. Endless Blue. Your private stone sanctuary in the Aegean."}
             </p>
           </div>
             
+          {/* --- ΚΟΥΜΠΙΑ (ΔΙΟΡΘΩΣΗ ΓΙΑ ΤΟ PERFORMANCE) --- */}
           <div className="flex justify-center pt-8">
             <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
               <a 
                 href="#rooms" 
                 onClick={() => track('Hero_ViewRooms_Click', { language: lang })}
-                className="px-10 py-4 bg-white text-stone-900 rounded-full hover:bg-olive-700 hover:text-white transition duration-300 shadow-2xl font-sans text-xs font-bold tracking-[0.15em] uppercase hover:-translate-y-1"
+                className="px-10 py-4 bg-white text-stone-900 rounded-full hover:bg-olive-700 hover:text-white transition duration-300 shadow-2xl font-sans text-xs font-bold tracking-[0.15em] uppercase hover:-translate-y-1 animate-fadein"
               >
-                {t.viewRooms}
+                {lang === "el" ? "Δείτε τα Δωμάτια" : "View Rooms"}
               </a>
               <a 
                 href="/experience" 
                 onClick={() => track('Hero_Experience_Click', { language: lang })}
-  
-                className="px-10 py-4 border border-white text-white rounded-full hover:bg-white hover:text-stone-900 transition duration-300 bg-white/20 font-sans text-xs font-bold tracking-[0.15em] uppercase"
+                className="px-10 py-4 border border-white text-white rounded-full hover:bg-white hover:text-stone-900 transition duration-300 bg-white/20 font-sans text-xs font-bold tracking-[0.15em] uppercase animate-fadein"
               >
-                {t.experience}
+                {lang === "el" ? "Η Εμπειρία" : "The Experience"}
               </a>
             </div>
           </div>
