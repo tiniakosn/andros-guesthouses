@@ -57,14 +57,13 @@ export default function About() {
           <div className="relative order-2 lg:order-1">
             <div className="relative h-[500px] md:h-[600px] w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white group cursor-pointer">
               <Image
-                src="/outside-v2.webp" // Το νέο αρχείο των 45.7 KB
+                src="/outside-v2.webp"
                 alt="Leonidas and family"
                 fill
                 className="object-cover"
-                priority={true}
-                fetchPriority="high"
-                quality={60} 
                 sizes="(max-width: 768px) 90vw, (max-width: 1200px) 40vw, 30vw"
+                quality={65} // <--- Από 75 σε 70
+                loading="lazy" // <--- Γιατί δεν είναι LCP (είναι πιο κάτω στη σελίδα)
               />
             <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none"></div>
           </div>
