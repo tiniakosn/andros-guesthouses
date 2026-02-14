@@ -1,15 +1,17 @@
-/* Αντικατάστησε αυτά: */
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Αφαιρέσαμε το άδειο @font-face. 
-   Το Next.js διαχειρίζεται αυτόματα τα fonts μέσω του layout.tsx 
-*/
+/* --- CSS VARIABLES --- */
+:root {
+  /* Εδώ χρησιμοποιούμε τα ονόματα των μεταβλητών που ορίσαμε στο layout.tsx */
+  --font-display: var(--font-sans);
+  --font-serif: var(--font-sans);
+}
 
 /* --- Η ΑΠΟΛΥΤΗ ΔΙΟΡΘΩΣΗ ΓΙΑ ΤΗ ΜΠΑΡΑ (OVERFLOW) --- */
 html, body {
-  max-width: 100%;
+  max-width: 100% !important;
   overflow-x: hidden !important;
   position: relative;
   width: 100%;
@@ -37,12 +39,50 @@ html, body {
   background: #606c38;
 }
 
+/* --- ΤΥΠΟΓΡΑΦΙΑ & ΑΠΟΔΟΣΗ --- */
 body {
+  font-family: var(--font-sans), sans-serif;
+  background-color: #fafaf9; 
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(132, 165, 157, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(168, 162, 158, 0.1) 0px, transparent 50%);
+  background-attachment: fixed;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important; 
+  color: #1c1917;
+}
+
+p {
+  font-weight: 400;
+  /* Χρώμα #44403c για τέλειο Contrast (Accessibility 100) */
+  color: #44403c; 
+  line-height: 1.8; 
+}
+
+/* --- INTERACTIVE ELEMENTS --- */
+::selection {
+  background-color: #4d7c0f; 
+  color: white;
+}
+
+input, textarea, .bg-white {
+  box-shadow: 0 4px 20px -5px rgba(0,0,0,0.05) !important;
+  border: 1px solid rgba(0,0,0,0.05) !important;
+}
+
+input:focus, textarea:focus {
+  border-color: #65a30d !important;
+  box-shadow: 0 0 0 4px rgba(101, 163, 13, 0.1) !important;
+}
+
+button {
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
 }

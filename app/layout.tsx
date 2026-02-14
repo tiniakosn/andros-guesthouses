@@ -87,14 +87,6 @@ export default function RootLayout({
     <html lang="el" className="scroll-smooth">
       <head>
 
-        <link 
-          rel="preload" 
-          href="/fonts/your-font-file.woff2" // Βάλε εδώ το ακριβές path της γραμματοσειράς σου
-          as="font" 
-          type="font/woff2" 
-          crossOrigin="anonymous" 
-        />
-
         {/* 3. ΕΝΗΜΕΡΩΣΗ: Χειροκίνητα tags με το ΝΕΟ domain */}
         <meta property="og:image" content="https://androsguesthouses.gr/opengraph-image-v3.jpg" />
         <meta property="og:image:secure_url" content="https://androsguesthouses.gr/opengraph-image-v3.jpg" />
@@ -103,69 +95,7 @@ export default function RootLayout({
         <meta property="og:image:height" content="630" />
       </head>
       <body className={`${manrope.variable} antialiased text-stone-900 bg-stone-50`}>
-        
-        <style>{`
-          :root {
-            --font-display: ${manrope.style.fontFamily};
-            --font-serif: ${manrope.style.fontFamily};
-            --font-sans: ${manrope.style.fontFamily};
-          }
 
-          /* Η ΑΠΟΛΥΤΗ ΔΙΟΡΘΩΣΗ ΓΙΑ ΤΗ ΜΠΑΡΑ */
-          html, body {
-            overflow-x: hidden !important;
-            max-width: 100% !important;
-            position: relative;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-          }
-
-          body {
-            font-family: var(--font-sans);
-            background-color: #fafaf9; 
-            background-image: 
-              radial-gradient(at 0% 0%, rgba(132, 165, 157, 0.05) 0px, transparent 50%),
-              radial-gradient(at 100% 100%, rgba(168, 162, 158, 0.1) 0px, transparent 50%);
-            background-attachment: fixed;
-          }
-          ::selection {
-            background-color: #4d7c0f; 
-            color: white;
-          }
-
-          h1, h2, h3, h4, h5, h6 {
-            font-weight: 600 !important;
-            letter-spacing: -0.02em !important; 
-            color: #1c1917;
-          }
-          
-          p {
-            font-weight: 400;
-            /* Από #57534e άλλαξέ το σε #44403c για καλύτερο contrast */
-            color: #44403c; 
-            line-height: 1.8; 
-          }
-
-          input, textarea, .bg-white {
-            box-shadow: 0 4px 20px -5px rgba(0,0,0,0.05) !important;
-            border: 1px solid rgba(0,0,0,0.05) !important;
-          }
-          
-          input:focus, textarea:focus {
-             border-color: #65a30d !important;
-             box-shadow: 0 0 0 4px rgba(101, 163, 13, 0.1) !important;
-          }
-
-          button {
-             font-weight: 700 !important;
-             letter-spacing: 0.05em !important;
-          }
-        `}</style>
-
-        {/*<SmoothScrolling />*/}
-        {/* <Preloader /> */}
         
         <Navbar />
         {children}
