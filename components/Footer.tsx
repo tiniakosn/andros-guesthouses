@@ -118,7 +118,7 @@ export default function Footer() {
   
           <div className="mt-4 md:mt-0">
             <span className="text-white">
-              ANDCRAFTED BY <span className="font-bold ml-1 text-white">NIKOS TINIAKOS</span>
+              HANDCRAFTED BY <span className="font-bold ml-1 text-white">NIKOS TINIAKOS</span>
             </span>
           </div>
         </div>
