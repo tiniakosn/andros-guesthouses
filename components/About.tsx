@@ -64,7 +64,7 @@ export default function About() {
                 priority={true}
                 fetchPriority="high"
                 quality={60} 
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 768px) 90vw, (max-width: 1200px) 40vw, 30vw"
               />
             <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none"></div>
           </div>
