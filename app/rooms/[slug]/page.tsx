@@ -218,7 +218,7 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
               >
                 {t.sidebar.button}
               </Link>
-              <p key={lang + "guar"} className="text-[10px] text-stone-400 text-center mt-3 uppercase tracking-wide">
+              <p key={lang + "guar"} className="text-[10px] text-stone-600 text-center mt-3 uppercase tracking-wide">
                 {t.sidebar.guarantee}
               </p>
             </div>

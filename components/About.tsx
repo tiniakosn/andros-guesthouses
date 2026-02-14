@@ -57,17 +57,17 @@ export default function About() {
           <div className="relative order-2 lg:order-1">
             <div className="relative h-[500px] md:h-[600px] w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white group cursor-pointer">
               <Image
-                src="/outside.webp"
+                src="/outside-final.webp" // Το νέο αρχείο των 45.7 KB
                 alt="Leonidas and family"
                 fill
                 className="object-cover"
                 priority={true}
                 fetchPriority="high"
                 quality={70} 
-                sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
-              <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none"></div>
-            </div>
+            <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none"></div>
+          </div>
 
             {/* Floating Badge */}
             <div className="absolute -bottom-6 -right-6 md:bottom-10 md:-right-10 z-10">
