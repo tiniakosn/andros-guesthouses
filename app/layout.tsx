@@ -87,6 +87,14 @@ export default function RootLayout({
     <html lang="el" className="scroll-smooth">
       <head>
 
+        <link 
+          rel="preload" 
+          href="/fonts/your-font-file.woff2" // Βάλε εδώ το ακριβές path της γραμματοσειράς σου
+          as="font" 
+          type="font/woff2" 
+          crossOrigin="anonymous" 
+        />
+
         {/* 3. ΕΝΗΜΕΡΩΣΗ: Χειροκίνητα tags με το ΝΕΟ domain */}
         <meta property="og:image" content="https://androsguesthouses.gr/opengraph-image-v3.jpg" />
         <meta property="og:image:secure_url" content="https://androsguesthouses.gr/opengraph-image-v3.jpg" />
