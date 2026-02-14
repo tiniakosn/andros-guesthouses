@@ -2,19 +2,20 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import About from "@/components/About";
-import Rooms from "@/components/Rooms"; 
-import Amenities from "@/components/Amenities";
-import Navbar from "@/components/Navbar";
-
-
-
-import LocalInsider from "@/components/LocalInsider";
+import Navbar from "@/components/Navbar"; // Το Navbar μένει στατικό γιατί είναι στην κορυφή
 import { track } from "@vercel/analytics";
-// Αυτά τα κάνεις DYNAMIC (φορτώνουν μόνο όταν χρειαστεί)
+
+// --- DYNAMIC IMPORTS: Η Λύση για το "Unused JavaScript" ---
+// Χρησιμοποιούμε ssr: true για να μην χάσουμε το SEO
+const About = dynamic(() => import("@/components/About"), { ssr: true });
+const Rooms = dynamic(() => import("@/components/Rooms"), { ssr: true });
+const Amenities = dynamic(() => import("@/components/Amenities"), { ssr: true });
+const LocalInsider = dynamic(() => import("@/components/LocalInsider"), { ssr: true });
+
+// Components που δεν επηρεάζουν το SEO ή έχουν browser APIs
 const Testimonials = dynamic(() => import("@/components/Testimonials"), { 
   ssr: false,
-  loading: () => <div className="h-20" /> // Προαιρετικό placeholder
+  loading: () => <div className="h-20" /> 
 });
 
 const InstaFeed = dynamic(() => import("@/components/InstaFeed"), { 
