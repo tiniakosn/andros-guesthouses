@@ -73,8 +73,8 @@ export default function Home() {
             className="object-cover object-top"
             priority
             fetchPriority="high" 
-            quality={70} // Μειώνουμε λίγο τα KB
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw" // Οδηγία για το σωστό μέγεθος αρχείου
+            quality={75} // Μειώνουμε λίγο τα KB
+            sizes="100vw" // Οδηγία για το σωστό μέγεθος αρχείου
           />
           <div className="absolute inset-0 bg-black/50" />
         </div>
@@ -120,25 +120,6 @@ export default function Home() {
           </div>
         </div> {/* Τέλος του Content Container */}
         
-        {/* CSS Animations - Βελτιστοποιημένα για 100/100 Score */}
-        <style jsx>{`
-          @keyframes entrance {
-            0% { transform: translateY(10px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-          }
-          .animate-entrance {
-            animation: entrance 0.3s ease-out forwards;
-            will-change: transform, opacity; /* Βοηθάει την GPU */
-          }
-          @keyframes fadein {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-          }
-          .animate-fadein {
-            animation: fadein 0.4s ease-out 0.1s forwards;
-            opacity: 0;
-          }
-        `}</style>
         
         {/* Scroll Arrow */}
         <div className="absolute bottom-10 z-10 text-white/40">
