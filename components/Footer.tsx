@@ -112,14 +112,13 @@ export default function Footer() {
         </div>
 
         {/* --- BOTTOM BAR - COPYRIGHTS --- */}
-        <div className="pt-8 border-t border-stone-800 flex flex-col md:flex-row justify-between items-center text-xs text-stone-100 uppercase tracking-wider">
- 
+        <div className="pt-8 border-t border-stone-800 flex flex-col md:flex-row justify-between items-center text-xs text-white uppercase tracking-wider">
+          {/* ΑΛΛΑΓΗ: text-white για να "φέγγει" πάνω στο μαύρο φόντο */}
           <p>© {new Date().getFullYear()} ANDROS GUESTHOUSES. {t.rights}</p>
   
           <div className="mt-4 md:mt-0">
- 
-            <span className="text-stone-100">
-              HANDCRAFTED BY <span className="text-white font-bold ml-1">NIKOS TINIAKOS</span>
+            <span className="text-white">
+              ANDCRAFTED BY <span className="font-bold ml-1 text-white">NIKOS TINIAKOS</span>
             </span>
           </div>
         </div>
