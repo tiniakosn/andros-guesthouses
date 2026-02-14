@@ -97,7 +97,7 @@ export default function Home() {
 
           {/* --- ΥΠΟΤΙΤΛΟΣ (ΔΙΟΡΘΩΣΗ ΓΙΑ ΤΑ 1.040ms) --- */}
           <div className="flex justify-center">
-            <p className="text-lg md:text-2xl text-white font-sans font-medium max-w-2xl mx-auto leading-relaxed animate-fadein">
+            <p className="text-lg md:text-2xl text-white font-sans font-medium max-w-2xl mx-auto leading-relaxed">
               {lang === "el" 
                 ? "Αυθεντική Φιλοξενία. Απέραντο Γαλάζιο. Το ιδιωτικό σας πέτρινο καταφύγιο στο Αιγαίο." 
                 : "Authentic Hospitality. Endless Blue. Your private stone sanctuary in the Aegean."}
