@@ -76,7 +76,7 @@ export default function About() {
                 className="bg-white p-6 md:p-8 shadow-xl flex flex-col items-center justify-center gap-1 rounded-full aspect-square border-4 border-stone-100 hover:scale-105 transition-transform duration-300"
               >
                 <span className="font-display text-5xl md:text-6xl text-olive-600 leading-none font-bold">9.5</span>
-                <span key={lang + "-rev"} className="font-sans text-[10px] font-bold tracking-widest uppercase text-center text-stone-600">
+                <span key={lang + "-rev"} className="font-sans text-[11px] font-bold tracking-widest uppercase text-center text-stone-600">
                   {t.reviews}
                 </span>
               </div>
