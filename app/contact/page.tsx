@@ -103,7 +103,8 @@ export default function ContactPage() {
       errorMsg: "Error sending message. Please try again."
     },
     el: {
-      title: <>Επικοινωνία <br /> <span className="text-olive-700">& Κρατήσεις</span></>,
+      title: <>Επικοινωνία <br /> <span className="text-olive-700">& Κρατήσει<span className="font-serif">ς</span></span></>, 
+      
       directions: "Οδηγίες Χάρτη",
       subtitle: "Στο Νειμποριό, μόλις 5 λεπτά με τα πόδια από την παραλία και τον κεντρικό πεζόδρομο της Χώρας.",
       addressLabel: "Διεύθυνση",
