@@ -103,8 +103,8 @@ export default function ContactPage() {
       errorMsg: "Error sending message. Please try again."
     },
     el: {
-      // Επαναφορά στην κανονική γραμματοσειρά
-      title: <>Επικοινωνία <br /> <span className="text-olive-700">& Κρατήσεις</span></>,
+      title: <>Επικοινωνία <br /> <span className="text-olive-700">& Κρατήσει<span className="font-serif">ς</span></span></>, 
+      
       directions: "Οδηγίες Χάρτη",
       subtitle: "Στο Νειμποριό, μόλις 5 λεπτά με τα πόδια από την παραλία και τον κεντρικό πεζόδρομο της Χώρας.",
       addressLabel: "Διεύθυνση",
@@ -141,9 +141,9 @@ export default function ContactPage() {
           {/* LEFT SIDE: Info & Map */}
           <div className="space-y-10 mt-6">
             <Reveal>
-              {/* NUCLEAR FIX: leading-[1.4] και pb-10 (τεράστιο padding) */}
-              <div className="pb-10 pt-2 block">
-                <h1 className="text-5xl md:text-7xl font-display text-stone-900 leading-[1.4]">
+              {/* FIX 1: Μεγάλο padding bottom και leading-relaxed για τον τίτλο */}
+              <div className="pb-6">
+                <h1 className="text-5xl md:text-7xl font-display text-stone-900 leading-relaxed pb-4">
                   {t.title}
                 </h1>
               </div>
@@ -151,8 +151,8 @@ export default function ContactPage() {
 
             <div className="space-y-8">
               <Reveal delay={0.2}>
-                 {/* FIX: leading-loose και pb-4 */}
-                <p className="text-stone-600 font-sans font-medium text-lg max-w-md leading-loose pb-4 block">
+                 {/* FIX 2: Relaxed leading για τον υπότιτλο */}
+                <p className="text-stone-600 font-sans font-medium text-lg max-w-md leading-relaxed pb-4">
                   {t.subtitle}
                 </p>
               </Reveal>
@@ -215,15 +215,16 @@ export default function ContactPage() {
             <div className="bg-white p-8 md:p-12 rounded-2xl shadow-2xl border border-stone-100">
               <Reveal width="100%" delay={0.2}>
                 
-                {/* FIX: leading-[1.4] και pb-6 */}
-                <div className="pb-6 block">
-                  <h3 className="text-3xl font-display text-stone-900 leading-[1.4]">
+                {/* FIX 3: Τεράστιο padding και relaxed leading για τον τίτλο της φόρμας */}
+                <div className="pb-4">
+                  <h3 className="text-3xl font-display text-stone-900 leading-relaxed pb-2">
                     {t.formTitle}
                   </h3>
                 </div>
 
-                <div className="pb-6 block">
-                   <p className="text-stone-500 font-sans text-sm leading-loose">
+                {/* FIX 4: Padding για τον υπότιτλο */}
+                <div className="pb-6">
+                   <p className="text-stone-500 font-sans text-sm leading-relaxed pb-2">
                     {t.formSubtitle}
                   </p>
                 </div>
