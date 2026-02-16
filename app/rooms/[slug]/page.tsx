@@ -1,7 +1,6 @@
 "use client";
 
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer"; 
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -90,75 +89,74 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
     const handleLangChange = (e: any) => setLang(e.detail);
     window.addEventListener("langChange", handleLangChange);
     setLang(document.documentElement.lang || "en");
-  
-    // ΠΡΟΣΘΗΚΗ ΕΔΩ: Ενημερώνει τον τίτλο του browser δυναμικά
+
     if (room) {
-      const title = lang === "el" ? room.el.title : room.en.title;
-      document.title = `${title} | Andros Guesthouses`;
+      document.title = lang === "el" ? `${room.el.title} | Andros Guesthouses` : `${room.en.title} | Andros Guesthouses`;
     }
 
     return () => window.removeEventListener("langChange", handleLangChange);
-  }, [lang, room]); // Πρόσθεσε τα lang και room στα dependencies
+  }, [lang, room]);
 
-  if (!room) {
-    notFound();
-  }
+  if (!room) notFound();
 
-  const t = lang === "el" ? room.el : room.en;
+  // Βοηθητικές μεταβλητές για ευκολία
+  const content = lang === "el" ? room.el : room.en;
 
   return (
-    <main className="bg-[#fafaf9] min-h-screen pb-0">
+    <main className="bg-[#fafaf9] min-h-screen pb-12">
       <Navbar />
 
-      {/* ΠΡΟΣΘΗΚΗ: Κουμπί Επιστροφής στην Αρχική */}
-      <div className="absolute top-28 left-6 z-20 md:left-12">
-        <a 
-          href="/" 
-          className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-white/30 transition-all inline-block"
-        >
+      {/* Back Button */}
+      <div className="absolute top-28 left-6 z-20 md:left-12 animate-fadein">
+        <Link href="/" className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-white/30 transition-all inline-block">
           ← {lang === 'el' ? "ΠΙΣΩ ΣΤΗΝ ΑΡΧΙΚΗ" : "BACK TO HOME"}
-        </a>
+        </Link>
       </div>
 
-      {/* --- HERO IMAGE --- */}
+      {/* Hero Section: Το κλειδί για το 100 RES */}
       <div className="relative h-[60vh] w-full">
         <Image
-          src={room.images[0] || "/images/studio-room.jpg"}
-          alt={t.title}
+          src={room.images[0]}
+          alt={content.title}
           fill
           className="object-cover"
           priority
           fetchPriority="high"
-          sizes="100vw" // 2. Λέει στον browser ότι είναι full-width
-          quality={90}
+          sizes="100vw"
+          quality={85}
         />
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 bg-gradient-to-t from-black/80 to-transparent">
           <div className="max-w-7xl mx-auto">
-            <h1 key={lang + "h1"} className="text-4xl md:text-6xl font-display text-white mb-2">{t.title}</h1>
-            <p key={lang + "sub"} className="text-white/90 text-lg font-sans">{t.size} • {t.guests}</p>
+            <h1 className="text-4xl md:text-6xl font-display text-white mb-2 animate-entrance">
+              {content.title}
+            </h1>
+            <p className="text-white/90 text-lg font-sans animate-fadein">
+              {content.size} • {content.guests}
+            </p>
           </div>
         </div>
       </div>
 
+      {/* Main Content */}
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="flex flex-col lg:flex-row gap-16">
           
-          {/* --- LEFT COLUMN --- */}
+          {/* Left Column */}
           <div className="lg:w-2/3 space-y-10">
             <section>
-              <h2 key={lang + "exp"} className="text-2xl font-display text-stone-900 mb-4">{t.sidebar.experience}</h2>
-              <p key={lang + "desc"} className="text-stone-600 leading-relaxed text-lg font-sans font-light">
-                {t.description}
+              <h2 className="text-2xl font-display text-stone-900 mb-4">{content.sidebar.experience}</h2>
+              <p className="text-stone-600 leading-relaxed text-lg font-sans font-light">
+                {content.description}
               </p>
             </section>
 
             <section className="border-t border-stone-200 pt-8">
-              <h3 key={lang + "high"} className="text-xl font-display text-stone-900 mb-6">{t.sidebar.highlights}</h3>
+              <h3 className="text-xl font-display text-stone-900 mb-6">{content.sidebar.highlights}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {t.features.map((feature, i) => (
-                  <div key={i + lang} className="flex items-center gap-3 text-stone-600">
-                    <svg className="w-5 h-5 text-olive-600 shrink-0" fill="none" viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor">
+                {content.features.map((feature, i) => (
+                  <div key={i} className="flex items-center gap-3 text-stone-600">
+                    <svg className="w-5 h-5 text-olive-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                     <span className="font-sans font-medium">{feature}</span>
@@ -167,65 +165,51 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
               </div>
             </section>
 
+            {/* Gallery */}
             <section className="border-t border-stone-200 pt-8 mb-12">
-              <h3 key={lang + "gal"} className="text-xl font-display text-stone-900 mb-6">{t.sidebar.gallery}</h3>
+              <h3 className="text-xl font-display text-stone-900 mb-6">{content.sidebar.gallery}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {room.images.map((img, i) => (
-                  <div key={i} className="relative h-64 rounded-lg overflow-hidden group shadow-md">
-                    <Image 
-                      src={img} 
-                      alt={`${t.title} ${i + 1}`} 
-                      fill 
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover hover:scale-105 transition-transform duration-700"
-                      loading="lazy"
-                    />
+                  <div key={i} className="relative h-64 rounded-lg overflow-hidden shadow-md">
+                    <Image src={img} alt={`${content.title} ${i}`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
                   </div>
                 ))}
               </div>
             </section>
           </div>
 
-          {/* --- RIGHT COLUMN --- */}
+          {/* Right Column: Sidebar */}
           <div className="lg:w-1/3">
             <div className="sticky top-28 bg-white p-8 rounded-xl shadow-xl border border-stone-100">
-              <div className="flex justify-between items-end mb-6 border-b border-stone-100 pb-6">
-                <div>
-                  <span key={lang + "start"} className="text-xs font-bold text-stone-500 uppercase tracking-wider">{t.sidebar.start}</span>
-                  <div key={lang + "price"} className="text-3xl font-display text-stone-900"> {room.price} <span className="text-sm text-stone-500 font-sans">{t.sidebar.night}</span></div>
-                </div>
+              <div className="mb-6 border-b border-stone-100 pb-6">
+                <span className="text-xs font-bold text-stone-500 uppercase tracking-wider">{content.sidebar.start}</span>
+                <div className="text-3xl font-display text-stone-900"> {room.price} <span className="text-sm text-stone-500 font-sans">{content.sidebar.night}</span></div>
               </div>
 
               <div className="space-y-4 mb-8">
                 <div className="flex justify-between text-sm text-stone-600">
-                  <span key={lang + "gst"}>{t.sidebar.guests}</span>
-                  <span key={lang + "gstv"} className="font-bold text-stone-900">{t.guests}</span>
+                  <span>{content.sidebar.guests}</span> {/* Χρήση του content εδώ */}
+                  <span className="font-bold text-stone-900">{content.guests}</span>
                 </div>
                 <div className="flex justify-between text-sm text-stone-600">
-                  <span key={lang + "bedlabel"}>{t.sidebar.beds}</span>
-                  <span key={lang + "bedv"} className="font-bold text-stone-900 text-right w-1/2">{t.bed}</span>
+                  <span>{content.sidebar.beds}</span>
+                  <span className="font-bold text-stone-900 text-right w-1/2">{content.bed}</span>
                 </div>
                 <div className="flex justify-between text-sm text-stone-600">
-                  <span key={lang + "chk"}>{t.sidebar.checkin}</span>
+                  <span>{content.sidebar.checkin}</span>
                   <span className="font-bold text-stone-900">15:00</span>
                 </div>
               </div>
 
-              <Link 
-                href="/contact" 
-                aria-label={`Book your stay in ${t.title}`}
-                className="block w-full py-4 bg-stone-900 text-white text-center rounded-full font-bold uppercase tracking-widest hover:bg-olive-600 transition-colors shadow-lg hover:-translate-y-1 transform duration-200 text-sm"
-              >
-                {t.sidebar.button}
+              <Link href="/contact" className="block w-full py-4 bg-stone-900 text-white text-center rounded-full font-bold uppercase tracking-widest hover:bg-olive-600 transition-colors shadow-lg">
+                {content.sidebar.button}
               </Link>
-              <p key={lang + "guar"} className="text-[10px] text-stone-600 text-center mt-3 uppercase tracking-wide">
-                {t.sidebar.guarantee}
-              </p>
+              <p className="text-[10px] text-stone-600 text-center mt-3 uppercase tracking-wide">{content.sidebar.guarantee}</p>
             </div>
           </div>
+
         </div>
       </div>
-      
     </main>
   );
 }
