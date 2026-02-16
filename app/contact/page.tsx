@@ -103,8 +103,7 @@ export default function ContactPage() {
       errorMsg: "Error sending message. Please try again."
     },
     el: {
-      title: <>Επικοινωνία <br /> <span className="text-olive-700">& Κρατήσει<span className="font-serif">ς</span></span></>, 
-      
+      title: <>Επικοινωνία <br /> <span className="text-olive-700">& Κρατήσεις</span></>,
       directions: "Οδηγίες Χάρτη",
       subtitle: "Στο Νειμποριό, μόλις 5 λεπτά με τα πόδια από την παραλία και τον κεντρικό πεζόδρομο της Χώρας.",
       addressLabel: "Διεύθυνση",
@@ -141,18 +140,15 @@ export default function ContactPage() {
           {/* LEFT SIDE: Info & Map */}
           <div className="space-y-10 mt-6">
             <Reveal>
-              {/* FIX 1: Μεγάλο padding bottom και leading-relaxed για τον τίτλο */}
-              <div className="pb-6">
-                <h1 className="text-5xl md:text-7xl font-display text-stone-900 leading-relaxed pb-4">
-                  {t.title}
-                </h1>
-              </div>
+              {/* FIX: leading-snug (όχι tight) και pb-2 (μικρό padding) */}
+              <h1 className="text-5xl md:text-7xl font-display text-stone-900 leading-snug pb-2">
+                {t.title}
+              </h1>
             </Reveal>
 
             <div className="space-y-8">
               <Reveal delay={0.2}>
-                 {/* FIX 2: Relaxed leading για τον υπότιτλο */}
-                <p className="text-stone-600 font-sans font-medium text-lg max-w-md leading-relaxed pb-4">
+                <p className="text-stone-600 font-sans font-medium text-lg max-w-md leading-relaxed pb-2">
                   {t.subtitle}
                 </p>
               </Reveal>
@@ -195,15 +191,15 @@ export default function ContactPage() {
 
               <div className="flex flex-col gap-6 pt-8 border-t border-stone-300">
                 <Reveal delay={0.4}>
-                  <div className="active:scale-95 transition-transform origin-left py-2">
+                  <div className="active:scale-95 transition-transform origin-left py-1">
                     <h3 className="text-xs font-bold uppercase tracking-widest text-olive-700 mb-1">{t.phoneLabel}</h3>
-                    <a href="tel:+306936934390" className="text-xl md:text-2xl font-serif text-stone-900 hover:text-olive-600 transition-colors font-medium pb-2 block">+30 693 693 4390</a>
+                    <a href="tel:+306936934390" className="text-xl md:text-2xl font-serif text-stone-900 hover:text-olive-600 transition-colors font-medium block pb-1">+30 693 693 4390</a>
                   </div>
                 </Reveal>
                 <Reveal delay={0.5}>
-                  <div className="active:scale-95 transition-transform origin-left py-2">
+                  <div className="active:scale-95 transition-transform origin-left py-1">
                     <h3 className="text-xs font-bold uppercase tracking-widest text-olive-700 mb-1">{t.emailLabel}</h3>
-                    <a href="mailto:androsguesthouses@gmail.com" className="text-xl md:text-2xl font-serif text-stone-900 hover:text-olive-600 transition-colors font-medium pb-2 block">androsguesthouses@gmail.com</a>
+                    <a href="mailto:androsguesthouses@gmail.com" className="text-xl md:text-2xl font-serif text-stone-900 hover:text-olive-600 transition-colors font-medium block pb-1">androsguesthouses@gmail.com</a>
                   </div>
                 </Reveal>
               </div>
@@ -215,19 +211,14 @@ export default function ContactPage() {
             <div className="bg-white p-8 md:p-12 rounded-2xl shadow-2xl border border-stone-100">
               <Reveal width="100%" delay={0.2}>
                 
-                {/* FIX 3: Τεράστιο padding και relaxed leading για τον τίτλο της φόρμας */}
-                <div className="pb-4">
-                  <h3 className="text-3xl font-display text-stone-900 leading-relaxed pb-2">
-                    {t.formTitle}
-                  </h3>
-                </div>
+                {/* FIX: leading-snug και pb-2 για το 'ς' στον τίτλο */}
+                <h3 className="text-3xl font-display text-stone-900 mb-2 leading-snug pb-2">
+                  {t.formTitle}
+                </h3>
 
-                {/* FIX 4: Padding για τον υπότιτλο */}
-                <div className="pb-6">
-                   <p className="text-stone-500 font-sans text-sm leading-relaxed pb-2">
-                    {t.formSubtitle}
-                  </p>
-                </div>
+                <p className="text-stone-500 font-sans text-sm mb-8 leading-relaxed pb-2">
+                  {t.formSubtitle}
+                </p>
                 
                 <form ref={form} onSubmit={sendEmail} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
