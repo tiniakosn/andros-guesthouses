@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://androsguesthouses.gr';
+  const baseUrl = 'https://www.androsguesthouses.gr';
 
   const routes = [
     '', // Αρχική
