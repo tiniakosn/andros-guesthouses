@@ -5,7 +5,6 @@ import Script from 'next/script';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppBtn from "@/components/WhatsAppBtn";
-import ShareBtn from "@/components/ShareBtn";
 import CookieConsent from "@/components/CookieConsent";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
@@ -109,7 +108,7 @@ export default function RootLayout({
         <Analytics />
         <Footer />
 
-        <ShareBtn />
+        
         <WhatsAppBtn />
         <CookieConsent />
         
