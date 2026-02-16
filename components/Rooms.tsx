@@ -73,12 +73,12 @@ function RoomCardSlider({ room, lang }: { room: typeof roomTypes[0], lang: strin
   };
 
   return (
-    <div className="group flex flex-col h-full bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl border border-stone-100 transition-all duration-500 hover:-translate-y-2 relative">
+    <div className="group flex flex-col h-full bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl border border-stone-100 transition-all duration-500 hover:-translate-y-2 relative cursor-pointer">
     
-      {/* ΑΥΤΟ ΕΙΝΑΙ ΤΟ ΝΕΟ LINK ΠΟΥ ΚΑΛΥΠΤΕΙ ΤΗΝ ΚΑΡΤΑ ΧΩΡΙΣ ΝΑ ΧΑΛΑΕΙ ΤΟ HTML */}
+      {/* 1. ΤΟ LINK ΚΑΛΥΠΤΕΙ ΤΑ ΠΑΝΤΑ (z-40) ΕΚΤΟΣ ΑΠΟ ΤΑ ΒΕΛΑΚΙΑ */}
       <Link 
         href={`/rooms/${room.slug}`} 
-        className="absolute inset-0 z-10" 
+        className="absolute inset-0 z-40" 
         aria-label={`View details for ${t.title}`}
       />
 
@@ -91,7 +91,8 @@ function RoomCardSlider({ room, lang }: { room: typeof roomTypes[0], lang: strin
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         
-        <div className="absolute top-5 right-5 bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-bold text-stone-900 shadow-sm border border-stone-100/50 z-20">
+        {/* 2. Η ΤΙΜΗ ΠΛΕΟΝ ΔΕΝ "ΚΛΕΒΕΙ" ΤΟ ΚΛΙΚ (pointer-events-none) */}
+        <div className="absolute top-5 right-5 bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-bold text-stone-900 shadow-sm border border-stone-100/50 z-20 pointer-events-none">
           <span className="text-[10px] uppercase text-stone-500 tracking-wider mr-1">
             {lang === "el" ? "από" : "from"}
           </span> 
@@ -100,21 +101,17 @@ function RoomCardSlider({ room, lang }: { room: typeof roomTypes[0], lang: strin
 
         {hasMultipleImages && (
           <>
-            <button 
-              onClick={handlePrev} 
-              aria-label="Previous image" // ΑΥΤΟ ΕΔΩ
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-stone-800 p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-all duration-300 z-30 hover:scale-110"
-            >
-              <svg fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
-            </button>
+            {/* 3. ΤΑ ΒΕΛΑΚΙΑ ΕΙΝΑΙ ΣΤΟ z-50 ΓΙΑ ΝΑ ΛΕΙΤΟΥΡΓΟΥΝ ΠΑΝΩ ΑΠΟ ΤΟ LINK */}
             <button 
               onClick={handleNext} 
-              aria-label="Next image" // ΚΑΙ ΑΥΤΟ ΕΔΩ
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-stone-800 p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-all duration-300 z-30 hover:scale-110"
+              aria-label="Next image"
+              className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 text-stone-800 p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 z-50 hover:scale-110 active:scale-90"
             >
-              <svg fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+              <svg fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
             </button>
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+            
+            {/* Dots - pointer-events-none για να μην εμποδίζουν το link */}
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20 pointer-events-none">
               {room.images.map((_, idx) => (
                 <div key={idx} className={`w-1.5 h-1.5 rounded-full transition-all ${idx === currentImageIndex ? 'bg-white scale-125' : 'bg-white/50'}`} />
               ))}
