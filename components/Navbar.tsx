@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image"; // Προσθήκη για σωστή διαχείριση εικόνας
+import Image from "next/image";
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation"; // Προσθήκη useRouter
 import LanguageSwitcher from "./LanguageSwitcher"; 
 
 const navLinks = [
@@ -18,16 +18,12 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [lang, setLang] = useState("en"); 
   const pathname = usePathname();
-
-  const isContactPage = pathname === "/contact";
+  const router = useRouter();
 
   useEffect(() => {
-    // Συγχρονισμός αρχικής γλώσσας
     setLang(document.documentElement.lang || "en");
-
     const handleLangChange = (e: any) => setLang(e.detail);
     window.addEventListener("langChange", handleLangChange);
-    
     const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     
@@ -39,124 +35,119 @@ export default function Navbar() {
 
   useEffect(() => {
     setIsOpen(false);
-  }, [pathname]);
+    // Κλειδώνουμε το scroll όταν το μενού είναι ανοιχτό
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [pathname, isOpen]);
 
-  const isDarkText = scrolled || isContactPage || isOpen;
+  // Smart Navigation για το #rooms
+  const handleNavLink = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href === "/#rooms" && pathname !== "/") {
+      e.preventDefault();
+      router.push("/");
+      setTimeout(() => {
+        const el = document.getElementById("rooms");
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 500);
+    }
+    setIsOpen(false);
+  };
+
+  const isDarkText = scrolled || pathname === "/contact" || isOpen;
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-[100]  ${
+      className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
         scrolled 
           ? "bg-[#fafaf9]/95 backdrop-blur-md shadow-sm py-3" 
-          : "bg-transparent py-6"
+          : "bg-transparent py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         
-        {/* LOGO - Optimized Version */}
-        <Link href="/" className="relative z-[101] group block">
-          
-          <div className="relative w-16 h-16 md:w-16 md:h-16 flex items-center">
+        {/* LOGO - Μεγαλύτερο Click Area */}
+        <Link href="/" className="relative z-[101] p-2 -ml-2 block">
+          <div className="relative w-14 h-14 md:w-16 md:h-16">
             <Image 
-              src="/logo-navbar.png" // Το νέο αρχείο των 20.5 KB
+              src="/logo-navbar.png"
               alt="Andros Guesthouses"
               fill
-              className="object-contain object-left opacity-100" 
+              className="object-contain object-left" 
               priority
               fetchPriority="high"
-              // Οι διαστάσεις που ενημερώνουν τον browser για το πλάτος εμφάνισης
-              sizes="(max-width: 768px) 48px, 64px" 
+              sizes="64px"
             />
           </div>
         </Link>
 
-        {/* DESKTOP MENU - Διορθωμένη εναλλαγή γλώσσας */}
-        <nav className="hidden md:flex items-center gap-6">
+        {/* DESKTOP MENU */}
+        <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.en}
               href={link.href}
-              className={`text-sm font-bold uppercase tracking-widest px-2 py-2 transition-colors relative group ${
+              onClick={(e) => handleNavLink(e, link.href)}
+              className={`text-sm font-bold uppercase tracking-widest transition-colors relative group py-2 ${
                 isDarkText ? "text-stone-800 hover:text-olive-700" : "text-white hover:text-white/80"
               }`}
             >
               {lang === "el" ? link.el : link.en}
-              <span className={`absolute bottom-0 left-0 w-full h-[2px] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ${isDarkText ? "bg-olive-600" : "bg-white"}`}></span>
             </Link>
           ))}
-
-          <div className={`ml-4 pl-4 border-l ${isDarkText ? "border-stone-200" : "border-white/20"}`}>
-            <LanguageSwitcher isDark={isDarkText} />
-          </div>
-          
+          <LanguageSwitcher isDark={isDarkText} />
           <Link
             href="/contact"
-            className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-md hover:shadow-lg  ${
-              isDarkText
-                ? "bg-stone-900 text-white hover:bg-olive-700"
-                : "bg-white text-stone-900 hover:bg-stone-100"
+            className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-md active:scale-95 ${
+              isDarkText ? "bg-stone-900 text-white" : "bg-white text-stone-900"
             }`}
           >
             {lang === "el" ? "Κρατηση" : "Book Now"}
           </Link>
         </nav>
 
-        {/* MOBILE TOGGLE & LANGUAGE */}
-        <div className="flex items-center gap-4 md:hidden z-[101]">
+        {/* MOBILE TOGGLE - Αυξημένο Touch Target (48px) */}
+        <div className="flex items-center gap-2 md:hidden z-[101]">
           {!isOpen && <LanguageSwitcher isDark={isDarkText} />}
           
           <button
-            className="relative w-10 h-10 flex flex-col justify-center items-end gap-1.5 focus:outline-none"
+            className="w-12 h-12 flex flex-col justify-center items-center focus:outline-none bg-black/5 rounded-full"
             onClick={() => setIsOpen(!isOpen)}
-            aria-label={isOpen ? "Close Menu" : "Open Menu"} // Βελτιωμένο Accessibility
+            aria-label="Menu"
           >
-            {/* Πάνω γραμμή */}
-            <span 
-              className={`h-[2px] block rounded-full transition-all duration-300 ease-in-out ${
-                isDarkText ? "bg-stone-900" : "bg-white"
-              } ${isOpen ? "w-8 rotate-45 translate-y-[8px]" : "w-8"}`}
-            ></span>
-  
-            {/* Μεσαία γραμμή */}
-            <span 
-              className={`w-6 h-[2px] block rounded-full transition-all duration-300 ease-in-out ${
-                isDarkText ? "bg-stone-900" : "bg-white"
-              } ${isOpen ? "opacity-0" : "opacity-1"}`}
-            ></span>
-  
-            {/* Κάτω γραμμή */}
-            <span 
-              className={`h-[2px] block rounded-full transition-all duration-300 ease-in-out ${
-                isDarkText ? "bg-stone-900" : "bg-white"
-              } ${isOpen ? "w-8 -rotate-45 -translate-y-[8px]" : "w-6"}`}
-            ></span>
+            <div className="flex flex-col items-end gap-1.5 w-8">
+              <span className={`h-[2px] block rounded-full transition-all duration-300 ${isDarkText ? "bg-stone-900" : "bg-white"} ${isOpen ? "w-8 rotate-45 translate-y-[8px]" : "w-8"}`}></span>
+              <span className={`w-6 h-[2px] block rounded-full transition-all duration-300 ${isDarkText ? "bg-stone-900" : "bg-white"} ${isOpen ? "opacity-0" : "opacity-100"}`}></span>
+              <span className={`h-[2px] block rounded-full transition-all duration-300 ${isDarkText ? "bg-stone-900" : "bg-white"} ${isOpen ? "w-8 -rotate-45 -translate-y-[8px]" : "w-6"}`}></span>
+            </div>
           </button>
         </div>
 
-        {/* MOBILE MENU OVERLAY - 100 Score Version */}
+        {/* MOBILE MENU OVERLAY */}
         <div 
-          className={`fixed inset-0 z-50 bg-[#fafaf9] w-full h-screen flex flex-col items-center justify-center transition-all duration-500 ease-in-out ${
-            isOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"
+          className={`fixed inset-0 z-50 bg-[#fafaf9] flex flex-col items-center justify-center transition-transform duration-500 ease-in-out ${
+            isOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <nav className="flex flex-col items-center space-y-8">
+          <nav className="flex flex-col items-center space-y-10">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-4xl font-display font-bold text-stone-900 hover:text-olive-700 transition-colors"
+                onClick={(e) => handleNavLink(e, link.href)}
+                className="text-4xl font-display font-bold text-stone-900 active:text-olive-700 active:scale-95 transition-all p-4"
               >
                 {lang === "el" ? link.el : link.en}
               </Link>
             ))}
-            
             <Link
               href="/contact"
               onClick={() => setIsOpen(false)}
-              className="px-10 py-4 bg-stone-900 text-white font-bold uppercase tracking-widest text-sm shadow-xl rounded-full block active:scale-95 transition-transform mt-4"
+              className="px-12 py-5 bg-stone-900 text-white font-bold uppercase tracking-widest text-sm rounded-full shadow-2xl active:scale-90 transition-transform"
             >
-              {lang === "el" ? "Κρατηση" : "Book Now"}
+              {lang === "el" ? "Κάντε Κράτηση" : "Book Now"}
             </Link>
           </nav>
         </div>
