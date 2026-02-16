@@ -1,5 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar"; // Το Navbar μένει στατικό γιατί είναι στην κορυφή
@@ -127,11 +128,16 @@ export default function Home() {
         
         
         {/* Scroll Arrow */}
-        <div className="absolute bottom-10 z-10 text-white/40">
+        {/* Scroll Arrow - Καθαρό και Λειτουργικό */}
+        <Link 
+          href="#about" 
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 text-white/40 hover:text-white transition-colors animate-bounce p-2"
+          aria-label="Scroll to About"
+        >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
           </svg>
-        </div>
+        </Link>
       </div> {/* Τέλος του Hero Section */}
 
       {/* --- SECTIONS --- */}

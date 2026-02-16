@@ -106,14 +106,17 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
     <main className="bg-[#fafaf9] min-h-screen pb-12">
       <Navbar />
 
-      {/* Back Button */}
+      {/* Back Button - Χρήση Link για ταχύτητα */}
       <div className="absolute top-28 left-6 z-20 md:left-12 animate-fadein">
-        <Link href="/" className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-white/30 transition-all inline-block">
+        <Link 
+          href="/" 
+          className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-white/30 transition-all inline-block active:scale-95"
+        >
           ← {lang === 'el' ? "ΠΙΣΩ ΣΤΗΝ ΑΡΧΙΚΗ" : "BACK TO HOME"}
         </Link>
       </div>
 
-      {/* Hero Section: Το κλειδί για το 100 RES */}
+      {/* Hero Section */}
       <div className="relative h-[60vh] w-full">
         <Image
           src={room.images[0]}
@@ -138,7 +141,6 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="flex flex-col lg:flex-row gap-16">
           
@@ -165,20 +167,27 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
               </div>
             </section>
 
-            {/* Gallery */}
+            {/* Gallery - Προσθήκη pointer-events-none για αποφυγή Dead Clicks */}
             <section className="border-t border-stone-200 pt-8 mb-12">
               <h3 className="text-xl font-display text-stone-900 mb-6">{content.sidebar.gallery}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {room.images.map((img, i) => (
-                  <div key={i} className="relative h-64 rounded-lg overflow-hidden shadow-md">
-                    <Image src={img} alt={`${content.title} ${i}`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+                  <div key={i} className="relative h-64 rounded-lg overflow-hidden shadow-md pointer-events-none">
+                    <Image src={img} alt={`${content.title} ${i}`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" loading="lazy" />
                   </div>
                 ))}
+              </div>
+
+              {/* Mobile CTA: Εμφανίζεται μόνο σε μικρές οθόνες κάτω από την Gallery */}
+              <div className="mt-8 lg:hidden">
+                <Link href="/contact" className="block w-full py-5 bg-stone-900 text-white text-center rounded-full font-bold uppercase tracking-widest active:scale-95 transition-transform shadow-xl">
+                   {content.sidebar.button}
+                </Link>
               </div>
             </section>
           </div>
 
-          {/* Right Column: Sidebar */}
+          {/* Right Column: Sidebar (Desktop) */}
           <div className="lg:w-1/3">
             <div className="sticky top-28 bg-white p-8 rounded-xl shadow-xl border border-stone-100">
               <div className="mb-6 border-b border-stone-100 pb-6">
@@ -188,7 +197,7 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
 
               <div className="space-y-4 mb-8">
                 <div className="flex justify-between text-sm text-stone-600">
-                  <span>{content.sidebar.guests}</span> {/* Χρήση του content εδώ */}
+                  <span>{content.sidebar.guests}</span>
                   <span className="font-bold text-stone-900">{content.guests}</span>
                 </div>
                 <div className="flex justify-between text-sm text-stone-600">
@@ -201,13 +210,12 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
                 </div>
               </div>
 
-              <Link href="/contact" className="block w-full py-4 bg-stone-900 text-white text-center rounded-full font-bold uppercase tracking-widest hover:bg-olive-600 transition-colors shadow-lg">
+              <Link href="/contact" className="block w-full py-4 bg-stone-900 text-white text-center rounded-full font-bold uppercase tracking-widest hover:bg-olive-600 transition-colors shadow-lg active:scale-95">
                 {content.sidebar.button}
               </Link>
               <p className="text-[10px] text-stone-600 text-center mt-3 uppercase tracking-wide">{content.sidebar.guarantee}</p>
             </div>
           </div>
-
         </div>
       </div>
     </main>
