@@ -79,6 +79,7 @@ export default function ContactPage() {
 
   const content = {
     en: {
+      // English: Κρατάμε το Booking, με λίγο padding για το 'g'
       title: <>Contact <br /> <span className="text-olive-700">& Booking</span></>,
       directions: "Get Directions",
       subtitle: "Located in Neimporio, just a 5-minute walk from the beach and the main street of Chora.",
@@ -103,7 +104,8 @@ export default function ContactPage() {
       errorMsg: "Error sending message. Please try again."
     },
     el: {
-      title: <>Επικοινωνία <br /> <span className="text-olive-700">& Κρατήσεις</span></>,
+      // Greek FIX: Μόνο "Επικοινωνία" για να αποφύγουμε το 'ς' και να είναι minimal
+      title: <span className="text-stone-900">Επικοινωνία</span>,
       directions: "Οδηγίες Χάρτη",
       subtitle: "Στο Νειμποριό, μόλις 5 λεπτά με τα πόδια από την παραλία και τον κεντρικό πεζόδρομο της Χώρας.",
       addressLabel: "Διεύθυνση",
@@ -138,17 +140,19 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
           
           {/* LEFT SIDE: Info & Map */}
-          <div className="space-y-10 mt-6">
+          {/* FIX: Μείωσα το space-y από 10 σε 4 για να έρθουν πιο κοντά */}
+          <div className="space-y-4 mt-6">
             <Reveal>
-              {/* FINAL FIX: pb-6 (χώρος για την ουρά) και -mb-4 (για να μην χαλάσει το layout) */}
-              <h1 className="text-4xl md:text-6xl font-display text-stone-900 leading-[1.3] pb-6 -mb-4 block">
+              {/* FIX: Μεγάλο μέγεθος ξανά, pb-4 για το 'g' στα αγγλικά */}
+              <h1 className="text-5xl md:text-7xl font-display text-stone-900 leading-tight pb-4">
                 {t.title}
               </h1>
             </Reveal>
 
             <div className="space-y-8">
               <Reveal delay={0.2}>
-                <p className="text-stone-600 font-sans font-medium text-lg max-w-md leading-relaxed py-2">
+                {/* Ο υπότιτλος έρχεται ακριβώς από κάτω */}
+                <p className="text-stone-600 font-sans font-medium text-lg max-w-md leading-relaxed -mt-2">
                   {t.subtitle}
                 </p>
               </Reveal>
@@ -191,13 +195,13 @@ export default function ContactPage() {
 
               <div className="flex flex-col gap-6 pt-8 border-t border-stone-300">
                 <Reveal delay={0.4}>
-                  <div className="active:scale-95 transition-transform origin-left py-2">
+                  <div className="active:scale-95 transition-transform origin-left py-1">
                     <h3 className="text-xs font-bold uppercase tracking-widest text-olive-700 mb-1">{t.phoneLabel}</h3>
                     <a href="tel:+306936934390" className="text-xl md:text-2xl font-serif text-stone-900 hover:text-olive-600 transition-colors font-medium block">+30 693 693 4390</a>
                   </div>
                 </Reveal>
                 <Reveal delay={0.5}>
-                  <div className="active:scale-95 transition-transform origin-left py-2">
+                  <div className="active:scale-95 transition-transform origin-left py-1">
                     <h3 className="text-xs font-bold uppercase tracking-widest text-olive-700 mb-1">{t.emailLabel}</h3>
                     <a href="mailto:androsguesthouses@gmail.com" className="text-xl md:text-2xl font-serif text-stone-900 hover:text-olive-600 transition-colors font-medium block">androsguesthouses@gmail.com</a>
                   </div>
@@ -211,12 +215,11 @@ export default function ContactPage() {
             <div className="bg-white p-8 md:p-12 rounded-2xl shadow-2xl border border-stone-100">
               <Reveal width="100%" delay={0.2}>
                 
-                {/* FIX: pb-4 και -mb-2 για να σώσουμε την ουρά χωρίς να χαλάσουμε το κενό */}
-                <h3 className="text-3xl font-display text-stone-900 mb-2 leading-[1.35] pb-4 -mb-2 block">
+                <h3 className="text-3xl font-display text-stone-900 mb-2 leading-tight pb-2">
                   {t.formTitle}
                 </h3>
 
-                <p className="text-stone-500 font-sans text-sm mb-8 leading-relaxed py-2">
+                <p className="text-stone-500 font-sans text-sm mb-8 leading-relaxed pb-2">
                   {t.formSubtitle}
                 </p>
                 
