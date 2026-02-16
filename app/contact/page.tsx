@@ -169,7 +169,7 @@ export default function ContactPage() {
                     {loadMap ? (
                       <iframe 
                         // --- ΕΔΩ ΒΑΖΕΙΣ ΤΟ EMBED LINK ΣΟΥ ---
-                        src="http://googleusercontent.com/maps.google.com/YOUR_EMBED_LINK_HERE" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.0325698356105!2d24.92986747661425!3d37.83612337196989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a2ff3fd9c3115b%3A0xb694eabb08bdd45!2sAndros%20Guesthouses!5e0!3m2!1sel!2sgr!4v1771246377963!5m2!1sel!2sgr" 
                         width="100%" height="100%" style={{ border: 0 }} 
                         allowFullScreen loading="lazy" title="Location Map"
                         referrerPolicy="no-referrer-when-downgrade"
@@ -182,7 +182,7 @@ export default function ContactPage() {
                     
                     <a 
                       // --- ΕΔΩ ΒΑΖΕΙΣ ΤΟ SHARE LINK ΣΟΥ ---
-                      href="http://googleusercontent.com/maps.google.com/YOUR_SHARE_LINK_HERE" 
+                      href="https://maps.app.goo.gl/cFPuNQpfBtq3vbVe8" 
                       target="_blank" rel="noopener noreferrer"
                       className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-md px-5 py-2.5 rounded-full text-[10px] font-bold text-stone-900 shadow-xl hover:bg-olive-700 hover:text-white transition-all z-10 uppercase tracking-widest active:scale-95"
                     >
