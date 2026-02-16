@@ -13,6 +13,9 @@ declare global {
 
 export default function ContactPage() {
   const form = useRef<HTMLFormElement>(null);
+  // 1. ΠΡΟΣΘΗΚΗ: Ref για τον χάρτη
+  const mapRef = useRef<HTMLDivElement>(null); 
+  
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
@@ -21,15 +24,28 @@ export default function ContactPage() {
 
   useEffect(() => {
     setLang(document.documentElement.lang || "en");
+
+    // 2. ΑΛΛΑΓΗ: Intersection Observer αντί για setTimeout
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setLoadMap(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    if (mapRef.current) {
+      observer.observe(mapRef.current);
+    }
+
     const handleLangChange = (e: any) => setLang(e.detail);
     window.addEventListener("langChange", handleLangChange);
     
-    // Ενεργοποίηση χάρτη μετά από 2 δευτερόλεπτα για τέλειο Performance Score
-    const mapTimer = setTimeout(() => setLoadMap(true), 2000);
-
     return () => {
       window.removeEventListener("langChange", handleLangChange);
-      clearTimeout(mapTimer);
+      observer.disconnect();
     };
   }, []);
 
@@ -44,6 +60,7 @@ export default function ContactPage() {
 
     if (!form.current) return;
 
+    // Τα δικά σου στοιχεία EmailJS
     emailjs.sendForm("service_te6x5kf", "template_ijeg768", form.current, "Cs5la_p5o9EuGW4qH")
       .then(() => {
         setSuccess(true);
@@ -142,31 +159,36 @@ export default function ContactPage() {
                 <div>
                   <h3 className="text-xs font-bold uppercase tracking-widest text-olive-700 mb-2">{t.addressLabel}</h3>
                   <p className="text-2xl font-serif text-stone-900 font-medium">{t.address}</p>
-    
-                  <div className="group w-full h-[350px] rounded-2xl overflow-hidden shadow-xl border-4 border-white relative mt-6">
+                  
+                  {/* 3. ΑΛΛΑΓΗ: Προσθήκη του ref={mapRef} εδώ */}
+                  <div 
+                    ref={mapRef}
+                    className="group w-full h-[350px] rounded-2xl overflow-hidden shadow-xl border-4 border-white relative mt-6 bg-stone-100"
+                  >
                     {loadMap ? (
                       <iframe 
-                        // 1. ΕΔΩ ΒΑΖΕΙΣ ΤΟ ΤΕΡΑΣΤΙΟ LINK (src)
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.0325698356105!2d24.92986747661425!3d37.83612337196989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a2ff3fd9c3115b%3A0xb694eabb08bdd45!2sAndros%20Guesthouses!5e0!3m2!1sel!2sgr!4v1771241365510!5m2!1sel!2sgr" 
+                       
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.0325698356105!2d24.92986747661425!3d37.83612337196989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a2ff3fd9c3115b%3A0xb694eabb08bdd45!2sAndros%20Guesthouses!5e0!3m2!1sel!2sgr!4v1771246377963!5m2!1sel!2sgr" 
                         width="100%" height="100%" style={{ border: 0 }} 
                         allowFullScreen loading="lazy" title="Location Map"
                         referrerPolicy="no-referrer-when-downgrade"
                       ></iframe>
                     ) : (
-                      <div className="w-full h-full bg-stone-100 flex items-center justify-center animate-pulse">
-                        <span className="text-stone-400 font-sans text-xs tracking-widest uppercase">Loading Map...</span>
+                      <div className="w-full h-full flex items-center justify-center">
+                         <span className="text-stone-400 font-sans text-xs tracking-widest uppercase animate-pulse">Loading Map...</span>
                       </div>
                     )}
-      
-                    {/* 2. ΕΔΩ ΒΑΖΕΙΣ ΤΟ ΜΙΚΡΟ LINK (Share) */}
+                    
                     <a 
-                      href="https://maps.app.goo.gl/UKCsjbz1GVVstub18" // <--- Βάλε εδώ το link από την "Κοινοποίηση"
+                      // --- ΠΡΟΣΟΧΗ: Βάλε το Share Link εδώ ---
+                      href="https://maps.app.goo.gl/cFPuNQpfBtq3vbVe8E" 
                       target="_blank" rel="noopener noreferrer"
                       className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-md px-5 py-2.5 rounded-full text-[10px] font-bold text-stone-900 shadow-xl hover:bg-olive-700 hover:text-white transition-all z-10 uppercase tracking-widest active:scale-95"
                     >
                       {t.directions} →
                     </a>
                   </div>
+
                 </div>
               </Reveal>
 
@@ -187,7 +209,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* RIGHT SIDE: Form */}
+          {/* RIGHT SIDE: Form - Ακριβώς όπως ήταν */}
           <div className="lg:sticky lg:top-32 h-fit">
             <div className="bg-white p-8 md:p-12 rounded-2xl shadow-2xl border border-stone-100">
               <Reveal width="100%" delay={0.2}>
