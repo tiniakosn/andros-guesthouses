@@ -20,7 +20,7 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   // 1. ΕΝΗΜΕΡΩΣΗ: Αλλαγή στο επίσημο domain
-  metadataBase: new URL("https://androsguesthouses.gr"),
+  metadataBase: new URL("https://www.androsguesthouses.gr"),
   
   title: {
     default: "Andros Guesthouses | Luxury Apartments in Chora with Sea View",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Andros Guesthouses | Dreamy Stay in Chora",
     description: "Your private stone retreat in Andros. Panoramic views, local tips, and authentic Greek hospitality just steps from the beach.",
     // 2. ΕΝΗΜΕΡΩΣΗ: Αλλαγή URL εδώ
-    url: "https://androsguesthouses.gr",
+    url: "https://www.androsguesthouses.gr",
     siteName: "Andros Guesthouses",
     locale: "en_US",
     type: "website",
@@ -93,8 +93,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
         {/* 3. ΕΝΗΜΕΡΩΣΗ: Χειροκίνητα tags με το ΝΕΟ domain */}
-        <meta property="og:image" content="https://androsguesthouses.gr/opengraph-image-v3.jpg" />
-        <meta property="og:image:secure_url" content="https://androsguesthouses.gr/opengraph-image-v3.jpg" />
+        <meta property="og:image" content="https://www.androsguesthouses.gr/opengraph-image-v3.jpg" />
+        <meta property="og:image:secure_url" content="https://www.androsguesthouses.gr/opengraph-image-v3.jpg" />
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -134,10 +134,10 @@ export default function RootLayout({
               "@type": "LodgingBusiness",
               "name": "Andros Guesthouses",
               "image": [
-                "https://androsguesthouses.gr/opengraph-image-v3.jpg" // ΔΙΟΡΘΩΘΗΚΕ
+                "https://www.androsguesthouses.gr/opengraph-image-v3.jpg" // ΔΙΟΡΘΩΘΗΚΕ
               ],
-              "@id": "https://androsguesthouses.gr", // ΔΙΟΡΘΩΘΗΚΕ
-              "url": "https://androsguesthouses.gr", // ΔΙΟΡΘΩΘΗΚΕ
+              "@id": "https://www.androsguesthouses.gr", // ΔΙΟΡΘΩΘΗΚΕ
+              "url": "https://www.androsguesthouses.gr", // ΔΙΟΡΘΩΘΗΚΕ
               "telephone": "+306936934390",
               "email": "androsguesthouses@gmail.com",
               "address": {
