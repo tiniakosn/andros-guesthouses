@@ -143,7 +143,7 @@ export default function ContactPage() {
           {/* LEFT SIDE: Info & Map */}
           <div className="space-y-10 mt-6">
             <Reveal>
-              <h1 className="text-5xl md:text-7xl font-display text-stone-900 leading-tight pb-3">
+              <h1 className="text-5xl md:text-7xl font-display text-stone-900 leading-tight pb-4">
                 {t.title}
               </h1>
             </Reveal>
@@ -213,8 +213,8 @@ export default function ContactPage() {
           <div className="lg:sticky lg:top-32 h-fit">
             <div className="bg-white p-8 md:p-12 rounded-2xl shadow-2xl border border-stone-100">
               <Reveal width="100%" delay={0.2}>
-                <h3 className="text-3xl font-display text-stone-900 mb-2">{t.formTitle}</h3>
-                <p className="text-stone-500 font-sans text-sm mb-8">{t.formSubtitle}</p>
+                <h3 className="text-3xl font-display text-stone-900 mb-2 pb-2">{t.formTitle}</h3>
+                <p className="text-stone-500 font-sans text-sm mb-8 pb-2">{t.formSubtitle}</p>
                 
                 <form ref={form} onSubmit={sendEmail} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
