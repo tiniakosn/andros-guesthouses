@@ -6,6 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://andros-guesthouses.vercel.app/sitemap.xml',
+    // ΔΙΟΡΘΩΣΗ: Χρησιμοποιούμε το επίσημο domain με το www
+    sitemap: 'https://www.androsguesthouses.gr/sitemap.xml',
   };
 }
