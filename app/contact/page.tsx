@@ -140,9 +140,9 @@ export default function ContactPage() {
           {/* LEFT SIDE: Info & Map */}
           <div className="space-y-10 mt-6">
             <Reveal>
-              {/* FIX: py-4 και αυξημένο leading για να μην κόβονται οι ουρές στο 'g' και 'ς' */}
-              <div className="py-4">
-                <h1 className="text-5xl md:text-7xl font-display text-stone-900 leading-[1.2]">
+              {/* FIX 1: Μεγάλο padding bottom και leading-relaxed για τον τίτλο */}
+              <div className="pb-6">
+                <h1 className="text-5xl md:text-7xl font-display text-stone-900 leading-relaxed pb-4">
                   {t.title}
                 </h1>
               </div>
@@ -150,7 +150,8 @@ export default function ContactPage() {
 
             <div className="space-y-8">
               <Reveal delay={0.2}>
-                <p className="text-stone-600 font-sans font-medium text-lg max-w-md leading-relaxed py-2">
+                 {/* FIX 2: Relaxed leading για τον υπότιτλο */}
+                <p className="text-stone-600 font-sans font-medium text-lg max-w-md leading-relaxed pb-4">
                   {t.subtitle}
                 </p>
               </Reveal>
@@ -166,7 +167,7 @@ export default function ContactPage() {
                   >
                     {loadMap ? (
                       <iframe 
-                        // --- ΠΡΟΣΟΧΗ: Βάλε το Embed Link εδώ ---
+                        // --- ΕΔΩ ΒΑΖΕΙΣ ΤΟ EMBED LINK ΣΟΥ ---
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.0325698356105!2d24.92986747661425!3d37.83612337196989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a2ff3fd9c3115b%3A0xb694eabb08bdd45!2sAndros%20Guesthouses!5e0!3m2!1sel!2sgr!4v1771246377963!5m2!1sel!2sgr" 
                         width="100%" height="100%" style={{ border: 0 }} 
                         allowFullScreen loading="lazy" title="Location Map"
@@ -179,7 +180,7 @@ export default function ContactPage() {
                     )}
                     
                     <a 
-                      // --- ΠΡΟΣΟΧΗ: Βάλε το Share Link εδώ ---
+                      // --- ΕΔΩ ΒΑΖΕΙΣ ΤΟ SHARE LINK ΣΟΥ ---
                       href="https://maps.app.goo.gl/cFPuNQpfBtq3vbVe8" 
                       target="_blank" rel="noopener noreferrer"
                       className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-md px-5 py-2.5 rounded-full text-[10px] font-bold text-stone-900 shadow-xl hover:bg-olive-700 hover:text-white transition-all z-10 uppercase tracking-widest active:scale-95"
@@ -193,15 +194,15 @@ export default function ContactPage() {
 
               <div className="flex flex-col gap-6 pt-8 border-t border-stone-300">
                 <Reveal delay={0.4}>
-                  <div className="active:scale-95 transition-transform origin-left py-1">
+                  <div className="active:scale-95 transition-transform origin-left py-2">
                     <h3 className="text-xs font-bold uppercase tracking-widest text-olive-700 mb-1">{t.phoneLabel}</h3>
-                    <a href="tel:+306936934390" className="text-xl md:text-2xl font-serif text-stone-900 hover:text-olive-600 transition-colors font-medium">+30 693 693 4390</a>
+                    <a href="tel:+306936934390" className="text-xl md:text-2xl font-serif text-stone-900 hover:text-olive-600 transition-colors font-medium pb-2 block">+30 693 693 4390</a>
                   </div>
                 </Reveal>
                 <Reveal delay={0.5}>
-                  <div className="active:scale-95 transition-transform origin-left py-1">
+                  <div className="active:scale-95 transition-transform origin-left py-2">
                     <h3 className="text-xs font-bold uppercase tracking-widest text-olive-700 mb-1">{t.emailLabel}</h3>
-                    <a href="mailto:androsguesthouses@gmail.com" className="text-xl md:text-2xl font-serif text-stone-900 hover:text-olive-600 transition-colors font-medium">androsguesthouses@gmail.com</a>
+                    <a href="mailto:androsguesthouses@gmail.com" className="text-xl md:text-2xl font-serif text-stone-900 hover:text-olive-600 transition-colors font-medium pb-2 block">androsguesthouses@gmail.com</a>
                   </div>
                 </Reveal>
               </div>
@@ -213,16 +214,16 @@ export default function ContactPage() {
             <div className="bg-white p-8 md:p-12 rounded-2xl shadow-2xl border border-stone-100">
               <Reveal width="100%" delay={0.2}>
                 
-                {/* FIX: py-3 για τον τίτλο της φόρμας */}
-                <div className="py-3">
-                  <h3 className="text-3xl font-display text-stone-900 leading-normal">
+                {/* FIX 3: Τεράστιο padding και relaxed leading για τον τίτλο της φόρμας */}
+                <div className="pb-4">
+                  <h3 className="text-3xl font-display text-stone-900 leading-relaxed pb-2">
                     {t.formTitle}
                   </h3>
                 </div>
 
-                {/* FIX: py-2 για τον υπότιτλο της φόρμας */}
-                <div className="py-2">
-                   <p className="text-stone-500 font-sans text-sm leading-relaxed">
+                {/* FIX 4: Padding για τον υπότιτλο */}
+                <div className="pb-6">
+                   <p className="text-stone-500 font-sans text-sm leading-relaxed pb-2">
                     {t.formSubtitle}
                   </p>
                 </div>
