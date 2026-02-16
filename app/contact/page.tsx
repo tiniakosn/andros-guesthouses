@@ -79,8 +79,7 @@ export default function ContactPage() {
 
   const content = {
     en: {
-      // FIX: Προσθήκη inline-block και pb-3 στο span. Τώρα το padding μετράει!
-      title: <>Contact <br /> <span className="text-olive-700 inline-block pb-3">& Booking</span></>,
+      title: <>Contact <br /> <span className="text-olive-700">& Booking</span></>,
       directions: "Get Directions",
       subtitle: "Located in Neimporio, just a 5-minute walk from the beach and the main street of Chora.",
       addressLabel: "Address",
@@ -104,8 +103,7 @@ export default function ContactPage() {
       errorMsg: "Error sending message. Please try again."
     },
     el: {
-      // FIX: Το ίδιο και εδώ. Το inline-block αναγκάζει το κουτί να μεγαλώσει για το 'ς'.
-      title: <>Επικοινωνία <br /> <span className="text-olive-700 inline-block pb-3">& Κρατήσεις</span></>,
+      title: <>Επικοινωνία <br /> <span className="text-olive-700">& Κρατήσεις</span></>,
       directions: "Οδηγίες Χάρτη",
       subtitle: "Στο Νειμποριό, μόλις 5 λεπτά με τα πόδια από την παραλία και τον κεντρικό πεζόδρομο της Χώρας.",
       addressLabel: "Διεύθυνση",
@@ -142,8 +140,8 @@ export default function ContactPage() {
           {/* LEFT SIDE: Info & Map */}
           <div className="space-y-10 mt-6">
             <Reveal>
-              {/* Ο τίτλος καθαρός, το padding το αναλαμβάνει το span από πάνω */}
-              <h1 className="text-5xl md:text-7xl font-display text-stone-900 leading-tight">
+              {/* FINAL FIX: pb-6 (χώρος για την ουρά) και -mb-4 (για να μην χαλάσει το layout) */}
+              <h1 className="text-4xl md:text-6xl font-display text-stone-900 leading-[1.3] pb-6 -mb-4 block">
                 {t.title}
               </h1>
             </Reveal>
@@ -213,8 +211,8 @@ export default function ContactPage() {
             <div className="bg-white p-8 md:p-12 rounded-2xl shadow-2xl border border-stone-100">
               <Reveal width="100%" delay={0.2}>
                 
-                {/* Χρησιμοποιούμε py-2 εδώ για ασφάλεια */}
-                <h3 className="text-3xl font-display text-stone-900 mb-2 leading-snug py-2">
+                {/* FIX: pb-4 και -mb-2 για να σώσουμε την ουρά χωρίς να χαλάσουμε το κενό */}
+                <h3 className="text-3xl font-display text-stone-900 mb-2 leading-[1.35] pb-4 -mb-2 block">
                   {t.formTitle}
                 </h3>
 
