@@ -143,7 +143,7 @@ export default function ContactPage() {
           {/* LEFT SIDE: Info & Map */}
           <div className="space-y-10 mt-6">
             <Reveal>
-              <h1 className="text-5xl md:text-7xl font-display text-stone-900 leading-tight pb-2">
+              <h1 className="text-5xl md:text-7xl font-display text-stone-900 leading-tight pb-3">
                 {t.title}
               </h1>
             </Reveal>
