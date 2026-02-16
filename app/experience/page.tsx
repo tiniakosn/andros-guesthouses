@@ -75,36 +75,23 @@ export default function ExperiencePage() {
   useEffect(() => {
     const handleLangChange = (e: any) => setLang(e.detail);
     window.addEventListener("langChange", handleLangChange);
-    setLang(document.documentElement.lang || "en");
+    // Διαβάζουμε τη γλώσσα αμέσως
+    const currentLang = document.documentElement.lang || "en";
+    setLang(currentLang);
     return () => window.removeEventListener("langChange", handleLangChange);
   }, []);
 
+  // Κρατάμε το t για τα υπόλοιπα, αλλά στο Hero θα πάμε "καρφωτά"
   const t = {
-    en: {
-      heroTitle: "Discover Andros",
-      heroSub: "An island of elegance, hidden gems, and untouched beauty.",
-      expLabel: "Experience",
-      ctaTitle: "Unlock the",
-      ctaSpan: "Hidden Andros",
-      ctaDesc: "Escape the ordinary. Access our curated map of secluded beaches and authentic spots not found in guidebooks.",
-      ctaButton: "GET THE EXCLUSIVE LIST"
-    },
-    el: {
-      heroTitle: "Ανακαλύψτε την Άνδρο",
-      heroSub: "Ένα νησί αρχοντιάς, κρυμμένων θησαυρών και ανέγγιχτης ομορφιάς.",
-      expLabel: "Εμπειρία",
-      ctaTitle: "Ξεκλειδώστε την",
-      ctaSpan: "Κρυφή Άνδρο",
-      ctaDesc: "Αποδράστε από τα συνηθισμένα. Αποκτήστε πρόσβαση στον δικό μας χάρτη με απόκρυφες παραλίες και αυθεντικά σημεία που δεν υπάρχουν σε ταξιδιωτικούς οδηγούς.",
-      ctaButton: "ΠΑΡΤΕ ΤΗΝ ΑΠΟΚΛΕΙΣΤΙΚΗ ΛΙΣΤΑ"
-    }
+    en: { expLabel: "Experience", ctaTitle: "Unlock the", ctaSpan: "Hidden Andros", ctaDesc: "Escape the ordinary...", ctaButton: "GET THE EXCLUSIVE LIST" },
+    el: { expLabel: "Εμπειρία", ctaTitle: "Ξεκλειδώστε την", ctaSpan: "Κρυφή Άνδρο", ctaDesc: "Αποδράστε από τα συνηθισμένα...", ctaButton: "ΠΑΡΤΕ ΤΗΝ ΑΠΟΚΛΕΙΣΤΙΚΗ ΛΙΣΤΑ" }
   }[lang === "el" ? "el" : "en"];
 
   return (
     <main className="min-h-screen bg-[#fafaf9]">
       <Navbar />
 
-      {/* --- HERO SECTION --- */}
+      {/* --- HERO SECTION: PERFORMANCE OPTIMIZED --- */}
       <div className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
         <Image 
           src="/androshero3.jpg"
@@ -112,24 +99,23 @@ export default function ExperiencePage() {
           fill
           className="object-cover"
           priority
+          fetchPriority="high" // Άμεση προτεραιότητα φόρτωσης
         />
         <div className="absolute inset-0 bg-black/40"></div>
         
         <div className="relative z-10 text-center px-4 mt-10 w-full flex flex-col items-center">
-          <Reveal>
-            <h1 key={lang + "h1"} className="text-5xl md:text-8xl font-display text-white mb-4 drop-shadow-2xl shadow-black tracking-tight">
-              {t.heroTitle}
-            </h1>
-          </Reveal>
-          <Reveal delay={0.2}>
-          {/* Προσθήκη mx-auto για να κεντραριστεί το max-w-2xl */}
-            <p key={lang + "hsub"} className="text-white/95 text-lg md:text-2xl max-w-3xl mx-auto font-sans font-light tracking-wide drop-shadow-md text-center leading-relaxed">
-              {t.heroSub}
-            </p>
-          </Reveal>
+          {/* Αφαίρεση Reveal - Χρήση CSS Animation */}
+          <h1 className="text-5xl md:text-8xl font-display text-white mb-4 drop-shadow-2xl tracking-tight animate-entrance">
+            {lang === "el" ? "Ανακαλύψτε την Άνδρο" : "Discover Andros"}
+          </h1>
+          
+          <p className="text-white/95 text-lg md:text-2xl max-w-3xl mx-auto font-sans font-light tracking-wide drop-shadow-md text-center leading-relaxed animate-fadein">
+            {lang === "el" 
+              ? "Ένα νησί αρχοντιάς, κρυμμένων θησαυρών και ανέγγιχτης ομορφιάς." 
+              : "An island of elegance, hidden gems, and untouched beauty."}
+          </p>
         </div>
       </div>
-
 
       {/* --- CONTENT SECTIONS --- */}
       <div className="max-w-7xl mx-auto px-6 py-24 space-y-32">
@@ -145,29 +131,29 @@ export default function ExperiencePage() {
                       alt={content.title}
                       fill
                       className="object-cover hover:scale-110 transition-transform duration-[1.5s]"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      loading="lazy" // Lazy loading για όλα τα κάτω images
                     />
-                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
                   </div>
                 </Reveal>
               </div>
 
               <div className="w-full md:w-1/2 space-y-6">
+                {/* Εδώ το Reveal είναι οκ, γιατί είναι "below the fold" */}
                 <Reveal delay={0.2}>
-                  <span key={lang + index + "l"} className="text-olive-700 font-bold tracking-widest text-xs uppercase mb-2 block">
+                  <span className="text-olive-700 font-bold tracking-widest text-xs uppercase mb-2 block">
                     {t.expLabel} {index + 1}
                   </span>
-                  <h2 key={lang + index + "t"} className="text-4xl md:text-5xl font-display text-stone-900 leading-tight pb-2">
+                  <h2 className="text-4xl md:text-5xl font-display text-stone-900 leading-tight pb-2">
                     {content.title}
                   </h2>
                 </Reveal>
                 <Reveal delay={0.3}>
-                  <p key={lang + index + "d"} className="text-stone-600 text-lg leading-relaxed font-sans pb-2 font-light">
+                  <p className="text-stone-600 text-lg leading-relaxed font-sans pb-2 font-light">
                     {content.description}
                   </p>
                 </Reveal>
-                <Reveal delay={0.4}>
-                  <div className="h-1 w-20 bg-olive-500 mt-6"></div>
-                </Reveal>
+                <div className="h-1 w-20 bg-olive-500 mt-6"></div>
               </div>
             </div>
           );
