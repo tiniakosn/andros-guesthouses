@@ -143,8 +143,9 @@ export default function ContactPage() {
           {/* LEFT SIDE: Info & Map */}
           <div className="space-y-10 mt-6">
             <Reveal>
-              <div className="pb-8 pt-2"> 
-                <h1 className="text-5xl md:text-7xl font-display text-stone-900 leading-normal"> {/* Αλλαγή σε leading-normal */}
+              {/* WRAPPER: Δίνει αέρα κάτω για να μην κόβονται οι ουρές */}
+              <div className="pb-6"> 
+                <h1 className="text-5xl md:text-7xl font-display text-stone-900 leading-[1.1]">
                   {t.title}
                 </h1>
               </div>
