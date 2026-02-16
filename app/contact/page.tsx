@@ -215,8 +215,15 @@ export default function ContactPage() {
           <div className="lg:sticky lg:top-32 h-fit">
             <div className="bg-white p-8 md:p-12 rounded-2xl shadow-2xl border border-stone-100">
               <Reveal width="100%" delay={0.2}>
-                <h3 className="text-3xl font-display text-stone-900 mb-2 pb-2">{t.formTitle}</h3>
-                <p className="text-stone-500 font-sans text-sm mb-8 pb-2">{t.formSubtitle}</p>
+                {/* Προσθήκη py-2 για να μην κόβονται οι ουρές */}
+                <h3 className="text-3xl font-display text-stone-900 mb-1 py-2 leading-normal">
+                  {t.formTitle}
+                </h3>
+      
+                {/* Προσθήκη py-2 και εδώ για το γράμμα 'ρ' και 'g' */}
+                <p className="text-stone-500 font-sans text-sm mb-6 py-2 leading-relaxed">
+                  {t.formSubtitle}
+                </p>
                 
                 <form ref={form} onSubmit={sendEmail} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
