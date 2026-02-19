@@ -4,19 +4,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.androsguesthouses.gr';
 
   const routes = [
-    '', // Αρχική
-    '/rooms',
-    '/experience', 
-    '/contact',
-    // Δωμάτια
+    '', // Αρχική (Εδώ μέσα θα βρει το /#rooms)
+    '/experience', // ✅ ΣΩΣΤΟ: Είναι κανονική σελίδα, οπότε μένει!
+    '/contact',    // ✅ ΣΩΣΤΟ: Είναι κανονική σελίδα
+    
+    // Δωμάτια (Εφόσον είναι ξεχωριστές σελίδες)
     '/rooms/aegean-studio',
     '/rooms/garden-suite',
     '/rooms/grand-residence',
+    
     // Diary - Ελληνικά
     '/el/diary',
     '/el/diary/chora-and-wind',
     '/el/diary/secret-beaches',
     '/el/diary/local-flavors',
+    
     // Diary - English
     '/en/diary',
     '/en/diary/chora-and-wind',
