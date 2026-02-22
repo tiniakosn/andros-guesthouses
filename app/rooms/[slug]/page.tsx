@@ -116,7 +116,7 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
         </Link>
       </div>
 
-      {/* Hero Section */}
+      {/* Hero Section - Τέλεια ρυθμισμένο για LCP */}
       <div className="relative h-[60vh] w-full">
         <Image
           src={room.images[0]}
@@ -167,21 +167,29 @@ export default function RoomPage({ params }: { params: Promise<{ slug: string }>
               </div>
             </section>
 
-            {/* Gallery - Προσθήκη pointer-events-none για αποφυγή Dead Clicks */}
+            {/* Gallery - ΒΕΛΤΙΩΣΗ: Παραλείπουμε την 1η εικόνα (Hero) και αφαιρούμε το περιττό loading="lazy" */}
             <section className="border-t border-stone-200 pt-8 mb-12">
               <h3 className="text-xl font-display text-stone-900 mb-6">{content.sidebar.gallery}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {room.images.map((img, i) => (
-                  <div key={i} className="relative h-64 rounded-lg overflow-hidden shadow-md pointer-events-none">
-                    <Image src={img} alt={`${content.title} ${i}`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" loading="lazy" />
+                {/* Χρησιμοποιούμε το .slice(1) για να ξεκινήσουμε από τη δεύτερη εικόνα */}
+                {room.images.slice(1).map((img, i) => (
+                  <div key={img + i} className="relative h-64 rounded-lg overflow-hidden shadow-md pointer-events-none bg-stone-100">
+                    <Image 
+                        src={img} 
+                        alt={`${content.title} gallery image ${i + 1}`} 
+                        fill 
+                        sizes="(max-width: 768px) 100vw, 50vw" 
+                        className="object-cover"
+                        // Το loading="lazy" αφαιρέθηκε γιατί είναι το default του Next.js
+                     />
                   </div>
                 ))}
               </div>
 
-              {/* Mobile CTA: Εμφανίζεται μόνο σε μικρές οθόνες κάτω από την Gallery */}
+              {/* Mobile CTA */}
               <div className="mt-8 lg:hidden">
                 <Link href="/contact" className="block w-full py-5 bg-stone-900 text-white text-center rounded-full font-bold uppercase tracking-widest active:scale-95 transition-transform shadow-xl">
-                   {content.sidebar.button}
+                    {content.sidebar.button}
                 </Link>
               </div>
             </section>
