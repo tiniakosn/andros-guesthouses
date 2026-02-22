@@ -81,7 +81,6 @@ export default function ExperiencePage() {
     return () => window.removeEventListener("langChange", handleLangChange);
   }, []);
 
-  // Κρατάμε το t για τα υπόλοιπα, αλλά στο Hero θα πάμε "καρφωτά"
   const t = {
     en: { expLabel: "Experience", ctaTitle: "Unlock the", ctaSpan: "Hidden Andros", ctaDesc: "Escape the ordinary...", ctaButton: "GET THE EXCLUSIVE LIST" },
     el: { expLabel: "Εμπειρία", ctaTitle: "Ξεκλειδώστε την", ctaSpan: "Κρυφή Άνδρο", ctaDesc: "Αποδράστε από τα συνηθισμένα...", ctaButton: "ΠΑΡΤΕ ΤΗΝ ΑΠΟΚΛΕΙΣΤΙΚΗ ΛΙΣΤΑ" }
@@ -99,12 +98,13 @@ export default function ExperiencePage() {
           fill
           className="object-cover"
           priority
-          fetchPriority="high" // Άμεση προτεραιότητα φόρτωσης
+          fetchPriority="high"
+          sizes="100vw"      // ΒΕΛΤΙΩΣΗ: Απαραίτητο για το LCP στο κινητό
+          quality={85}       // ΒΕΛΤΙΩΣΗ: Συμπίεση για τέλεια ταχύτητα
         />
         <div className="absolute inset-0 bg-black/40"></div>
         
         <div className="relative z-10 text-center px-4 mt-10 w-full flex flex-col items-center">
-          {/* Αφαίρεση Reveal - Χρήση CSS Animation */}
           <h1 className="text-5xl md:text-8xl font-display text-white mb-4 drop-shadow-2xl tracking-tight animate-entrance">
             {lang === "el" ? "Ανακαλύψτε την Άνδρο" : "Discover Andros"}
           </h1>
@@ -125,21 +125,20 @@ export default function ExperiencePage() {
             <div key={index} className={`flex flex-col md:flex-row gap-12 items-center ${item.reverse ? 'md:flex-row-reverse' : ''}`}>
               <div className="w-full md:w-1/2">
                 <Reveal width="100%">
-                  <div className="relative h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-700 border-4 border-white group">
+                  <div className="relative h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-700 border-4 border-white group bg-stone-100">
                     <Image
                       src={item.image}
                       alt={content.title}
                       fill
                       className="object-cover hover:scale-110 transition-transform duration-[1.5s]"
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      loading="lazy" // Lazy loading για όλα τα κάτω images
+                      // ΒΕΛΤΙΩΣΗ: Το loading="lazy" αφαιρέθηκε (είναι default και πιο γρήγορο χωρίς αυτό)
                     />
                   </div>
                 </Reveal>
               </div>
 
               <div className="w-full md:w-1/2 space-y-6">
-                {/* Εδώ το Reveal είναι οκ, γιατί είναι "below the fold" */}
                 <Reveal delay={0.2}>
                   <span className="text-olive-700 font-bold tracking-widest text-xs uppercase mb-2 block">
                     {t.expLabel} {index + 1}
@@ -185,7 +184,7 @@ export default function ExperiencePage() {
           </div>
         </div>
       </section>
-      
+
     </main>
   );
 }
