@@ -18,19 +18,27 @@ const manrope = Manrope({
 
 
 export const metadata: Metadata = {
-  // 1. ΕΝΗΜΕΡΩΣΗ: Αλλαγή στο επίσημο domain
   metadataBase: new URL("https://www.androsguesthouses.gr"),
   
   title: {
-    default: "Andros Guesthouses | Luxury Apartments in Chora with Sea View",
+    default: "Andros Guesthouses | Accommodation & Ενοικιαζόμενα Δωμάτια Άνδρος",
     template: "%s | Andros Guesthouses"
   },
-  description: "Stay at the best stone guesthouses in Chora, Andros. Walking distance to Neimporio beach, panoramic Aegean views, and authentic hospitality. Book your escape now.",
+  description: "Premium accommodation in Andros. Ανακαλύψτε τα καλύτερα ενοικιαζόμενα δωμάτια, σουίτες και διαμονή στη Χώρα της Άνδρου. Book your stone guesthouse escape now.",
   
+  // ΠΡΟΣΘΗΚΗ ΤΩΝ KEYWORDS ΕΔΩ:
+  keywords: [
+    'andros accommodation', 
+    'δωματια ανδροσ', 
+    'ενοικιαζομενα δωματια ανδροσ', 
+    'διαμονη ανδρος', 
+    'andros guesthouses',
+    'andros suites'
+  ],
+
   openGraph: {
     title: "Andros Guesthouses | Dreamy Stay in Chora",
     description: "Your private stone retreat in Andros. Panoramic views, local tips, and authentic Greek hospitality just steps from the beach.",
-    // 2. ΕΝΗΜΕΡΩΣΗ: Αλλαγή URL εδώ
     url: "https://www.androsguesthouses.gr",
     siteName: "Andros Guesthouses",
     locale: "en_US",
@@ -45,7 +53,6 @@ export const metadata: Metadata = {
     ],
   },
   
-  // --- Τεχνικά (ΜΗΝ ΤΑ ΠΕΙΡΑΞΕΙΣ) ---
   icons: {
     icon: [
       { url: "/favicon-v4.png", sizes: "512x512", type: "image/png" },
@@ -58,12 +65,11 @@ export const metadata: Metadata = {
   },
 
   verification: {
-    google: "-yRKvY_-TqJiBkK8AtG5_K8_732TAzNcNBRQlArJzyw", // Το κρατάμε όπως είναι!
+    google: "-yRKvY_-TqJiBkK8AtG5_K8_732TAzNcNBRQlArJzyw", 
   },
 
   manifest: '/site.webmanifest',
 
-  // --- Εντολή για τη Google ---
   robots: {
     index: true,
     follow: true,
@@ -132,6 +138,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "LodgingBusiness",
               "name": "Andros Guesthouses",
+              "alternateName": "Ενοικιαζόμενα Δωμάτια Άνδρος - Andros Guesthouses",
               "image": [
                 "https://www.androsguesthouses.gr/opengraph-image-v3.jpg" // ΔΙΟΡΘΩΘΗΚΕ
               ],
