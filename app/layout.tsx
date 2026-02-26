@@ -16,17 +16,15 @@ const manrope = Manrope({
   display: 'swap',
 });
 
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.androsguesthouses.gr"),
   
   title: {
-    default: "Andros Guesthouses | Accommodation & Ενοικιαζόμενα Δωμάτια Άνδρος",
+    default: "Andros Guesthouses | Accommodation & Rooms in Chora Andros",
     template: "%s | Andros Guesthouses"
   },
-  description: "Premium accommodation in Andros. Ανακαλύψτε τα καλύτερα ενοικιαζόμενα δωμάτια, σουίτες και διαμονή στη Χώρα της Άνδρου. Book your stone guesthouse escape now.",
+  description: "Premium accommodation in Chora, Andros. Discover the best rooms, suites, and stone guesthouse stays near Nimborio beach. Book your authentic Greek escape now.",
   
-  // ΠΡΟΣΘΗΚΗ ΤΩΝ KEYWORDS ΕΔΩ:
   keywords: [
     'andros accommodation', 
     'δωματια ανδροσ', 
@@ -36,9 +34,14 @@ export const metadata: Metadata = {
     'andros suites'
   ],
 
+  // SRE ADDITION: Canonical URL για αποφυγή Duplicate Content
+  alternates: {
+    canonical: "https://www.androsguesthouses.gr",
+  },
+
   openGraph: {
     title: "Andros Guesthouses | Dreamy Stay in Chora",
-    description: "Your private stone retreat in Andros. Panoramic views, local tips, and authentic Greek hospitality just steps from the beach.",
+    description: "Your private stone retreat in Andros. Panoramic views, local tips, and authentic Greek hospitality steps from the beach.",
     url: "https://www.androsguesthouses.gr",
     siteName: "Andros Guesthouses",
     locale: "en_US",
@@ -91,34 +94,22 @@ export default function RootLayout({
   return (
     <html lang="el" className="scroll-smooth">
       <head>
-
         <link rel="preconnect" href="https://www.androsguesthouses.gr" />
         <link rel="dns-prefetch" href="https://www.androsguesthouses.gr" />
-        {/* Αν φορτώνεις fonts από Google, πρόσθεσε και αυτό: */}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-
-        {/* 3. ΕΝΗΜΕΡΩΣΗ: Χειροκίνητα tags με το ΝΕΟ domain */}
-        <meta property="og:image" content="https://www.androsguesthouses.gr/opengraph-image-v3.jpg" />
-        <meta property="og:image:secure_url" content="https://www.androsguesthouses.gr/opengraph-image-v3.jpg" />
-        <meta property="og:image:type" content="image/jpeg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
+        
+        {/* Τα OG tags παράγονται αυτόματα από το Metadata object πλέον */}
       </head>
       <body className={`${manrope.variable} antialiased text-stone-900 bg-stone-50`}>
-
-        
         <Navbar />
         {children}
 
         <SpeedInsights />
         <Analytics />
         <Footer />
-
-        
         <WhatsAppBtn />
         <CookieConsent />
         
-        {/* Μεταφορά Clarity εδώ για να μην κολλάει το Performance */}
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`
             setTimeout(() => {
@@ -127,23 +118,22 @@ export default function RootLayout({
                 t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
                 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
               })(window, document, "clarity", "script", "v6wxwu35gn");
-            }, 4000); // Καθυστέρηση 4 δευτερολέπτων
+            }, 4000);
           `}
         </Script>
 
+        {/* Διορθωμένο Schema: GuestHouse Type */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "LodgingBusiness",
+              "@type": "GuestHouse",
               "name": "Andros Guesthouses",
               "alternateName": "Ενοικιαζόμενα Δωμάτια Άνδρος - Andros Guesthouses",
-              "image": [
-                "https://www.androsguesthouses.gr/opengraph-image-v3.jpg" // ΔΙΟΡΘΩΘΗΚΕ
-              ],
-              "@id": "https://www.androsguesthouses.gr", // ΔΙΟΡΘΩΘΗΚΕ
-              "url": "https://www.androsguesthouses.gr", // ΔΙΟΡΘΩΘΗΚΕ
+              "image": "https://www.androsguesthouses.gr/opengraph-image-v3.jpg",
+              "@id": "https://www.androsguesthouses.gr",
+              "url": "https://www.androsguesthouses.gr",
               "telephone": "+306936934390",
               "email": "androsguesthouses@gmail.com",
               "address": {
@@ -158,7 +148,8 @@ export default function RootLayout({
                 "latitude": 37.839, 
                 "longitude": 24.936
               },
-              "priceRange": "$$"
+              "priceRange": "€€",
+              "description": "Authentic stone-built guesthouse in Chora, Andros. Features panoramic views and premium rooms near the beach."
             }),
           }}
         />
