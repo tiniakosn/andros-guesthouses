@@ -118,7 +118,7 @@ export default async function RoomPage({ params, searchParams }: any) {
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 bg-gradient-to-t from-black/80 to-transparent text-white">
           <div className="max-w-7xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-display text-white mb-3 drop-shadow-lg leading-tight">
+            <h1 className="text-3xl md:text-5xl font-display text-white mb-3 drop-shadow-lg leading-tight">
               {content.title}
             </h1>
             <p className="text-lg md:text-xl text-white/90 font-sans font-light tracking-wide">
