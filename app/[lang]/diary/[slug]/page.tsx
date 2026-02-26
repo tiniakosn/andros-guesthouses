@@ -92,43 +92,22 @@ const DIARY_CONTENT = {
 }
 };
 
-// 1. ΔΥΝΑΜΙΚΟ SEO: Η Google θα σε λατρέψει
-export async function generateMetadata({ params }: any): Promise<Metadata> {
-  const { lang, slug } = await params;
-  const article = (DIARY_CONTENT as any)[lang]?.[slug];
-  if (!article) return { title: "Article Not Found" };
+export default function DiaryPage() {
+  const params = useParams();
+  const lang = (params?.lang as "el" | "en") || "el";
+  const slug = params?.slug as string;
 
-  return {
-    title: `${article.title} | Andros Insider Guide`,
-    description: article.subtitle,
-    openGraph: {
-      title: article.title,
-      description: article.subtitle,
-      images: [article.image],
-    }
-  };
-}
+  // QA Fix: Περιμένουμε να υπάρχουν τα params πριν κάνουμε το check
+  if (!slug || !lang) return null; 
 
-// 2. PRE-RENDERING: Για να πετάει το site (RES 100/100)
-export async function generateStaticParams() {
-  const paths: any[] = [];
-  Object.keys(DIARY_CONTENT).forEach((lang) => {
-    Object.keys((DIARY_CONTENT as any)[lang]).forEach((slug) => {
-      paths.push({ lang, slug });
-    });
-  });
-  return paths;
-}
+  const article = DIARY_CONTENT[lang]?.[slug as keyof typeof DIARY_CONTENT['el']];
 
-export default async function DiaryPage({ params }: any) {
-  const { lang, slug } = await params;
-  const article = (DIARY_CONTENT as any)[lang]?.[slug];
-
+  // Αν όντως το slug δεν υπάρχει στα δεδομένα μας, τότε μόνο δείξε 404
   if (!article) return notFound();
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Hero Section - Optimized LCP */}
+      {/* Hero Section */}
       <section className="relative h-[65vh] w-full overflow-hidden">
         <Image 
           src={article.image} 
@@ -136,78 +115,64 @@ export default async function DiaryPage({ params }: any) {
           fill 
           className="object-cover" 
           priority 
-          sizes="100vw"
-          quality={85}
+          fetchPriority="high" // ΑΠΑΡΑΙΤΗΤΟ ΓΙΑ ΤΟ LCP
+          quality={80}
         />
         <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-0 flex items-center justify-center p-6 text-center text-white">
-          <div className="max-w-4xl">
-            <span className="text-lime-400 font-bold tracking-widest text-xs uppercase mb-4 block">
+        <div className="absolute inset-0 flex items-center justify-center p-6 text-center">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            className="max-w-4xl"
+          >
+            <span className="text-lime-400 font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase mb-4 block">
               {article.tag}
             </span>
-            <h1 className="text-4xl md:text-6xl font-serif mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-serif text-white mb-6 leading-tight">
               {article.title}
             </h1>
-            <p className="text-lg md:text-xl font-light italic opacity-90">
+            <p className="text-lg md:text-xl text-white/90 font-light italic">
               {article.subtitle}
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Content Section */}
-      <section className="py-16 md:py-24 px-6">
+      <section className="py-16 md:py-24 px-6 bg-white relative z-10">
         <div className="max-w-3xl mx-auto">
-          <article 
-            className="prose prose-stone prose-lg leading-relaxed text-stone-800"
+          <div 
+            className="prose prose-stone prose-lg leading-relaxed text-stone-800 font-normal"
             dangerouslySetInnerHTML={{ 
               __html: article.content
-                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                .replace(/\n/g, '<br />') 
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Μετατρέπει τα **Bold** σε <strong>
+                .replace(/\n/g, '<br />') // Μετατρέπει τις αλλαγές γραμμής σε <br />
             }} 
           />
 
-          {/* SRE SMART MOVE: Conversion CTA για Κρατήσεις */}
-          <div className="mt-16 p-8 bg-stone-50 rounded-2xl border border-stone-100 text-center">
-            <h3 className="text-xl font-serif mb-4">
-              {lang === 'el' ? "Σχεδιάζετε την απόδρασή σας στην Άνδρο;" : "Planning your escape to Andros?"}
-            </h3>
-            <p className="text-stone-600 mb-6">
-              {lang === 'el' ? "Μείνετε στην καρδιά της Χώρας, λίγα βήματα από τα καλύτερα στέκια." : "Stay in the heart of Chora, just steps away from the best spots."}
-            </p>
+          {/* Navigation Section */}
+          <div className="pt-10 border-t border-stone-100 flex flex-col md:flex-row justify-between items-center gap-8">
             <Link 
               href="/" 
-              className="inline-block px-8 py-4 bg-stone-900 text-white rounded-full font-bold uppercase tracking-widest hover:bg-olive-600 transition-all"
+                className="group flex items-center gap-3 text-stone-900 font-bold text-[10px] uppercase tracking-[0.2em] transition-all"
             >
-              {lang === 'el' ? "ΔΕΙΤΕ ΤΑ ΔΩΜΑΤΙΑ ΜΑΣ" : "EXPLORE OUR ROOMS"}
-            </Link>
-          </div>
+              <span className="group-hover:-translate-x-1 transition-transform">←</span> 
+              {lang === 'el' ? "Αρχική" : "Home"}
+          </Link>
 
-          <div className="mt-12 pt-10 border-t border-stone-100 flex flex-col md:flex-row justify-between items-center gap-8">
-            <Link href="/" className="text-stone-900 font-bold text-[10px] uppercase tracking-widest">
-              ← {lang === 'el' ? "Αρχική" : "Home"}
+            <Link 
+              href={`/${lang}/diary`} 
+              className="px-8 py-3 border border-stone-200 rounded-full text-stone-800 font-bold text-[10px] uppercase tracking-widest hover:bg-stone-900 hover:text-white hover:border-stone-900 transition-all shadow-sm"
+            >
+              {lang === 'el' ? "Δείτε όλα τα άρθρα" : "View All Articles"}
             </Link>
-            <Link href={`/${lang}/diary`} className="px-8 py-3 border border-stone-200 rounded-full text-stone-800 font-bold text-[10px] uppercase tracking-widest hover:bg-stone-900 hover:text-white transition-all">
-              {lang === 'el' ? "Όλα τα άρθρα" : "All Articles"}
-            </Link>
+            
+            <div className="text-stone-300 text-[10px] tracking-widest uppercase font-bold italic">
+              Andros Insider Guide
+            </div>
           </div>
         </div>
       </section>
-
-      {/* Article Schema - Για να εμφανίζεσαι με φωτό στα αποτελέσματα */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": article.title,
-            "description": article.subtitle,
-            "image": `https://www.androsguesthouses.gr${article.image}`,
-            "author": { "@type": "Organization", "name": "Andros Guesthouses" }
-          })
-        }}
-      />
     </main>
   );
 }
