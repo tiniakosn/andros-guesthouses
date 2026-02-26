@@ -1,7 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import { Metadata } from "next";
+import { useParams, notFound } from "next/navigation";
+import { motion } from "framer-motion";
 
 const DIARY_CONTENT = {
   el: {
