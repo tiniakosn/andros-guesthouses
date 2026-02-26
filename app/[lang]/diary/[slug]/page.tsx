@@ -1,9 +1,8 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useParams, notFound } from "next/navigation";
-import { motion } from "framer-motion";
+import { notFound } from "next/navigation";
+import { Metadata } from "next";
+
 
 const DIARY_CONTENT = {
   el: {
@@ -94,22 +93,41 @@ const DIARY_CONTENT = {
 }
 };
 
-export default function DiaryPage() {
-  const params = useParams();
-  const lang = (params?.lang as "el" | "en") || "el";
-  const slug = params?.slug as string;
+// 1. ΔΥΝΑΜΙΚΟ SEO (Για να εμφανίζεσαι 1ος)
+export async function generateMetadata({ params }: any): Promise<Metadata> {
+  const { lang, slug } = await params;
+  const article = (DIARY_CONTENT as any)[lang]?.[slug];
+  if (!article) return { title: "Article Not Found" };
 
-  // QA Fix: Περιμένουμε να υπάρχουν τα params πριν κάνουμε το check
-  if (!slug || !lang) return null; 
+  return {
+    title: `${article.title} | Andros Insider Guide`,
+    description: article.subtitle,
+    openGraph: {
+      images: [article.image],
+    }
+  };
+}
 
-  const article = DIARY_CONTENT[lang]?.[slug as keyof typeof DIARY_CONTENT['el']];
+// 2. PRE-BUILD (Για RES 100/100 στο Vercel)
+export async function generateStaticParams() {
+  const paths: any[] = [];
+  Object.keys(DIARY_CONTENT).forEach((lang) => {
+    Object.keys((DIARY_CONTENT as any)[lang]).forEach((slug) => {
+      paths.push({ lang, slug });
+    });
+  });
+  return paths;
+}
 
-  // Αν όντως το slug δεν υπάρχει στα δεδομένα μας, τότε μόνο δείξε 404
+export default async function DiaryPage({ params }: any) {
+  const { lang, slug } = await params;
+  const article = (DIARY_CONTENT as any)[lang]?.[slug];
+
   if (!article) return notFound();
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Hero Section */}
+      {/* Hero Section - Pure CSS for Instant LCP */}
       <section className="relative h-[65vh] w-full overflow-hidden">
         <Image 
           src={article.image} 
@@ -117,50 +135,47 @@ export default function DiaryPage() {
           fill 
           className="object-cover" 
           priority 
-          fetchPriority="high" // ΑΠΑΡΑΙΤΗΤΟ ΓΙΑ ΤΟ LCP
-          quality={80}
+          sizes="100vw"
+          quality={85}
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 flex items-center justify-center p-6 text-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            className="max-w-4xl"
-          >
+          <div className="max-w-4xl">
+            {/* Στατικό κείμενο - Μηδενική καθυστέρηση */}
             <span className="text-lime-400 font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase mb-4 block">
               {article.tag}
             </span>
-            <h1 className="text-4xl md:text-6xl font-serif text-white mb-6 leading-tight">
+            <h1 className="text-3xl md:text-5xl font-serif text-white mb-6 leading-tight drop-shadow-md">
               {article.title}
             </h1>
             <p className="text-lg md:text-xl text-white/90 font-light italic">
               {article.subtitle}
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Content Section */}
+      {/* Content Section - ΑΚΡΙΒΩΣ ΤΟ ΙΔΙΟ PROSE & NAVIGATION */}
       <section className="py-16 md:py-24 px-6 bg-white relative z-10">
         <div className="max-w-3xl mx-auto">
           <div 
             className="prose prose-stone prose-lg leading-relaxed text-stone-800 font-normal"
             dangerouslySetInnerHTML={{ 
               __html: article.content
-                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Μετατρέπει τα **Bold** σε <strong>
-                .replace(/\n/g, '<br />') // Μετατρέπει τις αλλαγές γραμμής σε <br />
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n/g, '<br />')
             }} 
           />
 
-          {/* Navigation Section */}
+          {/* Navigation - ΙΔΙΑ ΚΟΥΜΠΙΑ */}
           <div className="pt-10 border-t border-stone-100 flex flex-col md:flex-row justify-between items-center gap-8">
             <Link 
               href="/" 
-                className="group flex items-center gap-3 text-stone-900 font-bold text-[10px] uppercase tracking-[0.2em] transition-all"
+              className="group flex items-center gap-3 text-stone-900 font-bold text-[10px] uppercase tracking-[0.2em] transition-all"
             >
               <span className="group-hover:-translate-x-1 transition-transform">←</span> 
               {lang === 'el' ? "Αρχική" : "Home"}
-          </Link>
+            </Link>
 
             <Link 
               href={`/${lang}/diary`} 
