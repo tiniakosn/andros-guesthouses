@@ -113,13 +113,17 @@ export default async function RoomPage({ params, searchParams }: any) {
           className="object-cover" 
           priority 
           sizes="100vw" 
-          quality={90} 
+          quality={80} 
         />
-        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
         <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 bg-gradient-to-t from-black/80 to-transparent text-white">
           <div className="max-w-7xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-display mb-2">{content.title}</h1>
-            <p className="text-lg opacity-90 font-sans">{content.size} • {content.guests}</p>
+            <h1 className="text-4xl md:text-6xl font-display text-white mb-3 drop-shadow-lg leading-tight">
+              {content.title}
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 font-sans font-light tracking-wide">
+              {content.size} • {content.guests}
+            </p>
           </div>
         </div>
       </div>
