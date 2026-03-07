@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation"; // Προσθήκη useRouter
+import { usePathname, useRouter } from "next/navigation";
 import LanguageSwitcher from "./LanguageSwitcher"; 
 
 const navLinks = [
@@ -33,17 +33,22 @@ export default function Navbar() {
     };
   }, []);
 
+  // ΔΙΟΡΘΩΣΗ 1: Κλείνουμε το μενού ΜΟΝΟ όταν αλλάζει η σελίδα
   useEffect(() => {
     setIsOpen(false);
-    // Κλειδώνουμε το scroll όταν το μενού είναι ανοιχτό
+  }, [pathname]);
+
+  // ΔΙΟΡΘΩΣΗ 2: Ξεχωριστό εφέ για το κλείδωμα του scroll
+  useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
-  }, [pathname, isOpen]);
+    // Καθαρισμός όταν αποσυντίθεται το component
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [isOpen]);
 
-  // Smart Navigation για το #rooms
   const handleNavLink = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href === "/#rooms" && pathname !== "/") {
       e.preventDefault();
@@ -68,7 +73,6 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         
-        {/* LOGO - Μεγαλύτερο Click Area */}
         <Link href="/" className="relative z-[101] p-2 -ml-2 block">
           <div className="relative w-14 h-14 md:w-16 md:h-16">
             <Image 
@@ -77,20 +81,18 @@ export default function Navbar() {
               fill
               className="object-contain object-left" 
               priority
-              fetchPriority="high"
               sizes="64px"
             />
           </div>
         </Link>
 
-        {/* DESKTOP MENU */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.en}
               href={link.href}
               onClick={(e) => handleNavLink(e, link.href)}
-              className={`text-sm font-bold uppercase tracking-widest transition-colors relative group py-2 ${
+              className={`text-sm font-bold uppercase tracking-widest transition-colors py-2 ${
                 isDarkText ? "text-stone-800 hover:text-olive-700" : "text-white hover:text-white/80"
               }`}
             >
@@ -108,7 +110,7 @@ export default function Navbar() {
           </Link>
         </nav>
 
-        {/* MOBILE TOGGLE - Αυξημένο Touch Target (48px) */}
+        {/* MOBILE TOGGLE */}
         <div className="flex items-center gap-2 md:hidden z-[101]">
           {!isOpen && <LanguageSwitcher isDark={isDarkText} />}
           
@@ -125,9 +127,9 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* MOBILE MENU OVERLAY */}
+        {/* MOBILE MENU OVERLAY - Διορθωμένο Z-index για να είναι πάνω από όλα */}
         <div 
-          className={`fixed inset-0 z-50 bg-[#fafaf9] flex flex-col items-center justify-center transition-transform duration-500 ease-in-out ${
+          className={`fixed inset-0 z-[100] bg-[#fafaf9] flex flex-col items-center justify-center transition-transform duration-500 ease-in-out ${
             isOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
@@ -137,7 +139,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavLink(e, link.href)}
-                className="text-4xl font-display font-bold text-stone-900 active:text-olive-700 active:scale-95 transition-all p-4"
+                className="text-4xl font-display font-bold text-stone-900 active:text-olive-700 p-4"
               >
                 {lang === "el" ? link.el : link.en}
               </Link>
@@ -145,7 +147,7 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={() => setIsOpen(false)}
-              className="px-12 py-5 bg-stone-900 text-white font-bold uppercase tracking-widest text-sm rounded-full shadow-2xl active:scale-90 transition-transform"
+              className="px-12 py-5 bg-stone-900 text-white font-bold uppercase tracking-widest text-sm rounded-full shadow-2xl"
             >
               {lang === "el" ? "Κάντε Κράτηση" : "Book Now"}
             </Link>
