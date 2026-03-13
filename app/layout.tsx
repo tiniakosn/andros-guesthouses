@@ -41,10 +41,6 @@ export const metadata: Metadata = {
   // SRE ADDITION: Canonical & Hreflang (International SEO)
   alternates: {
     canonical: "https://www.androsguesthouses.gr",
-    languages: {
-      'en-US': 'https://www.androsguesthouses.gr/en',
-      'el-GR': 'https://www.androsguesthouses.gr/el',
-    },
   },
 
   openGraph: {

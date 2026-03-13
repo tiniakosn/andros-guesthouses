@@ -4,11 +4,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.androsguesthouses.gr';
 
   const routes = [
-    '', // Αρχική (Εδώ μέσα θα βρει το /#rooms)
-    '/experience', // ✅ ΣΩΣΤΟ: Είναι κανονική σελίδα, οπότε μένει!
-    '/contact',    // ✅ ΣΩΣΤΟ: Είναι κανονική σελίδα
+    '', // Η μία και μοναδική Αρχική σου
+    '/experience', 
+    '/contact', 
     
-    // Δωμάτια (Εφόσον είναι ξεχωριστές σελίδες)
+    // Δωμάτια
     '/rooms/aegean-studio',
     '/rooms/garden-suite',
     '/rooms/grand-residence',
