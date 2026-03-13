@@ -75,9 +75,8 @@ function RoomCardSlider({ room, lang }: { room: typeof roomTypes[0], lang: strin
   return (
     <div className="group flex flex-col h-full bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl border border-stone-100 transition-all duration-500 hover:-translate-y-2 relative cursor-pointer">
     
-      {/* 1. ΤΟ LINK ΚΑΛΥΠΤΕΙ ΤΑ ΠΑΝΤΑ (z-40) ΕΚΤΟΣ ΑΠΟ ΤΑ ΒΕΛΑΚΙΑ */}
       <Link 
-        href={`/rooms/${room.slug}`} 
+        href={`/rooms/${room.slug}${lang === "en" ? "?lang=en" : ""}`} 
         className="absolute inset-0 z-40" 
         aria-label={`View details for ${t.title}`}
       />
