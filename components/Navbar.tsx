@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { useState, useEffect, Suspense } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import LanguageSwitcher from "./LanguageSwitcher"; 
 
 const navLinks = [
@@ -13,15 +13,23 @@ const navLinks = [
   { en: "Contact", el: "Επικοινωνία", href: "/contact" },
 ];
 
-export default function Navbar() {
+function NavbarContent() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [lang, setLang] = useState("en"); 
   const pathname = usePathname();
   const router = useRouter();
+  const searchParams = useSearchParams();
 
+  // Συγχρονισμός γλώσσας από το URL ή το document
   useEffect(() => {
-    setLang(document.documentElement.lang || "en");
+    const urlLang = searchParams.get("lang");
+    if (urlLang) {
+      setLang(urlLang);
+    } else {
+      setLang(document.documentElement.lang || "en");
+    }
+
     const handleLangChange = (e: any) => setLang(e.detail);
     window.addEventListener("langChange", handleLangChange);
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -31,28 +39,32 @@ export default function Navbar() {
       window.removeEventListener("langChange", handleLangChange);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [searchParams]);
 
-  // ΔΙΟΡΘΩΣΗ 1: Κλείνουμε το μενού ΜΟΝΟ όταν αλλάζει η σελίδα
   useEffect(() => {
     setIsOpen(false);
-  }, [pathname]);
-
-  // ΔΙΟΡΘΩΣΗ 2: Ξεχωριστό εφέ για το κλείδωμα του scroll
-  useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
-    // Καθαρισμός όταν αποσυντίθεται το component
     return () => { document.body.style.overflow = 'unset'; };
-  }, [isOpen]);
+  }, [pathname, isOpen]);
+
+  // ΔΙΟΡΘΩΣΗ: Διατήρηση του ?lang=en κατά την πλοήγηση
+  const getCleanHref = (href: string) => {
+    const currentLang = searchParams.get("lang") || lang;
+    if (currentLang === "en") {
+      return href.includes("?") ? `${href}&lang=en` : `${href}?lang=en`;
+    }
+    return href;
+  };
 
   const handleNavLink = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    const targetHref = getCleanHref(href);
     if (href === "/#rooms" && pathname !== "/") {
       e.preventDefault();
-      router.push("/");
+      router.push(targetHref);
       setTimeout(() => {
         const el = document.getElementById("rooms");
         if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -64,25 +76,11 @@ export default function Navbar() {
   const isDarkText = scrolled || pathname === "/contact" || isOpen;
 
   return (
-    <header
-      className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
-        scrolled 
-          ? "bg-[#fafaf9]/95 backdrop-blur-md shadow-sm py-3" 
-          : "bg-transparent py-5"
-      }`}
-    >
+    <header className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${scrolled ? "bg-[#fafaf9]/95 backdrop-blur-md shadow-sm py-3" : "bg-transparent py-5"}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        
-        <Link href="/" className="relative z-[101] p-2 -ml-2 block">
+        <Link href={getCleanHref("/")} className="relative z-[101] p-2 -ml-2 block">
           <div className="relative w-14 h-14 md:w-16 md:h-16">
-            <Image 
-              src="/logo-navbar.png"
-              alt="Andros Guesthouses"
-              fill
-              className="object-contain object-left" 
-              priority
-              sizes="64px"
-            />
+            <Image src="/logo-navbar.png" alt="Andros Guesthouses" fill className="object-contain object-left" priority sizes="64px" />
           </div>
         </Link>
 
@@ -90,35 +88,23 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <Link
               key={link.en}
-              href={link.href}
+              href={getCleanHref(link.href)}
               onClick={(e) => handleNavLink(e, link.href)}
-              className={`text-sm font-bold uppercase tracking-widest transition-colors py-2 ${
-                isDarkText ? "text-stone-800 hover:text-olive-700" : "text-white hover:text-white/80"
-              }`}
+              className={`text-sm font-bold uppercase tracking-widest transition-colors py-2 ${isDarkText ? "text-stone-800 hover:text-olive-700" : "text-white hover:text-white/80"}`}
             >
               {lang === "el" ? link.el : link.en}
             </Link>
           ))}
           <LanguageSwitcher isDark={isDarkText} />
-          <Link
-            href="/contact"
-            className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-md active:scale-95 ${
-              isDarkText ? "bg-stone-900 text-white" : "bg-white text-stone-900"
-            }`}
-          >
+          <Link href={getCleanHref("/contact")} className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-md active:scale-95 ${isDarkText ? "bg-stone-900 text-white" : "bg-white text-stone-900"}`}>
             {lang === "el" ? "Κρατηση" : "Book Now"}
           </Link>
         </nav>
 
-        {/* MOBILE TOGGLE */}
+        {/* MOBILE MENU TOGGLE */}
         <div className="flex items-center gap-2 md:hidden z-[101]">
           {!isOpen && <LanguageSwitcher isDark={isDarkText} />}
-          
-          <button
-            className="w-12 h-12 flex flex-col justify-center items-center focus:outline-none bg-black/5 rounded-full"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Menu"
-          >
+          <button className="w-12 h-12 flex flex-col justify-center items-center bg-black/5 rounded-full" onClick={() => setIsOpen(!isOpen)} aria-label="Menu">
             <div className="flex flex-col items-end gap-1.5 w-8">
               <span className={`h-[2px] block rounded-full transition-all duration-300 ${isDarkText ? "bg-stone-900" : "bg-white"} ${isOpen ? "w-8 rotate-45 translate-y-[8px]" : "w-8"}`}></span>
               <span className={`w-6 h-[2px] block rounded-full transition-all duration-300 ${isDarkText ? "bg-stone-900" : "bg-white"} ${isOpen ? "opacity-0" : "opacity-100"}`}></span>
@@ -127,33 +113,29 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* MOBILE MENU OVERLAY - Διορθωμένο Z-index για να είναι πάνω από όλα */}
-        <div 
-          className={`fixed inset-0 z-[100] bg-[#fafaf9] flex flex-col items-center justify-center transition-transform duration-500 ease-in-out ${
-            isOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
+        {/* MOBILE OVERLAY */}
+        <div className={`fixed inset-0 z-[100] bg-[#fafaf9] flex flex-col items-center justify-center transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"}`}>
           <nav className="flex flex-col items-center space-y-10">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleNavLink(e, link.href)}
-                className="text-4xl font-display font-bold text-stone-900 active:text-olive-700 p-4"
-              >
+              <Link key={link.href} href={getCleanHref(link.href)} onClick={(e) => handleNavLink(e, link.href)} className="text-4xl font-display font-bold text-stone-900 active:text-olive-700 p-4">
                 {lang === "el" ? link.el : link.en}
               </Link>
             ))}
-            <Link
-              href="/contact"
-              onClick={() => setIsOpen(false)}
-              className="px-12 py-5 bg-stone-900 text-white font-bold uppercase tracking-widest text-sm rounded-full shadow-2xl"
-            >
+            <Link href={getCleanHref("/contact")} onClick={() => setIsOpen(false)} className="px-12 py-5 bg-stone-900 text-white font-bold uppercase tracking-widest text-sm rounded-full shadow-2xl">
               {lang === "el" ? "Κάντε Κράτηση" : "Book Now"}
             </Link>
           </nav>
         </div>
       </div>
     </header>
+  );
+}
+
+// Wrapping with Suspense for Next.js useSearchParams
+export default function Navbar() {
+  return (
+    <Suspense fallback={<div className="h-20" />}>
+      <NavbarContent />
+    </Suspense>
   );
 }
