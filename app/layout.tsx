@@ -19,29 +19,37 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.androsguesthouses.gr"),
   
+  // SRE SEO Upgrade: Στοχεύουμε International Keywords στον τίτλο
   title: {
-    default: "Andros Guesthouses | Accommodation & Rooms in Chora Andros",
+    default: "Boutique Accommodation in Andros Chora | Sea View Rooms",
     template: "%s | Andros Guesthouses"
   },
-  description: "Premium accommodation in Chora, Andros. Discover the best rooms, suites, and stone guesthouse stays near Nimborio beach. Book your authentic Greek escape now.",
+  description: "Premium stone-built accommodation in Chora, Andros. Discover our sea view suites and authentic guest rooms near Nimborio beach. Book your Greek island escape.",
   
   keywords: [
     'andros accommodation', 
+    'boutique hotel andros',
+    'rooms chora andros',
+    'sea view apartments andros',
     'δωματια ανδροσ', 
-    'ενοικιαζομενα δωματια ανδροσ', 
+    'ενοικιαζομενα δωματια ανδροσ χωρα', 
     'διαμονη ανδρος', 
     'andros guesthouses',
     'andros suites'
   ],
 
-  // SRE ADDITION: Canonical URL για αποφυγή Duplicate Content
+  // SRE ADDITION: Canonical & Hreflang (International SEO)
   alternates: {
     canonical: "https://www.androsguesthouses.gr",
+    languages: {
+      'en-US': 'https://www.androsguesthouses.gr/en',
+      'el-GR': 'https://www.androsguesthouses.gr/el',
+    },
   },
 
   openGraph: {
-    title: "Andros Guesthouses | Dreamy Stay in Chora",
-    description: "Your private stone retreat in Andros. Panoramic views, local tips, and authentic Greek hospitality steps from the beach.",
+    title: "Andros Guesthouses | Sea View Accommodation in Chora",
+    description: "Your private stone retreat in Andros. Panoramic sea views, local tips, and authentic Greek hospitality steps from the beach.",
     url: "https://www.androsguesthouses.gr",
     siteName: "Andros Guesthouses",
     locale: "en_US",
@@ -51,7 +59,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image-v3.jpg", 
         width: 1200,
         height: 630,
-        alt: "Andros Guesthouses Panoramic View",
+        alt: "Andros Guesthouses Panoramic Sea View",
       },
     ],
   },
@@ -97,8 +105,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.androsguesthouses.gr" />
         <link rel="dns-prefetch" href="https://www.androsguesthouses.gr" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
-        {/* Τα OG tags παράγονται αυτόματα από το Metadata object πλέον */}
       </head>
       <body className={`${manrope.variable} antialiased text-stone-900 bg-stone-50`}>
         <Navbar />
@@ -122,7 +128,7 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Διορθωμένο Schema: GuestHouse Type */}
+        {/* Διορθωμένο Schema: GuestHouse Type με Amenities */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -149,7 +155,19 @@ export default function RootLayout({
                 "longitude": 24.936
               },
               "priceRange": "€€",
-              "description": "Authentic stone-built guesthouse in Chora, Andros. Features panoramic views and premium rooms near the beach."
+              "description": "Authentic stone-built guesthouse in Chora, Andros. Features panoramic sea views and premium rooms near the beach.",
+              "amenityFeature": [
+                {
+                  "@type": "LocationFeatureSpecification",
+                  "name": "Sea View",
+                  "value": true
+                },
+                {
+                  "@type": "LocationFeatureSpecification",
+                  "name": "Free Wi-Fi",
+                  "value": true
+                }
+              ]
             }),
           }}
         />
