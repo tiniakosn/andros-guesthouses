@@ -1,8 +1,11 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import { notFound } from "next/navigation";
-import { Metadata } from "next";
+
 
 const roomsData = [
   {
@@ -79,36 +82,49 @@ const roomsData = [
   }
 ];
 
-export async function generateMetadata({ params, searchParams }: any): Promise<Metadata> {
-  const { slug } = await params;
-  const { lang } = await searchParams;
-  const room = roomsData.find((r) => r.slug === slug);
-  if (!room) return { title: "Room Not Found" };
 
-  const content = lang === "en" ? room.en : room.el;
-  return {
-    title: content.seoTitle, // SRE Fix: Επιστρέφει το keyword-rich title για τα Bots
-    description: content.metaDesc,
-    alternates: { canonical: `https://www.androsguesthouses.gr/rooms/${slug}` }
-  };
-}
+export default function RoomPage({ params }: { params: { slug: string } }) {
+  const [lang, setLang] = useState("en"); // Default English για τους ξένους
+  const [isLoaded, setIsLoaded] = useState(false);
 
-export default async function RoomPage({ params, searchParams }: any) {
-  const { slug } = await params;
-  const { lang } = await searchParams;
-  const room = roomsData.find((r) => r.slug === slug);
+  useEffect(() => {
+    // 1. Διάβασμα γλώσσας από το URL (?lang=en)
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = urlParams.get("lang");
+    
+    if (urlLang === "el" || urlLang === "en") {
+      setLang(urlLang);
+    } else {
+      setLang(document.documentElement.lang || "en");
+    }
+
+    // 2. Listener για την αλλαγή από το κουμπί στο Navbar
+    const handleLangChange = (e: any) => setLang(e.detail);
+    window.addEventListener("langChange", handleLangChange);
+    
+    setIsLoaded(true);
+    return () => window.removeEventListener("langChange", handleLangChange);
+  }, []);
+
+  const room = roomsData.find((r) => r.slug === params.slug);
   if (!room) notFound();
 
-  const isEn = lang === "en";
-  const content = isEn ? room.en : room.el;
+  // Επιλογή περιεχομένου βάσει γλώσσας
+  const content = lang === "el" ? room.el : room.en;
+
+  // SRE Fix: Αποφυγή "αναβοσβήσματος" (hydration flicker)
+  if (!isLoaded) return <div className="min-h-screen bg-[#fafaf9]" />;
 
   return (
     <main className="bg-[#fafaf9] min-h-screen pb-12">
       <Navbar />
       
-      {/* Back Button */}
+      {/* Back Button - Προσθήκη ?lang=en στο link */}
       <div className="absolute top-28 left-6 z-20 md:left-12">
-        <Link href="/" className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-white/30 transition-all inline-block active:scale-95">
+        <Link 
+          href={lang === "en" ? "/?lang=en" : "/"} 
+          className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-white/30 transition-all inline-block active:scale-95"
+        >
           ← {content.sidebar.back}
         </Link>
       </div>
@@ -117,18 +133,16 @@ export default async function RoomPage({ params, searchParams }: any) {
       <div className="relative h-[60vh] w-full">
         <Image 
           src={room.images[0]} 
-          alt={`${room.name} Andros Chora`} // SRE Fix: Καθαρό Alt Text
+          alt={`${room.name} Andros Chora`} 
           fill 
           className="object-cover" 
           priority 
-          fetchPriority="high" // SRE Fix: Επιτάχυνση του LCP
           sizes="100vw" 
           quality={80} 
         />
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 bg-gradient-to-t from-black/80 to-transparent text-white">
           <div className="max-w-7xl mx-auto">
-            {/* SRE Fix: Καθαρό H1 για τον πελάτη και δυναμικό H2 για την Google */}
             <h1 className="text-3xl md:text-5xl font-display text-white mb-2 drop-shadow-lg leading-tight">
               {room.name}
             </h1>
