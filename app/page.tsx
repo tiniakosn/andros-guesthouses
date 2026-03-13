@@ -27,8 +27,16 @@ export default function Home() {
     const handleLangChange = (e: any) => setLang(e.detail);
     window.addEventListener("langChange", handleLangChange);
     
-    const currentLang = typeof document !== 'undefined' ? document.documentElement.lang || "en" : "en";
-    setLang(currentLang);
+    // SRE FIX: Διαβάζουμε ΠΡΩΤΑ το URL για τη διαφήμιση
+    const params = new URLSearchParams(window.location.search);
+    const urlLang = params.get("lang");
+
+    if (urlLang === "el" || urlLang === "en") {
+      setLang(urlLang);
+    } else {
+      const currentLang = typeof document !== 'undefined' ? document.documentElement.lang || "en" : "en";
+      setLang(currentLang);
+    }
 
     return () => window.removeEventListener("langChange", handleLangChange);
   }, []);
