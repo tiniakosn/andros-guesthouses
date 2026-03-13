@@ -1,9 +1,9 @@
 "use client";
 
+import { useState, useEffect, use } from "react"; // ΠΡΟΣΘΕΣΕ ΤΟ "use" ΕΔΩ
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
 import { notFound } from "next/navigation";
 
 
