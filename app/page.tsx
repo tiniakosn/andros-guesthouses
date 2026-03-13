@@ -3,17 +3,14 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import Navbar from "@/components/Navbar"; // Το Navbar μένει στατικό γιατί είναι στην κορυφή
+import Navbar from "@/components/Navbar"; 
 import { track } from "@vercel/analytics";
 
-// --- DYNAMIC IMPORTS: Η Λύση για το "Unused JavaScript" ---
-// Χρησιμοποιούμε ssr: true για να μην χάσουμε το SEO
 const About = dynamic(() => import("@/components/About"), { ssr: true });
 const Rooms = dynamic(() => import("@/components/Rooms"), { ssr: true });
 const Amenities = dynamic(() => import("@/components/Amenities"), { ssr: true });
 const LocalInsider = dynamic(() => import("@/components/LocalInsider"), { ssr: true });
 
-// Components που δεν επηρεάζουν το SEO ή έχουν browser APIs
 const Testimonials = dynamic(() => import("@/components/Testimonials"), { 
   ssr: false,
   loading: () => <div className="h-20" /> 
@@ -23,41 +20,18 @@ const InstaFeed = dynamic(() => import("@/components/InstaFeed"), {
   ssr: false 
 });
 
-
 export default function Home() {
   const [lang, setLang] = useState("en");
 
   useEffect(() => {
-    // Ακούμε το "σήμα" αλλαγής γλώσσας
     const handleLangChange = (e: any) => setLang(e.detail);
     window.addEventListener("langChange", handleLangChange);
     
-    // Αρχικός έλεγχος
     const currentLang = typeof document !== 'undefined' ? document.documentElement.lang || "en" : "en";
     setLang(currentLang);
 
     return () => window.removeEventListener("langChange", handleLangChange);
   }, []);
-
-  // Περιεχόμενο Hero Section
-  const heroContent = {
-    en: {
-      welcome: "Welcome to Chora",
-      title: "Andros Guesthouses",
-      subtitle: "Authentic Hospitality. Endless Blue. Your private stone sanctuary in the Aegean.",
-      viewRooms: "View Rooms",
-      experience: "The Experience"
-    },
-    el: {
-      welcome: "Καλώς ήρθατε στη Χώρα",
-      title: "Andros Guesthouses",
-      subtitle: "Αυθεντική Φιλοξενία. Απέραντο Γαλάζιο. Το ιδιωτικό σας πέτρινο καταφύγιο στο Αιγαίο.",
-      viewRooms: "Δείτε τα Δωμάτια",
-      experience: "Η Εμπειρία"
-    }
-  };
-
-  const t = lang === "el" ? heroContent.el : heroContent.en;
 
   return (
     <main className="min-h-screen bg-[#fafaf9] overflow-x-hidden">
@@ -65,9 +39,7 @@ export default function Home() {
       
       {/* HERO SECTION */}
       <div className="relative h-screen flex flex-col items-center justify-center p-6 overflow-hidden">
-        {/* Background Image Container */}
         <div className="absolute inset-0 z-0">
-          
           <Image
             src="/images/no5.5.webp"
             alt="Andros Guesthouses View"
@@ -75,37 +47,36 @@ export default function Home() {
             className="object-cover object-top"
             priority
             fetchPriority="high" 
-            quality={75} // Μειώνουμε λίγο τα KB
-            sizes="100vw" // Οδηγία για το σωστό μέγεθος αρχείου
+            quality={75}
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/50" />
         </div>
 
-        {/* Content Container */}
         <div className="relative z-10 max-w-5xl text-center space-y-8 mt-10">
           <div className="flex justify-center">
+            {/* SRE SEO FIX: Το κάναμε span, αφήνουμε την ιεραρχία καθαρή */}
             <span className="inline-block text-white/95 font-sans font-bold tracking-[0.3em] text-xs md:text-sm uppercase mb-2 border-b border-white/30 pb-2 animate-fadein">
-              {/* Διόρθωση: Στατικό κείμενο και εδώ */}
               {lang === "el" ? "Καλώς ήρθατε στη Χώρα" : "Welcome to Chora"}
             </span>
           </div>
 
           <div className="flex justify-center">
+            {/* Το κεντρικό Brand Name παραμένει H1 */}
             <h1 className="text-5xl md:text-8xl font-display text-white tracking-tighter leading-none animate-entrance">
               Andros <br className="md:hidden" /> Guesthouses
             </h1>
           </div>
 
-          {/* --- ΥΠΟΤΙΤΛΟΣ (ΔΙΟΡΘΩΣΗ ΓΙΑ ΤΑ 1.040ms) --- */}
           <div className="flex justify-center">
-            <p className="text-lg md:text-2xl text-white font-sans font-medium max-w-2xl mx-auto leading-relaxed">
+            {/* SRE SEO FIX: Το <p> έγινε <h2> και ενσωματώσαμε τα "Golden Keywords" */}
+            <h2 className="text-lg md:text-2xl text-white font-sans font-medium max-w-2xl mx-auto leading-relaxed">
               {lang === "el" 
-                ? "Αυθεντική Φιλοξενία. Απέραντο Γαλάζιο. Το ιδιωτικό σας πέτρινο καταφύγιο στο Αιγαίο." 
-                : "Authentic Hospitality. Endless Blue. Your private stone sanctuary in the Aegean."}
-            </p>
+                ? "Boutique Διαμονή στη Χώρα της Άνδρου. Το ιδιωτικό σας πέτρινο καταφύγιο στο Αιγαίο." 
+                : "Boutique Accommodation in Andros Chora. Your private stone sanctuary in the Aegean."}
+            </h2>
           </div>
             
-          {/* --- ΚΟΥΜΠΙΑ (ΔΙΟΡΘΩΣΗ ΓΙΑ ΤΟ PERFORMANCE) --- */}
           <div className="flex justify-center pt-8">
             <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
               <a 
@@ -124,11 +95,8 @@ export default function Home() {
               </a>
             </div>
           </div>
-        </div> {/* Τέλος του Content Container */}
+        </div>
         
-        
-        {/* Scroll Arrow */}
-        {/* Scroll Arrow - Καθαρό και Λειτουργικό */}
         <Link 
           href="#about" 
           className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 text-white/40 hover:text-white transition-colors animate-bounce p-2"
@@ -138,26 +106,14 @@ export default function Home() {
             <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
           </svg>
         </Link>
-      </div> {/* Τέλος του Hero Section */}
+      </div>
 
-      {/* --- SECTIONS --- */}
-      {/* Σημείωση: Πρέπει να περάσεις το lang prop στα παρακάτω components αν θέλεις να μεταφράζονται και αυτά εσωτερικά */}
-      {/* --- SECTIONS --- */}
-      {/* Ενοποιημένη ροή χωρίς περιττά ενδιάμεσα tags */}
-      
       <About />
-      
-      {/* Το Rooms διαχειρίζεται το bg-[#fafaf9] εσωτερικά όπως είπαμε */}
       <Rooms />
-
       <Amenities />
-
       <LocalInsider lang={lang} />
-    
       <Testimonials />
-      
       <InstaFeed />
-      
     </main>
   );
 }
