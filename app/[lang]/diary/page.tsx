@@ -29,6 +29,13 @@ const ALL_ARTICLES = [
     tag: "GASTRONOMY", 
     img: "/images/food-guide.webp" 
   },
+  { 
+    id: "04", 
+    slug: "athens-to-andros-guide", 
+    title: { el: "Πώς θα έρθετε στην Άνδρο", en: "Athens to Andros: Complete Guide" }, 
+    tag: "TRAVEL GUIDE", 
+    img: "/images/gavrio-andros-greece.webp" 
+  },
 ];
 
 export default function DiaryIndexPage() {
