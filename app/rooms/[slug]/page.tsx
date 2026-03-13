@@ -83,12 +83,15 @@ const roomsData = [
 ];
 
 
-export default function RoomPage({ params }: { params: { slug: string } }) {
-  const [lang, setLang] = useState("en"); // Default English για τους ξένους
+export default function RoomPage({ params }: { params: Promise<{ slug: string }> }) {
+  // SRE FIX: Ξεκλειδώνουμε το slug γιατί πλέον είναι Promise
+  const resolvedParams = use(params);
+  const slug = resolvedParams.slug;
+
+  const [lang, setLang] = useState("en"); 
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // 1. Διάβασμα γλώσσας από το URL (?lang=en)
     const urlParams = new URLSearchParams(window.location.search);
     const urlLang = urlParams.get("lang");
     
@@ -98,7 +101,6 @@ export default function RoomPage({ params }: { params: { slug: string } }) {
       setLang(document.documentElement.lang || "en");
     }
 
-    // 2. Listener για την αλλαγή από το κουμπί στο Navbar
     const handleLangChange = (e: any) => setLang(e.detail);
     window.addEventListener("langChange", handleLangChange);
     
@@ -106,13 +108,12 @@ export default function RoomPage({ params }: { params: { slug: string } }) {
     return () => window.removeEventListener("langChange", handleLangChange);
   }, []);
 
-  const room = roomsData.find((r) => r.slug === params.slug);
+  // SRE FIX: Χρησιμοποιούμε το slug που ξεκλειδώσαμε παραπάνω
+  const room = roomsData.find((r) => r.slug === slug);
   if (!room) notFound();
 
-  // Επιλογή περιεχομένου βάσει γλώσσας
   const content = lang === "el" ? room.el : room.en;
 
-  // SRE Fix: Αποφυγή "αναβοσβήσματος" (hydration flicker)
   if (!isLoaded) return <div className="min-h-screen bg-[#fafaf9]" />;
 
   return (
