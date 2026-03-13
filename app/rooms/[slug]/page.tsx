@@ -7,10 +7,12 @@ import { Metadata } from "next";
 const roomsData = [
   {
     slug: "aegean-studio",
+    name: "Aegean Studio", // Καθαρό όνομα για τον πελάτη
     price: "90€",
     images: ["/images/no5.6.webp", "/images/no5.1.webp", "/images/no5.2.webp", "/images/no5.3.webp"],
     el: {
-      title: "Aegean Studio | Ενοικιαζόμενα Δωμάτια Χώρα Άνδρος",
+      seoTitle: "Aegean Studio | Ενοικιαζόμενα Δωμάτια με Θέα Χώρα Άνδρος",
+      subtitle: "Μοντέρνο δωμάτιο με θέα θάλασσα στη Χώρα", // H2 Keyword Injection
       metaDesc: "Διαμονή στη Χώρα της Άνδρου στο Aegean Studio. Μοντέρνο δωμάτιο με θέα θάλασσα, πλήρη κουζίνα και πρόσβαση στα Andros Routes.",
       size: "25 τ.μ.", guests: "2-3 Άτομα", bed: "1 Διπλό Κρεβάτι",
       description: "Νιώστε τον παλμό της Χώρας σε έναν χώρο σχεδιασμένο για τον σύγχρονο ταξιδιώτη. Στον 1ο όροφο, το Aegean Studio ορίζει το 'Smart Living'. Φωτεινό, μοντέρνο και πλήρως εξοπλισμένο, σας επιτρέπει να ζήσετε σαν ντόπιος. Ξυπνήστε με το λαμπερό ελληνικό φως, ετοιμάστε το πρωινό σας σε μια κουζίνα πλήρους μεγέθους και απολαύστε τον Nespresso σας στο μπαλκόνι ατενίζοντας το βουνό και το λιμάνι.",
@@ -18,7 +20,8 @@ const roomsData = [
       sidebar: { back: "ΠΙΣΩ ΣΤΗΝ ΑΡΧΙΚΗ", start: "Από", night: "/νύχτα", guests: "Επισκέπτες:", beds: "Κρεβάτια:", checkin: "Check-in:", button: "Κάντε Κράτηση", guarantee: "Εγγύηση Καλύτερης Τιμής", experience: "Η Εμπειρία", highlights: "Χαρακτηριστικά", gallery: "Φωτογραφίες" }
     },
     en: {
-      title: "Aegean Studio | Accommodation Chora Andros",
+      seoTitle: "Aegean Studio | Sea View Accommodation Chora Andros",
+      subtitle: "Modern Sea View Studio in Chora", // H2 Keyword Injection
       metaDesc: "Stay in Chora Andros at Aegean Studio. Modern room with sea view, full kitchen, and easy access to Andros Routes hiking trails.",
       size: "25 m²", guests: "2-3 Guests", bed: "1 Double Bed",
       description: "Experience the pulse of Chora in a space designed for modern travelers. Located on the 1st floor, the Aegean Studio defines 'Smart Living'. Bright, modern, and fully equipped, it allows you to live like a local. Wake up to the brilliant Greek light, prepare breakfast in a full-size kitchen, and enjoy your Nespresso on the balcony while gazing at the mountain and the harbor.",
@@ -28,10 +31,12 @@ const roomsData = [
   },
   {
     slug: "garden-suite",
+    name: "Garden Suite",
     price: "90€",
     images: ["/images/balcony1.webp", "/images/no2.2.webp", "/images/no2.3.webp"],
     el: {
-      title: "Garden Suite | Διαμονή με Αυλή Χώρα Άνδρος",
+      seoTitle: "Garden Suite | Διαμονή με Ιδιωτική Αυλή Χώρα Άνδρος",
+      subtitle: "Οικογενειακή σουίτα με δροσερή ιδιωτική αυλή",
       metaDesc: "Garden Suite στη Χώρα της Άνδρου. Ιδανικό για οικογένειες, με άμεση πρόσβαση σε δροσερή ιδιωτική αυλή.",
       size: "40 τ.μ.", guests: "2-5 Άτομα", bed: "2 Διπλά + Καναπές",
       description: "Η απόλυτη αίσθηση εξοχικής κατοικίας. Στο ισόγειο, η Garden Suite προσφέρει την πολυτέλεια της άνεσης και την άμεση επαφή με τη φύση. Ιδανική για οικογένειες ή παρέες, διαθέτει ευρύχωρους χώρους (δύο διπλά κρεβάτια) και μεγάλη κουζίνα. Το highlight; Η άμεση πρόσβαση στη δροσερή, ιδιωτική αυλή, που γίνεται το φυσικό σας καθιστικό τα ζεστά απογεύματα.",
@@ -39,7 +44,8 @@ const roomsData = [
       sidebar: { back: "ΠΙΣΩ ΣΤΗΝ ΑΡΧΙΚΗ", start: "Από", night: "/νύχτα", guests: "Επισκέπτες:", beds: "Κρεβάτια:", checkin: "Check-in:", button: "Κάντε Κράτηση", guarantee: "Εγγύηση Καλύτερης Τιμής", experience: "Η Εμπειρία", highlights: "Χαρακτηριστικά", gallery: "Φωτογραφίες" }
     },
     en: {
-      title: "Garden Suite | Family Stay Chora Andros",
+      seoTitle: "Garden Suite | Family Accommodation Chora Andros",
+      subtitle: "Family Suite with Private Courtyard",
       metaDesc: "Garden Suite in Chora Andros. Perfect for families, featuring direct access to a cool private courtyard.",
       size: "40 m²", guests: "2-5 Guests", bed: "2 Doubles + Sofa",
       description: "The ultimate summer home feeling. Located on the ground floor, the Garden Suite offers the luxury of comfort and direct connection with nature. Ideal for families or groups, featuring spacious areas (two double beds) and a large kitchen for family meals. The highlight? Direct access to the cool, private courtyard.",
@@ -49,10 +55,12 @@ const roomsData = [
   },
   {
     slug: "grand-residence",
+    name: "Grand Residence",
     price: "100€",
     images: ["/images/no5.5.webp", "/images/no5.4.webp", "/images/no5.7.webp"],
     el: {
-      title: "Grand Residence | Penthouse με Θέα Χώρα Άνδρος",
+      seoTitle: "Grand Residence | Penthouse με Πανοραμική Θέα Άνδρος",
+      subtitle: "Πολυτελές ρετιρέ με πανοραμική θέα στο λιμάνι",
       metaDesc: "Το Grand Residence προσφέρει πανοραμική θέα στο λιμάνι της Άνδρου. Πολυτελής διαμονή για 4+ άτομα.",
       size: "55 τ.μ.", guests: "4+ Ενήλικες", bed: "Υπνοδωμάτιο + Σαλόνι",
       description: "Η ναυαρχίδα της φιλοξενίας μας. Στον 2ο όροφο (ρετιρέ), η ιδιωτικότητα συναντά την πανοραμική θέα. Ένα πραγματικό σπίτι μακριά από το σπίτι, με γενναιόδωρους χώρους που φιλοξενούν άνετα 4+ άτομα. Απολαύστε το ηλιοβασίλεμα από τη μεγάλη βεράντα με θέα σε όλη τη Χώρα και το λιμάνι.",
@@ -60,7 +68,8 @@ const roomsData = [
       sidebar: { back: "ΠΙΣΩ ΣΤΗΝ ΑΡΧΙΚΗ", start: "Από", night: "/νύχτα", guests: "Επισκέπτες:", beds: "Κρεβάτια:", checkin: "Check-in:", button: "Κάντε Κράτηση", guarantee: "Εγγύηση Καλύτερης Τιμής", experience: "Η Εμπειρία", highlights: "Χαρακτηριστικά", gallery: "Φωτογραφίες" }
     },
     en: {
-      title: "Grand Residence | Penthouse View Chora Andros",
+      seoTitle: "Grand Residence | Penthouse Accommodation Chora Andros",
+      subtitle: "Luxury Penthouse with Panoramic Harbor View",
       metaDesc: "Grand Residence offers panoramic views of Andros harbor. Luxury stay for 4+ guests in the heart of Chora.",
       size: "55 m²", guests: "4+ Adults", bed: "Bedroom + Living Room",
       description: "Our hospitality flagship. Located on the 2nd floor (penthouse), privacy meets panoramic views. A true home away from home, with generous spaces comfortably hosting 4+ guests. Enjoy the sunset from the large veranda overlooking the entire Chora and the harbor.",
@@ -78,7 +87,7 @@ export async function generateMetadata({ params, searchParams }: any): Promise<M
 
   const content = lang === "en" ? room.en : room.el;
   return {
-    title: content.title,
+    title: content.seoTitle, // SRE Fix: Επιστρέφει το keyword-rich title για τα Bots
     description: content.metaDesc,
     alternates: { canonical: `https://www.androsguesthouses.gr/rooms/${slug}` }
   };
@@ -108,20 +117,25 @@ export default async function RoomPage({ params, searchParams }: any) {
       <div className="relative h-[60vh] w-full">
         <Image 
           src={room.images[0]} 
-          alt={content.title} 
+          alt={`${room.name} Andros Chora`} // SRE Fix: Καθαρό Alt Text
           fill 
           className="object-cover" 
           priority 
+          fetchPriority="high" // SRE Fix: Επιτάχυνση του LCP
           sizes="100vw" 
           quality={80} 
         />
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 bg-gradient-to-t from-black/80 to-transparent text-white">
           <div className="max-w-7xl mx-auto">
-            <h1 className="text-3xl md:text-5xl font-display text-white mb-3 drop-shadow-lg leading-tight">
-              {content.title}
+            {/* SRE Fix: Καθαρό H1 για τον πελάτη και δυναμικό H2 για την Google */}
+            <h1 className="text-3xl md:text-5xl font-display text-white mb-2 drop-shadow-lg leading-tight">
+              {room.name}
             </h1>
-            <p className="text-lg md:text-xl text-white/90 font-sans font-light tracking-wide">
+            <h2 className="text-lg md:text-xl text-white/95 font-sans font-medium mb-3">
+              {content.subtitle}
+            </h2>
+            <p className="text-sm md:text-base text-white/80 font-sans font-light tracking-wide">
               {content.size} • {content.guests}
             </p>
           </div>
@@ -153,7 +167,7 @@ export default async function RoomPage({ params, searchParams }: any) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {room.images.slice(1).map((img, i) => (
                 <div key={i} className="relative h-64 rounded-lg overflow-hidden shadow-md bg-stone-100">
-                  <Image src={img} alt={`${content.title} gallery ${i}`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover hover:scale-105 transition-transform duration-500" />
+                  <Image src={img} alt={`${room.name} gallery ${i}`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover hover:scale-105 transition-transform duration-500" />
                 </div>
               ))}
             </div>
