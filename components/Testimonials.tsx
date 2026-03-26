@@ -97,7 +97,7 @@ export default function Testimonials() {
         {/* --- RIGHT: CARDS --- */}
         <div className="relative h-[500px] w-full flex items-center justify-center lg:justify-end order-1 lg:order-2">
           <div className="absolute top-0 right-0 md:right-10 w-64 md:w-80 aspect-[3/4] rounded-sm overflow-hidden z-0 grayscale opacity-20 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
-             <Image src="/images/balcony1.jpg" alt="Guest View" fill className="object-cover" />
+             <Image src="/images/balcony1.webp" alt="Guest View" fill className="object-cover" />
           </div>
 
           {/* Booking Card */}
