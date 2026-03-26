@@ -11,7 +11,7 @@ const roomsData = [
   {
     slug: "aegean-studio",
     name: "Aegean Studio", // Καθαρό όνομα για τον πελάτη
-    price: "90€",
+    price: "50€",
     images: ["/images/no5.6.webp", "/images/no5.1.webp", "/images/no5.2.webp", "/images/no5.3.webp"],
     el: {
       seoTitle: "Aegean Studio | Ενοικιαζόμενα Δωμάτια με Θέα Χώρα Άνδρος",
@@ -35,7 +35,7 @@ const roomsData = [
   {
     slug: "garden-suite",
     name: "Garden Suite",
-    price: "90€",
+    price: "60€",
     images: ["/images/balcony1.webp", "/images/no2.2.webp", "/images/no2.3.webp"],
     el: {
       seoTitle: "Garden Suite | Διαμονή με Ιδιωτική Αυλή Χώρα Άνδρος",
@@ -59,7 +59,7 @@ const roomsData = [
   {
     slug: "grand-residence",
     name: "Grand Residence",
-    price: "100€",
+    price: "70€",
     images: ["/images/no5.5.webp", "/images/no5.4.webp", "/images/no5.7.webp"],
     el: {
       seoTitle: "Grand Residence | Penthouse με Πανοραμική Θέα Άνδρος",
