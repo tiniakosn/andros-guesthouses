@@ -52,13 +52,14 @@ const nextConfig = {
         destination: '/booking', 
         permanent: true,
       },
+      /*
       // Catch-all για τα παλιά ελληνικά URLs του Μίμη
       {
         source: '/',
         has: [{ type: 'query', key: 'lang', value: 'el' }],
         destination: '/el', // Υποθέτοντας ότι το νέο site έχει /el route
         permanent: true,
-      },
+      },*/
       {
         source: '/',
         has: [
