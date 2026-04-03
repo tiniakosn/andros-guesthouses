@@ -72,12 +72,12 @@ export default function Footer() {
               {t.text}
             </p>
             <div className="pt-4">
-              <Link 
+              <a 
                 href="/contact" 
-                className="inline-block px-8 py-4 bg-olive-600 text-white text-xs font-bold uppercase tracking-widest hover:bg-olive-700 transition-all duration-300 rounded-sm shadow-lg"
+                className="inline-block px-8 py-4 bg-olive-600 text-white text-xs font-bold uppercase tracking-widest hover:bg-olive-700 transition-all duration-300 rounded-sm shadow-lg active:scale-95"
               >
                 {t.bookNow}
-              </Link>
+              </a>
             </div>
           </div>
 
