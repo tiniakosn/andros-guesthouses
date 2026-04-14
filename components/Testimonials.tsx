@@ -82,7 +82,7 @@ export default function Testimonials() {
           <Reveal delay={0.3}>
             <div className="flex items-center gap-12 border-t border-stone-100 pt-8">
                <div className="text-left">
-                 <p className="text-4xl font-display font-bold text-[#003580]">9.5</p>
+                 <p className="text-4xl font-display font-bold text-[#003580]">9.6</p>
                  <p key={lang + "bscore"} className="text-[10px] uppercase tracking-widest text-stone-400 mt-1">Booking.com<br/>{t.bookingScore}</p>
                </div>
                <div className="w-px h-12 bg-stone-200"></div>
