@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // SRE FIX: Αφαιρέθηκε το swcMinify για να φύγει το warning στο Next 16
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
@@ -26,14 +25,9 @@ const nextConfig = {
 
   async redirects() {
     return [
-      // 1. FIX ΓΙΑ ΤΟ ?lang=el (Σταματάμε το 404 που είδες στο GSC)
-      {
-        source: '/',
-        has: [{ type: 'query', key: 'lang', value: 'el' }],
-        destination: '/', 
-        permanent: false,
-      },
-      // 2. ΣΥΓΚΕΚΡΙΜΕΝΑ IDs ΑΠΟ ΤΑ LOGS ΣΟΥ
+      // SRE NOTE: Ο ΚΑΝΟΝΑΣ ΓΙΑ ΤΟ ?lang=el ΑΦΑΙΡΕΘΗΚΕ ΓΙΑ ΝΑ ΣΤΑΜΑΤΗΣΕΙ ΤΟ REDIRECT LOOP
+      
+      // 1. ΣΥΓΚΕΚΡΙΜΕΝΑ IDs ΑΠΟ ΤΑ LOGS ΣΟΥ
       {
         source: '/',
         has: [{ type: 'query', key: 'page_id', value: '799' }],
@@ -70,7 +64,7 @@ const nextConfig = {
         destination: '/', 
         permanent: true,
       },
-      // 3. CATCH-ALL ΓΙΑ ΟΠΟΙΟΔΗΠΟΤΕ ΑΛΛΟ ΠΑΛΙΟ ID (Anti-404 Shield)
+      // 2. CATCH-ALL ΓΙΑ ΟΠΟΙΟΔΗΠΟΤΕ ΑΛΛΟ ΠΑΛΙΟ ID
       {
         source: '/',
         has: [{ type: 'query', key: 'page_id' }],
