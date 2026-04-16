@@ -9,6 +9,13 @@ import Footer from "@/components/Footer";
 
 const ALL_ARTICLES = [
   { 
+    id: "00", 
+    slug: "andros-routes-guide", 
+    title: { el: "Μονοπάτια της Άνδρου", en: "Andros Routes: Hiking Guide" }, 
+    tag: "ADVENTURE", 
+    img: "/images/hiking-andros.webp" 
+  },
+  { 
     id: "01", 
     slug: "chora-and-wind", 
     title: { el: "Η Αρχοντική Χώρα & ο Άνεμος", en: "Noble Chora & The Wind" }, 
