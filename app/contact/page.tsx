@@ -164,7 +164,8 @@ export default function ContactPage() {
                   
                   <div 
                     ref={mapRef}
-                    className="group w-full h-[350px] rounded-2xl overflow-hidden shadow-xl border-4 border-white relative mt-6 bg-stone-100"
+                    className="group w-full h-[350px] md:h-[400px] rounded-2xl overflow-hidden shadow-xl border-4 border-white relative mt-6 bg-stone-200"
+                    style={{ containIntrinsicSize: "auto 350px", contentVisibility: "auto" }}
                   >
                     {loadMap ? (
                       <iframe 
