@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, Suspense } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import LanguageSwitcher from "./LanguageSwitcher"; 
 
 const navLinks = [
@@ -20,9 +20,8 @@ function NavbarContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  // 1. Συγχρονισμός Γλώσσας & Events (Scroll/Lang)
+  // 1. Συγχρονισμός Γλώσσας & Events
   useEffect(() => {
-    // SRE FIX: Κοιτάμε και το URL Query (?lang=) και το Path (/el/diary)
     const urlLang = searchParams.get("lang");
     const pathLang = pathname.startsWith("/el") ? "el" : pathname.startsWith("/en") ? "en" : null;
     const activeLang = urlLang || pathLang || "en";
@@ -39,30 +38,26 @@ function NavbarContent() {
       window.removeEventListener("langChange", handleLangChange);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [searchParams, pathname]); // Προσθήκη pathname για να "ακούει" τις αλλαγές στο Diary
+  }, [searchParams, pathname]);
 
-  // 2. Mobile Menu Overflow (Αυτό που είδες)
+  // 2. Mobile Menu Overflow
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'unset';
   }, [isOpen]);
 
+  // 3. Καθαρό Routing Logic
   const getCleanHref = (href: string) => {
-  // 1. Αν είναι anchor (#rooms), το αφήνουμε όπως είναι για να μην χαλάσει το scroll
-  if (href.startsWith("/#")) return href;
+    if (href.startsWith("/#")) return href;
 
-  // 2. Αν είμαστε στα Ελληνικά (είτε από το path είτε από το state)
-  if (lang === "el") {
-    // Αν το link είναι ήδη για το diary (π.χ. /el/diary), το αφήνουμε ήσυχο
-    if (href.includes("/diary")) return href;
+    if (lang === "el") {
+      // Αν είναι ήδη μεταφρασμένο path ή έχει το param, το αφήνουμε
+      if (href.includes("/diary") || href.includes("lang=el")) return href;
 
-    // Για τις υπόλοιπες σελίδες, προσθέτουμε το ?lang=el μόνο αν δεν υπάρχει ήδη
-    const separator = href.includes("?") ? "&" : "?";
-    return href.endsWith("lang=el") ? href : `${href}${separator}lang=el`;
-  }
-
-  // 3. Για Αγγλικά, επιστρέφουμε το href ως έχει
-  return href;
-};
+      const separator = href.includes("?") ? "&" : "?";
+      return `${href}${separator}lang=el`;
+    }
+    return href;
+  };
 
   const isDarkText = scrolled || pathname === "/contact" || isOpen;
 
@@ -70,12 +65,14 @@ function NavbarContent() {
     <header className={`fixed top-0 left-0 w-full z-[150] transition-all duration-300 ${scrolled ? "bg-[#fafaf9]/95 backdrop-blur-md shadow-sm py-3" : "bg-transparent py-5"}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         
+        {/* LOGO */}
         <Link href={getCleanHref("/")} className="relative z-[151] p-2 -ml-2 block">
           <div className="relative w-14 h-14 md:w-16 md:h-16">
             <Image src="/logo-navbar.png" alt="Andros Guesthouses" fill className="object-contain" priority sizes="64px" />
           </div>
         </Link>
 
+        {/* DESKTOP NAV */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
@@ -87,8 +84,10 @@ function NavbarContent() {
             </Link>
           ))}
           <LanguageSwitcher isDark={isDarkText} />
-          {/* SRE FIX: Χρήση <a> για ακαριαίο interaction στο Book Now */}
-          <a href={getCleanHref("/contact")} className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-md active:scale-95 ${isDarkText ? "bg-stone-900 text-white" : "bg-white text-stone-900"}`}>
+          <a 
+            href={getCleanHref("/contact")} 
+            className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-md active:scale-95 ${isDarkText ? "bg-stone-900 text-white" : "bg-white text-stone-900"}`}
+          >
             {lang === "el" ? "Κρατηση" : "Book Now"}
           </a>
         </nav>
@@ -117,12 +116,16 @@ function NavbarContent() {
                 key={link.href} 
                 href={getCleanHref(link.href)} 
                 onClick={() => setIsOpen(false)}
-                className="text-4xl font-display font-bold text-stone-900 active:text-olive-700 p-4"
+                className="text-4xl font-display font-bold text-stone-900 active:text-olive-700 p-4 text-center"
               >
                 {lang === "el" ? link.el : link.en}
               </a>
             ))}
-            <a href={getCleanHref("/contact")} onClick={() => setIsOpen(false)} className="px-12 py-5 bg-stone-900 text-white font-bold uppercase tracking-widest text-sm rounded-full shadow-2xl">
+            <a 
+              href={getCleanHref("/contact")} 
+              onClick={() => setIsOpen(false)} 
+              className="px-12 py-5 bg-stone-900 text-white font-bold uppercase tracking-widest text-sm rounded-full shadow-2xl"
+            >
               {lang === "el" ? "Κάντε Κράτηση" : "Book Now"}
             </a>
           </nav>
