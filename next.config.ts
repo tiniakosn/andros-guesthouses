@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // SRE FIX: Αφαιρέθηκε το swcMinify γιατί στο Next 16 είναι προεπιλεγμένο
+  // SRE FIX: Αφαιρέθηκε το swcMinify για να φύγει το warning στο Next 16
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
@@ -26,16 +26,30 @@ const nextConfig = {
 
   async redirects() {
     return [
+      // 1. FIX ΓΙΑ ΤΟ ?lang=el (Σταματάμε το 404 που είδες στο GSC)
       {
         source: '/',
-        has: [{ type: 'query', key: 'page_id', value: '309' }],
-        destination: '/experience', // Το /about δεν φάνηκε στο build, οπότε στέλνουμε στο experience
+        has: [{ type: 'query', key: 'lang', value: 'el' }],
+        destination: '/', 
+        permanent: false,
+      },
+      // 2. ΣΥΓΚΕΚΡΙΜΕΝΑ IDs ΑΠΟ ΤΑ LOGS ΣΟΥ
+      {
+        source: '/',
+        has: [{ type: 'query', key: 'page_id', value: '799' }],
+        destination: '/experience',
         permanent: true,
       },
       {
         source: '/',
-        has: [{ type: 'query', key: 'page_id', value: '386' }],
-        destination: '/', 
+        has: [{ type: 'query', key: 'page_id', value: '795' }],
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/',
+        has: [{ type: 'query', key: 'page_id', value: '309' }],
+        destination: '/experience',
         permanent: true,
       },
       {
@@ -47,17 +61,20 @@ const nextConfig = {
       {
         source: '/',
         has: [{ type: 'query', key: 'page_id', value: '842' }],
-        destination: '/contact', // Στέλνουμε στο contact αφού δεν υπάρχει /booking route
+        destination: '/contact',
         permanent: true,
       },
-      // SRE FIX: Διόρθωση για τα παλιά ελληνικά links ώστε να μην βγάζουν 404
       {
         source: '/',
-        has: [
-            { type: 'query', key: 'page_id', value: '793' },
-            { type: 'query', key: 'lang', value: 'el' }
-        ],
-        destination: '/contact?lang=el', 
+        has: [{ type: 'query', key: 'page_id', value: '386' }],
+        destination: '/', 
+        permanent: true,
+      },
+      // 3. CATCH-ALL ΓΙΑ ΟΠΟΙΟΔΗΠΟΤΕ ΑΛΛΟ ΠΑΛΙΟ ID (Anti-404 Shield)
+      {
+        source: '/',
+        has: [{ type: 'query', key: 'page_id' }],
+        destination: '/',
         permanent: true,
       },
     ]
