@@ -144,7 +144,7 @@ export default function ContactPage() {
           <div className="space-y-4 mt-6">
             <Reveal>
               {/* FIX: Μεγάλο μέγεθος ξανά, pb-4 για το 'g' στα αγγλικά */}
-              <h1 className="text-5xl md:text-7xl font-display text-stone-900 leading-tight pb-4">
+              <h1 className="text-5xl md:text-7xl font-display text-stone-900 leading-tight pb-4 min-h-[1.2em]">
                 {t.title}
               </h1>
             </Reveal>
@@ -266,8 +266,10 @@ export default function ContactPage() {
                     {loading ? t.sending : success ? t.sent : t.send}
                   </button>
 
-                  {success && <p className="text-olive-600 text-xs font-bold text-center mt-2 animate-pulse">{t.successMsg}</p>}
-                  {error && <p className="text-red-600 text-xs font-bold text-center mt-2">{t.errorMsg}</p>}
+                  <div className="min-h-[24px] mt-2 text-center">
+                    {success && <p className="text-olive-600 text-xs font-bold animate-pulse">{t.successMsg}</p>}
+                    {error && <p className="text-red-600 text-xs font-bold">{t.errorMsg}</p>}
+                  </div>
                 </form>
               </Reveal>
             </div>
