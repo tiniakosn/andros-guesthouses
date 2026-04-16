@@ -46,22 +46,23 @@ function NavbarContent() {
     document.body.style.overflow = isOpen ? 'hidden' : 'unset';
   }, [isOpen]);
 
-  // 3. Διορθωμένο Routing Logic
   const getCleanHref = (href: string) => {
-    // Αν είμαστε ήδη σε path-based route (Diary)
-    if (pathname.startsWith("/el") || pathname.startsWith("/en")) {
-      const currentPathLang = pathname.startsWith("/el") ? "el" : "en";
-      if (href === "/") return `/?lang=${currentPathLang}`;
-      return href;
-    }
+  // 1. Αν είναι anchor (#rooms), το αφήνουμε όπως είναι για να μην χαλάσει το scroll
+  if (href.startsWith("/#")) return href;
 
-    // Για τις υπόλοιπες σελίδες (Home, Contact κλπ)
-    const currentLang = searchParams.get("lang") || lang;
-    if (currentLang === "el") {
-      return href.includes("?") ? `${href}&lang=el` : `${href}?lang=el`;
-    }
-    return href;
-  };
+  // 2. Αν είμαστε στα Ελληνικά (είτε από το path είτε από το state)
+  if (lang === "el") {
+    // Αν το link είναι ήδη για το diary (π.χ. /el/diary), το αφήνουμε ήσυχο
+    if (href.includes("/diary")) return href;
+
+    // Για τις υπόλοιπες σελίδες, προσθέτουμε το ?lang=el μόνο αν δεν υπάρχει ήδη
+    const separator = href.includes("?") ? "&" : "?";
+    return href.endsWith("lang=el") ? href : `${href}${separator}lang=el`;
+  }
+
+  // 3. Για Αγγλικά, επιστρέφουμε το href ως έχει
+  return href;
+};
 
   const isDarkText = scrolled || pathname === "/contact" || isOpen;
 
