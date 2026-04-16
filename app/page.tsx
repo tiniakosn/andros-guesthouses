@@ -9,7 +9,7 @@ const Rooms = dynamic(() => import("@/components/Rooms"));
 const Amenities = dynamic(() => import("@/components/Amenities"));
 const LocalInsider = dynamic(() => import("@/components/LocalInsider"));
 
-// SRE FIX: Αφαιρέσαμε το { ssr: false } για συμβατότητα με Server Components
+// Client-only components
 const Testimonials = dynamic(() => import("@/components/Testimonials"), { 
   loading: () => <div className="h-20" /> 
 });
@@ -27,6 +27,7 @@ export default async function Home({
     <main className="min-h-screen bg-[#fafaf9] overflow-x-hidden">
       <Navbar />
       
+      {/* HERO SECTION */}
       <section className="relative h-screen flex flex-col items-center justify-center p-6 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
@@ -93,7 +94,7 @@ export default async function Home({
       </section>
 
       <About />
-      <Rooms />
+      <Rooms lang={lang} /> {/* ΤΟ ΚΛΕΙΔΙ: Εδώ περνάμε τη γλώσσα */}
       <Amenities />
       <LocalInsider lang={lang} />
       <Testimonials />
