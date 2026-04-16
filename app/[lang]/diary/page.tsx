@@ -70,7 +70,7 @@ export default function DiaryIndexPage() {
               transition={{ delay: i * 0.1 }}
             >
               <Link href={`/${lang}/diary/${article.slug}`} className="group block">
-                <div className="relative h-80 w-full overflow-hidden rounded-xl mb-6 shadow-sm group-hover:shadow-xl transition-all duration-500 bg-stone-200">
+                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl mb-6 shadow-sm group-hover:shadow-xl transition-all duration-500 bg-stone-200">
                   <Image 
                     src={article.img} 
                     alt={article.title[lang as keyof typeof article.title]} 
