@@ -20,32 +20,47 @@ function NavbarContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
+  // 1. Συγχρονισμός Γλώσσας & Events (Scroll/Lang)
   useEffect(() => {
+    // SRE FIX: Κοιτάμε και το URL Query (?lang=) και το Path (/el/diary)
     const urlLang = searchParams.get("lang");
-    if (urlLang) { setLang(urlLang); } 
-    else { setLang(document.documentElement.lang || "en"); }
+    const pathLang = pathname.startsWith("/el") ? "el" : pathname.startsWith("/en") ? "en" : null;
+    const activeLang = urlLang || pathLang || "en";
+    
+    setLang(activeLang);
 
     const handleLangChange = (e: any) => setLang(e.detail);
-    window.addEventListener("langChange", handleLangChange);
     const handleScroll = () => setScrolled(window.scrollY > 10);
+
+    window.addEventListener("langChange", handleLangChange);
     window.addEventListener("scroll", handleScroll);
     
     return () => {
       window.removeEventListener("langChange", handleLangChange);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [searchParams]);
+  }, [searchParams, pathname]); // Προσθήκη pathname για να "ακούει" τις αλλαγές στο Diary
 
+  // 2. Mobile Menu Overflow (Αυτό που είδες)
   useEffect(() => {
-    if (isOpen) { document.body.style.overflow = 'hidden'; } 
-    else { document.body.style.overflow = 'unset'; }
+    document.body.style.overflow = isOpen ? 'hidden' : 'unset';
   }, [isOpen]);
 
+  // 3. Διορθωμένο Routing Logic
   const getCleanHref = (href: string) => {
+    // Αν είμαστε ήδη σε path-based route (Diary)
+    if (pathname.startsWith("/el") || pathname.startsWith("/en")) {
+      const currentPathLang = pathname.startsWith("/el") ? "el" : "en";
+      if (href === "/") return `/?lang=${currentPathLang}`;
+      return href;
+    }
+
+    // Για τις υπόλοιπες σελίδες (Home, Contact κλπ)
     const currentLang = searchParams.get("lang") || lang;
-    return currentLang === "en" 
-      ? (href.includes("?") ? `${href}&lang=en` : `${href}?lang=en`) 
-      : href;
+    if (currentLang === "el") {
+      return href.includes("?") ? `${href}&lang=el` : `${href}?lang=el`;
+    }
+    return href;
   };
 
   const isDarkText = scrolled || pathname === "/contact" || isOpen;
