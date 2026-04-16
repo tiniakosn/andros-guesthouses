@@ -5,6 +5,13 @@ import { Metadata } from "next";
 
 const DIARY_CONTENT = {
   el: {
+    "andros-routes-guide": {
+      tag: "ADVENTURE",
+      title: "Μονοπάτια της Άνδρου: Οι καλύτερες διαδρομές",
+      subtitle: "Ανακαλύψτε το κορυφαίο δίκτυο πεζοπορίας στην Ευρώπη.",
+      image: "/images/hiking-andros.webp",
+      content: `Η Άνδρος είναι ο παράδεισος του πεζοπόρου. Με πάνω από 300 χλμ. σηματοδοτημένων διαδρομών, είναι το μοναδικό νησί στην Ευρώπη με την πιστοποίηση "Leading Quality Trails - Best of Europe".<br/><br/>**Οι αγαπημένες μας διαδρομές:**<br/>• **Διαδρομή 1 (Χώρα - Λάμυρα - Μαίνητες):** Μια καταπράσινη διαδρομή που ξεκινάει μέσα από την πόλη και σας οδηγεί στις πηγές των Μαινήτων.<br/>• **Διαδρομή 6 (Βουρκωτή - Άχλα):** Ίσως η πιο εντυπωσιακή διαδρομή που καταλήγει στη διάσημη παραλία Άχλα και τον φάρο.<br/><br/>**Insider Tip:** Αν μείνετε μαζί μας στη Χώρα, η Διαδρομή 2 (Χώρα - Αποίκια) είναι η πιο εύκολη πρόσβαση στη φύση χωρίς να χρειαστείτε αυτοκίνητο.`
+    },
     "chora-and-wind": {
       tag: "KNOW-HOW",
       title: "Η Χώρα & ο Άνεμος: Οδηγός Επιβίωσης",
@@ -35,6 +42,13 @@ const DIARY_CONTENT = {
     }
   },
   en: {
+    "andros-routes-guide": {
+      tag: "ADVENTURE",
+      title: "Andros Routes: The Best Hiking Trails",
+      subtitle: "Explore Europe's certified hiking paradise directly from Chora.",
+      image: "/images/hiking-andros.webp",
+      content: `Andros is a hiker's heaven. Boasting over 300km of marked trails, it is the only island in Europe to hold the "Leading Quality Trails - Best of Europe" certification.<br/><br/>**Must-Try Routes:**<br/>• **Route 1 (Chora - Lamyra - Menites):** A lush green path starting from the heart of town, leading you to the famous Menites springs.<br/>• **Route 6 (Vourkoti - Achla):** Arguably the most stunning hike, ending at the iconic Achla beach and lighthouse.<br/><br/>**Insider Tip:** Staying with us in Chora? Route 2 (Chora - Apoikia) is your easiest gateway to nature, accessible right from our doorstep without needing a car.`
+    },
     "chora-and-wind": {
       tag: "KNOW-HOW",
       title: "Chora & The Wind: A Survivor's Guide",
@@ -108,6 +122,8 @@ export default async function DiaryPage({ params }: any) {
     "headline": article.title,
     "description": article.subtitle,
     "image": `https://www.androsguesthouses.gr${article.image}`,
+    "datePublished": "2026-04-16T12:00:00+02:00", // Η σημερινή ημερομηνία
+    "dateModified": new Date().toISOString(),     // Αυτόματη ημερομηνία αλλαγής
     "author": {
       "@type": "Organization",
       "name": "Andros Guesthouses"
