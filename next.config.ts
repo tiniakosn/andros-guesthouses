@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  swcMinify: true,
+  // SRE FIX: Αφαιρέθηκε το swcMinify γιατί στο Next 16 είναι προεπιλεγμένο
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
   
-  // ΤΟ ΚΛΕΙΔΙ ΓΙΑ ΤΑ 50KiB: Αυτόματη βελτιστοποίηση των βιβλιοθηκών
   experimental: {
     optimizePackageImports: ['framer-motion', 'react-icons', 'lucide-react'],
   },
@@ -18,7 +17,6 @@ const nextConfig = {
       },
     ],
     formats: ['image/avif', 'image/webp'],
-    // Δημιουργία πιο αποδοτικών μεγεθών για κινητά
     deviceSizes: [480, 640, 750, 828, 1080, 1200, 1920],
   },
 
@@ -31,7 +29,7 @@ const nextConfig = {
       {
         source: '/',
         has: [{ type: 'query', key: 'page_id', value: '309' }],
-        destination: '/about',
+        destination: '/experience', // Το /about δεν φάνηκε στο build, οπότε στέλνουμε στο experience
         permanent: true,
       },
       {
@@ -49,24 +47,17 @@ const nextConfig = {
       {
         source: '/',
         has: [{ type: 'query', key: 'page_id', value: '842' }],
-        destination: '/booking', 
+        destination: '/contact', // Στέλνουμε στο contact αφού δεν υπάρχει /booking route
         permanent: true,
       },
-      /*
-      // Catch-all για τα παλιά ελληνικά URLs του Μίμη
-      {
-        source: '/',
-        has: [{ type: 'query', key: 'lang', value: 'el' }],
-        destination: '/el', // Υποθέτοντας ότι το νέο site έχει /el route
-        permanent: true,
-      },*/
+      // SRE FIX: Διόρθωση για τα παλιά ελληνικά links ώστε να μην βγάζουν 404
       {
         source: '/',
         has: [
             { type: 'query', key: 'page_id', value: '793' },
             { type: 'query', key: 'lang', value: 'el' }
         ],
-        destination: '/el/contact', // Το αντίστοιχο νέο ελληνικό URL
+        destination: '/contact?lang=el', 
         permanent: true,
       },
     ]
