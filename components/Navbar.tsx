@@ -47,16 +47,25 @@ function NavbarContent() {
 
   // 3. Καθαρό Routing Logic
   const getCleanHref = (href: string) => {
-    if (href.startsWith("/#")) return href;
+  // Αν είμαστε στα Αγγλικά, δεν πειράζουμε τίποτα
+    if (lang !== "el") return href;
 
-    if (lang === "el") {
-      // Αν είναι ήδη μεταφρασμένο path ή έχει το param, το αφήνουμε
-      if (href.includes("/diary") || href.includes("lang=el")) return href;
+  // Αν είμαστε στα Ελληνικά:
+  
+  // 1. Αν είναι ήδη path-based (Diary), το αφήνουμε
+    if (href.includes("/diary")) return href;
 
-      const separator = href.includes("?") ? "&" : "?";
-      return `${href}${separator}lang=el`;
+  // 2. Ειδική διαχείριση για το Anchor (#rooms)
+  // Μετατρέπει το /#rooms σε /?lang=el#rooms
+    if (href.startsWith("/#")) {
+      return `/?lang=el${href.substring(1)}`;
     }
-    return href;
+
+  // 3. Για όλα τα άλλα (Home, Contact, Experience)
+    if (href.includes("lang=el")) return href;
+  
+    const separator = href.includes("?") ? "&" : "?";
+    return `${href}${separator}lang=el`;
   };
 
   const isDarkText = scrolled || pathname === "/contact" || isOpen;
