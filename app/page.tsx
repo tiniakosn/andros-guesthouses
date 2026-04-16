@@ -3,25 +3,23 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar"; 
 
-// Server-side imports (για μέγιστο SEO και ταχύτητα)
+// Server-side imports
 const About = dynamic(() => import("@/components/About"));
 const Rooms = dynamic(() => import("@/components/Rooms"));
 const Amenities = dynamic(() => import("@/components/Amenities"));
 const LocalInsider = dynamic(() => import("@/components/LocalInsider"));
 
-// Client-only components (παραμένουν dynamic χωρίς SSR για ταχύτητα)
+// SRE FIX: Αφαιρέσαμε το { ssr: false } για συμβατότητα με Server Components
 const Testimonials = dynamic(() => import("@/components/Testimonials"), { 
-  ssr: false,
   loading: () => <div className="h-20" /> 
 });
-const InstaFeed = dynamic(() => import("@/components/InstaFeed"), { ssr: false });
+const InstaFeed = dynamic(() => import("@/components/InstaFeed"));
 
 export default async function Home({
   searchParams,
 }: {
   searchParams: Promise<{ lang?: string }>;
 }) {
-  // SRE FIX: Η γλώσσα ανιχνεύεται στον Server ακαριαία
   const params = await searchParams;
   const lang = params.lang === "el" ? "el" : "en";
 
@@ -29,7 +27,6 @@ export default async function Home({
     <main className="min-h-screen bg-[#fafaf9] overflow-x-hidden">
       <Navbar />
       
-      {/* HERO SECTION - LCP Optimized */}
       <section className="relative h-screen flex flex-col items-center justify-center p-6 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
@@ -68,7 +65,6 @@ export default async function Home({
             
           <div className="flex justify-center pt-8">
             <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-              {/* Χρήση απλού <a> για ακαριαίο interaction χωρίς JS delay */}
               <a 
                 href="#rooms" 
                 className="px-10 py-4 bg-white text-stone-900 rounded-full hover:bg-stone-100 transition duration-300 shadow-2xl font-sans text-xs font-bold tracking-[0.15em] uppercase hover:-translate-y-1 animate-fadein"
