@@ -19,33 +19,33 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.androsguesthouses.gr"),
   
-  // SRE SEO Upgrade: Στοχεύουμε International Keywords στον τίτλο
+  // SRE SEO Upgrade: Προσθήκη "Official Site" και "Best Rates" για αύξηση του CTR
   title: {
-    default: "Boutique Accommodation in Andros Chora | Sea View Rooms",
+    default: "Andros Guesthouses | Boutique Stay in Chora | Official Site",
     template: "%s | Andros Guesthouses"
   },
-  description: "Premium stone-built accommodation in Chora, Andros. Discover our sea view suites and authentic guest rooms near Nimborio beach. Book your Greek island escape.",
+  description: "Experience authentic luxury at Andros Guesthouses in Chora. Premium sea view suites near Nimborio beach. Book direct for the best rates and exclusive offers.",
   
   keywords: [
     'andros accommodation', 
     'boutique hotel andros',
     'rooms chora andros',
     'sea view apartments andros',
-    'δωματια ανδροσ', 
-    'ενοικιαζομενα δωματια ανδροσ χωρα', 
-    'διαμονη ανδρος', 
+    'διαμονή άνδρος χώρα', 
+    'ενοικιαζόμενα δωμάτια άνδρος χώρα', 
+    'δωμάτια άνδρος', 
     'andros guesthouses',
-    'andros suites'
+    'andros suites',
+    'best hotels in andros'
   ],
 
-  // SRE ADDITION: Canonical & Hreflang (International SEO)
   alternates: {
     canonical: "https://www.androsguesthouses.gr",
   },
 
   openGraph: {
-    title: "Andros Guesthouses | Sea View Accommodation in Chora",
-    description: "Your private stone retreat in Andros. Panoramic sea views, local tips, and authentic Greek hospitality steps from the beach.",
+    title: "Andros Guesthouses | Official Site | Sea View Suites in Chora",
+    description: "Your private stone retreat in Andros. panoramic sea views, authentic hospitality, and the best rates guaranteed on our official website.",
     url: "https://www.androsguesthouses.gr",
     siteName: "Andros Guesthouses",
     locale: "en_US",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image-v3.jpg", 
         width: 1200,
         height: 630,
-        alt: "Andros Guesthouses Panoramic Sea View",
+        alt: "Andros Guesthouses - Official Website",
       },
     ],
   },
