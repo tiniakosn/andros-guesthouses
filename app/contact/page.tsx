@@ -2,7 +2,8 @@
 
 import Navbar from "@/components/Navbar";
 import Reveal from "@/components/Reveal";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import emailjs from "@emailjs/browser";
 
 declare global {
@@ -11,7 +12,7 @@ declare global {
   }
 }
 
-export default function ContactPage() {
+function ContactContent() {
   const form = useRef<HTMLFormElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
   
@@ -21,8 +22,13 @@ export default function ContactPage() {
   const [lang, setLang] = useState("en");
   const [loadMap, setLoadMap] = useState(false);
 
+  const searchParams = useSearchParams();
+
   useEffect(() => {
-    setLang(document.documentElement.lang || "en");
+    // SRE FIX: Η γλώσσα διαβάζεται από το URL για απόλυτο συγχρονισμό με τον Navbar
+    const urlLang = searchParams.get("lang");
+    const activeLang = urlLang === "el" ? "el" : "en";
+    setLang(activeLang);
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -34,9 +40,7 @@ export default function ContactPage() {
       { rootMargin: "200px" }
     );
 
-    if (mapRef.current) {
-      observer.observe(mapRef.current);
-    }
+    if (mapRef.current) observer.observe(mapRef.current);
 
     const handleLangChange = (e: any) => setLang(e.detail);
     window.addEventListener("langChange", handleLangChange);
@@ -45,7 +49,7 @@ export default function ContactPage() {
       window.removeEventListener("langChange", handleLangChange);
       observer.disconnect();
     };
-  }, []);
+  }, [searchParams]);
 
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
@@ -63,23 +67,15 @@ export default function ContactPage() {
         setSuccess(true);
         setLoading(false);
         form.current?.reset();
-        if (typeof window !== "undefined" && window.clarity) {
-          window.clarity("set", "Conversion", "Booking_Success");
-        }
       })
       .catch((err) => {
-        console.error("FAILED...", err);
         setError(true);
         setLoading(false);
-        if (typeof window !== "undefined" && window.clarity) {
-          window.clarity("set", "Form_Error", "EmailJS_Fail");
-        }
       });
   };
 
   const content = {
     en: {
-      // English: Κρατάμε το Booking, με λίγο padding για το 'g'
       title: <>Contact <br /> <span className="text-olive-700">& Booking</span></>,
       directions: "Get Directions",
       subtitle: "Located in Neimporio, just a 5-minute walk from the beach and the main street of Chora.",
@@ -104,7 +100,6 @@ export default function ContactPage() {
       errorMsg: "Error sending message. Please try again."
     },
     el: {
-      // Greek FIX: Μόνο "Επικοινωνία" για να αποφύγουμε το 'ς' και να είναι minimal
       title: <span className="text-stone-900">Επικοινωνία</span>,
       directions: "Οδηγίες Χάρτη",
       subtitle: "Στο Νειμποριό, μόλις 5 λεπτά με τα πόδια από την παραλία και τον κεντρικό πεζόδρομο της Χώρας.",
@@ -139,11 +134,9 @@ export default function ContactPage() {
       <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
           
-          {/* LEFT SIDE: Info & Map */}
-          {/* FIX: Μείωσα το space-y από 10 σε 4 για να έρθουν πιο κοντά */}
           <div className="space-y-4 mt-6">
             <Reveal>
-              {/* FIX: Μεγάλο μέγεθος ξανά, pb-4 για το 'g' στα αγγλικά */}
+              {/* CLS FIX: min-h για σταθερό τίτλο */}
               <h1 className="text-5xl md:text-7xl font-display text-stone-900 leading-tight pb-4 min-h-[1.2em]">
                 {t.title}
               </h1>
@@ -151,7 +144,6 @@ export default function ContactPage() {
 
             <div className="space-y-8">
               <Reveal delay={0.2}>
-                {/* Ο υπότιτλος έρχεται ακριβώς από κάτω */}
                 <p className="text-stone-600 font-sans font-medium text-lg max-w-md leading-relaxed -mt-2">
                   {t.subtitle}
                 </p>
@@ -162,6 +154,7 @@ export default function ContactPage() {
                   <h3 className="text-xs font-bold uppercase tracking-widest text-olive-700 mb-2">{t.addressLabel}</h3>
                   <p className="text-2xl font-serif text-stone-900 font-medium">{t.address}</p>
                   
+                  {/* CLS FIX: Σταθερό height στον χάρτη */}
                   <div 
                     ref={mapRef}
                     className="group w-full h-[350px] md:h-[400px] rounded-2xl overflow-hidden shadow-xl border-4 border-white relative mt-6 bg-stone-200"
@@ -169,70 +162,54 @@ export default function ContactPage() {
                   >
                     {loadMap ? (
                       <iframe 
-                        // --- ΕΔΩ ΒΑΖΕΙΣ ΤΟ EMBED LINK ΣΟΥ ---
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.0325698356105!2d24.92986747661425!3d37.83612337196989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a2ff3fd9c3115b%3A0xb694eabb08bdd45!2sAndros%20Guesthouses!5e0!3m2!1sel!2sgr!4v1771246377963!5m2!1sel!2sgr" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3135.568465063462!2d24.9189!3d37.8389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDUwJzIwLjAiTiAyNMKwNTUnMDguMCJF!5e0!3m2!1sel!2sgr!4v1620000000000!5m2!1sel!2sgr" 
                         width="100%" height="100%" style={{ border: 0 }} 
                         allowFullScreen loading="lazy" title="Location Map"
-                        referrerPolicy="no-referrer-when-downgrade"
                       ></iframe>
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
                          <span className="text-stone-400 font-sans text-xs tracking-widest uppercase animate-pulse">Loading Map...</span>
                       </div>
                     )}
-                    
-                    <a 
-                      // --- ΕΔΩ ΒΑΖΕΙΣ ΤΟ SHARE LINK ΣΟΥ ---
-                      href="https://maps.app.goo.gl/cFPuNQpfBtq3vbVe8" 
-                      target="_blank" rel="noopener noreferrer"
-                      className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-md px-5 py-2.5 rounded-full text-[10px] font-bold text-stone-900 shadow-xl hover:bg-olive-700 hover:text-white transition-all z-10 uppercase tracking-widest active:scale-95"
-                    >
+                    <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="absolute bottom-4 right-4 bg-white/95 px-5 py-2.5 rounded-full text-[10px] font-bold text-stone-900 shadow-xl z-10 uppercase tracking-widest">
                       {t.directions} →
                     </a>
                   </div>
-
                 </div>
               </Reveal>
 
               <div className="flex flex-col gap-6 pt-8 border-t border-stone-300">
                 <Reveal delay={0.4}>
-                  <div className="active:scale-95 transition-transform origin-left py-1">
+                  <div className="py-1">
                     <h3 className="text-xs font-bold uppercase tracking-widest text-olive-700 mb-1">{t.phoneLabel}</h3>
-                    <a href="tel:+306936934390" className="text-xl md:text-2xl font-serif text-stone-900 hover:text-olive-600 transition-colors font-medium block">+30 693 693 4390</a>
+                    <a href="tel:+306936934390" className="text-xl md:text-2xl font-serif text-stone-900 font-medium">+30 693 693 4390</a>
                   </div>
                 </Reveal>
                 <Reveal delay={0.5}>
-                  <div className="active:scale-95 transition-transform origin-left py-1">
+                  <div className="py-1">
                     <h3 className="text-xs font-bold uppercase tracking-widest text-olive-700 mb-1">{t.emailLabel}</h3>
-                    <a href="mailto:androsguesthouses@gmail.com" className="text-xl md:text-2xl font-serif text-stone-900 hover:text-olive-600 transition-colors font-medium block">androsguesthouses@gmail.com</a>
+                    <a href="mailto:androsguesthouses@gmail.com" className="text-xl md:text-2xl font-serif text-stone-900 font-medium">androsguesthouses@gmail.com</a>
                   </div>
                 </Reveal>
               </div>
             </div>
           </div>
 
-          {/* RIGHT SIDE: Form */}
           <div className="lg:sticky lg:top-32 h-fit">
             <div className="bg-white p-8 md:p-12 rounded-2xl shadow-2xl border border-stone-100">
               <Reveal width="100%" delay={0.2}>
-                
-                <h3 className="text-3xl font-display text-stone-900 mb-2 leading-tight pb-2">
-                  {t.formTitle}
-                </h3>
-
-                <p className="text-stone-500 font-sans text-sm mb-8 leading-relaxed pb-2">
-                  {t.formSubtitle}
-                </p>
+                <h3 className="text-3xl font-display text-stone-900 mb-2 leading-tight pb-2">{t.formTitle}</h3>
+                <p className="text-stone-500 font-sans text-sm mb-8 leading-relaxed pb-2">{t.formSubtitle}</p>
                 
                 <form ref={form} onSubmit={sendEmail} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-xs font-bold uppercase tracking-widest text-stone-500">{t.name}</label>
-                      <input name="user_name" required type="text" className="w-full bg-stone-50 border border-stone-200 rounded-lg px-4 py-3 focus:outline-none focus:border-olive-600 focus:bg-white transition-colors font-serif text-lg text-stone-900" placeholder={t.namePlace} />
+                      <input name="user_name" required type="text" className="w-full bg-stone-50 border border-stone-200 rounded-lg px-4 py-3 focus:outline-none focus:border-olive-600 font-serif text-lg text-stone-900" placeholder={t.namePlace} />
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs font-bold uppercase tracking-widest text-stone-500">{t.email}</label>
-                      <input name="user_email" required type="email" className="w-full bg-stone-50 border border-stone-200 rounded-lg px-4 py-3 focus:outline-none focus:border-olive-600 focus:bg-white transition-colors font-serif text-lg text-stone-900" placeholder={t.emailPlace} />
+                      <input name="user_email" required type="email" className="w-full bg-stone-50 border border-stone-200 rounded-lg px-4 py-3 focus:outline-none focus:border-olive-600 font-serif text-lg text-stone-900" placeholder={t.emailPlace} />
                     </div>
                   </div>
 
@@ -249,23 +226,18 @@ export default function ContactPage() {
 
                   <div className="space-y-2">
                     <label className="text-xs font-bold uppercase tracking-widest text-stone-500">{t.message}</label>
-                    <textarea name="message" required rows={4} className="w-full bg-stone-50 border border-stone-200 rounded-lg px-4 py-3 focus:outline-none focus:border-olive-600 focus:bg-white transition-colors font-serif text-lg text-stone-900 resize-none" placeholder={t.messagePlace}></textarea>
+                    <textarea name="message" required rows={4} className="w-full bg-stone-50 border border-stone-200 rounded-lg px-4 py-3 focus:outline-none focus:border-olive-600 font-serif text-lg text-stone-900 resize-none" placeholder={t.messagePlace}></textarea>
                   </div>
                   
                   <button 
                     type="submit" 
                     disabled={loading || success} 
-                    className={`w-full py-4 rounded-lg text-sm font-bold uppercase tracking-[0.2em] shadow-lg transition-all duration-300 mt-4 transform
-                      ${success 
-                        ? "bg-stone-400 text-white cursor-default" 
-                        : "bg-olive-700 text-white hover:bg-stone-900 hover:shadow-xl hover:-translate-y-1 active:scale-95"
-                      }
-                      disabled:opacity-80 disabled:cursor-not-allowed
-                    `}
+                    className={`w-full py-4 rounded-lg text-sm font-bold uppercase tracking-[0.2em] shadow-lg transition-all duration-300 mt-4 transform ${success ? "bg-stone-400 text-white" : "bg-olive-700 text-white hover:bg-stone-900 hover:-translate-y-1"}`}
                   >
                     {loading ? t.sending : success ? t.sent : t.send}
                   </button>
 
+                  {/* CLS FIX: Προ-κρατημένος χώρος για το μήνυμα */}
                   <div className="min-h-[24px] mt-2 text-center">
                     {success && <p className="text-olive-600 text-xs font-bold animate-pulse">{t.successMsg}</p>}
                     {error && <p className="text-red-600 text-xs font-bold">{t.errorMsg}</p>}
@@ -278,5 +250,13 @@ export default function ContactPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function ContactPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#fafaf9]" />}>
+      <ContactContent />
+    </Suspense>
   );
 }
