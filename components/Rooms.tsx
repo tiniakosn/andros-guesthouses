@@ -137,13 +137,6 @@ export default function Rooms({ lang = "en" }: { lang?: string }) {
             </h2>
           </Reveal>
           
-          {/* SRE: Internal Linking Boost */}
-          <Link 
-            href={`/${lang}/diary`}
-            className="text-xs font-bold text-stone-400 hover:text-olive-700 transition-colors uppercase tracking-[0.2em]"
-          >
-            {lang === "el" ? "Εξερευνήστε την Άνδρο →" : "Explore Andros Guide →"}
-          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
