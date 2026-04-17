@@ -45,37 +45,29 @@ function NavbarContent() {
     document.body.style.overflow = isOpen ? 'hidden' : 'unset';
   }, [isOpen]);
 
-  // 3. Καθαρό Routing Logic
+  // 3. Καθαρό Routing Logic (SRE Fix για Redirect Loops & Anchors)
   const getCleanHref = (href: string) => {
-  // Αν είμαστε στα Αγγλικά, δεν πειράζουμε τίποτα
     if (lang !== "el") return href;
-
-  // Αν είμαστε στα Ελληνικά:
-  
-  // 1. Αν είναι ήδη path-based (Diary), το αφήνουμε
     if (href.includes("/diary")) return href;
 
-  // 2. Ειδική διαχείριση για το Anchor (#rooms)
-  // Μετατρέπει το /#rooms σε /?lang=el#rooms
     if (href.startsWith("/#")) {
       return `/?lang=el${href.substring(1)}`;
     }
 
-  // 3. Για όλα τα άλλα (Home, Contact, Experience)
     if (href.includes("lang=el")) return href;
-  
     const separator = href.includes("?") ? "&" : "?";
     return `${href}${separator}lang=el`;
   };
 
+  // Ορισμός χρωμάτων: Αν το μενού είναι ανοιχτό, το κείμενο/bars πρέπει να είναι ΠΑΝΤΑ σκούρα
   const isDarkText = scrolled || pathname === "/contact" || isOpen;
 
   return (
     <header className={`fixed top-0 left-0 w-full z-[150] transition-all duration-300 ${scrolled ? "bg-[#fafaf9]/95 backdrop-blur-md shadow-sm py-3" : "bg-transparent py-5"}`}>
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center relative">
         
-        {/* LOGO */}
-        <Link href={getCleanHref("/")} className="relative z-[151] p-2 -ml-2 block">
+        {/* LOGO - z-[201] για να μένει πάνω από το overlay */}
+        <Link href={getCleanHref("/")} className="relative z-[201] p-2 -ml-2 block">
           <div className="relative w-14 h-14 md:w-16 md:h-16">
             <Image src="/logo-navbar.png" alt="Andros Guesthouses" fill className="object-contain" priority sizes="64px" />
           </div>
@@ -101,24 +93,24 @@ function NavbarContent() {
           </a>
         </nav>
 
-        {/* MOBILE MENU TOGGLE */}
-        <div className="flex items-center gap-2 md:hidden z-[151]">
+        {/* MOBILE MENU TOGGLE - z-[201] */}
+        <div className="flex items-center gap-4 md:hidden z-[201]">
           {!isOpen && <LanguageSwitcher isDark={isDarkText} />}
           <button 
-            className="w-12 h-12 flex flex-col justify-center items-center bg-black/5 rounded-full touch-manipulation" 
+            className="w-12 h-12 flex flex-col justify-center items-center bg-black/5 rounded-full" 
             onClick={() => setIsOpen(!isOpen)} 
             aria-label="Menu"
           >
-            <div className="flex flex-col items-end gap-1.5 w-8 pointer-events-none">
-              <span className={`h-[2px] block rounded-full transition-all duration-300 ${isDarkText ? "bg-stone-900" : "bg-white"} ${isOpen ? "w-8 rotate-45 translate-y-[8px]" : "w-8"}`}></span>
+            <div className="flex flex-col items-end gap-1.5 w-8">
+              <span className={`h-[2px] block rounded-full transition-all duration-300 ${isDarkText ? "bg-stone-900" : "bg-white"} ${isOpen ? "w-8 rotate-45 translate-y-[8px] !bg-stone-900" : "w-8"}`}></span>
               <span className={`w-6 h-[2px] block rounded-full transition-all duration-300 ${isDarkText ? "bg-stone-900" : "bg-white"} ${isOpen ? "opacity-0" : "opacity-100"}`}></span>
-              <span className={`h-[2px] block rounded-full transition-all duration-300 ${isDarkText ? "bg-stone-900" : "bg-white"} ${isOpen ? "w-8 -rotate-45 -translate-y-[8px]" : "w-6"}`}></span>
+              <span className={`h-[2px] block rounded-full transition-all duration-300 ${isDarkText ? "bg-stone-900" : "bg-white"} ${isOpen ? "w-8 -rotate-45 -translate-y-[8px] !bg-stone-900" : "w-6"}`}></span>
             </div>
           </button>
         </div>
 
-        {/* MOBILE OVERLAY */}
-        <div className={`fixed inset-0 z-[140] bg-[#fafaf9] flex flex-col items-center justify-center transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"}`}>
+        {/* MOBILE OVERLAY - z-[200] */}
+        <div className={`fixed inset-0 z-[200] bg-[#fafaf9] flex flex-col items-center justify-center transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"}`}>
           <nav className="flex flex-col items-center space-y-10">
             {navLinks.map((link) => (
               <a 
