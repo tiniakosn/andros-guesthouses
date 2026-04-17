@@ -20,12 +20,10 @@ function NavbarContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  // 1. Συγχρονισμός Γλώσσας & Events
   useEffect(() => {
     const urlLang = searchParams.get("lang");
     const pathLang = pathname.startsWith("/el") ? "el" : pathname.startsWith("/en") ? "en" : null;
     const activeLang = urlLang || pathLang || "en";
-    
     setLang(activeLang);
 
     const handleLangChange = (e: any) => setLang(e.detail);
@@ -33,41 +31,34 @@ function NavbarContent() {
 
     window.addEventListener("langChange", handleLangChange);
     window.addEventListener("scroll", handleScroll);
-    
     return () => {
       window.removeEventListener("langChange", handleLangChange);
       window.removeEventListener("scroll", handleScroll);
     };
   }, [searchParams, pathname]);
 
-  // 2. Mobile Menu Overflow
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'unset';
   }, [isOpen]);
 
-  // 3. Καθαρό Routing Logic (SRE Fix για Redirect Loops & Anchors)
   const getCleanHref = (href: string) => {
-    if (lang !== "el") return href;
-    if (href.includes("/diary")) return href;
-
-    if (href.startsWith("/#")) {
-      return `/?lang=el${href.substring(1)}`;
+    if (href.startsWith("/#")) return href;
+    if (lang === "el") {
+      if (href.includes("/diary") || href.includes("lang=el")) return href;
+      const separator = href.includes("?") ? "&" : "?";
+      return `${href}${separator}lang=el`;
     }
-
-    if (href.includes("lang=el")) return href;
-    const separator = href.includes("?") ? "&" : "?";
-    return `${href}${separator}lang=el`;
+    return href;
   };
 
-  // Ορισμός χρωμάτων: Αν το μενού είναι ανοιχτό, το κείμενο/bars πρέπει να είναι ΠΑΝΤΑ σκούρα
   const isDarkText = scrolled || pathname === "/contact" || isOpen;
 
   return (
     <header className={`fixed top-0 left-0 w-full z-[150] transition-all duration-300 ${scrolled ? "bg-[#fafaf9]/95 backdrop-blur-md shadow-sm py-3" : "bg-transparent py-5"}`}>
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center relative">
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center relative h-full">
         
-        {/* LOGO - z-[201] για να μένει πάνω από το overlay */}
-        <Link href={getCleanHref("/")} className="relative z-[201] p-2 -ml-2 block">
+        {/* LOGO - z-[210] */}
+        <Link href={getCleanHref("/")} className="relative z-[210] p-2 -ml-2 block">
           <div className="relative w-14 h-14 md:w-16 md:h-16">
             <Image src="/logo-navbar.png" alt="Andros Guesthouses" fill className="object-contain" priority sizes="64px" />
           </div>
@@ -85,16 +76,13 @@ function NavbarContent() {
             </Link>
           ))}
           <LanguageSwitcher isDark={isDarkText} />
-          <a 
-            href={getCleanHref("/contact")} 
-            className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-md active:scale-95 ${isDarkText ? "bg-stone-900 text-white" : "bg-white text-stone-900"}`}
-          >
+          <a href={getCleanHref("/contact")} className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-md active:scale-95 ${isDarkText ? "bg-stone-900 text-white" : "bg-white text-stone-900"}`}>
             {lang === "el" ? "Κρατηση" : "Book Now"}
           </a>
         </nav>
 
-        {/* MOBILE MENU TOGGLE - z-[201] */}
-        <div className="flex items-center gap-4 md:hidden z-[201]">
+        {/* MOBILE TOGGLE - z-[210] */}
+        <div className="flex items-center gap-4 md:hidden z-[210]">
           {!isOpen && <LanguageSwitcher isDark={isDarkText} />}
           <button 
             className="w-12 h-12 flex flex-col justify-center items-center bg-black/5 rounded-full" 
@@ -102,35 +90,38 @@ function NavbarContent() {
             aria-label="Menu"
           >
             <div className="flex flex-col items-end gap-1.5 w-8">
-              <span className={`h-[2px] block rounded-full transition-all duration-300 ${isDarkText ? "bg-stone-900" : "bg-white"} ${isOpen ? "w-8 rotate-45 translate-y-[8px] !bg-stone-900" : "w-8"}`}></span>
-              <span className={`w-6 h-[2px] block rounded-full transition-all duration-300 ${isDarkText ? "bg-stone-900" : "bg-white"} ${isOpen ? "opacity-0" : "opacity-100"}`}></span>
-              <span className={`h-[2px] block rounded-full transition-all duration-300 ${isDarkText ? "bg-stone-900" : "bg-white"} ${isOpen ? "w-8 -rotate-45 -translate-y-[8px] !bg-stone-900" : "w-6"}`}></span>
+              <span className={`h-[2px] block rounded-full transition-all duration-300 ${isOpen ? "w-8 rotate-45 translate-y-[8px] bg-stone-900" : (isDarkText ? "bg-stone-900" : "bg-white")}`}></span>
+              <span className={`w-6 h-[2px] block rounded-full transition-all duration-300 ${isOpen ? "opacity-0" : (isDarkText ? "bg-stone-900" : "bg-white")}`}></span>
+              <span className={`h-[2px] block rounded-full transition-all duration-300 ${isOpen ? "w-8 -rotate-45 -translate-y-[8px] bg-stone-900" : (isDarkText ? "bg-stone-900 w-6" : "bg-white w-6")}`}></span>
             </div>
           </button>
         </div>
+      </div>
 
-        {/* MOBILE OVERLAY - z-[200] */}
-        <div className={`fixed inset-0 z-[200] bg-[#fafaf9] flex flex-col items-center justify-center transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"}`}>
-          <nav className="flex flex-col items-center space-y-10">
-            {navLinks.map((link) => (
-              <a 
-                key={link.href} 
-                href={getCleanHref(link.href)} 
-                onClick={() => setIsOpen(false)}
-                className="text-4xl font-display font-bold text-stone-900 active:text-olive-700 p-4 text-center"
-              >
-                {lang === "el" ? link.el : link.en}
-              </a>
-            ))}
-            <a 
-              href={getCleanHref("/contact")} 
-              onClick={() => setIsOpen(false)} 
-              className="px-12 py-5 bg-stone-900 text-white font-bold uppercase tracking-widest text-sm rounded-full shadow-2xl"
+      {/* MOBILE OVERLAY - ΕΞΩ ΑΠΟ ΤΟ FLEX CONTAINER ΓΙΑ ΝΑ ΠΙΑΝΕΙ ΟΛΗ ΤΗΝ ΟΘΟΝΗ */}
+      <div className={`fixed inset-0 z-[200] bg-white flex flex-col items-center justify-center transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"}`}>
+        <nav className="flex flex-col items-center space-y-12">
+          {navLinks.map((link) => (
+            <Link 
+              key={link.href} 
+              href={getCleanHref(link.href)} 
+              onClick={() => setIsOpen(false)}
+              className="text-4xl font-display font-bold text-stone-900 active:text-olive-700"
             >
-              {lang === "el" ? "Κάντε Κράτηση" : "Book Now"}
-            </a>
-          </nav>
-        </div>
+              {lang === "el" ? link.el : link.en}
+            </Link>
+          ))}
+          <Link 
+            href={getCleanHref("/contact")} 
+            onClick={() => setIsOpen(false)} 
+            className="px-12 py-5 bg-stone-900 text-white font-bold uppercase tracking-widest text-sm rounded-full shadow-2xl"
+          >
+            {lang === "el" ? "Κάντε Κράτηση" : "Book Now"}
+          </Link>
+          <div className="pt-4">
+            <LanguageSwitcher isDark={true} />
+          </div>
+        </nav>
       </div>
     </header>
   );
