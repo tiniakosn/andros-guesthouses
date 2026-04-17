@@ -108,28 +108,30 @@ function NavbarContent() {
         </div>
       </header>
 
-      {/* MOBILE OVERLAY - ΤΕΛΕΙΩΣ ΕΞΩ ΓΙΑ ΝΑ ΜΗΝ ΕΠΗΡΕΑΖΕΤΑΙ */}
-      <div className={`fixed inset-0 z-[190] bg-[#fafaf9] flex flex-col items-center justify-center transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"} h-[100dvh] w-screen`}>
-        <nav className="flex flex-col items-center space-y-10">
+      {/* MOBILE OVERLAY - Διορθωμένο Padding για να μη κρύβεται το Home */}
+      <div className={`fixed inset-0 z-[190] bg-[#fafaf9] flex flex-col items-center justify-start pt-32 transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"} h-[100dvh] w-screen`}>
+        <nav className="flex flex-col items-center space-y-8">
           {navLinks.map((link) => (
             <Link 
               key={link.href} 
               href={getCleanHref(link.href)} 
               onClick={() => setIsOpen(false)}
-              className="text-4xl font-display font-bold text-stone-900 active:text-olive-700 p-4 text-center"
+              className="text-4xl font-display font-bold text-stone-900 active:text-olive-700 p-2 text-center"
             >
               {lang === "el" ? link.el : link.en}
             </Link>
           ))}
-          <Link 
-            href={getCleanHref("/contact")} 
-            onClick={() => setIsOpen(false)} 
-            className="px-12 py-5 bg-stone-900 text-white font-bold uppercase tracking-widest text-sm rounded-full shadow-2xl active:scale-95"
-          >
-            {lang === "el" ? "Κάντε Κράτηση" : "Book Now"}
-          </Link>
-          <div className="pt-4">
-             <LanguageSwitcher isDark={true} />
+    
+          <div className="flex flex-col items-center gap-8 pt-4">
+            <Link 
+              href={getCleanHref("/contact")} 
+              onClick={() => setIsOpen(false)} 
+              className="px-12 py-5 bg-stone-900 text-white font-bold uppercase tracking-widest text-sm rounded-full shadow-2xl active:scale-95"
+            >
+              {lang === "el" ? "Κάντε Κράτηση" : "Book Now"}
+            </Link>
+      
+            <LanguageSwitcher isDark={true} />
           </div>
         </nav>
       </div>
