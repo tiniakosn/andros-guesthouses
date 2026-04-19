@@ -1,13 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link"; // Η ΔΙΟΡΘΩΣΗ ΕΔΩ
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
+// SRE NOTE: Αφαιρέσαμε Navbar & Footer γιατί έρχονται από το Root Layout
 
 const ALL_ARTICLES = [
+  { 
+    id: "04", 
+    slug: "athens-to-andros-guide", 
+    title: { el: "Πώς θα έρθετε στην Άνδρο", en: "Athens to Andros: Complete Guide" }, 
+    tag: "TRAVEL GUIDE", 
+    img: "/images/gavrio-andros-greece.webp" 
+  },
   { 
     id: "00", 
     slug: "andros-routes-guide", 
@@ -36,13 +43,6 @@ const ALL_ARTICLES = [
     tag: "GASTRONOMY", 
     img: "/images/food-guide.webp" 
   },
-  { 
-    id: "04", 
-    slug: "athens-to-andros-guide", 
-    title: { el: "Πώς θα έρθετε στην Άνδρο", en: "Athens to Andros: Complete Guide" }, 
-    tag: "TRAVEL GUIDE", 
-    img: "/images/gavrio-andros-greece.webp" 
-  },
 ];
 
 export default function DiaryIndexPage() {
@@ -51,7 +51,7 @@ export default function DiaryIndexPage() {
 
   return (
     <main className="min-h-screen bg-stone-50">
-      <Navbar />
+      {/* SRE Fix: Ο Navbar αφαιρέθηκε για να μην υπάρχει duplication */}
       
       <section className="py-24 px-6 max-w-6xl mx-auto">
         <header className="mb-16 text-center pt-10">
@@ -73,12 +73,12 @@ export default function DiaryIndexPage() {
                 <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl mb-6 shadow-sm group-hover:shadow-xl transition-all duration-500 bg-stone-200">
                   <Image 
                     src={article.img} 
-                    alt={article.title[lang as keyof typeof article.title]} 
+                    alt={article.title[lang]} 
                     fill 
                     className="object-cover transition-transform duration-700 group-hover:scale-110" 
-                    // ΠΡΟΣΘΕΣΗ ΠΡΟΤΕΡΑΙΟΤΗΤΑΣ ΜΟΝΟ ΣΤΗΝ ΠΡΩΤΗ ΕΙΚΟΝΑ
-                    priority={i === 0} 
-                    fetchPriority={i === 0 ? "high" : "low"}
+                    // SRE Fix: Priority μόνο στα πρώτα 2 άρθρα για βέλτιστο LCP
+                    priority={i < 2} 
+                    fetchPriority={i < 2 ? "high" : "low"}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw"
                   />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
@@ -87,7 +87,7 @@ export default function DiaryIndexPage() {
                   {article.tag}
                 </span>
                 <h2 className="text-2xl font-serif text-stone-900 group-hover:text-lime-800 transition-colors leading-tight">
-                  {article.title[lang as keyof typeof article.title]}
+                  {article.title[lang]}
                 </h2>
               </Link>
             </motion.div>
@@ -95,14 +95,13 @@ export default function DiaryIndexPage() {
         </div>
 
         <div className="mt-24 text-center border-t border-stone-200 pt-10">
-          {/* Στο κάτω μέρος της σελίδας (Back to Home) */}
           <Link href="/" className="text-stone-600 hover:text-stone-900 font-bold text-xs uppercase tracking-[0.2em] transition-colors">
             ← {lang === 'el' ? "ΕΠΙΣΤΡΟΦΗ ΣΤΗΝ ΑΡΧΙΚΗ" : "BACK TO HOME"}
           </Link>
         </div>
       </section>
 
-      <Footer />
+      {/* SRE Fix: Ο Footer αφαιρέθηκε για να μην υπάρχει duplication */}
     </main>
   );
 }

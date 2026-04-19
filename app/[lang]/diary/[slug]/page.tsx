@@ -17,28 +17,43 @@ const DIARY_CONTENT = {
       title: "Η Χώρα & ο Άνεμος: Οδηγός Επιβίωσης",
       subtitle: "Πού να κρυφτείτε από τα μελτέμια και τι να δείτε στην αρχοντική πρωτεύουσα.",
       image: "/images/chora-guide-v2.webp",
-      content: `Στη Χώρα της Άνδρου, ο αέρας δεν είναι εχθρός, είναι κομμάτι της ταυτότητάς μας. Όταν ο βοριάς επιμένει, εμείς οι Χωραΐτες δίνουμε ραντεβού στο Νειμποριό —ακριβώς μπροστά στα πόδια μας— ή στα Πίσω Γυαλιά. Αν έχετε όρεξη για μια μικρή βόλτα, οι Αποθήκες και η Χρυσή Άμμος είναι οι ιδανικές λύσεις για να βρείτε γαλήνια νερά.<br/><br/>Μέσα στην πόλη, η εμπειρία είναι κινηματογραφική. Ξεκινήστε από τον Αφανή Ναύτη, περιπλανηθείτε στα στενά της αγοράς και κάντε μια στάση στα παγκόσμιας κλάσης μουσεία μας: το Μουσείο Σύγχρονης Τέχνης και το Αρχαιολογικό.<br/><br/>**Insider Tips:**<br/>• Απόγευμα στη Χώρα: Κατεβείτε στον Αφανή την ώρα που πέφτει ο ήλιος. Είναι η στιγμή που η αρχοντιά της Άνδρου λάμπει περισσότερο.<br/>• Μοναστήρια: Ανηφορίστε προς την Αγία Μαρίνα ή τη Μονή Παναχράντου για την απόλυτη ηρεμία και θέα.`
+      content: `Στη Χώρα της Άνδρου, ο αέρας δεν είναι εχθρός, είναι κομμάτι της ταυτότητάς μας. Όταν ο βοριάς επιμένει, εμείς οι Χωραΐτες δίνουμε ραντεβού στο Νειμποριό —ακριβώς μπροστά στα πόδια μας— ή στα Πίσω Γυαλιά.<br/><br/>Μέσα στην πόλη, η εμπειρία είναι κινηματογραφική. Ξεκινήστε από τον Αφανή Ναύτη, περιπλανηθείτε στα στενά της αγοράς και κάντε μια στάση στα παγκόσμιας κλάσης μουσεία μας: το Μουσείο Σύγχρονης Τέχνης και το Αρχαιολογικό.`
     },
     "local-flavors": {
       tag: "GASTRONOMY",
       title: "Γεύση Άνδρου: Από το Νειμποριό στην Αγορά",
       subtitle: "Οι δικές μας στάσεις για αυθεντική φρουτάλια, θαλασσινά και γλυκά.",
       image: "/images/food-guide.webp",
-      content: `Όταν μας ρωτάνε πού να φάνε στην Άνδρο, ξεκινάμε από τα στέκια που ξέρουμε και εμπιστευόμαστε χρόνια.<br/><br/>Στον πεζόδρομο στο Νειμποριό, ο Μαδούρης είναι κλασική αξία για φαγητό δίπλα στο κύμα, ενώ ο Νόνας είναι η στάση σας για φρέσκα θαλασσινά. Ανεβαίνοντας στην Αγορά (τον κεντρικό πεζόδρομο), ο Πλάτανος και η Νοσταλγία είναι ιδανικά για ποικιλίες και ουζάκι κάτω από τη σκιά. Για κάτι πιο προσεγμένο, η Σκαλάκια και η Ενδοχώρα προσφέρουν εξαιρετικά πιάτα.<br/><br/>Μην φύγετε χωρίς να δοκιμάσετε την παραδοσιακή μας Φρουτάλια και τα ζαχαροπλαστεία στην Αγορά για τα περίφημα αμυγδαλωτά και τις παραδοσιακές τους πάστες.<br/><br/>**Insider Tip:** Αν βγείτε έξω από τη Χώρα, ο Κόσσης στον Άνω Φελλό για κρέας και ο Σταμάτης στο Μπατσί είναι εγγυημένες επιλογές.`
+      content: `Όταν μας ρωτάνε πού να φάνε στην Άνδρο, ξεκινάμε από τα στέκια που ξέρουμε και εμπιστευόμαστε χρόνια.<br/><br/>Στον πεζόδρομο στο Νειμποριό, ο Μαδούρης είναι κλασική αξία για φαγητό δίπλα στο κύμα, ενώ ο Νόνας είναι η στάση σας για φρέσκα θαλασσινά. Μην φύγετε χωρίς να δοκιμάσετε την παραδοσιακή μας Φρουτάλια.`
     },
     "secret-beaches": {
       tag: "NATURE",
       title: "Παραλίες κοντά στη Χώρα & Μυστικά",
       subtitle: "Από το κινηματογραφικό Συνέτι μέχρι το απόκρημνο Λύδι.",
       image: "/images/beaches-guide.webp",
-      content: `Η Άνδρος έχει παραλίες για κάθε γούστο, αρκεί να ξέρεις πού να πας. Κοντά στη Χώρα, οι πιο άμεσες επιλογές είναι το Παραπόρτι, το Νειμποριό και τα Γυαλιά (Μπροστά και Πίσω).<br/><br/>Αν ψάχνετε κάτι πραγματικά ιδιαίτερο, το Συνέτι είναι απαραίτητη στάση. Είναι η παραλία με τα βαθιά νερά και τις σπηλιές όπου γυρίστηκαν σκηνές από την ταινία "Μικρά Αγγλία". Η άγρια ομορφιά του τοπίου θα σας μαγέψει.<br/><br/>Για τους λάτρεις της απομόνωσης, προτείνουμε το Λύδι. Θα χρειαστεί να κατεβείτε μια πλαγιά (έχει λίγη πεζοπορία), αλλά η ησυχία και τα κρυστάλλινα νερά θα σας αποζημιώσουν. Μην ξεχάσετε να πάρετε νερό μαζί σας!`
+      content: `Η Άνδρος έχει παραλίες για κάθε γούστο. Κοντά στη Χώρα, οι πιο άμεσες επιλογές είναι το Παραπόρτι, το Νειμποριό και τα Γυαλιά (Μπροστά και Πίσω).<br/><br/>Αν ψάχνετε κάτι πραγματικά ιδιαίτερο, το Συνέτι είναι απαραίτητη στάση. Είναι η παραλία με τα βαθιά νερά και τις σπηλιές όπου γυρίστηκαν σκηνές από την ταινία "Μικρά Αγγλία".`
     },
     "athens-to-andros-guide": {
       tag: "TRAVEL GUIDE",
-      title: "Πώς θα έρθετε στην Άνδρο από την Αθήνα",
-      subtitle: "Ο πλήρης οδηγός για το πιο κοντινό νησί των Κυκλάδων.",
+      title: "Πώς θα έρθετε στην Άνδρο από την Αθήνα (2026)",
+      subtitle: "Ο πλήρης οδηγός για το πιο κοντινό νησί των Κυκλάδων από το λιμάνι της Ραφήνας.",
       image: "/images/gavrio-andros-greece.webp",
-      content: `Η Άνδρος είναι το ιδανικό νησί για μια γρήγορη, premium απόδραση, ακριβώς επειδή η πρόσβαση είναι πανεύκολη και δεν απαιτεί πολύωρα ταξίδια με πλοίο.<br/><br/>**Από το Αεροδρόμιο στο Λιμάνι της Ραφήνας:**<br/>Το λιμάνι αναχώρησης για την Άνδρο είναι αποκλειστικά η Ραφήνα (όχι ο Πειραιάς). Αν προσγειωθείτε στο Ελευθέριος Βενιζέλος, η Ραφήνα απέχει μόλις 20-30 λεπτά. Μπορείτε να πάρετε ταξί, ιδιωτικό transfer ή το απευθείας λεωφορείο (ΚΤΕΛ) που αναχωρεί ακριβώς έξω από το επίπεδο των Αφίξεων.<br/><br/>**Το Ταξίδι με το Πλοίο:**<br/>Η διαδρομή Ραφήνα - Γαύριο (το λιμάνι της Άνδρου) διαρκεί μόλις 2 ώρες. Τα δρομολόγια είναι πολύ συχνά (3-5 φορές τη μέρα), κυρίως με την Fast Ferries και την Golden Star Ferries. Το ταξίδι είναι άνετο και συνήθως ήπιο.<br/><br/>**Φτάνοντας στην Άνδρο:**<br/>Μόλις φτάσετε στο Γαύριο, η Χώρα της Άνδρου απέχει περίπου 45 λεπτά οδικώς. Προτείνουμε να νοικιάσετε αυτοκίνητο κατευθείαν στο λιμάνι, καθώς το νησί είναι μεγάλο και θα το χρειαστείτε για να εξερευνήσετε τα μονοπάτια και τις παραλίες. Εναλλακτικά, υπάρχει πάντα σταθμός ταξί κατά την άφιξη του πλοίου.`
+      content: `Η Άνδρος είναι η ιδανική επιλογή για premium απόδραση, καθώς είναι το μοναδικό νησί των Κυκλάδων που απέχει μόλις 2 ώρες από την Αθήνα. Εδώ θα βρείτε όλα όσα πρέπει να γνωρίζετε για το ταξίδι σας το 2026.<br/><br/>
+      **1. Το Λιμάνι Αναχώρησης: Ραφήνα (Όχι Πειραιάς!)**<br/>
+      Προσοχή: Τα πλοία για Άνδρο αναχωρούν **αποκλειστικά από το λιμάνι της Ραφήνας**. Είναι πολύ πιο κοντά στο Αεροδρόμιο (Ελ. Βενιζέλος) από ό,τι ο Πειραιάς.<br/><br/>
+      **2. Από το Αεροδρόμιο στη Ραφήνα:**<br/>
+      • **Λεωφορείο ΚΤΕΛ:** Η πιο οικονομική λύση. Η στάση βρίσκεται ακριβώς απέναντι από τις Αφίξεις του αεροδρομίου (ανάμεσα στις Εξόδους 2 και 3). Το εισιτήριο κοστίζει περίπου 4€ και η διαδρομή διαρκεί 30-40 λεπτά.<br/>
+      • **Ταξί / Uber:** Θα σας πάρει περίπου 20 λεπτά και το κόστος κυμαίνεται στα 25-35€.<br/><br/>
+      **3. Τα δρομολόγια των Πλοίων:**<br/>
+      Το ταξίδι διαρκεί **2 ώρες** με τα συμβατικά πλοία και περίπου **1 ώρα και 15 λεπτά** με τα ταχύπλοα. Οι εταιρείες **Fast Ferries** και **Golden Star Ferries** έχουν καθημερινά δρομολόγια:<br/>
+      • **Πρωινά:** Συνήθως αναχωρούν γύρω στις 07:30 - 08:00.<br/>
+      • **Απογευματινά:** Υπάρχουν δρομολόγια στις 15:30, 17:30 και συχνά το βράδυ στις 19:30.<br/><br/>
+      **4. Φτάνοντας στην Άνδρο (Λιμάνι Γαυρίου):**<br/>
+      Μόλις αποβιβαστείτε στο Γαύριο, έχετε τρεις επιλογές για να έρθετε στη Χώρα (32 χλμ):<br/>
+      • **Λεωφορείο ΚΤΕΛ:** Το λεωφορείο περιμένει **πάντα** έξω από το πλοίο, ό,τι ώρα και να φτάσει (ακόμα και με καθυστέρηση). Το εισιτήριο για Χώρα κοστίζει περίπου 4€.<br/>
+      • **Ενοικίαση Αυτοκινήτου:** Σας το προτείνουμε ανεπιφύλακτα. Υπάρχουν πολλά γραφεία στο λιμάνι. Έχοντας δικό σας μέσο, θα εξερευνήσετε τα μονοπάτια και τις απομακρυσμένες παραλίες μας.<br/>
+      • **Ταξί:** Υπάρχει σταθμός ταξί στο λιμάνι. Η διαδρομή για Χώρα κοστίζει περίπου 40-45€.<br/><br/>
+      **Insider Tip:** Αν ταξιδεύετε Παρασκευή απόγευμα ή αν έχετε αυτοκίνητο, κλείστε τα εισιτήριά σας τουλάχιστον 10 μέρες πριν. Τα δρομολόγια της Ραφήνας γίνονται γρήγορα sold-out!`
     }
   },
   en: {
@@ -47,40 +62,39 @@ const DIARY_CONTENT = {
       title: "Andros Routes: The Best Hiking Trails",
       subtitle: "Explore Europe's certified hiking paradise directly from Chora.",
       image: "/images/hiking-andros.webp",
-      content: `Andros is a hiker's heaven. Boasting over 300km of marked trails, it is the only island in Europe to hold the "Leading Quality Trails - Best of Europe" certification.<br/><br/>**Must-Try Routes:**<br/>• **Route 1 (Chora - Lamyra - Menites):** A lush green path starting from the heart of town, leading you to the famous Menites springs.<br/>• **Route 6 (Vourkoti - Achla):** Arguably the most stunning hike, ending at the iconic Achla beach and lighthouse.<br/><br/>**Insider Tip:** Staying with us in Chora? Route 2 (Chora - Apoikia) is your easiest gateway to nature, accessible right from our doorstep without needing a car.`
+      content: `Andros is a hiker's heaven. Boasting over 300km of marked trails, it is the only island in Europe to hold the "Leading Quality Trails - Best of Europe" certification.`
     },
     "chora-and-wind": {
       tag: "KNOW-HOW",
       title: "Chora & The Wind: A Survivor's Guide",
-      subtitle: "Where to hide from the meltemi and how to experience the noble capital like a local.",
+      subtitle: "Where to hide from the meltemi and how to experience the noble capital.",
       image: "/images/chora-guide-v2.webp",
-      content: `In Chora, the wind isn't an enemy; it’s an essential part of our island's soul. When the strong North wind (meltemi) kicks in, we locals don't stay home—we simply head to our "wind-shelters."<br/><br/>Your best bets for a calm swim are **Neimporio** —literally at your doorstep— or the scenic **Piso Gialia**. If you’re up for a short drive, **Apothikes** and **Golden Sand** (Chrisi Ammos) offer crystal clear, tranquil waters even on the windiest days.<br/><br/>The town itself offers a cinematic, aristocratic experience. Start your walk from the **Invisible Sailor** square, wander through the marble-paved market alleys, and make sure to stop at our world-class museums: the **Museum of Contemporary Art** and the **Archaeological Museum**.<br/><br/>**Insider Tips:**<br/>• **Lidi Beach:** For the adventurous souls, the hike down the slope reveals one of the most secluded and quiet spots on the island.<br/>• **Sineti:** The bay that "starred" in the movie 'Little England'. Its wild beauty and mysterious sea caves are unforgettable.<br/>• **Evening Magic:** Walk down to the main square at sunset. This is when the noble architecture of Chora truly shines.`
+      content: `In Chora, the wind isn't an enemy; it’s an essential part of our island's soul. For a calm swim, head to Neimporio or Piso Gialia.`
     },
     "local-flavors": {
       tag: "GASTRONOMY",
       title: "Taste of Andros: From Neimporio to the Market",
-      subtitle: "Our personal recommendations for authentic 'froutalia', fresh seafood, and local treats.",
+      subtitle: "Our personal recommendations for authentic 'froutalia' and fresh seafood.",
       image: "/images/food-guide.webp",
-      content: `When guests ask us where to eat, we point them to the spots we’ve trusted for generations. Andros' cuisine is all about simple, high-quality local ingredients.<br/><br/>Down at the **Neimporio promenade**, right by the waves, **Madouris** is a classic choice for traditional dishes, while **Nonas** is the go-to place for fresh seafood and creative appetizers.<br/><br/>As you move up to the **Main Market (Agora)**, the vibe changes. Under the cool shade of the alleys, **Platanos** and **Nostalgia** are perfect for an afternoon Ouzo with a variety of small plates ("poikilies"). For a more refined dining experience that blends tradition with modern touches, **Skalakia** and **Endochora** are absolute must-visits.<br/><br/>Don't leave without trying our signature dish, **Froutalia** — a slow-cooked omelet with local sausages and potatoes. For dessert, the pastry shops in the Agora offer famous **almond sweets** (amygdalota) and traditional "pastes" that have been local favorites for decades.<br/><br/>**Insider Tip:** If you venture outside Chora, **Kossis** in Ano Fellos is a legendary meat-lover's paradise, and **Stamatis** in Batsi is a guarantee for well-cooked, authentic Greek food.`
+      content: `When guests ask us where to eat, we point them to Madouris and Nonas in Neimporio for authentic flavors by the sea.`
     },
     "secret-beaches": {
       tag: "NATURE",
       title: "Beaches Near Chora & Hidden Secrets",
       subtitle: "From the cinematic Sineti to the rugged beauty of Lidi.",
       image: "/images/beaches-guide.webp",
-      content: `Andros is an island of endless coastlines, but the best spots often require a bit of local knowledge. Near Chora, your most convenient options for a quick dip are **Paraporti**, **Neimporio**, and the twin beaches of **Gialia** (Front and Back).<br/><br/>However, if you are looking for something truly cinematic, **Sineti** is a must. Known for its deep turquoise waters and impressive sea caves, it served as the backdrop for the famous Greek film "Little England." Its wild, untamed beauty is breathtaking.<br/><br/>For those seeking total seclusion, we recommend **Lidi**. It requires a bit of a hike down a steep path, but the absolute silence and the feeling of having the Aegean all to yourself is the ultimate reward. Just remember to bring your own water and supplies!<br/><br/>**Explore More:**<br/>Beyond the sand, visit the **Tower of Agios Petros** or the ancient settlement of **Strofilas** —the largest Neolithic settlement in the Aegean— to see a different side of our island's history.`
+      content: `Andros is an island of endless coastlines. Near Chora, visit Sineti, the bay that starred in the movie 'Little England'.`
     },
     "athens-to-andros-guide": {
       tag: "TRAVEL GUIDE",
-      title: "How to Get to Andros from Athens Airport",
+      title: "How to Get to Andros from Athens (2026)",
       subtitle: "The ultimate 2026 travel guide to the closest Cycladic island.",
       image: "/images/gavrio-andros-greece.webp",
-      content: `Andros is the ultimate destination for an authentic, premium Greek island escape, largely because of how easy it is to reach. As the closest Cycladic island to the Greek capital, you can go from landing at the airport to sipping wine on your private sea-view balcony in just a few hours.<br/><br/>**Step 1: Airport to Rafina Port**<br/>Unlike other islands, ferries to Andros depart exclusively from the Port of Rafina (not Piraeus). Rafina is extremely close to the Athens International Airport (ATH) — just a 20-30 minute drive. You can grab a taxi right outside the arrivals gate, book a private transfer, or take the direct Airport-to-Rafina shuttle bus (KTEL).<br/><br/>**Step 2: The Ferry Ride**<br/>The ferry crossing from Rafina to Gavrio (the port of Andros) takes exactly 2 hours. Ferries run frequently throughout the day (usually 3 to 5 daily departures), operated primarily by Fast Ferries and Golden Star Ferries. The modern vessels offer spacious VIP lounges and open decks to enjoy the Aegean breeze.<br/><br/>**Step 3: Arriving in Andros**<br/>Once you dock at Gavrio, the aristocratic capital (Chora) is a scenic 45-minute drive away. We highly recommend renting a car right at the port upon arrival. Andros is a large, majestic island with famous hiking trails (Andros Routes) and hidden beaches, so having a vehicle is essential for exploring. Alternatively, a taxi rank is always available when ferries arrive.`
+      content: `Andros is the closest Cycladic island to Athens. Ferries depart exclusively from Rafina Port (not Piraeus).<br/><br/>**Rafina to Andros:**<br/>The crossing takes only 2 hours. Once you land at Gavrio, Chora is a scenic 45-minute drive away. Renting a car is highly recommended.`
     }
   }
 };
 
-// 1. ΔΥΝΑΜΙΚΟ SEO: Προσθήκη Canonical & Article Type
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   const { lang, slug } = await params;
   const article = (DIARY_CONTENT as any)[lang]?.[slug];
@@ -115,15 +129,14 @@ export default async function DiaryPage({ params }: any) {
 
   if (!article) return notFound();
 
-  // SRE Addition: JSON-LD Schema για τα Articles
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": article.title,
     "description": article.subtitle,
     "image": `https://www.androsguesthouses.gr${article.image}`,
-    "datePublished": "2026-04-16T12:00:00+02:00", // Η σημερινή ημερομηνία
-    "dateModified": new Date().toISOString(),     // Αυτόματη ημερομηνία αλλαγής
+    "datePublished": "2026-04-19T12:00:00+02:00",
+    "dateModified": new Date().toISOString(),
     "author": {
       "@type": "Organization",
       "name": "Andros Guesthouses"
@@ -140,7 +153,6 @@ export default async function DiaryPage({ params }: any) {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Ενσωμάτωση του Schema για την Google */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -153,7 +165,7 @@ export default async function DiaryPage({ params }: any) {
           fill 
           className="object-cover" 
           priority 
-          fetchPriority="high" // SRE Fix: Επιτάχυνση LCP
+          fetchPriority="high" 
           sizes="100vw"
           quality={85}
         />
@@ -166,7 +178,6 @@ export default async function DiaryPage({ params }: any) {
             <h1 className="text-3xl md:text-5xl font-serif text-white mb-6 leading-tight drop-shadow-md">
               {article.title}
             </h1>
-            {/* SRE Fix: Μετατροπή σε <h2> για On-Page SEO */}
             <h2 className="text-lg md:text-xl text-white/90 font-light italic">
               {article.subtitle}
             </h2>
@@ -183,7 +194,6 @@ export default async function DiaryPage({ params }: any) {
             }} 
           />
 
-          {/* SRE CONVERSION INJECTOR: Το "Δόλωμα" για κρατήσεις */}
           <div className="mt-16 mb-8 p-10 bg-stone-50 rounded-2xl border border-stone-200 text-center shadow-sm">
             <h3 className="text-2xl font-serif text-stone-900 mb-3">
               {lang === 'el' ? "Ζήστε την εμπειρία από κοντά" : "Experience it yourself"}
