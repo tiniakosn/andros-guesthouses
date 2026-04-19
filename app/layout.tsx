@@ -19,24 +19,25 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.androsguesthouses.gr"),
   
-  // SRE SEO Upgrade: Προσθήκη "Official Site" και "Best Rates" για αύξηση του CTR
+  // SRE SEO Tuning: Πιο επιθετικοί τίτλοι για τα κλικ
   title: {
-    default: "Andros Guesthouses | Boutique Stay in Chora | Official Site",
+    default: "Andros Guesthouses | Boutique Stay in Chora Andros | Official Site",
     template: "%s | Andros Guesthouses"
   },
-  description: "Experience authentic luxury at Andros Guesthouses in Chora. Premium sea view suites near Nimborio beach. Book direct for the best rates and exclusive offers.",
+  description: "Top-rated boutique guesthouse in Chora, Andros. Aegean Studio & Garden Suite with panoramic harbor views. Near Nimborio beach. Book direct for best rates.",
   
   keywords: [
     'andros accommodation', 
-    'boutique hotel andros',
+    'boutique guesthouse chora andros',
+    'aegean studio andros',
+    'garden suite andros',
     'rooms chora andros',
     'sea view apartments andros',
     'διαμονή άνδρος χώρα', 
     'ενοικιαζόμενα δωμάτια άνδρος χώρα', 
     'δωμάτια άνδρος', 
     'andros guesthouses',
-    'andros suites',
-    'best hotels in andros'
+    'hiking andros accommodation'
   ],
 
   alternates: {
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
 
   openGraph: {
     title: "Andros Guesthouses | Official Site | Sea View Suites in Chora",
-    description: "Your private stone retreat in Andros. panoramic sea views, authentic hospitality, and the best rates guaranteed on our official website.",
+    description: "Your private stone retreat in Andros. Panoramic sea views and authentic hospitality. Best rates guaranteed online.",
     url: "https://www.androsguesthouses.gr",
     siteName: "Andros Guesthouses",
     locale: "en_US",
@@ -124,7 +125,7 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Διορθωμένο Schema: GuestHouse Type με Amenities */}
+        {/* Διορθωμένο Schema: Προσθήκη AggregateRating για εμφάνιση αστεριών στη Google */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -132,12 +133,12 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "GuestHouse",
               "name": "Andros Guesthouses",
-              "alternateName": "Ενοικιαζόμενα Δωμάτια Άνδρος - Andros Guesthouses",
+              "alternateName": "Andros Boutique Guesthouses",
               "image": "https://www.androsguesthouses.gr/opengraph-image-v3.jpg",
               "@id": "https://www.androsguesthouses.gr",
               "url": "https://www.androsguesthouses.gr",
               "telephone": "+306936934390",
-              "email": "androsguesthouses@gmail.com",
+              "priceRange": "€€",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Νειμποριό",
@@ -145,24 +146,23 @@ export default function RootLayout({
                 "postalCode": "84500",
                 "addressCountry": "GR"
               },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "9.5",
+                "reviewCount": "178",
+                "bestRating": "10",
+                "worstRating": "1"
+              },
               "geo": {
                 "@type": "GeoCoordinates",
                 "latitude": 37.839, 
                 "longitude": 24.936
               },
-              "priceRange": "€€",
-              "description": "Authentic stone-built guesthouse in Chora, Andros. Features panoramic sea views and premium rooms near the beach.",
+              "description": "Boutique guesthouse in Chora, Andros. Features the Aegean Studio and Garden Suite with panoramic harbor views.",
               "amenityFeature": [
-                {
-                  "@type": "LocationFeatureSpecification",
-                  "name": "Sea View",
-                  "value": true
-                },
-                {
-                  "@type": "LocationFeatureSpecification",
-                  "name": "Free Wi-Fi",
-                  "value": true
-                }
+                { "@type": "LocationFeatureSpecification", "name": "Sea View", "value": true },
+                { "@type": "LocationFeatureSpecification", "name": "Hiking Friendly", "value": true },
+                { "@type": "LocationFeatureSpecification", "name": "Free Wi-Fi", "value": true }
               ]
             }),
           }}
