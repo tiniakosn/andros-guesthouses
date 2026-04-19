@@ -131,7 +131,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "GuestHouse",
+              "@type": "Hotel", // Αλλαγή σε Hotel για να "περάσουν" τα αστέρια
               "name": "Andros Guesthouses",
               "alternateName": "Andros Boutique Guesthouses",
               "image": "https://www.androsguesthouses.gr/opengraph-image-v3.jpg",
@@ -158,11 +158,11 @@ export default function RootLayout({
                 "latitude": 37.839, 
                 "longitude": 24.936
               },
-              "description": "Boutique guesthouse in Chora, Andros. Features the Aegean Studio and Garden Suite with panoramic harbor views.",
+              "description": "Boutique guesthouse in Chora, Andros. Featuring sea view studios and premium hospitality near Nimborio beach.",
               "amenityFeature": [
-                { "@type": "LocationFeatureSpecification", "name": "Sea View", "value": true },
-                { "@type": "LocationFeatureSpecification", "name": "Hiking Friendly", "value": true },
-                { "@type": "LocationFeatureSpecification", "name": "Free Wi-Fi", "value": true }
+                { "@type": "LocationFeatureSpecification", "name": "Sea View", "value": "true" },
+                { "@type": "LocationFeatureSpecification", "name": "Hiking Friendly", "value": "true" },
+                { "@type": "LocationFeatureSpecification", "name": "Free Wi-Fi", "value": "true" }
               ]
             }),
           }}
