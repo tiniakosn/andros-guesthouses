@@ -162,7 +162,7 @@ function ContactContent() {
                   >
                     {loadMap ? (
                       <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3135.568465063462!2d24.9189!3d37.8389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDUwJzIwLjAiTiAyNMKwNTUnMDguMCJF!5e0!3m2!1sel!2sgr!4v1620000000000!5m2!1sel!2sgr" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.0325698355923!2d24.929867475706402!3d37.83612337196996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a2ff3fd9c3115b%3A0xb694eabb08bdd45!2sAndros%20Guesthouses!5e0!3m2!1sel!2sgr!4v1776605399709!5m2!1sel!2sgr" 
                         width="100%" height="100%" style={{ border: 0 }} 
                         allowFullScreen loading="lazy" title="Location Map"
                       ></iframe>
