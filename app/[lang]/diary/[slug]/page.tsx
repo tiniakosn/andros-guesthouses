@@ -10,21 +10,43 @@ const DIARY_CONTENT = {
       title: "Μονοπάτια της Άνδρου: Οι καλύτερες διαδρομές",
       subtitle: "Ανακαλύψτε το κορυφαίο δίκτυο πεζοπορίας στην Ευρώπη.",
       image: "/images/hiking-andros.webp",
-      content: `Η Άνδρος είναι ο παράδεισος του πεζοπόρου. Με πάνω από 300 χλμ. σηματοδοτημένων διαδρομών, είναι το μοναδικό νησί στην Ευρώπη με την πιστοποίηση "Leading Quality Trails - Best of Europe".<br/><br/>**Οι αγαπημένες μας διαδρομές:**<br/>• **Διαδρομή 1 (Χώρα - Λάμυρα - Μαίνητες):** Μια καταπράσινη διαδρομή που ξεκινάει μέσα από την πόλη και σας οδηγεί στις πηγές των Μαινήτων.<br/>• **Διαδρομή 6 (Βουρκωτή - Άχλα):** Ίσως η πιο εντυπωσιακή διαδρομή που καταλήγει στη διάσημη παραλία Άχλα.<br/><br/>**Insider Tip:** Αν μείνετε μαζί μας στη Χώρα, η Διαδρομή 2 (Χώρα - Αποίκια) είναι η πιο εύκολη πρόσβαση στη φύση χωρίς να χρειαστείτε αυτοκίνητο.`
+      content: `Η Άνδρος είναι ο μοναδικός προορισμός στην Ευρώπη που συνδυάζει την κυκλαδίτικη θάλασσα με ένα δίκτυο μονοπατιών πιστοποιημένο με το σήμα "Leading Quality Trails - Best of Europe".<br/><br/>
+      **Γιατί να περπατήσετε στην Άνδρο:**<br/>
+      • **Ποικιλομορφία:** Θα διασχίσετε πέτρινα γεφύρια, αρχαίους οικισμούς, καταρράκτες και δάση από καστανιές.<br/>
+      • **Σήμανση:** Το δίκτυο των 300χλμ είναι πλήρως χαρτογραφημένο και εύκολο στην πλοήγηση.<br/><br/>
+      **Οι προτάσεις μας:**<br/>
+      • **Διαδρομή 1 (Η Κλασική):** Ξεκινά από τη Χώρα, περνά από τα Λάμυρα και καταλήγει στις πηγές των Μαινήτων. Μια καταπράσινη διαδρομή 2,5 ωρών, ιδανική για αρχάριους.<br/>
+      • **Διαδρομή 6 (Η Εντυπωσιακή):** Από τη Βουρκωτή προς την παραλία Άχλα. Θα δείτε το ποτάμι και τον εμβληματικό φάρο της Άχλας. (Δυσκολία: Μέτρια).<br/>
+      • **Διαδρομή 2 (Η Δική μας):** Αν μένετε μαζί μας, η διαδρομή προς Αποίκια ξεκινάει λίγα λεπτά από το guesthouse και σας οδηγεί στους καταρράκτες της Πυθάρας.<br/><br/>
+      ** Tip:** Προμηθευτείτε έναν χάρτη "Andros Routes" πριν ξεκινήσετε και έχετε πάντα μαζί σας νερό. Η καλύτερη εποχή είναι από Απρίλιο έως Ιούνιο και όλο τον Σεπτέμβριο.`
     },
     "chora-and-wind": {
       tag: "KNOW-HOW",
       title: "Η Χώρα & ο Άνεμος: Οδηγός Επιβίωσης",
       subtitle: "Πού να κρυφτείτε από τα μελτέμια και τι να δείτε στην αρχοντική πρωτεύουσα.",
       image: "/images/chora-guide-v2.webp",
-      content: `Στη Χώρα της Άνδρου, ο αέρας δεν είναι εχθρός, είναι κομμάτι της ταυτότητάς μας. Όταν ο βοριάς επιμένει, εμείς οι Χωραΐτες δίνουμε ραντεβού στο Νειμποριό —ακριβώς μπροστά στα πόδια μας— ή στα Πίσω Γυαλιά.<br/><br/>Μέσα στην πόλη, η εμπειρία είναι κινηματογραφική. Ξεκινήστε από τον Αφανή Ναύτη, περιπλανηθείτε στα στενά της αγοράς και κάντε μια στάση στα παγκόσμιας κλάσης μουσεία μας: το Μουσείο Σύγχρονης Τέχνης και το Αρχαιολογικό.`
+      content: `Πολλοί φοβούνται τον άνεμο στις Κυκλάδες, αλλά στη Χώρα της Άνδρου έχουμε μάθει να ζούμε μαζί του. Η Χώρα είναι χτισμένη πάνω σε μια χερσόνησο που "σκίζει" το Αιγαίο, προσφέροντας μια αρχοντιά που δεν θα βρείτε πουθενά αλλού.<br/><br/>
+**Πού να κολυμπήσετε όταν φυσάει:**<br/>
+• **Νειμποριό:** Ακριβώς μπροστά από τα πόδια σας. Είναι ο κόλπος που προστατεύεται από τους βοριάδες. Ιδανικός για οικογένειες.<br/>
+• **Πίσω Γυάλια:** Ένας μικρός παράδεισος με beach bar, που παραμένει γαλήνιος ακόμα και με 7 μποφόρ.<br/><br/>
+**Τι να μην χάσετε στη Χώρα:**<br/>
+• **Ο Αφανής Ναύτης:** Το σύμβολο του νησιού στην άκρη της παλιάς πόλης. Η θέα στο Ενετικό Κάστρο και τον φάρο Τουρλίτη είναι μαγική.<br/>
+• **Πολιτισμός:** Το Μουσείο Σύγχρονης Τέχνης (Γουλανδρή) φιλοξενεί κάθε καλοκαίρι παγκόσμιας κλάσης εκθέσεις (Picasso, Miro κ.α.).<br/>
+• **Η Αγορά:** Ο μαρμαρόστρωτος πεζόδρομος με τα νεοκλασικά καπετανόσπιτα είναι η καρδιά της κοινωνικής ζωής.`
     },
     "local-flavors": {
       tag: "GASTRONOMY",
       title: "Γεύση Άνδρου: Από το Νειμποριό στην Αγορά",
       subtitle: "Οι δικές μας στάσεις για αυθεντική φρουτάλια, θαλασσινά και γλυκά.",
       image: "/images/food-guide.webp",
-      content: `Όταν μας ρωτάνε πού να φάνε στην Άνδρο, ξεκινάμε από τα στέκια που ξέρουμε και εμπιστευόμαστε χρόνια.<br/><br/>Στον πεζόδρομο στο Νειμποριό, ο Μαδούρης είναι κλασική αξία για φαγητό δίπλα στο κύμα, ενώ ο Νόνας είναι η στάση σας για φρέσκα θαλασσινά. Μην φύγετε χωρίς να δοκιμάσετε την παραδοσιακή μας Φρουτάλια.`
+      content: `Η γαστρονομία της Άνδρου βασίζεται στα φρέσκα προϊόντα των κήπων της και στην πλούσια ναυτική παράδοση. Εδώ το φαγητό είναι ιεροτελεστία.<br/><br/>
+**Τα πιάτα που πρέπει να δοκιμάσετε:**<br/>
+• **Φρουτάλια:** Η παραδοσιακή ομελέτα με πατάτες και ντόπια λουκάνικα αρωματισμένα με μαντζουράνα. Είναι το σήμα κατατεθέν μας.<br/>
+• **Αμυγδαλωτά:** Τα διάσημα γλυκά της Χώρας με ανθόνερο. Θα τα βρείτε στα ιστορικά ζαχαροπλαστεία του πεζόδρομου.<br/><br/>
+**Οι στάσεις μας:**<br/>
+• **Στη Χώρα:** Για φρέσκο ψάρι ο "Νόνας" στο Νειμποριό και για μαγειρευτά ο "Πλάτανος" και η "Παρέα" στην Αγορά.<br/>
+• **Στα χωριά:** Ο "Κόσσης" στον Άνω Φελλό είναι ο ναός του κρέατος, ενώ στον "Σταμάτη" στο Μπατσί θα φάτε την καλύτερη αστακομακαρονάδα.<br/><br/>
+**Tip:** Ζητήστε το τοπικό τυρί "βολάκι" ή "μαλακό" με τη σαλάτα σας. Η γεύση είναι ασύγκριτη.`
     },
     "secret-beaches": {
       tag: "NATURE",
@@ -62,28 +84,59 @@ const DIARY_CONTENT = {
       title: "Andros Routes: The Best Hiking Trails",
       subtitle: "Explore Europe's certified hiking paradise directly from Chora.",
       image: "/images/hiking-andros.webp",
-      content: `Andros is a hiker's heaven. Boasting over 300km of marked trails, it is the only island in Europe to hold the "Leading Quality Trails - Best of Europe" certification.`
+      content: `Andros is the only destination in Europe that perfectly blends the Aegean blue with a hiking network certified with the **"Leading Quality Trails - Best of Europe"** label.<br/><br/>
+**Why Hike in Andros:**<br/>
+• **Diversity:** You will cross ancient stone bridges, watermills, waterfalls, and lush chestnut forests.<br/>
+• **Infrastructure:** The 300km network is fully marked, maintained, and easy to navigate via the "Andros Routes" app.<br/><br/>
+**Our Top Recommendations:**<br/>
+• **Route 1 (The Classic):** Starts from Chora, passes through the green village of Lamyra, and ends at the famous Menites springs. An easy 2.5-hour lush walk.<br/>
+• **Route 6 (The Scenic):** From Vourkoti to Achla beach. You’ll witness the river meeting the sea and the iconic Achla lighthouse. (Difficulty: Moderate).<br/>
+• **Route 2 (From our Doorstep):** If you’re staying with us, the path to Apoikia starts just minutes away, leading you to the mesmerizing Pithara waterfalls.<br/><br/>
+**Tip:** Check the "Andros Routes" website before you start and always carry water. The best hiking windows are April to June and the entire month of September.`
     },
     "chora-and-wind": {
       tag: "KNOW-HOW",
       title: "Chora & The Wind: A Survivor's Guide",
       subtitle: "Where to hide from the meltemi and how to experience the noble capital.",
       image: "/images/chora-guide-v2.webp",
-      content: `In Chora, the wind isn't an enemy; it’s an essential part of our island's soul. For a calm swim, head to Neimporio or Piso Gialia.`
+      content: `Many fear the Cycladic winds, but in Chora, we’ve learned to embrace them. Built on a peninsula that cuts through the Aegean, Chora offers an aristocratic charm you won't find anywhere else in the islands.<br/><br/>
+**Where to Swim when it’s Windy:**<br/>
+• **Neimporio:** Right at your doorstep! This bay is naturally protected from the north winds (meltemi). Ideal for families.<br/>
+• **Piso Gialia:** A small paradise with a great beach bar that remains calm even when the wind hits 7 Beaufort.<br/><br/>
+**Chora’s Must-See Landmarks:**<br/>
+• **The Invisible Sailor:** The island's symbol at the edge of the old town. The view of the Venetian Castle and the Tourlitis Lighthouse is legendary.<br/>
+• **Culture:** The Goulandris Museum of Contemporary Art hosts world-class exhibitions every summer (Picasso, Miro, etc.).<br/>
+• **The Agora:** The marble-paved main street with neoclassical captains' mansions is the heart of our social life.`
     },
     "local-flavors": {
       tag: "GASTRONOMY",
       title: "Taste of Andros: From Neimporio to the Market",
       subtitle: "Our personal recommendations for authentic 'froutalia' and fresh seafood.",
       image: "/images/food-guide.webp",
-      content: `When guests ask us where to eat, we point them to Madouris and Nonas in Neimporio for authentic flavors by the sea.`
+      content: `Andros' gastronomy is a blend of fresh garden produce and a long maritime tradition. Here, food is a ritual.<br/><br/>
+**Dishes You Must Try:**<br/>
+• **Froutalia:** The traditional slow-cooked omelet with potatoes and local sausages flavored with wild marjoram. It’s our signature dish.<br/>
+• **Lambriatis:** If you are here for Easter, this slow-roasted goat stuffed with local cheeses and herbs is a life-changing experience.<br/>
+• **Amygdalota:** Famous almond sweets with rosewater. Find them at the historic pastry shops in the main market.<br/><br/>
+**Our Favorite Spots:**<br/>
+• **In Chora:** "Nonas" in Neimporio for fresh fish and creative seafood, or "Platanos" in the Market for traditional Greek "meze."<br/>
+• **In the Villages:** "Kossis" in Ano Fellos is a "temple" for meat lovers, and "Stamatis" in Batsi is legendary for its lobster pasta.<br/><br/>
+** Tip:** Always ask for the local "Volaki" or "Malako" cheese with your salad. The flavor is unmatched.`
     },
     "secret-beaches": {
       tag: "NATURE",
       title: "Beaches Near Chora & Hidden Secrets",
       subtitle: "From the cinematic Sineti to the rugged beauty of Lidi.",
       image: "/images/beaches-guide.webp",
-      content: `Andros is an island of endless coastlines. Near Chora, visit Sineti, the bay that starred in the movie 'Little England'.`
+      content: `Andros boasts over 80 beaches. Some are cosmopolitan and organized, while others remain "secrets" for the few who know where to look.<br/><br/>
+**Hidden Treasures:**<br/>
+• **Sineti:** A cinematic bay. Deep turquoise waters and sea caves at the edge. It was the backdrop for the famous Greek film "Little England."<br/>
+• **Lidi:** For total seclusion. Access requires a 15-minute hike down a slope, but the absolute silence and white sand are your rewards.<br/>
+• **Achla:** The most famous but hard to reach (4x4 or boat). An earthly paradise where a river meets the sea under a lush forest.<br/><br/>
+**Comfort & Vibes:**<br/>
+• **Golden Sand (Chrysi Ammos):** The most popular beach on the island with fine sand and beach bars, perfect for a lively vibe.<br/>
+• **Vitali:** An impressive pebble beach with crystal clear, cold waters, offering a wild Cycladic beauty.<br/><br/>
+**Tip:** Before heading out, check the wind direction. If it's blowing from the North, head to the Southern beaches (like Apothikes) for crystal-calm waters.`
     },
     "athens-to-andros-guide": {
       tag: "TRAVEL GUIDE",
