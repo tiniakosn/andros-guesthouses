@@ -90,7 +90,22 @@ const DIARY_CONTENT = {
       title: "How to Get to Andros from Athens (2026)",
       subtitle: "The ultimate 2026 travel guide to the closest Cycladic island.",
       image: "/images/gavrio-andros-greece.webp",
-      content: `Andros is the closest Cycladic island to Athens. Ferries depart exclusively from Rafina Port (not Piraeus).<br/><br/>**Rafina to Andros:**<br/>The crossing takes only 2 hours. Once you land at Gavrio, Chora is a scenic 45-minute drive away. Renting a car is highly recommended.`
+      content: `Andros is the closest Cycladic island to Athens, making it the perfect choice for a premium getaway. In just 2 hours, you can go from the city buzz to your balcony with a sea view. Here is the ultimate 2026 travel guide.<br/><br/>
+      **1. The Departure Port: Rafina (Not Piraeus!)**<br/>
+      Ferries to Andros depart **exclusively from Rafina Port**. Rafina is much closer to the Athens International Airport (ATH) than Piraeus, saving you time and hassle.<br/><br/>
+      **2. From Athens Airport to Rafina Port:**<br/>
+      • **KTEL Bus (Shuttle):** The most efficient way. The bus stop is located right across from the Arrivals terminal (between Exits 2 and 3). Tickets cost around €4, and the trip takes 30-40 minutes.<br/>
+      • **Taxi / Private Transfer:** Takes about 20 minutes and costs between €25 and €35.<br/><br/>
+      **3. Ferry Schedules & Duration:**<br/>
+      The crossing takes **2 hours** with conventional ferries and about **1h 15m** with high-speed vessels. Major operators include **Fast Ferries** and **Golden Star Ferries**.<br/>
+      • **Morning Ferries:** Usually depart between 07:30 and 08:00 AM.<br/>
+      • **Afternoon Ferries:** Options typically include 15:30, 17:30, and sometimes a late 19:30 departure.<br/><br/>
+      **4. Arriving at Gavrio Port & Getting to Chora:**<br/>
+      When you dock at Gavrio, Chora (the capital where we are located) is about 32km away:<br/>
+      • **Local KTEL Bus:** A bus **always** waits at the port for every ferry arrival, even if there is a delay. It’s the easiest way to reach Chora for about €4.<br/>
+      • **Car Rental:** Highly recommended! There are several rental agencies right at the port. Having a car is essential for visiting the "Andros Routes" hiking trails and secret beaches.<br/>
+      • **Taxi:** A taxi rank is available at the port entrance. The fare to Chora is approximately €40-€45.<br/><br/>
+      ** Insider Tip:** If you are traveling during a summer weekend or have a car, book your ferry tickets at least 10 days in advance. Rafina is the preferred port for locals, and ferries fill up quickly!`
     }
   }
 };
