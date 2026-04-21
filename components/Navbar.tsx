@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState, useEffect, Suspense } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import LanguageSwitcher from "./LanguageSwitcher"; 
+import { getT } from "@/translations";
 
 const navLinks = [
   { en: "Home", el: "Αρχική", href: "/" },
@@ -17,6 +18,7 @@ function NavbarContent() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [lang, setLang] = useState("en"); 
+  const tr = getT(lang as "el" | "en");
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -86,7 +88,7 @@ function NavbarContent() {
             ))}
             <LanguageSwitcher isDark={isDarkText} />
             <a href={getCleanHref("/contact")} className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-md active:scale-95 ${isDarkText ? "bg-stone-900 text-white" : "bg-white text-stone-900"}`}>
-              {lang === "el" ? "Κρατηση" : "Book Now"}
+              {tr.nav.bookNow}
             </a>
           </nav>
 
@@ -144,7 +146,7 @@ function NavbarContent() {
               className="px-14 py-5 bg-stone-900 text-white font-bold uppercase tracking-widest text-sm rounded-full shadow-2xl active:scale-90 transition-transform"
               style={{ WebkitTapHighlightColor: 'transparent' }}
             >
-              {lang === "el" ? "Κάντε Κράτηση" : "Book Now"}
+              {tr.nav.bookNow}
             </Link>
             
             <LanguageSwitcher isDark={true} />
