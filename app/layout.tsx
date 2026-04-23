@@ -42,6 +42,10 @@ export const metadata: Metadata = {
 
   alternates: {
     canonical: "https://www.androsguesthouses.gr",
+    languages: {
+      'el': 'https://www.androsguesthouses.gr/?lang=el',
+      'en': 'https://www.androsguesthouses.gr',
+    },
   },
 
   openGraph: {
@@ -97,7 +101,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="el" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://www.androsguesthouses.gr" />
         <link rel="dns-prefetch" href="https://www.androsguesthouses.gr" />
@@ -148,9 +152,9 @@ export default function RootLayout({
               },
               "aggregateRating": {
                 "@type": "AggregateRating",
-                "ratingValue": "9.5",
-                "reviewCount": "178",
-                "bestRating": "10",
+                "ratingValue": "4.9",
+                "reviewCount": "58",
+                "bestRating": "5",
                 "worstRating": "1"
               },
               "geo": {
