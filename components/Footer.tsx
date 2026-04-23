@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { getT } from "@/translations";
 
 export default function Footer() {
   const [lang, setLang] = useState("en");
@@ -49,6 +50,7 @@ export default function Footer() {
   };
 
   const t = lang === "el" ? content.el : content.en;
+  const tr = getT(lang as "el" | "en");
 
   return (
     <footer className="relative bg-stone-950 text-white pt-20 pb-10 overflow-hidden font-sans">
@@ -121,7 +123,7 @@ export default function Footer() {
   
           <div className="mt-4 md:mt-0">
             <span className="!text-white opacity-100">
-              HANDCRAFTED BY <span className="font-bold ml-1 !text-white">NIKOS TINIAKOS</span>
+              {tr.footer.madeBy} <span className="font-bold ml-1 !text-white">NIKOS TINIAKOS</span>
             </span>
           </div>
         </div>
