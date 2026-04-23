@@ -3,6 +3,7 @@
 import { FaWhatsapp } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { getT } from "@/translations";
 
 export default function WhatsAppBtn() {
   const [lang, setLang] = useState("en");
@@ -55,7 +56,7 @@ export default function WhatsAppBtn() {
         
         {/* Bilingual Tooltip */}
         <span className="absolute right-full mr-4 bg-white text-stone-900 px-4 py-2 rounded-xl text-xs font-bold shadow-xl opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap pointer-events-none border border-stone-100 transform translate-x-2 group-hover:translate-x-0">
-          {lang === "el" ? "Μιλήστε μας!" : "Chat with us!"}
+          {getT(lang as "el" | "en").whatsapp.chat}
         </span>
       </a>
     </div>
