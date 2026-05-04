@@ -3,7 +3,6 @@
 import Navbar from "@/components/Navbar";
 import Reveal from "@/components/Reveal";
 import { useRef, useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
 import emailjs from "@emailjs/browser";
 
 declare global {
@@ -159,8 +158,8 @@ function ContactContent({ initialLang }: { initialLang: "el" | "en" }) {
                   </div>
 
                   <div className="mt-4">
-                    
-                      href="https://maps.google.com/?q=Andros+Guesthouses+Chora"
+                    <a
+                      href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.0325698355923!2d24.929867475706402!3d37.83612337196996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a2ff3fd9c3115b%3A0xb694eabb08bdd45!2sAndros%20Guesthouses!5e0!3m2!1sel!2sgr!4v1777902325941!5m2!1sel!2sgr"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-sm font-bold text-olive-700 hover:text-olive-900 transition-colors uppercase tracking-widest"
@@ -256,7 +255,7 @@ function ContactContent({ initialLang }: { initialLang: "el" | "en" }) {
 
 export default function ContactClient({ initialLang }: { initialLang: "el" | "en" }) {
   return (
-    <Suspense fallback={<div className="h-screen" />}>
+    <Suspense fallback={<div className="h-screen bg-[#fafaf9]" />}>
       <ContactContent initialLang={initialLang} />
     </Suspense>
   );

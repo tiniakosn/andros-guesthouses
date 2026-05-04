@@ -3,7 +3,7 @@ import ContactClient from "./ContactClient";
 
 export const metadata: Metadata = {
   title: "Contact & Booking | Andros Guesthouses",
-  description: "Book your stay at Andros Guesthouses in Chora, Andros. Contact us directly for the best rates. Located in Neimporio, 5 minutes from the beach.",
+  description: "Book your stay at Andros Guesthouses in Chora, Andros. Contact us directly for the best rates.",
   alternates: {
     canonical: "https://www.androsguesthouses.gr/contact",
     languages: {
