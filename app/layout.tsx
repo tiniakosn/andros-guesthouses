@@ -103,9 +103,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <link rel="preconnect" href="https://www.androsguesthouses.gr" />
-        <link rel="dns-prefetch" href="https://www.androsguesthouses.gr" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
       </head>
       <body className={`${manrope.variable} antialiased text-stone-900 bg-stone-50`}>
         <Navbar />
