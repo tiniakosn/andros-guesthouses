@@ -27,15 +27,16 @@ export const metadata: Metadata = {
   description: "Top-rated boutique guesthouse in Chora, Andros. Aegean Studio & Garden Suite with panoramic harbor views. Near Nimborio beach. Book direct for best rates.",
   
   keywords: [
+    'άνδρος διαμονή',
     'andros accommodation', 
     'boutique guesthouse chora andros',
     'aegean studio andros',
     'garden suite andros',
     'rooms chora andros',
     'sea view apartments andros',
-    'διαμονή άνδρος χώρα', 
     'ενοικιαζόμενα δωμάτια άνδρος χώρα', 
     'δωμάτια άνδρος', 
+    'διαμονή στη χώρα άνδρου',
     'andros guesthouses',
     'hiking andros accommodation'
   ],

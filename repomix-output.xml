@@ -1,0 +1,4097 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+app/
+  [lang]/
+    diary/
+      [slug]/
+        page.tsx
+      page.tsx
+  contact/
+    page.tsx
+  experience/
+    page.tsx
+  rooms/
+    [slug]/
+      page.tsx
+      RoomClient.tsx
+  globals.css
+  layout.tsx
+  not-found.tsx
+  page.tsx
+  robots.ts
+  sitemap.ts
+  template.tsx
+components/
+  About.tsx
+  Amenities.tsx
+  ChatComponent.tsx
+  CookieConsent.tsx
+  Footer.tsx
+  InstaFeed.tsx
+  LanguageSwitcher.tsx
+  LocalInsider.tsx
+  Navbar.tsx
+  Reveal.tsx
+  Rooms.tsx
+  SmoothScrolling.tsx
+  Testimonials.tsx
+  WhatsAppBtn.tsx
+lib/
+  rooms.ts
+public/
+  images/
+    andros_maskoula.jpg
+    balcony1.webp
+    beaches-guide.webp
+    chora-guide-v2.webp
+    food-guide.webp
+    gavrio-andros-greece.webp
+    hero3.jpg
+    hiking-andros.webp
+    no2.1.jpg
+    no2.2.webp
+    no2.3.webp
+    no5.1.webp
+    no5.2.webp
+    no5.3.webp
+    no5.4.webp
+    no5.5.webp
+    no5.6.webp
+    no5.7.webp
+    sweets.jpg
+  5159.jpg
+  agora.jpg
+  androshero.jpg
+  androshero2.jpg
+  androshero3.jpg
+  apple-touch-icon-v4.png
+  beach.jpg
+  building.jpg
+  easter.jpg
+  favicon-v2.png
+  favicon-v3.png
+  favicon-v4.png
+  fourtalia.jpg
+  hero-test2.jpg
+  hero.jpg
+  hero2.jpg
+  hero4.jpg
+  heroandros.jpg
+  image1.jpg
+  image2.jpg
+  image3.jpg
+  image4.jpg
+  image5.jpg
+  logo-navbar.png
+  logo-οold.png
+  monopatia_icon.jpg
+  opengraph-image-v3.jpg
+  outside-v1.webp
+  outside-v2.webp
+  outsideold.webp
+  robots.txt
+  site.webmanifest
+  sweets.jpg
+.gitignore
+eslint.config.mjs
+knowledge.txt
+next.config.ts
+package.json
+postcss.config.js
+README.md
+seed.mjs
+tailwind.config.ts
+translations.ts
+tsconfig.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="app/globals.css">
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- CSS VARIABLES MAPPING --- */
+body {
+  /* Αντιστοιχίζουμε τη μεταβλητή του Next.js στις δικές μας font variables */
+  --font-display: var(--font-sans);
+  --font-serif: var(--font-sans);
+  
+  font-family: var(--font-sans), system-ui, sans-serif;
+  background-color: #fafaf9; 
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(132, 165, 157, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(168, 162, 158, 0.1) 0px, transparent 50%);
+  background-attachment: fixed;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Η ΑΠΟΛΥΤΗ ΔΙΟΡΘΩΣΗ ΓΙΑ ΤΗ ΜΠΑΡΑ (OVERFLOW) --- */
+html, body {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- ΤΥΠΟΓΡΑΦΙΑ & CONTRAST --- */
+h1, h2, h3, h4, h5, h6 {
+  /* Χρήση var(--font-display) για άμεση φόρτωση (μείωση LCP delay) */
+  font-family: var(--font-display), sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important; 
+  color: #1c1917;
+}
+
+p {
+  font-weight: 400;
+  /* Διόρθωση Contrast: Από #57534e σε #44403c για 100/100 Accessibility */
+  color: #44403c; 
+  line-height: 1.8; 
+}
+
+/* --- ΔΙΑΔΡΑΣΤΙΚΑ ΣΤΟΙΧΕΙΑ --- */
+::selection {
+  background-color: #4d7c0f; 
+  color: white;
+}
+
+input, textarea, .bg-white {
+  box-shadow: 0 4px 20px -5px rgba(0,0,0,0.05) !important;
+  border: 1px solid rgba(0,0,0,0.05) !important;
+}
+
+input:focus, textarea:focus {
+  border-color: #65a30d !important;
+  box-shadow: 0 0 0 4px rgba(101, 163, 13, 0.1) !important;
+}
+
+button {
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* --- CUSTOM SCROLLBAR (OPTIONAL) --- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fafaf9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a3b18a;
+  border-radius: 5px;
+  border: 2px solid #fafaf9;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #606c38;
+}
+
+/* --- UTILITIES --- */
+.font-display {
+  font-family: var(--font-display), sans-serif;
+}
+
+/* --- HERO ANIMATIONS (STATIC) --- */
+@keyframes entrance {
+  0% { transform: translateY(10px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.animate-entrance {
+  animation: entrance 0.3s ease-out forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.animate-fadein {
+  animation: fadein 0.4s ease-out 0.1s forwards;
+  opacity: 0;
+}
+</file>
+
+<file path="app/not-found.tsx">
+import Link from "next/link";
+
+export default function NotFound() {
+  return (
+    <div className="h-screen w-full flex flex-col items-center justify-center bg-[#fafaf9] text-center px-6 relative overflow-hidden">
+      
+      {/* Ένα μεγάλο "404" στο φόντο για στυλ */}
+      <h1 className="text-[12rem] md:text-[20rem] font-display font-bold text-stone-200/50 absolute select-none z-0">
+        404
+      </h1>
+
+      <div className="relative z-10 max-w-lg">
+        <h2 className="text-3xl md:text-5xl font-display text-stone-900 mb-6 font-bold">
+          Χαθήκατε στα στενά;
+        </h2>
+        
+        <p className="text-stone-600 mb-10 text-lg leading-relaxed">
+          Μην ανησυχείτε, συμβαίνει και στους καλύτερους περιηγητές της Χώρας. 
+          Η σελίδα που ψάχνετε δεν υπάρχει, αλλά η φιλοξενία μας σας περιμένει στην αρχική.
+        </p>
+
+        <Link
+          href="/"
+          className="inline-block px-10 py-4 bg-stone-900 text-white font-bold uppercase tracking-widest text-sm shadow-xl rounded-full hover:bg-[#65a30d] hover:scale-105 transition-all duration-300"
+        >
+          Επιστροφη στην Αρχικη
+        </Link>
+      </div>
+
+    </div>
+  );
+}
+</file>
+
+<file path="app/robots.ts">
+import { MetadataRoute } from 'next';
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: {
+      userAgent: '*',
+      allow: '/',
+    },
+    // ΔΙΟΡΘΩΣΗ: Χρησιμοποιούμε το επίσημο domain με το www
+    sitemap: 'https://www.androsguesthouses.gr/sitemap.xml',
+  };
+}
+</file>
+
+<file path="app/template.tsx">
+export default function Template({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
+}
+</file>
+
+<file path="components/Amenities.tsx">
+"use client";
+
+import { useState, useEffect } from "react";
+import Reveal from "./Reveal";
+
+const amenitiesData = [
+  {
+    en: { title: "High-Speed WiFi", description: "Free, fast, and stable connection in all rooms and common areas." },
+    el: { title: "WiFi Υψηλής Ταχύτητας", description: "Δωρεάν, γρήγορη και σταθερή σύνδεση σε όλα τα δωμάτια και τους κοινόχρηστους χώρους." },
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6" aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z" />
+      </svg>
+    ),
+  },
+  {
+    en: { title: "Anatomical Sleep", description: "Memory foam anatomical mattresses, hypoallergenic pillows, and fine linens." },
+    el: { title: "Ανατομικός Ύπνος", description: "Ανατομικά στρώματα με τεχνολογία memory foam, υποαλλεργικά μαξιλάρια και λινά σεντόνια." },
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6" aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+      </svg>
+    ),
+  },
+  {
+    en: { title: "Private Balcony & View", description: "Private balconies with sea or mountain views and relaxation areas." },
+    el: { title: "Ιδιωτικό Μπαλκόνι & Θέα", description: "Ιδιωτικά μπαλκόνια με θέα στη θάλασσα ή το βουνό και χώρος χαλάρωσης." },
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6" aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+      </svg>
+    ),
+  },
+  {
+    en: { title: "Kitchen & Nespresso", description: "Fully equipped kitchen, refrigerator, and Nespresso machine for your breakfast." },
+    el: { title: "Κουζίνα & Nespresso", description: "Πλήρως εξοπλισμένη κουζίνα, ψυγείο και μηχανή Nespresso για το πρωινό σας." },
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6" aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+  },
+  {
+    en: { title: "Free Parking", description: "Free public parking space next to the property for easy access." },
+    el: { title: "Δωρεάν Parking", description: "Δωρεάν δημόσιος χώρος στάθμευσης δίπλα στο κατάλυμα για άνετη πρόσβαση." },
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6" aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+      </svg>
+    ),
+  },
+  {
+    en: { title: "A/C & Soundproofing", description: "Independently controlled A/C and soundproofing for absolute tranquility." },
+    el: { title: "A/C & Ηχομόνωση", description: "Αυτόνομος κλιματισμός ψύξης/θέρμανσης και ηχομόνωση για απόλυτη ησυχία." },
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6" aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+      </svg>
+    ),
+  },
+];
+
+export default function Amenities() {
+  const [lang, setLang] = useState("en");
+
+  useEffect(() => {
+    const handleLangChange = (e: any) => setLang(e.detail);
+    window.addEventListener("langChange", handleLangChange);
+    setLang(document.documentElement.lang || "en");
+    return () => window.removeEventListener("langChange", handleLangChange);
+  }, []);
+
+  return (
+    <section className="bg-[#fafaf9] w-full overflow-hidden border-t border-stone-100">
+      <div className="py-24 px-6 max-w-7xl mx-auto">
+        
+        {/* Header */}
+        <div className="mb-16 md:mb-24">
+          <Reveal>
+            <span key={lang + "comf"} className="text-olive-700 font-bold tracking-widest text-xs uppercase block mb-3">
+              {lang === "el" ? "ΑΝΕΣΗ" : "Comfort"}
+            </span>
+            <h2 key={lang + "amen"} className="text-4xl md:text-5xl font-display text-stone-900">
+              {lang === "el" ? "Παροχές & Υπηρεσίες" : "Amenities & Services"}
+            </h2>
+          </Reveal>
+        </div>
+
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+          {amenitiesData.map((item, index) => {
+            const t = lang === "el" ? item.el : item.en;
+            return (
+              <Reveal key={index + lang} delay={index * 0.1}>
+                <div className="flex flex-col gap-4 group">
+                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-stone-900 group-hover:bg-olive-600 group-hover:text-white transition-colors duration-300 shadow-sm border border-stone-100">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-display text-stone-900 mb-2">{t.title}</h3>
+                    <p className="text-stone-600 text-sm leading-relaxed font-sans font-light">
+                      {t.description}
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="components/ChatComponent.tsx">
+"use client";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { HiChatBubbleLeftRight, HiXMark } from "react-icons/hi2";
+
+export default function ChatComponent() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [input, setInput] = useState("");
+  const [messages, setMessages] = useState<{ role: string; text: string }[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSend = async () => {
+    if (!input.trim()) return;
+    
+    const userMsg = { role: "user", text: input };
+    setMessages((prev) => [...prev, userMsg]);
+    setInput("");
+    setIsLoading(true);
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: input }),
+      });
+      const data = await res.json();
+      
+      if (data.error) throw new Error(data.error);
+      
+      setMessages((prev) => [...prev, { role: "ai", text: data.text }]);
+    } catch (err) {
+      setMessages((prev) => [...prev, { role: "ai", text: "Συγνώμη, είχαμε ένα τεχνικό θέμα. Δοκιμάστε ξανά σε λίγο!" }]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="fixed bottom-6 right-6 z-[100]">
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            className="bg-white w-85 h-96 rounded-2xl shadow-2xl border border-stone-200 flex flex-col overflow-hidden mb-4"
+          >
+            {/* Header */}
+            <div className="bg-stone-900 p-4 text-white flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                <span className="font-bold">Andros Concierge</span>
+              </div>
+              <button onClick={() => setIsOpen(false)} className="hover:text-stone-300 transition-colors">
+                <HiXMark size={24} />
+              </button>
+            </div>
+
+            {/* Messages Area */}
+            <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-stone-50">
+              {messages.map((m, i) => (
+                <div 
+                  key={`chat-item-${i}`} // Διορθωμένο key για το React
+                  className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
+                >
+                  <div className={`max-w-[85%] p-3 rounded-2xl text-sm shadow-sm ${
+                    m.role === "user" 
+                      ? "bg-stone-800 text-white rounded-tr-none" 
+                      : "bg-white border border-stone-200 text-stone-800 rounded-tl-none"
+                  }`}>
+                    {m.text}
+                  </div>
+                </div>
+              ))}
+              {isLoading && (
+                <div key="loader-ui" className="flex justify-start">
+                  <div className="bg-stone-200 text-stone-500 px-4 py-2 rounded-full text-xs animate-pulse">
+                    Ο Concierge σκέφτεται...
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Input Area */}
+            <div className="p-3 border-t bg-white flex gap-2">
+              <input 
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleSend()}
+                placeholder="Πώς μπορώ να βοηθήσω;"
+                className="flex-1 text-sm p-2 border border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-stone-900/5 text-black"
+              />
+              <button 
+                onClick={handleSend} 
+                disabled={isLoading}
+                className="bg-stone-900 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-stone-800 disabled:opacity-50 transition-all"
+              >
+                Πάμε
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Floating Toggle Button */}
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="bg-stone-900 text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all flex items-center justify-center border-2 border-white"
+      >
+        <HiChatBubbleLeftRight size={28} />
+      </button>
+    </div>
+  );
+}
+</file>
+
+<file path="components/InstaFeed.tsx">
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { FaInstagram } from "react-icons/fa";
+
+export default function InstaFeed() {
+  // Χρησιμοποιούμε 4 φωτογραφίες για τέλεια συμμετρία
+  const images = [
+    "/image1.jpg",   // Lifestyle / Relax
+    "/image3.jpg",  // Food
+    "/image2.jpg",      // Nature
+    "/image5.jpg",     // Culture/Tradition
+  ];
+
+  return (
+    <section className="py-24 bg-white border-t border-stone-100">
+      <div className="max-w-7xl mx-auto px-6 text-center mb-12">
+         <span className="text-xs font-bold text-white uppercase tracking-widest block mb-2">
+            Follow the Vibe
+         </span>
+         <Link 
+          href="https://www.instagram.com/andros.guesthouses/" 
+          target="_blank" 
+          aria-label="Visit our Instagram profile @andros.guesthouses" // ΠΡΟΣΘΕΣΕ ΑΥΤΟ
+          className="inline-flex items-center gap-2 text-3xl font-display text-stone-900 hover:text-olive-700 transition-colors"
+        >
+          <FaInstagram /> @andros.guesthouses
+        </Link>
+      </div>
+
+      {/* Grid: 2 στήλες στο κινητό, 4 στήλες στο PC -> Τέλεια σειρά */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-1 md:gap-4 px-4 max-w-7xl mx-auto">
+        {images.map((src, index) => (
+          <div key={index} className="relative aspect-square w-full group overflow-hidden cursor-pointer rounded-sm md:rounded-lg">
+             <Image 
+               src={src} 
+               alt={`Instagram Photo ${index + 1}`} 
+               fill 
+               className="object-cover transition-transform duration-700 group-hover:scale-110"
+             />
+             
+             {/* Overlay */}
+            <a 
+              href="https://www.instagram.com/andros.guesthouses/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View photo on Instagram" // ΠΡΟΣΘΕΣΕ ΑΥΤΟ
+              className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-white"
+            >
+              <FaInstagram className="w-8 h-8 drop-shadow-lg" />
+            </a>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="components/LocalInsider.tsx">
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+// Αφαιρέσαμε το motion για εξοικονόμηση JS bundle size
+
+const CONTENT = {
+  el: {
+    title: "Andros Diary",
+    subtitle: "Local Insider",
+    guides: [
+      { id: "01", slug: "chora-and-wind", title: "Η Χώρα & ο Άνεμος", tag: "KNOW-HOW", img: "/images/chora-guide-v2.webp" }, // Αλλαγή σε .webp
+      { id: "02", slug: "secret-beaches", title: "Παραλίες & Μυστικά", tag: "NATURE", img: "/images/beaches-guide.webp" }, // Αλλαγή σε .webp
+      { id: "03", slug: "local-flavors", title: "Γεύση Άνδρου", tag: "GASTRONOMY", img: "/images/food-guide.webp" }, // Αλλαγή σε .webp
+    ]
+  },
+  en: {
+    title: "Andros Diary",
+    subtitle: "Local Insider",
+    guides: [
+      { id: "01", slug: "chora-and-wind", title: "Chora & The Wind", tag: "KNOW-HOW", img: "/images/chora-guide-v2.webp" }, // Αλλαγή σε .webp
+      { id: "02", slug: "secret-beaches", title: "Secret Beaches", tag: "NATURE", img: "/images/beaches-guide.webp" }, // Αλλαγή σε .webp
+      { id: "03", slug: "local-flavors", title: "Local Flavors", tag: "GASTRONOMY", img: "/images/food-guide.webp" }, // Αλλαγή σε .webp
+    ]
+  }
+};
+
+interface LocalInsiderProps {
+  lang: string;
+}
+
+export default function LocalInsider({ lang }: LocalInsiderProps) {
+  const dict = (lang === "el" ? CONTENT.el : CONTENT.en) || CONTENT.el;
+
+  return (
+    <section className="py-16 bg-stone-50">
+      <div className="max-w-6xl mx-auto px-6">
+        
+        <div className="flex justify-between items-end mb-10 gap-4">
+          <div>
+            <span className="text-lime-800 font-bold tracking-widest text-[10px] mb-1 block uppercase">{dict.subtitle}</span>
+            <h2 className="text-4xl md:text-5xl font-display text-stone-900">{dict.title}</h2>
+          </div>
+          <Link 
+            href={`/${lang}/diary`} 
+            className="text-stone-900 font-bold text-[10px] uppercase tracking-widest border-b border-stone-900 pb-1 hover:text-lime-700 hover:border-lime-700 transition-all mb-1"
+          >
+            {lang === 'el' ? "ΔΕΙΤΕ ΠΕΡΙΣΣΟΤΕΡΑ" : "VIEW ALL"}
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 h-auto md:h-[550px]">
+          
+          {/* Main Card */}
+          <div className="md:col-span-7 h-[400px] md:h-full">
+            <Link href={`/${lang}/diary/${dict.guides[0].slug}`} className="block h-full w-full">
+              <div className="relative h-full w-full group overflow-hidden rounded-lg bg-stone-200 shadow-sm border border-stone-100">
+                <Image 
+                  src={dict.guides[0].img} 
+                  alt={dict.guides[0].title}
+                  fill 
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-90" />
+                <div className="absolute bottom-6 left-6 right-6">
+                  {/* ΔΙΟΡΘΩΣΗ CONTRAST: text-lime-300 */}
+                  <span className="text-[10px] tracking-[0.2em] text-lime-300 font-bold mb-1 block">{dict.guides[0].tag}</span>
+                  <h3 className="text-2xl md:text-3xl font-display text-white leading-tight">{dict.guides[0].title}</h3>
+                </div>
+              </div>
+            </Link>
+          </div>
+
+          {/* Right Column */}
+          <div className="md:col-span-5 flex flex-col gap-4">
+            {dict.guides.slice(1).map((guide, i) => (
+              <div key={i} className="flex-1 min-h-[220px]">
+                <Link 
+                  href={`/${lang}/diary/${guide.slug}`} 
+                  aria-label={`Read our guide: ${guide.title}`}
+                  className="block h-full w-full"
+                >
+                  <div className="relative h-full w-full group overflow-hidden rounded-lg bg-stone-200 shadow-sm border border-stone-100">
+                    <Image 
+                      src={guide.img} 
+                      alt={guide.title}
+                      fill 
+                      sizes="(max-width: 768px) 100vw, 30vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent opacity-90" />
+                    <div className="absolute bottom-5 left-5">
+                       <span className="text-[9px] font-bold tracking-widest text-lime-300 uppercase">{guide.tag}</span>
+                       <h3 className="text-lg md:text-xl font-display text-white mt-1 leading-tight">{guide.title}</h3>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="components/Reveal.tsx">
+"use client";
+
+import React, { useEffect, useRef } from "react";
+import { motion, useInView, useAnimation } from "framer-motion";
+
+interface Props {
+  children: React.ReactNode;
+  width?: "fit-content" | "100%";
+  delay?: number;
+  // ΠΡΟΣΘΗΚΗ: Δηλώνουμε ότι το component δέχεται πλέον και className (προαιρετικά)
+  className?: string; 
+}
+
+export const Reveal = ({ children, width = "fit-content", delay = 0.25, className = "" }: Props) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const mainControls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      mainControls.start("visible");
+    }
+  }, [isInView, mainControls]);
+
+  return (
+    // ΠΡΟΣΘΗΚΗ: Περνάμε το className στο εξωτερικό div
+    <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }} className={className}>
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, y: 75 },
+          visible: { opacity: 1, y: 0 },
+        }}
+        initial="hidden"
+        animate={mainControls}
+        transition={{ duration: 0.5, delay: delay }}
+      >
+        {children}
+      </motion.div>
+    </div>
+  );
+};
+
+export default Reveal;
+</file>
+
+<file path="components/SmoothScrolling.tsx">
+"use client";
+
+import { useEffect } from "react";
+import Lenis from "lenis";
+
+export default function SmoothScrolling() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical", // Αυτό αρκεί πλέον
+      wheelMultiplier: 1,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
+  return null;
+}
+</file>
+
+<file path="public/robots.txt">
+User-agent: *
+Allow: /
+
+Sitemap: https://andros-guesthouses.vercel.app/sitemap.xml
+</file>
+
+<file path="public/site.webmanifest">
+{
+    "name": "Andros Guesthouses",
+    "short_name": "Andros",
+    "icons": [
+        {
+            "src": "/favicon-v4.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon-v4.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/apple-touch-icon-v4.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#fafaf9",
+    "background_color": "#fafaf9",
+    "display": "standalone",
+    "start_url": "/"
+}
+</file>
+
+<file path=".gitignore">
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+</file>
+
+<file path="eslint.config.mjs">
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
+
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+  ]),
+]);
+
+export default eslintConfig;
+</file>
+
+<file path="knowledge.txt">
+Τα Andros Guesthouses βρίσκονται στην καρδιά της Χώρας της Άνδρου. Το Wi-Fi password είναι 'AndrosGuest2024'. Για να πάτε στην παραλία Άχλα προτείνουμε καΐκι από το λιμάνι της Χώρας. Η καλύτερη ταβέρνα για Φρουτάλια είναι ο 'Κόσμος'
+</file>
+
+<file path="package.json">
+{
+  "name": "andros-guesthouses",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@ai-sdk/google": "^0.0.15",
+    "@emailjs/browser": "^4.4.1",
+    "@supabase/supabase-js": "^2.91.1",
+    "@vercel/analytics": "^1.6.1",
+    "@vercel/speed-insights": "^1.3.1",
+    "dotenv": "^17.2.3",
+    "framer-motion": "^12.26.2",
+    "lenis": "^1.3.17",
+    "next": "16.1.3",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-icons": "^5.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.23",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.3",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5"
+  },
+  "browserslist": [
+    "last 3 chrome versions",
+    "last 3 firefox versions",
+    "last 3 safari versions",
+    "last 3 edge versions"
+  ]
+}
+</file>
+
+<file path="postcss.config.js">
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+</file>
+
+<file path="README.md">
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+</file>
+
+<file path="seed.mjs">
+import { createClient } from '@supabase/supabase-js';
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import fs from 'fs';
+import dotenv from 'dotenv';
+
+dotenv.config({ path: '.env.local' });
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_ROLE_KEY
+);
+
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GENERATIVE_AI_API_KEY);
+
+async function run() {
+  const text = fs.readFileSync('knowledge.txt', 'utf8');
+  const model = genAI.getGenerativeModel({ model: "text-embedding-004" });
+
+  console.log("⏳ Δημιουργία Embeddings...");
+  const result = await model.embedContent(text);
+  const embedding = result.embedding.values;
+
+  console.log("🚀 Ανέβασμα στη Supabase...");
+  const { error } = await supabase.from('documents').insert([
+    { content: text, embedding: embedding }
+  ]);
+
+  if (error) console.error("❌ Σφάλμα:", error);
+  else console.log("✅ Η γνώση αποθηκεύτηκε επιτυχώς!");
+}
+
+run();
+</file>
+
+<file path="tailwind.config.ts">
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    // ΕΔΩ ΕΙΝΑΙ Η ΔΙΟΡΘΩΣΗ: Προσθέσαμε ξανά τους φακέλους χωρίς src
+    "./app/**/*.{js,ts,jsx,tsx,mdx}", 
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    
+    // Κρατάμε και αυτά για παν ενδεχόμενο
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        olive: {
+          50: '#f4f7f0',
+          100: '#eef8e6',
+          200: '#dceecf',
+          300: '#bde0a7',
+          400: '#96cc75',
+          500: '#606c38',
+          600: '#283618',
+          700: '#3f4a25',
+          800: '#343c22',
+          900: '#2c331f',
+        },
+        stone: {
+          50: '#fafaf9',
+          100: '#f5f5f4',
+          200: '#e7e5e4',
+          800: '#292524',
+          900: '#1c1917',
+        },
+      },
+      fontFamily: {
+        serif: ['var(--font-cormorant)', 'serif'],
+        sans: ['var(--font-outfit)', 'sans-serif'],
+        display: ['var(--font-italiana)', 'serif'], // <--- ΝΕΟ: Για τους Wow τίτλους
+      },
+    },
+  },
+  plugins: [],
+};
+export default config;
+</file>
+
+<file path="tsconfig.json">
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+  ],
+  "exclude": ["node_modules"]
+}
+</file>
+
+<file path="app/experience/page.tsx">
+"use client";
+
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer"; 
+import Reveal from "@/components/Reveal";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+
+const experiencesData = [
+  {
+    en: {
+      title: "Pristine Beaches",
+      description: "From the turquoise waters of Achla and Zorkos to the iconic 'Old Lady’s Jump' (Tis Grias to Pidima). Andros boasts over 80 beaches, ranging from organized sandy shores to secluded wild coves. We highly recommend a quick swim at Neimporio, just steps away, or a day trip to the wild beauty of Vitali."
+    },
+    el: {
+      title: "Κρυστάλλινες Παραλίες",
+      description: "Από τα γαλαζοπράσινα νερά στα Άχλα και στο Ζόρκο μέχρι το εμβληματικό «Πήδημα της Γριάς». Η Άνδρος διαθέτει πάνω από 80 παραλίες, από οργανωμένες ακτές μέχρι απομονωμένους κόλπους. Σας προτείνουμε μια βουτιά στο Νειμποριό, λίγα βήματα μακριά μας, ή μια εκδρομή στην άγρια ομορφιά του Βιταλίου."
+    },
+    image: "/beach.jpg",
+    reverse: false
+  },
+  {
+    en: {
+      title: "Culture & Chora",
+      description: "Chora is unique in the Cyclades. Noble, neoclassical, and steeped in maritime tradition. Stroll down the marble pedestrian street, visit the world-renowned Goulandris Museum of Contemporary Art, and walk to the 'Unknown Sailor' statue to gaze at the magical Tourlitis Lighthouse rising from the sea."
+    },
+    el: {
+      title: "Πολιτισμός & Χώρα",
+      description: "Η Χώρα είναι μοναδική στις Κυκλάδες. Αρχοντική, νεοκλασική και ποτισμένη από τη ναυτική παράδοση. Περπατήστε στον μαρμάρινο πεζόδρομο, επισκεφθείτε το διεθνούς φήμης Μουσείο Σύγχρονης Τέχνης Γουλανδρή και φτάστε μέχρι τον «Αφανή Ναύτη» για να δείτε τον φάρο Τουρλίτη να αναδύεται μέσα από τη θάλασσα."
+    },
+    image: "/agora.jpg",
+    reverse: true
+  },
+  {
+    en: {
+      title: "The Explosive Easter",
+      description: "Experience one of the most spectacular Easter celebrations in Greece. In the village of Stenies, the 'Maskoula' tradition creates a breathtaking show. During the service at Agios Georgios church, locals ignite traditional iron cannons, filling the valley with gunpowder smoke and thunderous echoes."
+    },
+    el: {
+      title: "Εκρηκτικό Πάσχα",
+      description: "Ζήστε έναν από τους πιο εντυπωσιακούς εορτασμούς του Πάσχα στην Ελλάδα. Στο χωριό Στενιές, το έθιμο «Μάσκουλα» δημιουργεί ένα μοναδικό θέαμα. Κατά τη διάρκεια της λειτουργίας, οι ντόπιοι πυροδοτούν παραδοσιακά σιδερένια κανόνια, γεμίζοντας την κοιλάδα με καπνό και εκκωφαντικούς ήχους."
+    },
+    image: "/easter.jpg",
+    reverse: false
+  },
+  {
+    en: {
+      title: "Hiking & Nature",
+      description: "A hiker’s paradise. Andros features a vast network of ancient paths certified by European standards (Andros Routes). Explore lush ravines, running waterfalls, old stone bridges, and watermills. We can guide you to the best trails starting right from our doorstep."
+    },
+    el: {
+      title: "Πεζοπορία & Φύση",
+      description: "Ένας παράδεισος για τους πεζοπόρους. Η Άνδρος διαθέτει ένα τεράστιο δίκτυο αρχαίων μονοπατιών πιστοποιημένο με ευρωπαϊκά πρότυπα (Andros Routes). Εξερευνήστε καταπράσινες χαράδρες, καταρράκτες, πέτρινα γεφύρια και νερόμυλους. Μπορούμε να σας καθοδηγήσουμε στα καλύτερα μονοπάτια που ξεκινούν δίπλα μας."
+    },
+    image: "/5159.jpg",
+    reverse: true
+  },
+  {
+    en: {
+      title: "Gastronomy",
+      description: "A culinary journey. Don't leave without tasting the traditional 'Fourtalia' (omelet with local sausage), the sharp local cheeses, and the famous spoon sweets. Andros offers a rich gastronomic tradition that perfectly blends Cycladic flavors with mainland influences."
+    },
+    el: {
+      title: "Γαστρονομία",
+      description: "Ένα γαστρονομικό ταξίδι. Μην φύγετε χωρίς να δοκιμάσετε την παραδοσιακή «Φουρτάλια» (ομελέτα με ντόπια λουκάνικα), τα πικάντικα τυριά και τα περίφημα γλυκά του κουταλιού. Η Άνδρος προσφέρει μια πλούσια γαστρονομική παράδοση που συνδυάζει την κυκλαδίτικη απλότητα με τις εκλεκτές πρώτες ύλες της ανδριώτικης γης."
+    },
+    image: "/fourtalia.jpg",
+    reverse: false
+  }
+];
+
+export default function ExperiencePage() {
+  const [lang, setLang] = useState("en");
+
+  useEffect(() => {
+    const handleLangChange = (e: any) => setLang(e.detail);
+    window.addEventListener("langChange", handleLangChange);
+    // Διαβάζουμε τη γλώσσα αμέσως
+    const currentLang = document.documentElement.lang || "en";
+    setLang(currentLang);
+    return () => window.removeEventListener("langChange", handleLangChange);
+  }, []);
+
+  const t = {
+    en: { expLabel: "Experience", ctaTitle: "Unlock the", ctaSpan: "Hidden Andros", ctaDesc: "Escape the ordinary...", ctaButton: "GET THE EXCLUSIVE LIST" },
+    el: { expLabel: "Εμπειρία", ctaTitle: "Ξεκλειδώστε την", ctaSpan: "Κρυφή Άνδρο", ctaDesc: "Αποδράστε από τα συνηθισμένα...", ctaButton: "ΠΑΡΤΕ ΤΗΝ ΑΠΟΚΛΕΙΣΤΙΚΗ ΛΙΣΤΑ" }
+  }[lang === "el" ? "el" : "en"];
+
+  return (
+    <main className="min-h-screen bg-[#fafaf9]">
+      <Navbar />
+
+      {/* --- HERO SECTION: PERFORMANCE OPTIMIZED --- */}
+      <div className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+        <Image 
+          src="/androshero3.jpg"
+          alt="Andros Island"
+          fill
+          className="object-cover"
+          priority
+          fetchPriority="high"
+          sizes="100vw"      // ΒΕΛΤΙΩΣΗ: Απαραίτητο για το LCP στο κινητό
+          quality={85}       // ΒΕΛΤΙΩΣΗ: Συμπίεση για τέλεια ταχύτητα
+        />
+        <div className="absolute inset-0 bg-black/40"></div>
+        
+        <div className="relative z-10 text-center px-4 mt-10 w-full flex flex-col items-center">
+          <h1 className="text-5xl md:text-8xl font-display text-white mb-4 drop-shadow-2xl tracking-tight animate-entrance">
+            {lang === "el" ? "Ανακαλύψτε την Άνδρο" : "Discover Andros"}
+          </h1>
+          
+          <p className="text-white/95 text-lg md:text-2xl max-w-3xl mx-auto font-sans font-light tracking-wide drop-shadow-md text-center leading-relaxed animate-fadein">
+            {lang === "el" 
+              ? "Ένα νησί αρχοντιάς, κρυμμένων θησαυρών και ανέγγιχτης ομορφιάς." 
+              : "An island of elegance, hidden gems, and untouched beauty."}
+          </p>
+        </div>
+      </div>
+
+      {/* --- CONTENT SECTIONS --- */}
+      <div className="max-w-7xl mx-auto px-6 py-24 space-y-32">
+        {experiencesData.map((item, index) => {
+          const content = lang === "el" ? item.el : item.en;
+          return (
+            <div key={index} className={`flex flex-col md:flex-row gap-12 items-center ${item.reverse ? 'md:flex-row-reverse' : ''}`}>
+              <div className="w-full md:w-1/2">
+                <Reveal width="100%">
+                  <div className="relative h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-700 border-4 border-white group bg-stone-100">
+                    <Image
+                      src={item.image}
+                      alt={content.title}
+                      fill
+                      className="object-cover hover:scale-110 transition-transform duration-[1.5s]"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      // ΒΕΛΤΙΩΣΗ: Το loading="lazy" αφαιρέθηκε (είναι default και πιο γρήγορο χωρίς αυτό)
+                    />
+                  </div>
+                </Reveal>
+              </div>
+
+              <div className="w-full md:w-1/2 space-y-6">
+                <Reveal delay={0.2}>
+                  <span className="text-olive-700 font-bold tracking-widest text-xs uppercase mb-2 block">
+                    {t.expLabel} {index + 1}
+                  </span>
+                  <h2 className="text-4xl md:text-5xl font-display text-stone-900 leading-tight pb-2">
+                    {content.title}
+                  </h2>
+                </Reveal>
+                <Reveal delay={0.3}>
+                  <p className="text-stone-600 text-lg leading-relaxed font-sans pb-2 font-light">
+                    {content.description}
+                  </p>
+                </Reveal>
+                <div className="h-1 w-20 bg-olive-500 mt-6"></div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      
+      {/* --- LEAD MAGNET SECTION --- */}
+      <section className="py-20 bg-stone-900 px-6 text-center"> 
+        <div className="max-w-3xl mx-auto">
+          <h2 key={lang + "cta-h"} className="text-3xl md:text-5xl font-display font-bold mb-6 text-white leading-tight">
+            {t.ctaTitle} <span className="text-[#25D366]">{t.ctaSpan}</span>
+          </h2>
+          <p key={lang + "cta-p"} className="text-stone-300 mb-10 text-lg leading-relaxed font-light">
+            {t.ctaDesc}
+          </p>
+
+          <div className="flex justify-center">
+            <a
+              href={`https://wa.me/306972127884?text=${lang === "el" ? "Γεια σας! Ενδιαφέρομαι για τον αποκλειστικό οδηγό της Άνδρου." : "Hi! I am interested in the exclusive guide for Andros."}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-[#25D366] text-white text-sm font-bold tracking-widest uppercase rounded-full shadow-xl hover:bg-[#1da851] hover:scale-105 transition-all duration-300"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              {t.ctaButton}
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  );
+}
+</file>
+
+<file path="app/rooms/[slug]/RoomClient.tsx">
+"use client";
+
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import { type Room } from "@/lib/rooms";
+
+interface RoomClientProps {
+  room: Room;
+  initialLang: "el" | "en";
+}
+
+export default function RoomClient({ room, initialLang }: RoomClientProps) {
+  const [lang, setLang] = useState<"el" | "en">(initialLang);
+
+  useEffect(() => {
+    const handleLangChange = (e: CustomEvent) => {
+      setLang(e.detail as "el" | "en");
+    };
+    window.addEventListener("langChange", handleLangChange as EventListener);
+    return () =>
+      window.removeEventListener("langChange", handleLangChange as EventListener);
+  }, []);
+
+  const content = lang === "el" ? room.el : room.en;
+
+  return (
+    <main className="bg-[#fafaf9] min-h-screen pb-12">
+      <Navbar />
+
+      {/* Back Button */}
+      <div className="absolute top-28 left-6 z-20 md:left-12">
+        <Link
+          href={lang === "en" ? "/?lang=en" : "/"}
+          className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-white/30 transition-all inline-block active:scale-95"
+        >
+          ← {content.sidebar.back}
+        </Link>
+      </div>
+
+      {/* Hero */}
+      <div className="relative h-[60vh] w-full">
+        <Image
+          src={room.images[0]}
+          alt={`${room.name} Andros Chora`}
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+          quality={80}
+        />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 bg-gradient-to-t from-black/80 to-transparent text-white">
+          <div className="max-w-7xl mx-auto">
+            <h1 className="text-3xl md:text-5xl font-display text-white mb-2 drop-shadow-lg leading-tight">
+              {room.name}
+            </h1>
+            <h2 className="text-lg md:text-xl text-white/95 font-sans font-medium mb-3">
+              {content.subtitle}
+            </h2>
+            <p className="text-sm md:text-base text-white/80 font-sans font-light tracking-wide">
+              {content.size} • {content.guests}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row gap-16">
+        {/* Left Column */}
+        <div className="lg:w-2/3 space-y-10">
+          <section>
+            <h2 className="text-2xl font-display text-stone-900 mb-4">
+              {content.sidebar.experience}
+            </h2>
+            <p className="text-stone-600 leading-relaxed text-lg font-sans font-light">
+              {content.description}
+            </p>
+          </section>
+
+          <section className="border-t border-stone-200 pt-8">
+            <h3 className="text-xl font-display text-stone-900 mb-6">
+              {content.sidebar.highlights}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {content.features.map((f, i) => (
+                <div key={i} className="flex items-center gap-3 text-stone-600">
+                  <span className="w-1.5 h-1.5 rounded-full bg-stone-400" />
+                  <span className="font-sans font-medium">{f}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="border-t border-stone-200 pt-8 mb-12">
+            <h3 className="text-xl font-display text-stone-900 mb-6">
+              {content.sidebar.gallery}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {room.images.slice(1).map((img, i) => (
+                <div
+                  key={i}
+                  className="relative h-64 rounded-lg overflow-hidden shadow-md bg-stone-100"
+                >
+                  <Image
+                    src={img}
+                    alt={`${room.name} gallery ${i + 1}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+
+        {/* Sidebar */}
+        <div className="lg:w-1/3">
+          <div className="sticky top-28 bg-white p-8 rounded-xl shadow-xl border border-stone-100">
+            <div className="mb-6 border-b border-stone-100 pb-6">
+              <span className="text-xs font-bold text-stone-500 uppercase tracking-wider">
+                {content.sidebar.start}
+              </span>
+              <div className="text-3xl font-display text-stone-900">
+                {room.price}{" "}
+                <span className="text-sm text-stone-500 font-sans">
+                  {content.sidebar.night}
+                </span>
+              </div>
+            </div>
+
+            <div className="space-y-4 mb-8">
+              <div className="flex justify-between text-sm text-stone-600">
+                <span>{content.sidebar.guests}</span>
+                <span className="font-bold text-stone-900">{content.guests}</span>
+              </div>
+              <div className="flex justify-between text-sm text-stone-600">
+                <span>{content.sidebar.beds}</span>
+                <span className="font-bold text-stone-900 text-right w-1/2">
+                  {content.bed}
+                </span>
+              </div>
+              <div className="flex justify-between text-sm text-stone-600">
+                <span>Check-in:</span>
+                <span className="font-bold text-stone-900">15:00</span>
+              </div>
+            </div>
+
+            <Link
+              href="/contact"
+              className="block w-full py-4 bg-stone-900 text-white text-center rounded-full font-bold uppercase tracking-widest hover:bg-stone-700 transition-colors shadow-lg active:scale-95"
+            >
+              {content.sidebar.button}
+            </Link>
+            <p className="text-[10px] text-stone-600 text-center mt-3 uppercase tracking-wide">
+              {content.sidebar.guarantee}
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}
+</file>
+
+<file path="components/About.tsx">
+"use client";
+
+import Image from "next/image";
+import { useState, useEffect } from "react";
+
+export default function About() {
+  const [lang, setLang] = useState("en");
+
+  useEffect(() => {
+    // Ακούμε την αλλαγή γλώσσας από το LanguageSwitcher
+    const handleLangChange = (e: any) => setLang(e.detail);
+    window.addEventListener("langChange", handleLangChange);
+    
+    // Αρχικός έλεγχος γλώσσας
+    const currentLang = document.documentElement.lang || "en";
+    setLang(currentLang);
+
+    return () => window.removeEventListener("langChange", handleLangChange);
+  }, []);
+
+  // Μεταφράσεις κειμένων
+  const content = {
+    en: {
+      tag: "Meet the Hosts",
+      title: <>More than just <br/> a place to stay.</>,
+      p1: <>I am <strong className="text-stone-900 font-bold">Leonidas</strong>, the proud owner of this family gem in the heart of Chora. Along with <strong className="text-stone-900 font-bold">Eva</strong> and <strong className="text-stone-900 font-bold">Niko</strong>, our passion stems from a deep love for sharing the authentic beauty of Andros.</>,
+      quote: <>"For us, <span className="text-olive-700 font-medium">Philoxenia</span> is not just a word. It is the ancient Greek art of making a stranger feel like family."</>,
+      p2: <>When I’m not ensuring your stay is perfect, you’ll likely find me exploring the island’s stunning natural trails or walking our dog, <strong>Max</strong>.</>,
+      p3: "We look forward to welcoming you to our guesthouses and helping you create unforgettable memories in the Aegean!",
+      signature: "Leonidas & Family",
+      signatureSub: "Your Local Hosts",
+      reviews: <>Booking.com <br/> Reviews</>
+    },
+    el: {
+      tag: "Γνωριστε τους Οικοδεσποτες",
+      title: <>Περισσότερο από <br/> ένα απλό κατάλυμα.</>,
+      p1: <>Είμαι ο <strong className="text-stone-900 font-bold">Λεωνίδας</strong>, ο περήφανος ιδιοκτήτης αυτού του οικογενειακού θησαυρού στην καρδιά της Χώρας. Μαζί με την <strong className="text-stone-900 font-bold">Μαρκέλλα</strong> , την <strong className="text-stone-900 font-bold">Εύα</strong> και τον <strong className="text-stone-900 font-bold">Νίκο</strong>, το πάθος μας πηγάζει από την αγάπη μας να μοιραζόμαστε την αυθεντική ομορφιά της Άνδρου.</>,
+      quote: <>"Για εμάς, η <span className="text-olive-700 font-medium">Φιλοξενία</span> δεν είναι απλά μια λέξη. Είναι η αρχαία ελληνική τέχνη του να κάνεις έναν ξένο να νιώθει οικογένεια."</>,
+      p2: <>Όταν δεν φροντίζω για την τέλεια διαμονή σας, πιθανότατα θα με βρείτε να εξερευνώ τα μονοπάτια του νησιού ή να περπατάω τον σκύλο μας, τον <strong>Max</strong>.</>,
+      p3: "Ανυπομονούμε να σας καλωσορίσουμε στους ξενώνες μας και να σας βοηθήσουμε να δημιουργήσετε αξέχαστες αναμνήσεις στο Αιγαίο!",
+      signature: "Λεωνίδας & Οικογένεια",
+      signatureSub: "Οι Οικοδεσπότες σας",
+      reviews: <>Κριτικές <br/> Booking.com</>
+    }
+  };
+
+  const t = lang === "el" ? content.el : content.en;
+
+  return (
+    /* Το χρώμα bg-[#fafaf9] τώρα πιάνει όλο το πλάτος και το overflow-hidden κλειδώνει τη μπάρα */
+    <section className="w-full bg-[#fafaf9] py-24 md:py-32 overflow-hidden relative border-b border-stone-100">
+      <div className="max-w-7xl mx-auto px-6">
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-center">
+          
+          {/* --- LEFT: IMAGE & BADGE --- */}
+          <div className="relative order-2 lg:order-1">
+            <div className="relative h-[500px] md:h-[600px] w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white group cursor-pointer">
+              <Image
+                src="/outside-v2.webp"
+                alt="Leonidas and family"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 80vw, (max-width: 1200px) 35vw, 30vw"
+                quality={60} // <--- Από 75 σε 70
+                loading="lazy" // <--- Γιατί δεν είναι LCP (είναι πιο κάτω στη σελίδα)
+              />
+            <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none"></div>
+          </div>
+
+            {/* Floating Badge */}
+            <div className="absolute -bottom-6 -right-6 md:bottom-10 md:-right-10 z-10">
+              <div 
+                aria-label="Rating score 9.5 out of 10 on Booking.com"
+                className="bg-white p-6 md:p-8 shadow-xl flex flex-col items-center justify-center gap-1 rounded-full aspect-square border-4 border-stone-100 hover:scale-105 transition-transform duration-300"
+              >
+                <span className="font-display text-5xl md:text-6xl text-olive-600 leading-none font-bold">9.6</span>
+                <span key={lang + "-rev"} className="font-sans text-[11px] font-bold tracking-widest uppercase text-center text-stone-600">
+                  {t.reviews}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* --- RIGHT: TEXT (STORY) --- */}
+          <div className="space-y-8 md:pl-10 order-1 lg:order-2">
+            <span key={lang + "-tag"} className="text-olive-600 font-sans text-xs font-bold tracking-[0.2em] uppercase flex items-center gap-3">
+              <span className="w-10 h-[2px] bg-olive-600"></span>
+              {t.tag}
+            </span>
+
+            <h2 key={lang + "-title"} className="text-4xl md:text-6xl font-display text-stone-900 leading-[1.1] pb-2">
+              {t.title}
+            </h2>
+
+            <div className="space-y-6 text-stone-600 font-sans text-lg leading-relaxed font-light">
+              <p key={lang + "-p1"}>{t.p1}</p>
+              <div key={lang + "-quote"} className="pl-6 border-l-2 border-olive-300 italic text-stone-500 my-6">
+                {t.quote}
+              </div>
+              <p key={lang + "-p2"}>{t.p2}</p>
+              <p key={lang + "-p3"}>{t.p3}</p>
+            </div>
+
+            <div className="pt-8 flex items-center gap-6">
+               <div>
+                  <p key={lang + "-sig"} className="font-handwriting text-3xl text-stone-900">{t.signature}</p>
+                  <span key={lang + "-sigsub"} className="text-[10px] font-sans font-bold text-stone-600 tracking-widest uppercase mt-1 block">
+                    {t.signatureSub}
+                  </span>
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="components/CookieConsent.tsx">
+"use client";
+
+import { useState, useEffect } from "react";
+import { getT } from "@/translations";
+
+export default function CookieConsent() {
+  const [showConsent, setShowConsent] = useState(false);
+  const [lang, setLang] = useState("en");
+
+  useEffect(() => {
+    // 1. Έλεγχος γλώσσας
+    const currentLang = document.documentElement.lang || "en";
+    setLang(currentLang);
+
+    // 2. Έλεγχος συγκατάθεσης
+    const consent = localStorage.getItem("cookieConsent");
+    if (!consent) {
+      const timer = setTimeout(() => {
+        setShowConsent(true);
+      }, 5000); // Το κρατάμε στα 5δευτ. για το Lighthouse
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const acceptCookies = () => {
+    localStorage.setItem("cookieConsent", "true");
+    setShowConsent(false);
+  };
+
+  if (!showConsent) return null;
+
+  const tr = getT(lang as "el" | "en");
+
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-[90] bg-white border-t border-stone-200 p-4 md:p-6 shadow-[0_-4px_20px_rgba(0,0,0,0.15)] animate-fade-up">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="text-sm text-stone-600 text-center md:text-left font-sans leading-relaxed">
+          <p>{tr.cookie.message}</p>
+        </div>
+        <div className="flex gap-4 shrink-0">
+          <button
+            onClick={acceptCookies}
+            className="px-8 py-3 bg-stone-900 text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-full hover:bg-olive-700 transition-all shadow-md active:scale-90"
+          >
+            {tr.cookie.accept}
+          </button>
+        </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes fadeUp {
+          from { transform: translateY(100%); opacity: 0; }
+          to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-fade-up {
+          animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+      `}</style>
+    </div>
+  );
+}
+</file>
+
+<file path="components/LanguageSwitcher.tsx">
+'use client';
+
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+
+interface LanguageSwitcherProps {
+  isDark: boolean; 
+}
+
+export default function LanguageSwitcher({ isDark }: LanguageSwitcherProps) {
+  const pathname = usePathname();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // Ανίχνευση γλώσσας από το URL Path ή το Query Param
+  const isGreekPath = pathname.startsWith('/el');
+  const isGreekQuery = searchParams.get('lang') === 'el';
+  const currentLang = (isGreekPath || isGreekQuery) ? 'el' : 'en';
+
+  const toggleLanguage = () => {
+    const nextLang = currentLang === 'en' ? 'el' : 'en';
+    
+    let newPath = pathname;
+
+    // ΠΕΡΙΠΤΩΣΗ 1: Είμαστε στο Diary (Path-based /[lang]/diary)
+    if (pathname.startsWith('/el/') || pathname.startsWith('/en/')) {
+      newPath = pathname.replace(`/${currentLang}/`, `/${nextLang}/`);
+    } 
+    // ΠΕΡΙΠΤΩΣΗ 2: Είμαστε στην Αρχική ή σελίδες χωρίς [lang] στο path
+    else {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set('lang', nextLang);
+      newPath = `${pathname}?${params.toString()}`;
+    }
+
+    // Εκτέλεση της αλλαγής
+    router.push(newPath);
+    
+    // Ενημέρωση του document tag για SEO
+    document.documentElement.lang = nextLang;
+    // Dispatch event για να "ακούσει" ο παλιός κώδικας αν χρειαστεί
+    window.dispatchEvent(new CustomEvent('langChange', { detail: nextLang }));
+  };
+
+  return (
+    <button 
+      onClick={toggleLanguage}
+      aria-label={currentLang === 'en' ? "Αλλαγή στα Ελληνικά" : "Switch to English"}
+      className={`flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all ${
+        isDark ? "border-stone-300 bg-stone-100" : "border-white/30 bg-white/10"
+      }`}
+    >
+      <span className={`text-[10px] font-bold ${currentLang === 'el' ? (isDark ? "text-stone-900" : "text-white") : (isDark ? "text-stone-400" : "text-white/40")}`}>
+        ΕΛ
+      </span>
+      <div className={`w-[1px] h-3 ${isDark ? "bg-stone-300" : "bg-white/30"}`}></div>
+      <span className={`text-[10px] font-bold ${currentLang === 'en' ? (isDark ? "text-stone-900" : "text-white") : (isDark ? "text-stone-400" : "text-white/40")}`}>
+        EN
+      </span>
+    </button>
+  );
+}
+</file>
+
+<file path="lib/rooms.ts">
+// lib/rooms.ts
+// Single source of truth για τα δεδομένα των δωματίων.
+// Import αυτό το αρχείο από Server Components, Client Components, και generateMetadata.
+
+export type Lang = "el" | "en";
+
+export interface RoomContent {
+  seoTitle: string;
+  metaDesc: string;
+  subtitle: string;
+  size: string;
+  guests: string;
+  bed: string;
+  description: string;
+  features: string[];
+  sidebar: {
+    back: string;
+    start: string;
+    night: string;
+    guests: string;
+    beds: string;
+    checkin: string;
+    button: string;
+    guarantee: string;
+    experience: string;
+    highlights: string;
+    gallery: string;
+  };
+}
+
+export interface Room {
+  slug: string;
+  name: string;
+  price: string;
+  images: string[];
+  el: RoomContent;
+  en: RoomContent;
+}
+
+export const roomsData: Room[] = [
+  {
+    slug: "aegean-studio",
+    name: "Aegean Studio",
+    price: "50€",
+    images: [
+      "/images/no5.6.webp",
+      "/images/no5.1.webp",
+      "/images/no5.2.webp",
+      "/images/no5.3.webp",
+    ],
+    el: {
+      seoTitle: "Aegean Studio | Ενοικιαζόμενα Δωμάτια με Θέα Χώρα Άνδρος",
+      metaDesc:
+        "Διαμονή στη Χώρα της Άνδρου στο Aegean Studio. Μοντέρνο δωμάτιο με θέα θάλασσα, πλήρη κουζίνα και πρόσβαση στα Andros Routes.",
+      subtitle: "Μοντέρνο δωμάτιο με θέα θάλασσα στη Χώρα",
+      size: "25 τ.μ.",
+      guests: "2-3 Άτομα",
+      bed: "1 Διπλό Κρεβάτι",
+      description:
+        "Νιώστε τον παλμό της Χώρας σε έναν χώρο σχεδιασμένο για τον σύγχρονο ταξιδιώτη. Στον 1ο όροφο, το Aegean Studio ορίζει το 'Smart Living'. Φωτεινό, μοντέρνο και πλήρως εξοπλισμένο, σας επιτρέπει να ζήσετε σαν ντόπιος.",
+      features: [
+        "Πλήρης Κουζίνα & Φούρνος",
+        "Πλυντήριο Ρούχων",
+        "Ιδιωτικό Μπαλκόνι",
+        "Θέα Βουνό & Λιμάνι",
+        "Μηχανή Nespresso",
+        "Smart TV & WiFi",
+      ],
+      sidebar: {
+        back: "ΠΙΣΩ ΣΤΗΝ ΑΡΧΙΚΗ",
+        start: "Από",
+        night: "/νύχτα",
+        guests: "Επισκέπτες:",
+        beds: "Κρεβάτια:",
+        checkin: "Check-in:",
+        button: "Κάντε Κράτηση",
+        guarantee: "Εγγύηση Καλύτερης Τιμής",
+        experience: "Η Εμπειρία",
+        highlights: "Χαρακτηριστικά",
+        gallery: "Φωτογραφίες",
+      },
+    },
+    en: {
+      seoTitle: "Aegean Studio | Sea View Accommodation Chora Andros",
+      metaDesc:
+        "Stay in Chora Andros at Aegean Studio. Modern room with sea view, full kitchen, and easy access to Andros Routes hiking trails.",
+      subtitle: "Modern Sea View Studio in Chora",
+      size: "25 m²",
+      guests: "2-3 Guests",
+      bed: "1 Double Bed",
+      description:
+        "Experience the pulse of Chora in a space designed for modern travelers. Located on the 1st floor, the Aegean Studio defines 'Smart Living'. Bright, modern, and fully equipped, it allows you to live like a local.",
+      features: [
+        "Full Kitchen & Oven",
+        "Washing Machine",
+        "Private Balcony",
+        "Mountain & Harbor View",
+        "Nespresso Machine",
+        "Smart TV & WiFi",
+      ],
+      sidebar: {
+        back: "BACK TO HOME",
+        start: "Starting from",
+        night: "/night",
+        guests: "Guests:",
+        beds: "Beds:",
+        checkin: "Check-in:",
+        button: "Book Your Stay",
+        guarantee: "Best Rate Guarantee",
+        experience: "The Experience",
+        highlights: "Highlights",
+        gallery: "Gallery",
+      },
+    },
+  },
+  {
+    slug: "garden-suite",
+    name: "Garden Suite",
+    price: "60€",
+    images: [
+      "/images/balcony1.webp",
+      "/images/no2.2.webp",
+      "/images/no2.3.webp",
+    ],
+    el: {
+      seoTitle: "Garden Suite | Διαμονή με Ιδιωτική Αυλή Χώρα Άνδρος",
+      metaDesc:
+        "Garden Suite στη Χώρα της Άνδρου. Ιδανικό για οικογένειες, με άμεση πρόσβαση σε δροσερή ιδιωτική αυλή.",
+      subtitle: "Οικογενειακή σουίτα με δροσερή ιδιωτική αυλή",
+      size: "40 τ.μ.",
+      guests: "2-5 Άτομα",
+      bed: "2 Διπλά + Καναπές",
+      description:
+        "Η απόλυτη αίσθηση εξοχικής κατοικίας. Στο ισόγειο, η Garden Suite προσφέρει την πολυτέλεια της άνεσης και την άμεση επαφή με τη φύση. Ιδανική για οικογένειες ή παρέες.",
+      features: [
+        "2 Διπλά Κρεβάτια",
+        "Πρόσβαση σε Ιδιωτική Αυλή",
+        "Μεγάλη Οικογενειακή Κουζίνα",
+        "Πλυντήριο Ρούχων",
+        "Ευρύχωρο Καθιστικό",
+        "Εύκολη Πρόσβαση (Ισόγειο)",
+      ],
+      sidebar: {
+        back: "ΠΙΣΩ ΣΤΗΝ ΑΡΧΙΚΗ",
+        start: "Από",
+        night: "/νύχτα",
+        guests: "Επισκέπτες:",
+        beds: "Κρεβάτια:",
+        checkin: "Check-in:",
+        button: "Κάντε Κράτηση",
+        guarantee: "Εγγύηση Καλύτερης Τιμής",
+        experience: "Η Εμπειρία",
+        highlights: "Χαρακτηριστικά",
+        gallery: "Φωτογραφίες",
+      },
+    },
+    en: {
+      seoTitle: "Garden Suite | Family Accommodation Chora Andros",
+      metaDesc:
+        "Garden Suite in Chora Andros. Perfect for families, featuring direct access to a cool private courtyard.",
+      subtitle: "Family Suite with Private Courtyard",
+      size: "40 m²",
+      guests: "2-5 Guests",
+      bed: "2 Doubles + Sofa",
+      description:
+        "The ultimate summer home feeling. Located on the ground floor, the Garden Suite offers the luxury of comfort and direct connection with nature. Ideal for families or groups.",
+      features: [
+        "2 Double Beds",
+        "Private Courtyard Access",
+        "Large Family Kitchen",
+        "Washing Machine",
+        "Spacious Living Area",
+        "Easy Access (Ground Floor)",
+      ],
+      sidebar: {
+        back: "BACK TO HOME",
+        start: "Starting from",
+        night: "/night",
+        guests: "Guests:",
+        beds: "Beds:",
+        checkin: "Check-in:",
+        button: "Book Your Stay",
+        guarantee: "Best Rate Guarantee",
+        experience: "The Experience",
+        highlights: "Highlights",
+        gallery: "Gallery",
+      },
+    },
+  },
+  {
+    slug: "grand-residence",
+    name: "Grand Residence",
+    price: "70€",
+    images: [
+      "/images/no5.5.webp",
+      "/images/no5.4.webp",
+      "/images/no5.7.webp",
+    ],
+    el: {
+      seoTitle: "Grand Residence | Penthouse με Πανοραμική Θέα Άνδρος",
+      metaDesc:
+        "Το Grand Residence προσφέρει πανοραμική θέα στο λιμάνι της Άνδρου. Πολυτελής διαμονή για 4+ άτομα.",
+      subtitle: "Πολυτελές ρετιρέ με πανοραμική θέα στο λιμάνι",
+      size: "55 τ.μ.",
+      guests: "4+ Ενήλικες",
+      bed: "Υπνοδωμάτιο + Σαλόνι",
+      description:
+        "Η ναυαρχίδα της φιλοξενίας μας. Στον 2ο όροφο, η ιδιωτικότητα συναντά την πανοραμική θέα. Ένα πραγματικό σπίτι μακριά από το σπίτι, με γενναιόδωρους χώρους που φιλοξενούν άνετα 4+ άτομα.",
+      features: [
+        "Πανοραμική Βεράντα",
+        "Ευρύχωρο Σαλόνι",
+        "Ξεχωριστό Υπνοδωμάτιο",
+        "Πλήρης Οικιακός Εξοπλισμός",
+        "Πλυντήριο & Σίδερο",
+        "Προνομιακή Θέα Λιμάνι",
+      ],
+      sidebar: {
+        back: "ΠΙΣΩ ΣΤΗΝ ΑΡΧΙΚΗ",
+        start: "Από",
+        night: "/νύχτα",
+        guests: "Επισκέπτες:",
+        beds: "Κρεβάτια:",
+        checkin: "Check-in:",
+        button: "Κάντε Κράτηση",
+        guarantee: "Εγγύηση Καλύτερης Τιμής",
+        experience: "Η Εμπειρία",
+        highlights: "Χαρακτηριστικά",
+        gallery: "Φωτογραφίες",
+      },
+    },
+    en: {
+      seoTitle: "Grand Residence | Penthouse Accommodation Chora Andros",
+      metaDesc:
+        "Grand Residence offers panoramic views of Andros harbor. Luxury stay for 4+ guests in the heart of Chora.",
+      subtitle: "Luxury Penthouse with Panoramic Harbor View",
+      size: "55 m²",
+      guests: "4+ Adults",
+      bed: "Bedroom + Living Room",
+      description:
+        "Our hospitality flagship. Located on the 2nd floor, privacy meets panoramic views. A true home away from home, with generous spaces comfortably hosting 4+ guests.",
+      features: [
+        "Panoramic Veranda",
+        "Spacious Living Room",
+        "Separate Bedroom",
+        "Full Household Equipment",
+        "Washing Machine & Iron",
+        "Premium Harbor View",
+      ],
+      sidebar: {
+        back: "BACK TO HOME",
+        start: "Starting from",
+        night: "/night",
+        guests: "Guests:",
+        beds: "Beds:",
+        checkin: "Check-in:",
+        button: "Book Your Stay",
+        guarantee: "Best Rate Guarantee",
+        experience: "The Experience",
+        highlights: "Highlights",
+        gallery: "Gallery",
+      },
+    },
+  },
+];
+
+// Helper: βρες δωμάτιο από slug — επιστρέφει undefined αν δεν υπάρχει
+export function getRoomBySlug(slug: string): Room | undefined {
+  return roomsData.find((r) => r.slug === slug);
+}
+
+// Helper: όλα τα slugs — χρήσιμο για generateStaticParams
+export function getAllRoomSlugs(): string[] {
+  return roomsData.map((r) => r.slug);
+}
+</file>
+
+<file path="components/Footer.tsx">
+"use client";
+
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { getT } from "@/translations";
+
+export default function Footer() {
+  const [lang, setLang] = useState("en");
+
+  useEffect(() => {
+    const handleLangChange = (e: any) => setLang(e.detail);
+    window.addEventListener("langChange", handleLangChange);
+    setLang(document.documentElement.lang || "en");
+    return () => window.removeEventListener("langChange", handleLangChange);
+  }, []);
+
+  const content = {
+    en: {
+      hero: <>Your next escape <br/> starts here.</>,
+      text: "Book directly through our website for the best rates and exclusive benefits. Experience the authentic hospitality of Andros.",
+      bookNow: "Book Now",
+      explore: "Explore",
+      home: "Home",
+      rooms: "Rooms",
+      experience: "Experience",
+      contact: "Contact",
+      addressLabel: "Address",
+      address: "Neimporio, Chora Andros",
+      country: "84500, Cyclades, Greece",
+      touch: "Get in Touch",
+      rights: "All rights reserved.",
+      builtBy: "Handcrafted by"
+    },
+    el: {
+      hero: <>Η επόμενη απόδρασή σας <br/> ξεκινά εδώ.</>,
+      text: "Κάντε κράτηση απευθείας από την ιστοσελίδα μας για τις καλύτερες τιμές και αποκλειστικά προνόμια. Ζήστε την αυθεντική φιλοξενία της Άνδρου.",
+      bookNow: "Κρατηση Τωρα",
+      explore: "Πλοηγηση",
+      home: "Αρχική",
+      rooms: "Δωμάτια",
+      experience: "Εμπειρία",
+      contact: "Επικοινωνία",
+      addressLabel: "Διεύθυνση",
+      address: "Νειμποριό, Χώρα Άνδρου",
+      country: "84500, Κυκλάδες, Ελλάδα",
+      touch: "Επικοινωνία",
+      rights: "Με επιφύλαξη παντός δικαιώματος.",
+      builtBy: "Handcrafted by"
+    }
+  };
+
+  const t = lang === "el" ? content.el : content.en;
+  const tr = getT(lang as "el" | "en");
+
+  return (
+    <footer className="relative bg-stone-950 text-white pt-20 pb-10 overflow-hidden font-sans">
+      
+      {/* --- BACKGROUND TEXT "ANDROS" ΕΠΑΝΑΦΟΡΑ --- */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden z-0">
+        <span className="text-[15vw] md:text-[12vw] font-display font-bold text-white/[0.03] tracking-tighter leading-none whitespace-nowrap">
+          ANDROS
+        </span>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-24 mb-16">
+    
+          {/* CTA COLUMN */}
+          <div className="md:col-span-2 space-y-6">
+            <h2 key={lang + "f-h2"} className="text-3xl md:text-4xl font-display leading-tight text-white">
+              {t.hero}
+            </h2>
+            <p key={lang + "f-p"} className="text-stone-300 text-sm max-w-md leading-relaxed font-light">
+              {t.text}
+            </p>
+            <div className="pt-4">
+              <a 
+                href="/contact" 
+                className="inline-block px-8 py-4 bg-olive-600 text-white text-xs font-bold uppercase tracking-widest hover:bg-olive-700 transition-all duration-300 rounded-sm shadow-lg active:scale-95"
+              >
+                {t.bookNow}
+              </a>
+            </div>
+          </div>
+
+          {/* LINKS */}
+          <div className="space-y-6">
+            <h3 className="text-xs font-bold text-lime-400 uppercase tracking-widest">{t.explore}</h3>
+            <ul className="space-y-4 font-display text-lg text-white">
+              <li><Link href="/" className="hover:text-olive-400 transition-colors">{t.home}</Link></li>
+              <li><Link href="/#rooms" className="hover:text-olive-400 transition-colors">{t.rooms}</Link></li>
+              <li><Link href="/experience" className="hover:text-olive-400 transition-colors">{t.experience}</Link></li>
+              <li><Link href="/contact" className="hover:text-olive-400 transition-colors">{t.contact}</Link></li>
+            </ul>
+          </div>
+
+          {/* CONTACT INFO - ΕΔΩ ΕΙΝΑΙ ΤΟ ΣΦΑΛΜΑ CONTRAST */}
+          <div className="space-y-6">
+            <h3 className="text-xs font-bold text-lime-400 uppercase tracking-widest">{t.contact}</h3>
+            <div className="space-y-4 text-sm text-stone-200 font-light">
+              <div>
+                <p className="text-white mb-1 font-medium">{t.addressLabel}</p>
+                {/* Χρησιμοποιούμε text-stone-100 για να είναι πολύ κοντά στο λευκό */}
+                <p className="text-stone-100">{t.address}</p>
+                <p className="text-stone-100">{t.country}</p>
+              </div>
+              <div className="flex flex-col gap-3">
+                <p className="text-white mb-1 font-medium">{t.touch}</p>
+                <a href="tel:+306936934390" className="block text-stone-100 hover:text-lime-400 transition-colors">+30 693 693 4390</a>
+                <a href="mailto:androsguesthouses@gmail.com" className="block text-stone-100 hover:text-lime-400 transition-colors">androsguesthouses@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* --- BOTTOM BAR - COPYRIGHTS --- */}
+        <div className="pt-8 border-t border-stone-800 flex flex-col md:flex-row justify-between items-center text-xs uppercase tracking-wider">
+  
+          {/* Χρησιμοποιούμε !text-white και opacity-100 για να μην είναι γκρι */}
+          <p className="!text-white opacity-100">
+            © {new Date().getFullYear()} ANDROS GUESTHOUSES. {t.rights}
+          </p>
+  
+          <div className="mt-4 md:mt-0">
+            <span className="!text-white opacity-100">
+              {tr.footer.madeBy} <span className="font-bold ml-1 !text-white">NIKOS TINIAKOS</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+</file>
+
+<file path="components/Testimonials.tsx">
+"use client";
+
+import { useState, useEffect } from "react";
+import Reveal from "./Reveal";
+import Image from "next/image";
+import { FaStar } from "react-icons/fa";
+
+export default function Testimonials() {
+  const [lang, setLang] = useState("en");
+
+  useEffect(() => {
+    const handleLangChange = (e: any) => setLang(e.detail);
+    window.addEventListener("langChange", handleLangChange);
+    setLang(document.documentElement.lang || "en");
+    return () => window.removeEventListener("langChange", handleLangChange);
+  }, []);
+
+  const content = {
+    en: {
+      badge: "Guest Favorites",
+      title: <>Loved by <br /> <span className="text-olive-700 italic">Travelers.</span></>,
+      description: "Real reviews from real guests. See why travelers from Germany, Australia, and around the world rate us as their favorite stay in Andros.",
+      bookingScore: "Exceptional",
+      googleScore: "Reviews",
+      review1: {
+        text: `"A Greek oasis... The host, Mr Leonidas, is one of the most hospitable people you will ever meet. There was even a bottle of extra virgin olive oil to use!"`,
+        country: "United Kingdom"
+      },
+      review2: {
+        text: `"So clean. Has everything you need including breakfast. Great location! The best so far on our 4 week tour of the Greek Islands."`,
+        sub: "5/5 Stars"
+      }
+    },
+    el: {
+      badge: "Αγαπημενο των Επισκεπτων",
+      title: <>Το αγαπούν οι <br /> <span className="text-olive-700 italic">Ταξιδιώτες.</span></>,
+      description: "Πραγματικές κριτικές από πραγματικούς επισκέπτες. Δείτε γιατί ταξιδιώτες από όλο τον κόσμο μας επιλέγουν ως την αγαπημένη τους διαμονή στην Άνδρο.",
+      bookingScore: "Εξαιρετικό",
+      googleScore: "Κριτικές",
+      review1: {
+        text: `"Μια ελληνική όαση... Ο οικοδεσπότης, ο κ. Λεωνίδας, είναι από τους πιο φιλόξενους ανθρώπους που θα γνωρίσετε. Υπήρχε μέχρι και μπουκάλι με έξτρα παρθένο ελαιόλαδο!"`,
+        country: "Ηνωμένο Βασίλειο"
+      },
+      review2: {
+        text: `"Πεντακάθαρο. Έχει όλα όσα χρειάζεστε, συμπεριλαμβανομένου του πρωινού. Εξαιρετική τοποθεσία! Το καλύτερο μέχρι στιγμής στην 4 εβδομάδων περιοδεία μας."`,
+        sub: "5/5 Αστέρια"
+      }
+    }
+  };
+
+  const t = lang === "el" ? content.el : content.en;
+
+  return (
+    <section className="py-24 bg-white overflow-hidden relative">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        
+        {/* --- LEFT: TEXT & SCORES --- */}
+        <div className="relative z-10 order-2 lg:order-1">
+          <Reveal>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-50 border border-stone-100 mb-6">
+              <span className="flex text-[#25D366] text-xs gap-0.5">
+                <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
+              </span>
+              <span key={lang + "badge"} className="text-xs font-bold text-stone-500 uppercase tracking-wider">
+                {t.badge}
+              </span>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <h2 key={lang + "h2"} className="text-5xl md:text-6xl font-display text-stone-900 leading-[1.1] mb-6">
+              {t.title}
+            </h2>
+          </Reveal>
+
+          <Reveal delay={0.2}>
+            <p key={lang + "p"} className="text-stone-500 text-lg max-w-md leading-relaxed mb-10 font-sans font-light">
+              {t.description}
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.3}>
+            <div className="flex items-center gap-12 border-t border-stone-100 pt-8">
+               <div className="text-left">
+                 <p className="text-4xl font-display font-bold text-[#003580]">9.6</p>
+                 <p key={lang + "bscore"} className="text-[10px] uppercase tracking-widest text-stone-400 mt-1">Booking.com<br/>{t.bookingScore}</p>
+               </div>
+               <div className="w-px h-12 bg-stone-200"></div>
+               <div className="text-left">
+                 <p className="text-4xl font-display font-bold text-[#ea4335]">4.9</p>
+                 <p key={lang + "gscore"} className="text-[10px] uppercase tracking-widest text-stone-400 mt-1">Google<br/>{t.googleScore}</p>
+               </div>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* --- RIGHT: CARDS --- */}
+        <div className="relative h-[500px] w-full flex items-center justify-center lg:justify-end order-1 lg:order-2">
+          <div className="absolute top-0 right-0 md:right-10 w-64 md:w-80 aspect-[3/4] rounded-sm overflow-hidden z-0 grayscale opacity-20 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+             <Image src="/images/balcony1.webp" alt="Guest View" fill className="object-cover" />
+          </div>
+
+          {/* Booking Card */}
+          <Reveal delay={0.2} className="absolute top-10 left-0 md:left-10 z-10 w-full max-w-sm">
+            <div className="bg-white p-8 shadow-xl shadow-stone-200/50 rounded-sm border-l-4 border-[#003580] hover:-translate-y-1 transition-transform duration-300">
+               <div className="flex justify-between items-start mb-4">
+                 <div className="flex flex-col">
+                    <span className="text-[#003580] font-bold text-xs uppercase tracking-wider mb-1">Booking.com</span>
+                    <div className="flex text-[#003580] text-xs"><FaStar/><FaStar/><FaStar/><FaStar/><FaStar/></div>
+                 </div>
+                 <span className="text-2xl font-display font-bold text-stone-200">”</span>
+               </div>
+               <p key={lang + "r1"} className="text-stone-600 text-sm font-light leading-relaxed mb-6 italic">
+                 {t.review1.text}
+               </p>
+               <div className="flex items-center gap-3">
+                 <div className="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-xs font-bold text-[#003580]">S</div>
+                 <div>
+                   <p className="text-xs font-bold text-stone-900">Stamatios</p>
+                   <p key={lang + "c1"} className="text-[10px] text-stone-400 uppercase">{t.review1.country}</p>
+                 </div>
+               </div>
+            </div>
+          </Reveal>
+
+          {/* Google Card */}
+          <Reveal delay={0.4} className="absolute bottom-0 right-4 md:right-0 z-20 w-full max-w-sm">
+            <div className="bg-white p-8 shadow-xl shadow-stone-200/50 rounded-sm border-l-4 border-[#ea4335] hover:-translate-y-1 transition-transform duration-300">
+               <div className="flex justify-between items-start mb-4">
+                 <div className="flex flex-col">
+                    <span className="text-[#ea4335] font-bold text-xs uppercase tracking-wider mb-1">Google</span>
+                    <div className="flex text-yellow-400 text-xs gap-0.5"><FaStar/><FaStar/><FaStar/><FaStar/><FaStar/></div>
+                 </div>
+                 <span className="text-2xl font-display font-bold text-stone-200">”</span>
+               </div>
+               <p key={lang + "r2"} className="text-stone-600 text-sm font-light leading-relaxed mb-6 italic">
+                 {t.review2.text}
+               </p>
+               <div className="flex items-center gap-3">
+                 <div className="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-xs font-bold text-[#ea4335]">B</div>
+                 <div>
+                   <p className="text-xs font-bold text-stone-900">Bob Westwood</p>
+                   <p key={lang + "c2"} className="text-[10px] text-stone-400 uppercase">{t.review2.sub}</p>
+                 </div>
+               </div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="translations.ts">
+// translations.ts
+// Κεντρικό dictionary για όλο το site.
+// Χρήση: import { t } from "@/translations"; → t.el.nav.home
+
+export type Lang = "el" | "en";
+
+export const t = {
+  en: {
+    nav: {
+      home: "Home",
+      rooms: "Rooms",
+      experience: "Experience",
+      contact: "Contact",
+      bookNow: "Book Now",
+    },
+    hero: {
+      welcome: "Welcome to Chora, Andros",
+      title: "Andros Guesthouses",
+      subtitle:
+        "Boutique Accommodation in Andros Chora. Your private stone sanctuary with Aegean Sea views.",
+      viewRooms: "View Our Rooms",
+      experience: "The Andros Experience",
+    },
+    about: {
+      tag: "Our Story",
+      title: "A Home in the Heart of Chora",
+      p1: "Nestled in the historic Neimporio neighbourhood of Chora, Andros Guesthouses offers an intimate escape where Cycladic tradition meets contemporary comfort.",
+      p2: "Each of our three handcrafted suites tells a story — from the modern Aegean Studio to the family-friendly Garden Suite and the panoramic Grand Residence.",
+      cta: "Explore Our Rooms",
+    },
+    rooms: {
+      tag: "Accommodations",
+      title: "Our Rooms",
+      from: "From",
+      night: "/ night",
+      guests: "Guests",
+      details: "View Details",
+    },
+    amenities: {
+      tag: "Amenities",
+      title: "Everything You Need",
+    },
+    diary: {
+      tag: "Andros Insider",
+      title: "Andros Diary",
+      back: "Back to Home",
+    },
+    contact: {
+      tag: "Get in Touch",
+      title: "Contact & Booking",
+      subtitle:
+        "Located in Neimporio, just a 5-minute walk from the beach and the main street of Chora.",
+      address: "Neimporio, Chora Andros",
+      directions: "Get Directions",
+      formTitle: "Send a Message",
+      formSubtitle: "We usually respond within 24 hours.",
+      name: "Name",
+      namePlaceholder: "Your full name",
+      email: "Email",
+      emailPlaceholder: "email@example.com",
+      checkIn: "Check In",
+      checkOut: "Check Out",
+      message: "Message",
+      messagePlaceholder: "Tell us about your trip...",
+      send: "Send Request",
+      sending: "Sending...",
+      sent: "Sent",
+      successMsg: "Message received! Thank you.",
+      errorMsg: "Error sending message. Please try again.",
+    },
+    footer: {
+      tagline: "Your next escape starts here.",
+      description:
+        "Book directly through our website for the best rates and exclusive benefits.",
+      bookNow: "Book Now",
+      explore: "Explore",
+      contact: "Contact",
+      addressLabel: "Address",
+      address: "Neimporio, Chora Andros",
+      country: "84500, Cyclades, Greece",
+      touch: "Get in Touch",
+      rights: "All rights reserved.",
+      madeBy: "Handcrafted by",
+    },
+    cookie: {
+      message:
+        "We use cookies to improve your experience. By continuing, you accept our",
+      policy: "cookie policy",
+      accept: "Accept",
+      decline: "Decline",
+    },
+    whatsapp: {
+      chat: "Chat with us!",
+    },
+  },
+  el: {
+    nav: {
+      home: "Αρχική",
+      rooms: "Δωμάτια",
+      experience: "Εμπειρία",
+      contact: "Επικοινωνία",
+      bookNow: "Κράτηση",
+    },
+    hero: {
+      welcome: "Καλώς ήρθατε στη Χώρα της Άνδρου",
+      title: "Andros Guesthouses",
+      subtitle:
+        "Boutique Διαμονή στη Χώρα της Άνδρου. Το ιδιωτικό σας πέτρινο καταφύγιο με θέα στο Αιγαίο.",
+      viewRooms: "Δείτε τα Δωμάτια",
+      experience: "Η Εμπειρία στην Άνδρο",
+    },
+    about: {
+      tag: "Η Ιστορία μας",
+      title: "Ένα Σπίτι στην Καρδιά της Χώρας",
+      p1: "Στη γειτονιά Νειμποριό της Χώρας, τα Andros Guesthouses προσφέρουν μια οικεία απόδραση όπου η κυκλαδική παράδοση συναντά τη σύγχρονη άνεση.",
+      p2: "Καθένα από τα τρία χειροποίητα δωμάτιά μας αφηγείται μια ιστορία — από το μοντέρνο Aegean Studio έως την οικογενειακή Garden Suite και το πανοραμικό Grand Residence.",
+      cta: "Δείτε τα Δωμάτιά μας",
+    },
+    rooms: {
+      tag: "Καταλύματα",
+      title: "Τα Δωμάτιά μας",
+      from: "Από",
+      night: "/ νύχτα",
+      guests: "Επισκέπτες",
+      details: "Περισσότερα",
+    },
+    amenities: {
+      tag: "Παροχές",
+      title: "Όλα όσα χρειάζεστε",
+    },
+    diary: {
+      tag: "Οδηγός Άνδρου",
+      title: "Andros Diary",
+      back: "Επιστροφή στην Αρχική",
+    },
+    contact: {
+      tag: "Επικοινωνία",
+      title: "Επικοινωνία",
+      subtitle:
+        "Στο Νειμποριό, μόλις 5 λεπτά με τα πόδια από την παραλία και τον κεντρικό πεζόδρομο της Χώρας.",
+      address: "Νειμποριό, Χώρα Άνδρου",
+      directions: "Οδηγίες Χάρτη",
+      formTitle: "Επικοινωνήστε μαζί μας",
+      formSubtitle: "Απαντάμε συνήθως εντός 24 ωρών.",
+      name: "Ονοματεπώνυμο",
+      namePlaceholder: "Το όνομά σας",
+      email: "Email",
+      emailPlaceholder: "email@example.com",
+      checkIn: "Άφιξη",
+      checkOut: "Αναχώρηση",
+      message: "Μήνυμα",
+      messagePlaceholder: "Πείτε μας για το ταξίδι σας...",
+      send: "Αποστολή",
+      sending: "Αποστολή...",
+      sent: "Εστάλη",
+      successMsg: "Το μήνυμα ελήφθη! Ευχαριστούμε.",
+      errorMsg: "Σφάλμα αποστολής. Παρακαλώ δοκιμάστε ξανά.",
+    },
+    footer: {
+      tagline: "Η επόμενη απόδρασή σας ξεκινά εδώ.",
+      description:
+        "Κάντε κράτηση απευθείας για τις καλύτερες τιμές και αποκλειστικά οφέλη.",
+      bookNow: "Κράτηση",
+      explore: "Εξερεύνηση",
+      contact: "Επικοινωνία",
+      addressLabel: "Διεύθυνση",
+      address: "Νειμποριό, Χώρα Άνδρου",
+      country: "84500, Κυκλάδες, Ελλάδα",
+      touch: "Επικοινωνία",
+      rights: "Με επιφύλαξη παντός δικαιώματος.",
+      madeBy: "Handcrafted by",
+    },
+    cookie: {
+      message:
+        "Χρησιμοποιούμε cookies για να βελτιώσουμε την εμπειρία σας. Συνεχίζοντας, αποδέχεστε την",
+      policy: "πολιτική cookies",
+      accept: "Αποδοχή",
+      decline: "Απόρριψη",
+    },
+    whatsapp: {
+      chat: "Μιλήστε μαζί μας!",
+    },
+  },
+} as const;
+
+// Helper: παίρνει το σωστό dictionary με βάση το lang param
+export function getT(lang: Lang) {
+  return t[lang];
+}
+</file>
+
+<file path="components/Rooms.tsx">
+"use client";
+
+import { useState, MouseEvent } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import Reveal from "./Reveal";
+
+const roomTypes = [
+  {
+    id: 1,
+    slug: "aegean-studio",
+    price: "50",
+    images: ["/images/no5.6.webp", "/images/no5.1.webp", "/images/no5.2.webp", "/images/no5.3.webp"],
+    en: {
+      title: "Aegean Studio",
+      desc: "1st Floor • Full Kitchen • 2-3 Guests",
+      details: "A cozy first-floor sanctuary. Features a fully equipped kitchen and a comfortable layout perfect for couples."
+    },
+    el: {
+      title: "Aegean Studio",
+      desc: "1ος Όροφος • Πλήρης Κουζίνα • 2-3 Άτομα",
+      details: "Ένα ζεστό καταφύγιο στον πρώτο όροφο. Διαθέτει πλήρως εξοπλισμένη κουζίνα και άνετη διαρρύθμιση."
+    }
+  },
+  {
+    id: 2,
+    slug: "garden-suite",
+    price: "50",
+    images: ["/images/balcony1.webp", "/images/no2.2.webp", "/images/no2.3.webp"],
+    en: {
+      title: "Garden Suite",
+      desc: "Ground Floor • 2 Bedrooms • Private Yard",
+      details: "Spacious ground-floor apartment featuring 2 double beds and direct access to a cool, private courtyard."
+    },
+    el: {
+      title: "Garden Suite",
+      desc: "Ισόγειο • 2 Υπνοδωμάτια • Ιδιωτική Αυλή",
+      details: "Ευρύχωρο ισόγειο διαμέρισμα με 2 διπλά κρεβάτια και άμεση πρόσβαση σε μια δροσερή, ιδιωτική αυλή."
+    }
+  },
+  {
+    id: 3,
+    slug: "grand-residence",
+    price: "60",
+    images: ["/images/no5.4.webp", "/images/no5.5.webp", "/images/no5.7.webp"],
+    en: {
+      title: "Grand Residence",
+      desc: "2nd Floor • 4+ Guests • Harbor View",
+      details: "Our flagship choice. A 55m² residence with expansive verandas and breathtaking panoramic views of Chora."
+    },
+    el: {
+      title: "Grand Residence",
+      desc: "2ος Όροφος • 4+ Άτομα • Θέα Λιμάνι",
+      details: "Η κορυφαία μας επιλογή. Μια κατοικία 55τ.μ. με μεγάλες βεράντες και εκπληκτική πανοραμική θέα."
+    }
+  }
+];
+
+function RoomCardSlider({ room, lang }: { room: typeof roomTypes[0], lang: string }) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const t = lang === "el" ? room.el : room.en;
+
+  const handleNext = (e: MouseEvent) => {
+    e.preventDefault(); e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev + 1) % room.images.length);
+  };
+
+  // SRE: Schema.org Injection for Rich Results
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Accommodation",
+    "name": t.title,
+    "description": t.details,
+    "image": `https://www.androsguesthouses.gr${room.images[0]}`,
+    "offers": {
+      "@type": "Offer",
+      "price": room.price,
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock"
+    }
+  };
+
+  return (
+    <div className="group flex flex-col h-full bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl border border-stone-100 transition-all duration-500 hover:-translate-y-2 relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Link 
+        href={`/rooms/${room.slug}${lang === "el" ? "" : "?lang=en"}`} 
+        className="absolute inset-0 z-40" 
+      />
+
+      <div className="relative aspect-video w-full overflow-hidden bg-stone-200">
+        <Image
+          src={room.images[currentImageIndex]} 
+          alt={t.title}
+          fill
+          className="object-cover transition-transform duration-[1.5s] group-hover:scale-110"
+          sizes="(max-width: 768px) 100vw, 33vw"
+        />
+        <div className="absolute top-5 right-5 bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-bold text-stone-900 z-20 pointer-events-none">
+          {lang === "el" ? "από" : "from"} {room.price}€
+        </div>
+        {room.images.length > 1 && (
+          <button onClick={handleNext} className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all z-50">
+            <svg fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-5 h-5"><path d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+          </button>
+        )}
+      </div>
+      
+      <div className="p-8 flex flex-col flex-1">
+        <h3 className="text-2xl font-display text-stone-900 group-hover:text-olive-700 mb-2">{t.title}</h3>
+        <p className="text-olive-600 text-[10px] font-bold uppercase tracking-widest mb-4">{t.desc}</p>
+        <p className="text-stone-600 text-sm leading-relaxed flex-1">{t.details}</p>
+        <div className="mt-6 pt-6 border-t border-stone-100">
+          <span className="text-xs font-bold uppercase tracking-widest text-stone-900 group-hover:text-olive-700 inline-flex items-center gap-2">
+            {lang === "el" ? "ΠΕΡΙΣΣΟΤΕΡΑ" : "VIEW DETAILS"} →
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function Rooms({ lang = "en" }: { lang?: string }) {
+  return (
+    <section id="rooms" className="w-full bg-white border-b border-stone-100 overflow-hidden"> 
+      <div className="py-24 md:py-32 px-6 max-w-7xl mx-auto">
+        <div className="text-left mb-16 border-b border-stone-200 pb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <Reveal>
+            <span className="text-olive-700 font-bold tracking-widest text-xs uppercase block mb-3">
+              {lang === "el" ? "ΔΙΑΜΟΝΗ" : "ACCOMMODATION"}
+            </span>
+            <h2 className="text-5xl md:text-6xl font-display text-stone-900">
+              {lang === "el" ? "Επιλεγμένες Κατοικίες" : "Curated Residences"}
+            </h2>
+          </Reveal>
+          
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+          {roomTypes.map((room, index) => (
+            <RoomCardSlider key={room.id} room={room} lang={lang} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+</file>
+
+<file path="components/WhatsAppBtn.tsx">
+"use client";
+
+import { FaWhatsapp } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { getT } from "@/translations";
+
+export default function WhatsAppBtn() {
+  const [lang, setLang] = useState("en");
+  const pathname = usePathname();
+
+  useEffect(() => {
+    // Συγχρονισμός γλώσσας
+    setLang(document.documentElement.lang || "en");
+    const handleLangChange = (e: any) => setLang(e.detail);
+    window.addEventListener("langChange", handleLangChange);
+    return () => window.removeEventListener("langChange", handleLangChange);
+  }, []);
+
+  // Δημιουργία δυναμικού μηνύματος ανάλογα με τη σελίδα
+  const getWhatsAppLink = () => {
+    const phone = "306972127884";
+    let message = lang === "el" 
+      ? "Γεια σας! Θα ήθελα να μάθω περισσότερα για τα Andros Guesthouses." 
+      : "Hello! I would like to inquire about Andros Guesthouses.";
+
+    if (pathname.includes("aegean-studio")) {
+      message = lang === "el" ? "Γεια σας! Ενδιαφέρομαι για το Aegean Studio." : "Hi! I'm interested in the Aegean Studio.";
+    } else if (pathname.includes("garden-suite")) {
+      message = lang === "el" ? "Γεια σας! Ενδιαφέρομαι για τη Garden Suite." : "Hi! I'm interested in the Garden Suite.";
+    } else if (pathname.includes("grand-residence")) {
+      message = lang === "el" ? "Γεια σας! Ενδιαφέρομαι για το Grand Residence." : "Hi! I'm interested in the Grand Residence.";
+    }
+
+    return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  };
+
+  return (
+    <div className="fixed bottom-6 right-6 z-[110] flex items-center justify-center">
+      {/* Pulse Effect Animation */}
+      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#25D366] opacity-20"></span>
+
+      <a
+        href={getWhatsAppLink()}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => {
+          if (typeof window !== "undefined" && (window as any).clarity) {
+            (window as any).clarity("set", "Target", `WhatsApp_Chat_${pathname}`);
+          }
+        }}
+        className="relative bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 group"
+        aria-label="Chat on WhatsApp"
+      >
+        <FaWhatsapp className="w-7 h-7 md:w-8 md:h-8" />
+        
+        {/* Bilingual Tooltip */}
+        <span className="absolute right-full top-1/2 -translate-y-1/2 mr-4 bg-white text-stone-900 px-4 py-2 rounded-xl text-xs font-bold shadow-xl opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap pointer-events-none border border-stone-100 transform translate-x-2 group-hover:translate-x-0">
+          {getT(lang as "el" | "en").whatsapp.chat}
+        </span>
+      </a>
+    </div>
+  );
+}
+</file>
+
+<file path="app/[lang]/diary/page.tsx">
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { useParams } from "next/navigation";
+import { motion } from "framer-motion";
+
+// SRE NOTE: Αφαιρέσαμε Navbar & Footer γιατί έρχονται από το Root Layout
+
+const ALL_ARTICLES = [
+  { 
+    id: "04", 
+    slug: "athens-to-andros-guide", 
+    title: { el: "Πώς θα έρθετε στην Άνδρο", en: "Athens to Andros: Complete Guide" }, 
+    tag: "TRAVEL GUIDE", 
+    img: "/images/gavrio-andros-greece.webp" 
+  },
+  { 
+    id: "00", 
+    slug: "andros-routes-guide", 
+    title: { el: "Μονοπάτια της Άνδρου", en: "Andros Routes: Hiking Guide" }, 
+    tag: "ADVENTURE", 
+    img: "/images/hiking-andros.webp" 
+  },
+  { 
+    id: "01", 
+    slug: "chora-and-wind", 
+    title: { el: "Η Αρχοντική Χώρα & ο Άνεμος", en: "Noble Chora & The Wind" }, 
+    tag: "KNOW-HOW", 
+    img: "/images/chora-guide-v2.webp" 
+  },
+  { 
+    id: "02", 
+    slug: "secret-beaches", 
+    title: { el: "Παραλίες & Μυστικά", en: "Secret Beaches & Gems" }, 
+    tag: "NATURE", 
+    img: "/images/beaches-guide.webp" 
+  },
+  { 
+    id: "03", 
+    slug: "local-flavors", 
+    title: { el: "Γεύση Άνδρου: Πού να φάτε", en: "Taste of Andros: Where to eat" }, 
+    tag: "GASTRONOMY", 
+    img: "/images/food-guide.webp" 
+  },
+];
+
+export default function DiaryIndexPage() {
+  const params = useParams();
+  const lang = (params?.lang as "el" | "en") || "el";
+
+  return (
+    <main className="min-h-screen bg-stone-50">
+      {/* SRE Fix: Ο Navbar αφαιρέθηκε για να μην υπάρχει duplication */}
+      
+      <section className="py-24 px-6 max-w-6xl mx-auto">
+        <header className="mb-16 text-center pt-10">
+          <span className="text-lime-700 font-bold tracking-[0.3em] text-xs uppercase mb-4 block">
+            {lang === 'el' ? "ΟΔΗΓΟΣ ΑΝΔΡΟΥ" : "ANDROS INSIDER"}
+          </span>
+          <h1 className="text-5xl md:text-7xl font-serif text-stone-900 leading-tight">Andros Diary</h1>
+        </header>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {ALL_ARTICLES.map((article, i) => (
+            <motion.div 
+              key={article.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+            >
+              <Link href={`/${lang}/diary/${article.slug}`} className="group block">
+                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl mb-6 shadow-sm group-hover:shadow-xl transition-all duration-500 bg-stone-200">
+                  <Image 
+                    src={article.img} 
+                    alt={article.title[lang]} 
+                    fill 
+                    className="object-cover transition-transform duration-700 group-hover:scale-110" 
+                    // SRE Fix: Priority μόνο στα πρώτα 2 άρθρα για βέλτιστο LCP
+                    priority={i < 2} 
+                    fetchPriority={i < 2 ? "high" : "low"}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+                </div>
+                <span className="text-lime-700 font-bold text-[10px] tracking-widest uppercase mb-2 block">
+                  {article.tag}
+                </span>
+                <h2 className="text-2xl font-serif text-stone-900 group-hover:text-lime-800 transition-colors leading-tight">
+                  {article.title[lang]}
+                </h2>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="mt-24 text-center border-t border-stone-200 pt-10">
+          <Link href="/" className="text-stone-600 hover:text-stone-900 font-bold text-xs uppercase tracking-[0.2em] transition-colors">
+            ← {lang === 'el' ? "ΕΠΙΣΤΡΟΦΗ ΣΤΗΝ ΑΡΧΙΚΗ" : "BACK TO HOME"}
+          </Link>
+        </div>
+      </section>
+
+      {/* SRE Fix: Ο Footer αφαιρέθηκε για να μην υπάρχει duplication */}
+    </main>
+  );
+}
+</file>
+
+<file path="app/sitemap.ts">
+import { MetadataRoute } from 'next';
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = 'https://www.androsguesthouses.gr';
+
+  const routes = [
+    '',
+    '/experience',
+    '/contact',
+    '/rooms/aegean-studio',
+    '/rooms/garden-suite',
+    '/rooms/grand-residence',
+  ];
+
+  const diarySlugs = [
+    'athens-to-andros-guide',
+    'andros-routes-guide',
+    'chora-and-wind',
+    'secret-beaches',
+    'local-flavors',
+  ];
+
+  const mainPages = routes.map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: route === '' ? 1 : route.includes('rooms') ? 0.9 : 0.8,
+    alternates: {
+      languages: {
+        el: `${baseUrl}${route}?lang=el`,
+        en: `${baseUrl}${route}`,
+      },
+    },
+  }));
+
+  const diaryPages = ['el', 'en'].flatMap((lang) => [
+    {
+      url: `${baseUrl}/${lang}/diary`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+      alternates: {
+        languages: {
+          el: `${baseUrl}/el/diary`,
+          en: `${baseUrl}/en/diary`,
+        },
+      },
+    },
+    ...diarySlugs.map((slug) => ({
+      url: `${baseUrl}/${lang}/diary/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+      alternates: {
+        languages: {
+          el: `${baseUrl}/el/diary/${slug}`,
+          en: `${baseUrl}/en/diary/${slug}`,
+        },
+      },
+    })),
+  ]);
+
+  return [...mainPages, ...diaryPages];
+}
+</file>
+
+<file path="next.config.ts">
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
+  
+  experimental: {
+    optimizePackageImports: ['framer-motion', 'react-icons', 'lucide-react'],
+  },
+
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [480, 640, 750, 828, 1080, 1200, 1920],
+  },
+
+  env: {
+    GOOGLE_GENERATIVE_AI_API_KEY: process.env.GOOGLE_GENERATIVE_AI_API_KEY,
+  },
+
+  async redirects() {
+    return [
+      // SRE NOTE: Ο ΚΑΝΟΝΑΣ ΓΙΑ ΤΟ ?lang=el ΑΦΑΙΡΕΘΗΚΕ ΓΙΑ ΝΑ ΣΤΑΜΑΤΗΣΕΙ ΤΟ REDIRECT LOOP
+      
+      // 1. ΣΥΓΚΕΚΡΙΜΕΝΑ IDs ΑΠΟ ΤΑ LOGS ΣΟΥ
+      {
+        source: '/',
+        has: [{ type: 'query', key: 'page_id', value: '799' }],
+        destination: '/experience',
+        permanent: true,
+      },
+      {
+        source: '/',
+        has: [{ type: 'query', key: 'page_id', value: '795' }],
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/',
+        has: [{ type: 'query', key: 'page_id', value: '309' }],
+        destination: '/experience',
+        permanent: true,
+      },
+      {
+        source: '/',
+        has: [{ type: 'query', key: 'page_id', value: '793' }],
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/',
+        has: [{ type: 'query', key: 'page_id', value: '842' }],
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/',
+        has: [{ type: 'query', key: 'page_id', value: '386' }],
+        destination: '/', 
+        permanent: true,
+      },
+      // 2. CATCH-ALL ΓΙΑ ΟΠΟΙΟΔΗΠΟΤΕ ΑΛΛΟ ΠΑΛΙΟ ID
+      {
+        source: '/',
+        has: [{ type: 'query', key: 'page_id' }],
+        destination: '/',
+        permanent: true,
+      },
+    ]
+  },
+
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN',
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://*.google.com https://*.gstatic.com https://www.clarity.ms https://*.clarity.ms; script-src-elem 'self' 'unsafe-inline' https://*.google.com https://www.clarity.ms https://*.clarity.ms; img-src 'self' data: https: https://*.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.clarity.ms; font-src 'self' data: https://fonts.gstatic.com; frame-src 'self' https://www.google.com https://*.google.com; connect-src 'self' https://*.clarity.ms https://*.google-analytics.com https://api.emailjs.com; frame-ancestors 'none'; object-src 'none';",
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Cross-Origin-Opener-Policy',
+            value: 'same-origin',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains; preload',
+          },
+        ],
+      },
+    ]
+  },
+}
+
+module.exports = nextConfig;
+</file>
+
+<file path="app/page.tsx">
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import Image from "next/image";
+
+// Server-side imports
+const About = dynamic(() => import("@/components/About"));
+const Rooms = dynamic(() => import("@/components/Rooms"));
+const Amenities = dynamic(() => import("@/components/Amenities"));
+const LocalInsider = dynamic(() => import("@/components/LocalInsider"));
+
+// Client-only components
+const Testimonials = dynamic(() => import("@/components/Testimonials"), { 
+  loading: () => <div className="h-20" /> 
+});
+const InstaFeed = dynamic(() => import("@/components/InstaFeed"));
+
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ lang?: string }>;
+}) {
+  const params = await searchParams;
+  const lang = params.lang === "el" ? "el" : "en";
+
+  return (
+    <main className="min-h-screen bg-[#fafaf9] overflow-x-hidden">
+      {/* SRE NOTE: Το Navbar αφαιρέθηκε από εδώ γιατί υπάρχει ήδη στο layout.tsx */}
+      
+      {/* HERO SECTION */}
+      <section className="relative h-screen flex flex-col items-center justify-center p-6 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/no5.5.webp"
+            alt="Andros Guesthouses - Boutique Accommodation Panoramic Sea View"
+            fill
+            className="object-cover object-top"
+            priority
+            fetchPriority="high" 
+            quality={85}
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+
+        <div className="relative z-10 max-w-5xl text-center space-y-8 mt-10">
+          <div className="flex justify-center">
+            <span className="inline-block text-white/95 font-sans font-bold tracking-[0.3em] text-xs md:text-sm uppercase mb-2 border-b border-white/30 pb-2 animate-fadein">
+              {lang === "el" ? "Καλώς ήρθατε στη Χώρα της Άνδρου" : "Welcome to Chora, Andros"}
+            </span>
+          </div>
+
+          <div className="flex justify-center">
+            {/* SEO FIX: Ο τίτλος H1 πρέπει να είναι ξεκάθαρος για τη Google */}
+            <h1 className="text-5xl md:text-8xl font-display text-white tracking-tighter leading-none animate-entrance">
+              Andros <br className="md:hidden" /> Guesthouses
+            </h1>
+          </div>
+
+          <div className="flex justify-center">
+            {/* SEO FIX: Χρήση λέξεων-κλειδιών που είδαμε στα logs (Boutique, Chora, Andros) */}
+            <h2 className="text-lg md:text-2xl text-white font-sans font-medium max-w-2xl mx-auto leading-relaxed drop-shadow-md">
+              {lang === "el" 
+                ? "Boutique Διαμονή στη Χώρα της Άνδρου. Το ιδιωτικό σας πέτρινο καταφύγιο με θέα στο Αιγαίο." 
+                : "Boutique Accommodation in Andros Chora. Your private stone sanctuary with Aegean Sea views."}
+            </h2>
+          </div>
+            
+          <div className="flex justify-center pt-8">
+            <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
+              <a 
+                href="#rooms" 
+                className="px-10 py-4 bg-white text-stone-900 rounded-full hover:bg-stone-100 transition duration-300 shadow-2xl font-sans text-xs font-bold tracking-[0.15em] uppercase hover:-translate-y-1 animate-fadein"
+              >
+                {lang === "el" ? "Δείτε τα Δωμάτια" : "View Our Rooms"}
+              </a>
+              <a 
+                href="/experience" 
+                className="px-10 py-4 border border-white text-white rounded-full hover:bg-white hover:text-stone-900 transition duration-300 bg-white/10 backdrop-blur-sm font-sans text-xs font-bold tracking-[0.15em] uppercase animate-fadein"
+              >
+                {lang === "el" ? "Η Εμπειρία στην Άνδρο" : "The Andros Experience"}
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <Link 
+          href="#about" 
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 text-white/60 hover:text-white transition-colors animate-bounce p-2"
+          aria-label="Scroll to About Andros Guesthouses"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+          </svg>
+        </Link>
+      </section>
+
+      <About />
+      <Rooms lang={lang} /> 
+      <Amenities />
+      <LocalInsider lang={lang} />
+      <Testimonials />
+      <InstaFeed />
+    </main>
+  );
+}
+</file>
+
+<file path="app/layout.tsx">
+import type { Metadata } from "next";
+import { Manrope } from "next/font/google"; 
+import "./globals.css";
+import Script from 'next/script';
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import WhatsAppBtn from "@/components/WhatsAppBtn";
+import CookieConsent from "@/components/CookieConsent";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
+
+const manrope = Manrope({ 
+  subsets: ["latin", "greek"],
+  variable: '--font-sans',
+  weight: ["300", "400", "500", "600", "700"], 
+  display: 'swap',
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://www.androsguesthouses.gr"),
+  
+  // SRE SEO Tuning: Πιο επιθετικοί τίτλοι για τα κλικ
+  title: {
+    default: "Andros Guesthouses | Boutique Stay in Chora Andros | Official Site",
+    template: "%s | Andros Guesthouses"
+  },
+  description: "Top-rated boutique guesthouse in Chora, Andros. Aegean Studio & Garden Suite with panoramic harbor views. Near Nimborio beach. Book direct for best rates.",
+  
+  keywords: [
+    'andros accommodation', 
+    'boutique guesthouse chora andros',
+    'aegean studio andros',
+    'garden suite andros',
+    'rooms chora andros',
+    'sea view apartments andros',
+    'διαμονή άνδρος χώρα', 
+    'ενοικιαζόμενα δωμάτια άνδρος χώρα', 
+    'δωμάτια άνδρος', 
+    'andros guesthouses',
+    'hiking andros accommodation'
+  ],
+
+  alternates: {
+    canonical: "https://www.androsguesthouses.gr",
+    languages: {
+      'el': 'https://www.androsguesthouses.gr/?lang=el',
+      'en': 'https://www.androsguesthouses.gr',
+    },
+  },
+
+  openGraph: {
+    title: "Andros Guesthouses | Official Site | Sea View Suites in Chora",
+    description: "Your private stone retreat in Andros. Panoramic sea views and authentic hospitality. Best rates guaranteed online.",
+    url: "https://www.androsguesthouses.gr",
+    siteName: "Andros Guesthouses",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/opengraph-image-v3.jpg", 
+        width: 1200,
+        height: 630,
+        alt: "Andros Guesthouses - Official Website",
+      },
+    ],
+  },
+  
+  icons: {
+    icon: [
+      { url: "/favicon-v4.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon-v4.png", sizes: "32x32" },
+      { url: "/favicon-v4.png", sizes: "16x16" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon-v4.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+
+  verification: {
+    google: "-yRKvY_-TqJiBkK8AtG5_K8_732TAzNcNBRQlArJzyw", 
+  },
+
+  manifest: '/site.webmanifest',
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://www.androsguesthouses.gr" />
+        <link rel="dns-prefetch" href="https://www.androsguesthouses.gr" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
+      <body className={`${manrope.variable} antialiased text-stone-900 bg-stone-50`}>
+        <Navbar />
+        {children}
+
+        <SpeedInsights />
+        <Analytics />
+        <Footer />
+        <WhatsAppBtn />
+        <CookieConsent />
+        
+        <Script id="microsoft-clarity" strategy="afterInteractive">
+          {`
+            setTimeout(() => {
+              (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "v6wxwu35gn");
+            }, 4000);
+          `}
+        </Script>
+
+        {/* Διορθωμένο Schema: Προσθήκη AggregateRating για εμφάνιση αστεριών στη Google */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Hotel", // Αλλαγή σε Hotel για να "περάσουν" τα αστέρια
+              "name": "Andros Guesthouses",
+              "alternateName": "Andros Boutique Guesthouses",
+              "image": "https://www.androsguesthouses.gr/opengraph-image-v3.jpg",
+              "@id": "https://www.androsguesthouses.gr",
+              "url": "https://www.androsguesthouses.gr",
+              "telephone": "+306936934390",
+              "priceRange": "€€",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Νειμποριό",
+                "addressLocality": "Χώρα Άνδρου",
+                "postalCode": "84500",
+                "addressCountry": "GR"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "reviewCount": "58",
+                "bestRating": "5",
+                "worstRating": "1"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 37.839, 
+                "longitude": 24.936
+              },
+              "description": "Boutique guesthouse in Chora, Andros. Featuring sea view studios and premium hospitality near Nimborio beach.",
+              "amenityFeature": [
+                { "@type": "LocationFeatureSpecification", "name": "Sea View", "value": "true" },
+                { "@type": "LocationFeatureSpecification", "name": "Hiking Friendly", "value": "true" },
+                { "@type": "LocationFeatureSpecification", "name": "Free Wi-Fi", "value": "true" }
+              ]
+            }),
+          }}
+        />
+      </body>
+    </html>
+  );
+}
+</file>
+
+<file path="app/[lang]/diary/[slug]/page.tsx">
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { Metadata } from "next";
+
+const DIARY_CONTENT = {
+  el: {
+    "andros-routes-guide": {
+      tag: "ADVENTURE",
+      title: "Μονοπάτια της Άνδρου: Οι καλύτερες διαδρομές",
+      subtitle: "Ανακαλύψτε το κορυφαίο δίκτυο πεζοπορίας στην Ευρώπη.",
+      image: "/images/hiking-andros.webp",
+      content: `Η Άνδρος είναι ο μοναδικός προορισμός στην Ευρώπη που συνδυάζει την κυκλαδίτικη θάλασσα με ένα δίκτυο μονοπατιών πιστοποιημένο με το σήμα "Leading Quality Trails - Best of Europe".<br/><br/>
+      **Γιατί να περπατήσετε στην Άνδρο:**<br/>
+      • **Ποικιλομορφία:** Θα διασχίσετε πέτρινα γεφύρια, αρχαίους οικισμούς, καταρράκτες και δάση από καστανιές.<br/>
+      • **Σήμανση:** Το δίκτυο των 300χλμ είναι πλήρως χαρτογραφημένο και εύκολο στην πλοήγηση.<br/><br/>
+      **Οι προτάσεις μας:**<br/>
+      • **Διαδρομή 1 (Η Κλασική):** Ξεκινά από τη Χώρα, περνά από τα Λάμυρα και καταλήγει στις πηγές των Μαινήτων. Μια καταπράσινη διαδρομή 2,5 ωρών, ιδανική για αρχάριους.<br/>
+      • **Διαδρομή 6 (Η Εντυπωσιακή):** Από τη Βουρκωτή προς την παραλία Άχλα. Θα δείτε το ποτάμι και τον εμβληματικό φάρο της Άχλας. (Δυσκολία: Μέτρια).<br/>
+      • **Διαδρομή 2 (Η Δική μας):** Αν μένετε μαζί μας, η διαδρομή προς Αποίκια ξεκινάει λίγα λεπτά από το guesthouse και σας οδηγεί στους καταρράκτες της Πυθάρας.<br/><br/>
+      ** Tip:** Προμηθευτείτε έναν χάρτη "Andros Routes" πριν ξεκινήσετε και έχετε πάντα μαζί σας νερό. Η καλύτερη εποχή είναι από Απρίλιο έως Ιούνιο και όλο τον Σεπτέμβριο.`
+    },
+    "chora-and-wind": {
+      tag: "KNOW-HOW",
+      title: "Η Χώρα & ο Άνεμος: Οδηγός Επιβίωσης",
+      subtitle: "Πού να κρυφτείτε από τα μελτέμια και τι να δείτε στην αρχοντική πρωτεύουσα.",
+      image: "/images/chora-guide-v2.webp",
+      content: `Πολλοί φοβούνται τον άνεμο στις Κυκλάδες, αλλά στη Χώρα της Άνδρου έχουμε μάθει να ζούμε μαζί του. Η Χώρα είναι χτισμένη πάνω σε μια χερσόνησο που "σκίζει" το Αιγαίο, προσφέροντας μια αρχοντιά που δεν θα βρείτε πουθενά αλλού.<br/><br/>
+**Πού να κολυμπήσετε όταν φυσάει:**<br/>
+• **Νειμποριό:** Ακριβώς μπροστά από τα πόδια σας. Είναι ο κόλπος που προστατεύεται από τους βοριάδες. Ιδανικός για οικογένειες.<br/>
+• **Πίσω Γυάλια:** Ένας μικρός παράδεισος με beach bar, που παραμένει γαλήνιος ακόμα και με 7 μποφόρ.<br/><br/>
+**Τι να μην χάσετε στη Χώρα:**<br/>
+• **Ο Αφανής Ναύτης:** Το σύμβολο του νησιού στην άκρη της παλιάς πόλης. Η θέα στο Ενετικό Κάστρο και τον φάρο Τουρλίτη είναι μαγική.<br/>
+• **Πολιτισμός:** Το Μουσείο Σύγχρονης Τέχνης (Γουλανδρή) φιλοξενεί κάθε καλοκαίρι παγκόσμιας κλάσης εκθέσεις (Picasso, Miro κ.α.).<br/>
+• **Η Αγορά:** Ο μαρμαρόστρωτος πεζόδρομος με τα νεοκλασικά καπετανόσπιτα είναι η καρδιά της κοινωνικής ζωής.`
+    },
+    "local-flavors": {
+      tag: "GASTRONOMY",
+      title: "Γεύση Άνδρου: Από το Νειμποριό στην Αγορά",
+      subtitle: "Οι δικές μας στάσεις για αυθεντική φρουτάλια, θαλασσινά και γλυκά.",
+      image: "/images/food-guide.webp",
+      content: `Η γαστρονομία της Άνδρου βασίζεται στα φρέσκα προϊόντα των κήπων της και στην πλούσια ναυτική παράδοση. Εδώ το φαγητό είναι ιεροτελεστία.<br/><br/>
+**Τα πιάτα που πρέπει να δοκιμάσετε:**<br/>
+• **Φρουτάλια:** Η παραδοσιακή ομελέτα με πατάτες και ντόπια λουκάνικα αρωματισμένα με μαντζουράνα. Είναι το σήμα κατατεθέν μας.<br/>
+• **Αμυγδαλωτά:** Τα διάσημα γλυκά της Χώρας με ανθόνερο. Θα τα βρείτε στα ιστορικά ζαχαροπλαστεία του πεζόδρομου.<br/><br/>
+**Οι στάσεις μας:**<br/>
+• **Στη Χώρα:** Για φρέσκο ψάρι ο "Νόνας" στο Νειμποριό και για μαγειρευτά ο "Πλάτανος" και η "Παρέα" στην Αγορά.<br/>
+• **Στα χωριά:** Ο "Κόσσης" στον Άνω Φελλό είναι ο ναός του κρέατος, ενώ στον "Σταμάτη" στο Μπατσί θα φάτε την καλύτερη αστακομακαρονάδα.<br/><br/>
+**Tip:** Ζητήστε το τοπικό τυρί "βολάκι" ή "μαλακό" με τη σαλάτα σας. Η γεύση είναι ασύγκριτη.`
+    },
+    "secret-beaches": {
+      tag: "NATURE",
+      title: "Παραλίες κοντά στη Χώρα & Μυστικά",
+      subtitle: "Από το κινηματογραφικό Συνέτι μέχρι το απόκρημνο Λύδι.",
+      image: "/images/beaches-guide.webp",
+      content: `Η Άνδρος έχει παραλίες για κάθε γούστο. Κοντά στη Χώρα, οι πιο άμεσες επιλογές είναι το Παραπόρτι, το Νειμποριό και τα Γυαλιά (Μπροστά και Πίσω).<br/><br/>Αν ψάχνετε κάτι πραγματικά ιδιαίτερο, το Συνέτι είναι απαραίτητη στάση. Είναι η παραλία με τα βαθιά νερά και τις σπηλιές όπου γυρίστηκαν σκηνές από την ταινία "Μικρά Αγγλία".`
+    },
+    "athens-to-andros-guide": {
+      tag: "TRAVEL GUIDE",
+      title: "Πώς θα έρθετε στην Άνδρο από την Αθήνα (2026)",
+      subtitle: "Ο πλήρης οδηγός για το πιο κοντινό νησί των Κυκλάδων από το λιμάνι της Ραφήνας.",
+      image: "/images/gavrio-andros-greece.webp",
+      content: `Η Άνδρος είναι η ιδανική επιλογή για premium απόδραση, καθώς είναι το μοναδικό νησί των Κυκλάδων που απέχει μόλις 2 ώρες από την Αθήνα. Εδώ θα βρείτε όλα όσα πρέπει να γνωρίζετε για το ταξίδι σας το 2026.<br/><br/>
+      **1. Το Λιμάνι Αναχώρησης: Ραφήνα (Όχι Πειραιάς!)**<br/>
+      Προσοχή: Τα πλοία για Άνδρο αναχωρούν **αποκλειστικά από το λιμάνι της Ραφήνας**. Είναι πολύ πιο κοντά στο Αεροδρόμιο (Ελ. Βενιζέλος) από ό,τι ο Πειραιάς.<br/><br/>
+      **2. Από το Αεροδρόμιο στη Ραφήνα:**<br/>
+      • **Λεωφορείο ΚΤΕΛ:** Η πιο οικονομική λύση. Η στάση βρίσκεται ακριβώς απέναντι από τις Αφίξεις του αεροδρομίου (ανάμεσα στις Εξόδους 2 και 3). Το εισιτήριο κοστίζει περίπου 4€ και η διαδρομή διαρκεί 30-40 λεπτά.<br/>
+      • **Ταξί / Uber:** Θα σας πάρει περίπου 20 λεπτά και το κόστος κυμαίνεται στα 25-35€.<br/><br/>
+      **3. Τα δρομολόγια των Πλοίων:**<br/>
+      Το ταξίδι διαρκεί **2 ώρες** με τα συμβατικά πλοία και περίπου **1 ώρα και 15 λεπτά** με τα ταχύπλοα. Οι εταιρείες **Fast Ferries** και **Golden Star Ferries** έχουν καθημερινά δρομολόγια:<br/>
+      • **Πρωινά:** Συνήθως αναχωρούν γύρω στις 07:30 - 08:00.<br/>
+      • **Απογευματινά:** Υπάρχουν δρομολόγια στις 15:30, 17:30 και συχνά το βράδυ στις 19:30.<br/><br/>
+      **4. Φτάνοντας στην Άνδρο (Λιμάνι Γαυρίου):**<br/>
+      Μόλις αποβιβαστείτε στο Γαύριο, έχετε τρεις επιλογές για να έρθετε στη Χώρα (32 χλμ):<br/>
+      • **Λεωφορείο ΚΤΕΛ:** Το λεωφορείο περιμένει **πάντα** έξω από το πλοίο, ό,τι ώρα και να φτάσει (ακόμα και με καθυστέρηση). Το εισιτήριο για Χώρα κοστίζει περίπου 4€.<br/>
+      • **Ενοικίαση Αυτοκινήτου:** Σας το προτείνουμε ανεπιφύλακτα. Υπάρχουν πολλά γραφεία στο λιμάνι. Έχοντας δικό σας μέσο, θα εξερευνήσετε τα μονοπάτια και τις απομακρυσμένες παραλίες μας.<br/>
+      • **Ταξί:** Υπάρχει σταθμός ταξί στο λιμάνι. Η διαδρομή για Χώρα κοστίζει περίπου 40-45€.<br/><br/>
+      **Insider Tip:** Αν ταξιδεύετε Παρασκευή απόγευμα ή αν έχετε αυτοκίνητο, κλείστε τα εισιτήριά σας τουλάχιστον 10 μέρες πριν. Τα δρομολόγια της Ραφήνας γίνονται γρήγορα sold-out!`
+    }
+  },
+  en: {
+    "andros-routes-guide": {
+      tag: "ADVENTURE",
+      title: "Andros Routes: The Best Hiking Trails",
+      subtitle: "Explore Europe's certified hiking paradise directly from Chora.",
+      image: "/images/hiking-andros.webp",
+      content: `Andros is the only destination in Europe that perfectly blends the Aegean blue with a hiking network certified with the **"Leading Quality Trails - Best of Europe"** label.<br/><br/>
+**Why Hike in Andros:**<br/>
+• **Diversity:** You will cross ancient stone bridges, watermills, waterfalls, and lush chestnut forests.<br/>
+• **Infrastructure:** The 300km network is fully marked, maintained, and easy to navigate via the "Andros Routes" app.<br/><br/>
+**Our Top Recommendations:**<br/>
+• **Route 1 (The Classic):** Starts from Chora, passes through the green village of Lamyra, and ends at the famous Menites springs. An easy 2.5-hour lush walk.<br/>
+• **Route 6 (The Scenic):** From Vourkoti to Achla beach. You’ll witness the river meeting the sea and the iconic Achla lighthouse. (Difficulty: Moderate).<br/>
+• **Route 2 (From our Doorstep):** If you’re staying with us, the path to Apoikia starts just minutes away, leading you to the mesmerizing Pithara waterfalls.<br/><br/>
+**Tip:** Check the "Andros Routes" website before you start and always carry water. The best hiking windows are April to June and the entire month of September.`
+    },
+    "chora-and-wind": {
+      tag: "KNOW-HOW",
+      title: "Chora & The Wind: A Survivor's Guide",
+      subtitle: "Where to hide from the meltemi and how to experience the noble capital.",
+      image: "/images/chora-guide-v2.webp",
+      content: `Many fear the Cycladic winds, but in Chora, we’ve learned to embrace them. Built on a peninsula that cuts through the Aegean, Chora offers an aristocratic charm you won't find anywhere else in the islands.<br/><br/>
+**Where to Swim when it’s Windy:**<br/>
+• **Neimporio:** Right at your doorstep! This bay is naturally protected from the north winds (meltemi). Ideal for families.<br/>
+• **Piso Gialia:** A small paradise with a great beach bar that remains calm even when the wind hits 7 Beaufort.<br/><br/>
+**Chora’s Must-See Landmarks:**<br/>
+• **The Invisible Sailor:** The island's symbol at the edge of the old town. The view of the Venetian Castle and the Tourlitis Lighthouse is legendary.<br/>
+• **Culture:** The Goulandris Museum of Contemporary Art hosts world-class exhibitions every summer (Picasso, Miro, etc.).<br/>
+• **The Agora:** The marble-paved main street with neoclassical captains' mansions is the heart of our social life.`
+    },
+    "local-flavors": {
+      tag: "GASTRONOMY",
+      title: "Taste of Andros: From Neimporio to the Market",
+      subtitle: "Our personal recommendations for authentic 'froutalia' and fresh seafood.",
+      image: "/images/food-guide.webp",
+      content: `Andros' gastronomy is a blend of fresh garden produce and a long maritime tradition. Here, food is a ritual.<br/><br/>
+**Dishes You Must Try:**<br/>
+• **Froutalia:** The traditional slow-cooked omelet with potatoes and local sausages flavored with wild marjoram. It’s our signature dish.<br/>
+• **Lambriatis:** If you are here for Easter, this slow-roasted goat stuffed with local cheeses and herbs is a life-changing experience.<br/>
+• **Amygdalota:** Famous almond sweets with rosewater. Find them at the historic pastry shops in the main market.<br/><br/>
+**Our Favorite Spots:**<br/>
+• **In Chora:** "Nonas" in Neimporio for fresh fish and creative seafood, or "Platanos" in the Market for traditional Greek "meze."<br/>
+• **In the Villages:** "Kossis" in Ano Fellos is a "temple" for meat lovers, and "Stamatis" in Batsi is legendary for its lobster pasta.<br/><br/>
+** Tip:** Always ask for the local "Volaki" or "Malako" cheese with your salad. The flavor is unmatched.`
+    },
+    "secret-beaches": {
+      tag: "NATURE",
+      title: "Beaches Near Chora & Hidden Secrets",
+      subtitle: "From the cinematic Sineti to the rugged beauty of Lidi.",
+      image: "/images/beaches-guide.webp",
+      content: `Andros boasts over 80 beaches. Some are cosmopolitan and organized, while others remain "secrets" for the few who know where to look.<br/><br/>
+**Hidden Treasures:**<br/>
+• **Sineti:** A cinematic bay. Deep turquoise waters and sea caves at the edge. It was the backdrop for the famous Greek film "Little England."<br/>
+• **Lidi:** For total seclusion. Access requires a 15-minute hike down a slope, but the absolute silence and white sand are your rewards.<br/>
+• **Achla:** The most famous but hard to reach (4x4 or boat). An earthly paradise where a river meets the sea under a lush forest.<br/><br/>
+**Comfort & Vibes:**<br/>
+• **Golden Sand (Chrysi Ammos):** The most popular beach on the island with fine sand and beach bars, perfect for a lively vibe.<br/>
+• **Vitali:** An impressive pebble beach with crystal clear, cold waters, offering a wild Cycladic beauty.<br/><br/>
+**Tip:** Before heading out, check the wind direction. If it's blowing from the North, head to the Southern beaches (like Apothikes) for crystal-calm waters.`
+    },
+    "athens-to-andros-guide": {
+      tag: "TRAVEL GUIDE",
+      title: "How to Get to Andros from Athens (2026)",
+      subtitle: "The ultimate 2026 travel guide to the closest Cycladic island.",
+      image: "/images/gavrio-andros-greece.webp",
+      content: `Andros is the closest Cycladic island to Athens, making it the perfect choice for a premium getaway. In just 2 hours, you can go from the city buzz to your balcony with a sea view. Here is the ultimate 2026 travel guide.<br/><br/>
+      **1. The Departure Port: Rafina (Not Piraeus!)**<br/>
+      Ferries to Andros depart **exclusively from Rafina Port**. Rafina is much closer to the Athens International Airport (ATH) than Piraeus, saving you time and hassle.<br/><br/>
+      **2. From Athens Airport to Rafina Port:**<br/>
+      • **KTEL Bus (Shuttle):** The most efficient way. The bus stop is located right across from the Arrivals terminal (between Exits 2 and 3). Tickets cost around €4, and the trip takes 30-40 minutes.<br/>
+      • **Taxi / Private Transfer:** Takes about 20 minutes and costs between €25 and €35.<br/><br/>
+      **3. Ferry Schedules & Duration:**<br/>
+      The crossing takes **2 hours** with conventional ferries and about **1h 15m** with high-speed vessels. Major operators include **Fast Ferries** and **Golden Star Ferries**.<br/>
+      • **Morning Ferries:** Usually depart between 07:30 and 08:00 AM.<br/>
+      • **Afternoon Ferries:** Options typically include 15:30, 17:30, and sometimes a late 19:30 departure.<br/><br/>
+      **4. Arriving at Gavrio Port & Getting to Chora:**<br/>
+      When you dock at Gavrio, Chora (the capital where we are located) is about 32km away:<br/>
+      • **Local KTEL Bus:** A bus **always** waits at the port for every ferry arrival, even if there is a delay. It’s the easiest way to reach Chora for about €4.<br/>
+      • **Car Rental:** Highly recommended! There are several rental agencies right at the port. Having a car is essential for visiting the "Andros Routes" hiking trails and secret beaches.<br/>
+      • **Taxi:** A taxi rank is available at the port entrance. The fare to Chora is approximately €40-€45.<br/><br/>
+      ** Insider Tip:** If you are traveling during a summer weekend or have a car, book your ferry tickets at least 10 days in advance. Rafina is the preferred port for locals, and ferries fill up quickly!`
+    }
+  }
+};
+
+export async function generateMetadata({ params }: any): Promise<Metadata> {
+  const { lang, slug } = await params;
+  const article = (DIARY_CONTENT as any)[lang]?.[slug];
+  if (!article) return { title: "Article Not Found" };
+
+  return {
+    title: `${article.title} | Andros Insider Guide`,
+    description: article.subtitle,
+    alternates: { 
+      canonical: `https://www.androsguesthouses.gr/${lang}/diary/${slug}` 
+    },
+    openGraph: {
+      type: "article",
+      images: [article.image],
+    }
+  };
+}
+
+export async function generateStaticParams() {
+  const paths: any[] = [];
+  Object.keys(DIARY_CONTENT).forEach((lang) => {
+    Object.keys((DIARY_CONTENT as any)[lang]).forEach((slug) => {
+      paths.push({ lang, slug });
+    });
+  });
+  return paths;
+}
+
+export default async function DiaryPage({ params }: any) {
+  const { lang, slug } = await params;
+  const article = (DIARY_CONTENT as any)[lang]?.[slug];
+
+  if (!article) return notFound();
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": article.title,
+    "description": article.subtitle,
+    "image": `https://www.androsguesthouses.gr${article.image}`,
+    "datePublished": "2026-04-19T12:00:00+02:00",
+    "dateModified": new Date().toISOString(),
+    "author": {
+      "@type": "Organization",
+      "name": "Andros Guesthouses"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Andros Guesthouses",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.androsguesthouses.gr/favicon-v4.png"
+      }
+    }
+  };
+
+  return (
+    <main className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      <section className="relative h-[65vh] w-full overflow-hidden">
+        <Image 
+          src={article.image} 
+          alt={article.title} 
+          fill 
+          className="object-cover" 
+          priority 
+          fetchPriority="high" 
+          sizes="100vw"
+          quality={85}
+        />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 flex items-center justify-center p-6 text-center">
+          <div className="max-w-4xl">
+            <span className="text-lime-400 font-bold tracking-[0.3em] text-[10px] md:text-xs uppercase mb-4 block">
+              {article.tag}
+            </span>
+            <h1 className="text-3xl md:text-5xl font-serif text-white mb-6 leading-tight drop-shadow-md">
+              {article.title}
+            </h1>
+            <h2 className="text-lg md:text-xl text-white/90 font-light italic">
+              {article.subtitle}
+            </h2>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24 px-6 bg-white relative z-10">
+        <div className="max-w-3xl mx-auto">
+          <div 
+            className="prose prose-stone prose-lg leading-relaxed text-stone-800 font-normal"
+            dangerouslySetInnerHTML={{ 
+              __html: article.content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            }} 
+          />
+
+          <div className="mt-16 mb-8 p-10 bg-stone-50 rounded-2xl border border-stone-200 text-center shadow-sm">
+            <h3 className="text-2xl font-serif text-stone-900 mb-3">
+              {lang === 'el' ? "Ζήστε την εμπειρία από κοντά" : "Experience it yourself"}
+            </h3>
+            <p className="text-stone-600 font-sans mb-8">
+              {lang === 'el' 
+                ? "Κλείστε τη διαμονή σας στη Χώρα της Άνδρου και ανακαλύψτε όλα τα μυστικά του νησιού με αφετηρία τα δωμάτιά μας." 
+                : "Book your stay in Chora, Andros and discover all the island's secrets directly from our doorstep."}
+            </p>
+            <Link 
+              href="/#rooms" 
+              className="inline-block px-10 py-4 bg-stone-900 text-white rounded-full font-bold text-xs uppercase tracking-[0.15em] hover:bg-lime-800 transition-colors shadow-lg hover:-translate-y-1"
+            >
+              {lang === 'el' ? "ΔΕΙΤΕ ΤΑ ΔΩΜΑΤΙΑ" : "VIEW OUR ROOMS"}
+            </Link>
+          </div>
+
+          <div className="pt-10 border-t border-stone-100 flex flex-col md:flex-row justify-between items-center gap-8">
+            <Link 
+              href="/" 
+              className="group flex items-center gap-3 text-stone-900 font-bold text-[10px] uppercase tracking-[0.2em] transition-all"
+            >
+              <span className="group-hover:-translate-x-1 transition-transform">←</span> 
+              {lang === 'el' ? "Αρχική" : "Home"}
+            </Link>
+
+            <Link 
+              href={`/${lang}/diary`} 
+              className="px-8 py-3 border border-stone-200 rounded-full text-stone-800 font-bold text-[10px] uppercase tracking-widest hover:bg-stone-900 hover:text-white hover:border-stone-900 transition-all shadow-sm"
+            >
+              {lang === 'el' ? "Δείτε όλα τα άρθρα" : "View All Articles"}
+            </Link>
+            
+            <div className="text-stone-300 text-[10px] tracking-widest uppercase font-bold italic">
+              Andros Insider Guide
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+</file>
+
+<file path="app/rooms/[slug]/page.tsx">
+import { notFound } from "next/navigation";
+import { type Metadata } from "next";
+import { getRoomBySlug, getAllRoomSlugs } from "@/lib/rooms";
+import RoomClient from "./RoomClient";
+
+// Λέμε στο Next.js ποια slugs υπάρχουν → στατικές σελίδες στο build time
+export async function generateStaticParams() {
+  return getAllRoomSlugs().map((slug) => ({ slug }));
+}
+
+// SEO: αυτό τώρα γράφεται στο <head> — η Google το βλέπει
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const room = getRoomBySlug(slug);
+
+  if (!room) return {};
+
+  return {
+    title: room.en.seoTitle,
+    description: room.en.metaDesc,
+    alternates: {
+      canonical: `https://www.androsguesthouses.gr/rooms/${slug}`,
+    },
+    openGraph: {
+      title: room.en.seoTitle,
+      description: room.en.metaDesc,
+      url: `https://www.androsguesthouses.gr/rooms/${slug}`,
+      images: [
+        {
+          url: room.images[0],
+          width: 1200,
+          height: 630,
+          alt: room.name,
+        },
+      ],
+    },
+  };
+}
+
+// Server Component: καθαρό, χωρίς "use client"
+export default async function RoomPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ lang?: string }>;
+}) {
+  const { slug } = await params;
+  const { lang: langParam } = await searchParams;
+
+  const room = getRoomBySlug(slug);
+  if (!room) notFound();
+
+  const initialLang = langParam === "el" ? "el" : "en";
+
+  return <RoomClient room={room} initialLang={initialLang} />;
+}
+</file>
+
+<file path="components/Navbar.tsx">
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { useState, useEffect, Suspense } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import LanguageSwitcher from "./LanguageSwitcher"; 
+import { getT } from "@/translations";
+
+const navLinks = [
+  { en: "Home", el: "Αρχική", href: "/" },
+  { en: "Rooms", el: "Δωμάτια", href: "/#rooms" },
+  { en: "Experience", el: "Εμπειρία", href: "/experience" },
+  { en: "Contact", el: "Επικοινωνία", href: "/contact" },
+];
+
+function NavbarContent() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [lang, setLang] = useState("en"); 
+  const tr = getT(lang as "el" | "en");
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const urlLang = searchParams.get("lang");
+    const pathLang = pathname.startsWith("/el") ? "el" : pathname.startsWith("/en") ? "en" : null;
+    const activeLang = urlLang || pathLang || "en";
+    setLang(activeLang);
+
+    const handleLangChange = (e: any) => setLang(e.detail);
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+
+    window.addEventListener("langChange", handleLangChange);
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("langChange", handleLangChange);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [searchParams, pathname]);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
+
+  const getCleanHref = (href: string) => {
+    if (href.startsWith("/#")) return href;
+    if (lang === "el") {
+      if (href.includes("/diary") || href.includes("lang=el")) return href;
+      const separator = href.includes("?") ? "&" : "?";
+      return `${href}${separator}lang=el`;
+    }
+    return href;
+  };
+
+  const isDarkText = scrolled || pathname === "/contact" || isOpen;
+
+  return (
+    <>
+      <header 
+        className={`fixed top-0 left-0 w-full z-[200] transition-all duration-500 ${
+          scrolled || isOpen ? "bg-[#fafaf9] shadow-sm py-3" : "bg-transparent py-5"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center relative">
+          
+          {/* LOGO */}
+          <Link href={getCleanHref("/")} className="relative z-[210] outline-none" style={{ WebkitTapHighlightColor: 'transparent' }} onClick={() => setIsOpen(false)}>
+            <div className="relative w-14 h-14 md:w-16 md:h-16">
+              <Image src="/logo-navbar.png" alt="Andros Guesthouses" fill className="object-contain" priority sizes="64px" />
+            </div>
+          </Link>
+
+          {/* DESKTOP NAV */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.en}
+                href={getCleanHref(link.href)}
+                className={`text-sm font-bold uppercase tracking-widest transition-colors py-2 ${isDarkText ? "text-stone-800 hover:text-olive-700" : "text-white hover:text-white/80"}`}
+              >
+                {lang === "el" ? link.el : link.en}
+              </Link>
+            ))}
+            <LanguageSwitcher isDark={isDarkText} />
+            <a href={getCleanHref("/contact")} className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-md active:scale-95 ${isDarkText ? "bg-stone-900 text-white" : "bg-white text-stone-900"}`}>
+              {tr.nav.bookNow}
+            </a>
+          </nav>
+
+          {/* MOBILE TOGGLE - 3 LINES ANIMATION */}
+          <div className="flex items-center gap-4 md:hidden z-[210]">
+            {!isOpen && <LanguageSwitcher isDark={isDarkText} />}
+            <button 
+              className="w-10 h-10 flex flex-col justify-center items-center relative focus:outline-none" 
+              onClick={() => setIsOpen(!isOpen)} 
+              aria-label="Menu"
+              style={{ WebkitTapHighlightColor: 'transparent' }} // ΔΙΟΡΘΩΣΗ ΓΙΑ ΤΟ ΓΚΡΙ
+            >
+              <div className="w-8 h-5 flex flex-col justify-between items-end">
+                {/* Πάνω Γραμμή */}
+                <span className={`h-[2px] bg-current rounded-full transition-all duration-300 ${
+                  isOpen ? "w-8 rotate-45 translate-y-[9px]" : "w-8"
+                } ${isDarkText ? "text-stone-900" : "text-white"}`}></span>
+                
+                {/* Μεσαία Γραμμή - 3 ΓΡΑΜΜΕΣ ΤΩΡΑ */}
+                <span className={`h-[2px] bg-current rounded-full transition-all duration-300 ${
+                  isOpen ? "opacity-0" : "w-6 opacity-100"
+                } ${isDarkText ? "text-stone-900" : "text-white"}`}></span>
+                
+                {/* Κάτω Γραμμή */}
+                <span className={`h-[2px] bg-current rounded-full transition-all duration-300 ${
+                  isOpen ? "w-8 -rotate-45 -translate-y-[9px]" : "w-8"
+                } ${isDarkText ? "text-stone-900" : "text-white"}`}></span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* MOBILE OVERLAY - ΠΙΟ ΧΑΜΗΛΑ ΓΙΑ ΝΑ ΜΗΝ ΚΡΥΒΕΙ ΤΟ HOME */}
+      <div className={`fixed inset-0 z-[190] bg-[#fafaf9] flex flex-col items-center justify-start pt-40 transition-transform duration-500 ease-in-out ${
+        isOpen ? "translate-x-0" : "translate-x-full"
+      } h-[100dvh] w-screen shadow-2xl`}>
+        <nav className="flex flex-col items-center space-y-10 w-full">
+          {navLinks.map((link) => (
+            <Link 
+              key={link.href} 
+              href={getCleanHref(link.href)} 
+              onClick={() => setIsOpen(false)}
+              className="text-4xl font-display font-bold text-stone-900 active:scale-95 transition-transform"
+              style={{ WebkitTapHighlightColor: 'transparent' }}
+            >
+              {lang === "el" ? link.el : link.en}
+            </Link>
+          ))}
+          
+          <div className="flex flex-col items-center gap-12 pt-6">
+            <Link 
+              href={getCleanHref("/contact")} 
+              onClick={() => setIsOpen(false)} 
+              className="px-14 py-5 bg-stone-900 text-white font-bold uppercase tracking-widest text-sm rounded-full shadow-2xl active:scale-90 transition-transform"
+              style={{ WebkitTapHighlightColor: 'transparent' }}
+            >
+              {tr.nav.bookNow}
+            </Link>
+            
+            <LanguageSwitcher isDark={true} />
+          </div>
+        </nav>
+      </div>
+    </>
+  );
+}
+
+export default function Navbar() {
+  return (
+    <Suspense fallback={<div className="h-20" />}>
+      <NavbarContent />
+    </Suspense>
+  );
+}
+</file>
+
+<file path="app/contact/page.tsx">
+"use client";
+
+import Navbar from "@/components/Navbar";
+import Reveal from "@/components/Reveal";
+import { useRef, useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import emailjs from "@emailjs/browser";
+
+declare global {
+  interface Window {
+    clarity?: (...args: any[]) => void;
+  }
+}
+
+function ContactContent() {
+  const form = useRef<HTMLFormElement>(null);
+  const mapRef = useRef<HTMLDivElement>(null);
+  
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+  const [lang, setLang] = useState("en");
+  const [loadMap, setLoadMap] = useState(false);
+
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    // SRE FIX: Η γλώσσα διαβάζεται από το URL για απόλυτο συγχρονισμό με τον Navbar
+    const urlLang = searchParams.get("lang");
+    const activeLang = urlLang === "el" ? "el" : "en";
+    setLang(activeLang);
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setLoadMap(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    if (mapRef.current) observer.observe(mapRef.current);
+
+    const handleLangChange = (e: any) => setLang(e.detail);
+    window.addEventListener("langChange", handleLangChange);
+    
+    return () => {
+      window.removeEventListener("langChange", handleLangChange);
+      observer.disconnect();
+    };
+  }, [searchParams]);
+
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(false);
+    
+    if (typeof window !== "undefined" && window.clarity) {
+      window.clarity("set", "Form_Status", "Attempt_Send");
+    }
+
+    if (!form.current) return;
+
+    emailjs.sendForm("service_te6x5kf", "template_ijeg768", form.current, "Cs5la_p5o9EuGW4qH")
+      .then(() => {
+        setSuccess(true);
+        setLoading(false);
+        form.current?.reset();
+      })
+      .catch((err) => {
+        setError(true);
+        setLoading(false);
+      });
+  };
+
+  const content = {
+    en: {
+      title: <>Contact <br /> <span className="text-olive-700">& Booking</span></>,
+      directions: "Get Directions",
+      subtitle: "Located in Neimporio, just a 5-minute walk from the beach and the main street of Chora.",
+      addressLabel: "Address",
+      address: "Neimporio, Chora Andros",
+      phoneLabel: "Phone",
+      emailLabel: "Email",
+      formTitle: "Get in Touch",
+      formSubtitle: "We usually respond within 24 hours.",
+      name: "Name",
+      namePlace: "Your full name",
+      email: "Email",
+      emailPlace: "email@example.com",
+      checkIn: "Check In",
+      checkOut: "Check Out",
+      message: "Message",
+      messagePlace: "Tell us about your trip...",
+      send: "Send Request",
+      sending: "Sending...",
+      sent: "Sent",
+      successMsg: "Message received! Thank you.",
+      errorMsg: "Error sending message. Please try again."
+    },
+    el: {
+      title: <span className="text-stone-900">Επικοινωνία</span>,
+      directions: "Οδηγίες Χάρτη",
+      subtitle: "Στο Νειμποριό, μόλις 5 λεπτά με τα πόδια από την παραλία και τον κεντρικό πεζόδρομο της Χώρας.",
+      addressLabel: "Διεύθυνση",
+      address: "Νειμποριό, Χώρα Άνδρου",
+      phoneLabel: "Τηλέφωνο",
+      emailLabel: "Email",
+      formTitle: "Επικοινωνήστε μαζί μας",
+      formSubtitle: "Απαντάμε συνήθως εντός 24 ωρών.",
+      name: "Ονοματεπώνυμο",
+      namePlace: "Το όνομά σας",
+      email: "Email",
+      emailPlace: "email@example.com",
+      checkIn: "Άφιξη",
+      checkOut: "Αναχώρηση",
+      message: "Μήνυμα",
+      messagePlace: "Πείτε μας για το ταξίδι σας...",
+      send: "Αποστολή",
+      sending: "Αποστολή...",
+      sent: "Εστάλη",
+      successMsg: "Το μήνυμα ελήφθη! Ευχαριστούμε.",
+      errorMsg: "Σφάλμα αποστολής. Παρακαλώ δοκιμάστε ξανά."
+    }
+  };
+
+  const t = lang === "el" ? content.el : content.en;
+
+  return (
+    <main className="min-h-screen bg-[#fafaf9]"> 
+      <Navbar />
+      
+      <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+          
+          <div className="space-y-4 mt-6">
+            <Reveal>
+              {/* CLS FIX: min-h για σταθερό τίτλο */}
+              <h1 className="text-5xl md:text-7xl font-display text-stone-900 leading-tight pb-4 min-h-[1.2em]">
+                {t.title}
+              </h1>
+            </Reveal>
+
+            <div className="space-y-8">
+              <Reveal delay={0.2}>
+                <p className="text-stone-600 font-sans font-medium text-lg max-w-md leading-relaxed -mt-2">
+                  {t.subtitle}
+                </p>
+              </Reveal>
+
+              <Reveal delay={0.3}>
+                <div>
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-olive-700 mb-2">{t.addressLabel}</h3>
+                  <p className="text-2xl font-serif text-stone-900 font-medium">{t.address}</p>
+                  
+                  {/* CLS FIX: Σταθερό height στον χάρτη */}
+                  <div 
+                    ref={mapRef}
+                    className="group w-full h-[350px] md:h-[400px] rounded-2xl overflow-hidden shadow-xl border-4 border-white relative mt-6 bg-stone-200"
+                    style={{ containIntrinsicSize: "auto 350px", contentVisibility: "auto" }}
+                  >
+                    {loadMap ? (
+                      <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.0325698355923!2d24.929867475706402!3d37.83612337196996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a2ff3fd9c3115b%3A0xb694eabb08bdd45!2sAndros%20Guesthouses!5e0!3m2!1sel!2sgr!4v1776605399709!5m2!1sel!2sgr" 
+                        width="100%" height="100%" style={{ border: 0 }} 
+                        allowFullScreen loading="lazy" title="Location Map"
+                      ></iframe>
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                         <span className="text-stone-400 font-sans text-xs tracking-widest uppercase animate-pulse">Loading Map...</span>
+                      </div>
+                    )}
+                    <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="absolute bottom-4 right-4 bg-white/95 px-5 py-2.5 rounded-full text-[10px] font-bold text-stone-900 shadow-xl z-10 uppercase tracking-widest">
+                      {t.directions} →
+                    </a>
+                  </div>
+                </div>
+              </Reveal>
+
+              <div className="flex flex-col gap-6 pt-8 border-t border-stone-300">
+                <Reveal delay={0.4}>
+                  <div className="py-1">
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-olive-700 mb-1">{t.phoneLabel}</h3>
+                    <a href="tel:+306936934390" className="text-xl md:text-2xl font-serif text-stone-900 font-medium">+30 693 693 4390</a>
+                  </div>
+                </Reveal>
+                <Reveal delay={0.5}>
+                  <div className="py-1">
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-olive-700 mb-1">{t.emailLabel}</h3>
+                    <a href="mailto:androsguesthouses@gmail.com" className="text-xl md:text-2xl font-serif text-stone-900 font-medium">androsguesthouses@gmail.com</a>
+                  </div>
+                </Reveal>
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:sticky lg:top-32 h-fit">
+            <div className="bg-white p-8 md:p-12 rounded-2xl shadow-2xl border border-stone-100">
+              <Reveal width="100%" delay={0.2}>
+                <h3 className="text-3xl font-display text-stone-900 mb-2 leading-tight pb-2">{t.formTitle}</h3>
+                <p className="text-stone-500 font-sans text-sm mb-8 leading-relaxed pb-2">{t.formSubtitle}</p>
+                
+                <form ref={form} onSubmit={sendEmail} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold uppercase tracking-widest text-stone-500">{t.name}</label>
+                      <input name="user_name" required type="text" className="w-full bg-stone-50 border border-stone-200 rounded-lg px-4 py-3 focus:outline-none focus:border-olive-600 font-serif text-lg text-stone-900" placeholder={t.namePlace} />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold uppercase tracking-widest text-stone-500">{t.email}</label>
+                      <input name="user_email" required type="email" className="w-full bg-stone-50 border border-stone-200 rounded-lg px-4 py-3 focus:outline-none focus:border-olive-600 font-serif text-lg text-stone-900" placeholder={t.emailPlace} />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold uppercase tracking-widest text-stone-500">{t.checkIn}</label>
+                      <input name="check_in" type="date" className="w-full bg-stone-50 border border-stone-200 rounded-lg px-4 py-3 focus:outline-none focus:border-olive-600 font-sans text-stone-600" />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold uppercase tracking-widest text-stone-500">{t.checkOut}</label>
+                      <input name="check_out" type="date" className="w-full bg-stone-50 border border-stone-200 rounded-lg px-4 py-3 focus:outline-none focus:border-olive-600 font-sans text-stone-600" />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-widest text-stone-500">{t.message}</label>
+                    <textarea name="message" required rows={4} className="w-full bg-stone-50 border border-stone-200 rounded-lg px-4 py-3 focus:outline-none focus:border-olive-600 font-serif text-lg text-stone-900 resize-none" placeholder={t.messagePlace}></textarea>
+                  </div>
+                  
+                  <button 
+                    type="submit" 
+                    disabled={loading || success} 
+                    className={`w-full py-4 rounded-lg text-sm font-bold uppercase tracking-[0.2em] shadow-lg transition-all duration-300 mt-4 transform ${success ? "bg-stone-400 text-white" : "bg-olive-700 text-white hover:bg-stone-900 hover:-translate-y-1"}`}
+                  >
+                    {loading ? t.sending : success ? t.sent : t.send}
+                  </button>
+
+                  {/* CLS FIX: Προ-κρατημένος χώρος για το μήνυμα */}
+                  <div className="min-h-[24px] mt-2 text-center">
+                    {success && <p className="text-olive-600 text-xs font-bold animate-pulse">{t.successMsg}</p>}
+                    {error && <p className="text-red-600 text-xs font-bold">{t.errorMsg}</p>}
+                  </div>
+                </form>
+              </Reveal>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  );
+}
+
+export default function ContactPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#fafaf9]" />}>
+      <ContactContent />
+    </Suspense>
+  );
+}
+</file>
+
+</files>
