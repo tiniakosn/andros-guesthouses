@@ -195,7 +195,7 @@ function ContactContent({ initialLang }: { initialLang: "el" | "en" }) {
                   <div>
                     <label className="text-xs font-bold uppercase tracking-widest text-stone-500 block mb-2">{tr.name}</label>
                     <input
-                      type="text" name="from_name" required
+                      type="text" name="user_name" required
                       placeholder={tr.namePlace}
                       className="w-full border border-stone-200 rounded-xl px-4 py-3 text-stone-900 text-sm focus:outline-none focus:ring-2 focus:ring-olive-400 transition"
                     />
@@ -203,7 +203,7 @@ function ContactContent({ initialLang }: { initialLang: "el" | "en" }) {
                   <div>
                     <label className="text-xs font-bold uppercase tracking-widest text-stone-500 block mb-2">{tr.email}</label>
                     <input
-                      type="email" name="from_email" required
+                      type="email" name="user_email" required
                       placeholder={tr.emailPlace}
                       className="w-full border border-stone-200 rounded-xl px-4 py-3 text-stone-900 text-sm focus:outline-none focus:ring-2 focus:ring-olive-400 transition"
                     />
