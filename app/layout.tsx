@@ -19,26 +19,24 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.androsguesthouses.gr"),
   
-  // SRE SEO Tuning: Πιο επιθετικοί τίτλοι για τα κλικ
+  // SRE SEO Tuning: Στοχευμένος δίγλωσσος τίτλος για "accommodation" & "διαμονή"
   title: {
-    default: "Andros Guesthouses | Boutique Stay in Chora Andros | Official Site",
+    default: "Andros Guesthouses | Accommodation in Chora | Διαμονή Άνδρος",
     template: "%s | Andros Guesthouses"
   },
-  description: "Top-rated boutique guesthouse in Chora, Andros. Aegean Studio & Garden Suite with panoramic harbor views. Near Nimborio beach. Book direct for best rates.",
+  description: "Boutique Andros accommodation in Chora. Sea-view suites & rooms. Ιδανική διαμονή και ενοικιαζόμενα δωμάτια στη Χώρα της Άνδρου. Book direct for best rates.",
   
   keywords: [
     'άνδρος διαμονή',
     'andros accommodation', 
+    'ενοικιαζόμενα δωμάτια άνδρος χώρα',
+    'andros apartments',
+    'andros rooms',
+    'διαμονή στη χώρα άνδρου',
     'boutique guesthouse chora andros',
     'aegean studio andros',
-    'garden suite andros',
-    'rooms chora andros',
-    'sea view apartments andros',
-    'ενοικιαζόμενα δωμάτια άνδρος χώρα', 
-    'δωμάτια άνδρος', 
-    'διαμονή στη χώρα άνδρου',
-    'andros guesthouses',
-    'hiking andros accommodation'
+    'grand residence andros',
+    'andros guesthouses'
   ],
 
   alternates: {
@@ -50,7 +48,7 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Andros Guesthouses | Official Site | Sea View Suites in Chora",
+    title: "Andros Guesthouses | Accommodation & Sea View Suites in Chora",
     description: "Your private stone retreat in Andros. Panoramic sea views and authentic hospitality. Best rates guaranteed online.",
     url: "https://www.androsguesthouses.gr",
     siteName: "Andros Guesthouses",
@@ -153,7 +151,7 @@ export default function RootLayout({
               "aggregateRating": {
                 "@type": "AggregateRating",
                 "ratingValue": "4.9",
-                "reviewCount": "58",
+                "reviewCount": "71", // <-- Ενημερωμένο νούμερο κριτικών
                 "bestRating": "5",
                 "worstRating": "1"
               },
