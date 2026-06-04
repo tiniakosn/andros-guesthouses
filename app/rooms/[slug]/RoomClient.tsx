@@ -9,9 +9,10 @@ import { type Room } from "@/lib/rooms";
 interface RoomClientProps {
   room: Room;
   initialLang: "el" | "en";
+  slug: string;
 }
 
-export default function RoomClient({ room, initialLang }: RoomClientProps) {
+export default function RoomClient({ room, initialLang, slug }: RoomClientProps) {
   const [lang, setLang] = useState<"el" | "en">(initialLang);
 
   useEffect(() => {
@@ -27,6 +28,29 @@ export default function RoomClient({ room, initialLang }: RoomClientProps) {
 
   return (
     <main className="bg-[#fafaf9] min-h-screen pb-12">
+      {/* Schema.org Injection for Google Bot */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HotelRoom",
+            "name": room.name,
+            "description": content.description,
+            "image": room.images[0],
+            "url": `https://www.androsguesthouses.gr/rooms/${slug}`,
+            "bed": {
+              "@type": "BedDetails",
+              "typeOfBed": content.bed
+            },
+            "occupancy": {
+              "@type": "QuantitativeValue",
+              "value": 2
+            }
+          }),
+        }}
+      />
+
       <Navbar />
 
       {/* Back Button */}
@@ -43,7 +67,7 @@ export default function RoomClient({ room, initialLang }: RoomClientProps) {
       <div className="relative h-[60vh] w-full">
         <Image
           src={room.images[0]}
-          alt={`${room.name} Andros Chora`}
+          alt={`${room.name} - ${content.subtitle} | Accommodation in Chora Andros`}
           fill
           className="object-cover"
           priority
@@ -105,7 +129,7 @@ export default function RoomClient({ room, initialLang }: RoomClientProps) {
                 >
                   <Image
                     src={img}
-                    alt={`${room.name} gallery ${i + 1}`}
+                    alt={`${room.name} interior detail ${i + 1} - Andros rooms`}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover hover:scale-105 transition-transform duration-500"
