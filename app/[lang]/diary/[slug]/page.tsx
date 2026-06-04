@@ -75,7 +75,8 @@ const DIARY_CONTENT = {
       • **Λεωφορείο ΚΤΕΛ:** Το λεωφορείο περιμένει **πάντα** έξω από το πλοίο, ό,τι ώρα και να φτάσει (ακόμα και με καθυστέρηση). Το εισιτήριο για Χώρα κοστίζει περίπου 4€.<br/>
       • **Ενοικίαση Αυτοκινήτου:** Σας το προτείνουμε ανεπιφύλακτα. Υπάρχουν πολλά γραφεία στο λιμάνι. Έχοντας δικό σας μέσο, θα εξερευνήσετε τα μονοπάτια και τις απομακρυσμένες παραλίες μας.<br/>
       • **Ταξί:** Υπάρχει σταθμός ταξί στο λιμάνι. Η διαδρομή για Χώρα κοστίζει περίπου 40-45€.<br/><br/>
-      **Insider Tip:** Αν ταξιδεύετε Παρασκευή απόγευμα ή αν έχετε αυτοκίνητο, κλείστε τα εισιτήριά σας τουλάχιστον 10 μέρες πριν. Τα δρομολόγια της Ραφήνας γίνονται γρήγορα sold-out!`
+      **Insider Tip:** Αν ταξιδεύετε Παρασκευή απόγευμα ή αν έχετε αυτοκίνητο, κλείστε τα εισιτήριά σας τουλάχιστον 10 μέρες πριν. Τα δρομολόγια της Ραφήνας γίνονται γρήγορα sold-out!<br/><br/>
+      <strong>Ιδανική Διαμονή:</strong> Τώρα που ξέρετε πώς να έρθετε, ανακαλύψτε το <a href="/rooms/aegean-studio" class="text-lime-700 font-bold underline">Aegean Studio με θέα θάλασσα</a> ή το <a href="/rooms/grand-residence" class="text-lime-700 font-bold underline">Grand Residence</a> στη Χώρα της Άνδρου.`
     }
   },
   en: {
@@ -158,7 +159,8 @@ const DIARY_CONTENT = {
       • **Local KTEL Bus:** A bus **always** waits at the port for every ferry arrival, even if there is a delay. It’s the easiest way to reach Chora for about €4.<br/>
       • **Car Rental:** Highly recommended! There are several rental agencies right at the port. Having a car is essential for visiting the "Andros Routes" hiking trails and secret beaches.<br/>
       • **Taxi:** A taxi rank is available at the port entrance. The fare to Chora is approximately €40-€45.<br/><br/>
-      ** Insider Tip:** If you are traveling during a summer weekend or have a car, book your ferry tickets at least 10 days in advance. Rafina is the preferred port for locals, and ferries fill up quickly!`
+      ** Insider Tip:** If you are traveling during a summer weekend or have a car, book your ferry tickets at least 10 days in advance. Rafina is the preferred port for locals, and ferries fill up quickly!<br/><br/>
+      <strong>Where to stay:</strong> Now that you know how to get here, discover our <a href="/rooms/aegean-studio" class="text-lime-700 font-bold underline">Sea View Aegean Studio</a> or the premium <a href="/rooms/grand-residence" class="text-lime-700 font-bold underline">Grand Residence</a> in Chora, Andros.`
     }
   }
 };
@@ -166,17 +168,35 @@ const DIARY_CONTENT = {
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   const { lang, slug } = await params;
   const article = (DIARY_CONTENT as any)[lang]?.[slug];
+  
   if (!article) return { title: "Article Not Found" };
 
+  // Εξειδικευμένο SEO tuning για το άρθρο-κράχτη με τα δρομολόγια
+  let seoTitle = `${article.title} | Andros Insider Guide`;
+  let keywords: string[] = [];
+
+  if (slug === 'athens-to-andros-guide') {
+    seoTitle = lang === 'el' 
+      ? 'Αθήνα προς Άνδρος (2026): Δρομολόγια, Πλοία & Ακτοπλοϊκά' 
+      : 'Athens to Andros Ferry Guide (2026) | Timetables & Tips';
+    
+    keywords = lang === 'el'
+      ? ['αθήνα άνδρος', 'αθήνα άνδρος ακτοπλοϊκά', 'ραφήνα άνδρος', 'πως παω ανδρο', 'αθηνα ανδρος αποσταση']
+      : ['how to get to andros from athens', 'athens andros ferry', 'rafina to andros', 'andros greece ferry'];
+  }
+
   return {
-    title: `${article.title} | Andros Insider Guide`,
+    title: seoTitle,
     description: article.subtitle,
+    keywords: keywords,
     alternates: { 
       canonical: `https://www.androsguesthouses.gr/${lang}/diary/${slug}` 
     },
     openGraph: {
       type: "article",
       images: [article.image],
+      title: seoTitle,
+      description: article.subtitle,
     }
   };
 }
