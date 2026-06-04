@@ -24,14 +24,13 @@ export default async function Home({
 
   return (
     <main className="min-h-screen bg-[#fafaf9] overflow-x-hidden">
-      {/* SRE NOTE: Το Navbar αφαιρέθηκε από εδώ γιατί υπάρχει ήδη στο layout.tsx */}
       
       {/* HERO SECTION */}
       <section className="relative h-screen flex flex-col items-center justify-center p-6 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/no5.5.webp"
-            alt="Andros Guesthouses - Boutique Accommodation Panoramic Sea View"
+            alt={lang === "el" ? "Διαμονή και ενοικιαζόμενα δωμάτια στη Χώρα της Άνδρου" : "Andros Guesthouses - Boutique Accommodation Panoramic Sea View"}
             fill
             className="object-cover object-top"
             priority
@@ -42,42 +41,41 @@ export default async function Home({
           <div className="absolute inset-0 bg-black/40" />
         </div>
 
-        <div className="relative z-10 max-w-5xl text-center space-y-8 mt-10">
+        <div className="relative z-10 max-w-5xl text-center space-y-6 mt-10 w-full">
+          
+          {/* SEO FIX: Ενσωμάτωση του Keyword (Διαμονή/Accommodation) μέσα στο H1 Structure */}
           <div className="flex justify-center">
-            <span className="inline-block text-white/95 font-sans font-bold tracking-[0.3em] text-xs md:text-sm uppercase mb-2 border-b border-white/30 pb-2 animate-fadein">
-              {lang === "el" ? "Καλώς ήρθατε στη Χώρα της Άνδρου" : "Welcome to Chora, Andros"}
-            </span>
-          </div>
-
-          <div className="flex justify-center">
-            {/* SEO FIX: Ο τίτλος H1 πρέπει να είναι ξεκάθαρος για τη Google */}
-            <h1 className="text-5xl md:text-8xl font-display text-white tracking-tighter leading-none animate-entrance">
+            <h1 className="text-5xl md:text-8xl font-display text-white tracking-tighter leading-none animate-entrance flex flex-col items-center">
+              <span className="block text-[0.25em] md:text-[0.2em] font-sans font-bold tracking-[0.3em] uppercase mb-4 text-white/90 border-b border-white/30 pb-2">
+                {lang === "el" ? "Διαμονη στη Χωρα της Ανδρου" : "Accommodation in Andros Chora"}
+              </span>
               Andros <br className="md:hidden" /> Guesthouses
             </h1>
           </div>
 
+          {/* SEO FIX: Long-tail keywords στο H2 */}
           <div className="flex justify-center">
-            {/* SEO FIX: Χρήση λέξεων-κλειδιών που είδαμε στα logs (Boutique, Chora, Andros) */}
-            <h2 className="text-lg md:text-2xl text-white font-sans font-medium max-w-2xl mx-auto leading-relaxed drop-shadow-md">
+            <h2 className="text-base md:text-xl text-white/95 font-sans font-light max-w-2xl mx-auto leading-relaxed drop-shadow-md">
               {lang === "el" 
-                ? "Boutique Διαμονή στη Χώρα της Άνδρου. Το ιδιωτικό σας πέτρινο καταφύγιο με θέα στο Αιγαίο." 
-                : "Boutique Accommodation in Andros Chora. Your private stone sanctuary with Aegean Sea views."}
+                ? "Boutique ενοικιαζόμενα δωμάτια και σουίτες. Το ιδιωτικό σας καταφύγιο με πανοραμική θέα στο Αιγαίο και στο Νειμποριό." 
+                : "Boutique rooms and suites. Your private stone sanctuary with panoramic Aegean Sea views near Neimporio."}
             </h2>
           </div>
             
+          {/* UX/CONVERSION FIX: Κουμπιά Full-Width στα κινητά (w-full) και χρώμα υψηλής αντίθεσης */}
           <div className="flex justify-center pt-8">
-            <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
+            <div className="flex flex-col md:flex-row gap-4 items-center justify-center w-full max-w-xs md:max-w-none mx-auto">
               <a 
                 href="#rooms" 
-                className="px-10 py-4 bg-white text-stone-900 rounded-full hover:bg-stone-100 transition duration-300 shadow-2xl font-sans text-xs font-bold tracking-[0.15em] uppercase hover:-translate-y-1 animate-fadein"
+                className="w-full md:w-auto px-10 py-4 bg-lime-700 text-white rounded-full hover:bg-lime-800 transition duration-300 shadow-2xl font-sans text-xs font-bold tracking-[0.15em] uppercase hover:-translate-y-1 animate-fadein text-center"
               >
-                {lang === "el" ? "Δείτε τα Δωμάτια" : "View Our Rooms"}
+                {lang === "el" ? "Κρατηση / Δωματια" : "Book Now / Rooms"}
               </a>
               <a 
                 href="/experience" 
-                className="px-10 py-4 border border-white text-white rounded-full hover:bg-white hover:text-stone-900 transition duration-300 bg-white/10 backdrop-blur-sm font-sans text-xs font-bold tracking-[0.15em] uppercase animate-fadein"
+                className="w-full md:w-auto px-10 py-4 border border-white text-white rounded-full hover:bg-white hover:text-stone-900 transition duration-300 bg-white/10 backdrop-blur-sm font-sans text-xs font-bold tracking-[0.15em] uppercase animate-fadein text-center"
               >
-                {lang === "el" ? "Η Εμπειρία στην Άνδρο" : "The Andros Experience"}
+                {lang === "el" ? "Η Εμπειρια" : "The Experience"}
               </a>
             </div>
           </div>

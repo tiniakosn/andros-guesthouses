@@ -5,8 +5,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
+      disallow: ['/*?page_id=', '/*?lang=en', '/api/'],
     },
-    // ΔΙΟΡΘΩΣΗ: Χρησιμοποιούμε το επίσημο domain με το www
     sitemap: 'https://www.androsguesthouses.gr/sitemap.xml',
   };
 }
+
