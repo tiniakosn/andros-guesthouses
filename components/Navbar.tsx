@@ -48,9 +48,15 @@ function NavbarContent() {
   }, [isOpen]);
 
   const getCleanHref = (href: string) => {
-    if (href.startsWith("/#")) return href;
     if (lang === "el") {
       if (href.includes("/diary") || href.includes("lang=el")) return href;
+      
+      // Διόρθωση για τα anchor links (π.χ. /#rooms)
+      if (href.startsWith("/#")) {
+        const hash = href.split("#")[1];
+        return `/?lang=el#${hash}`;
+      }
+      
       const separator = href.includes("?") ? "&" : "?";
       return `${href}${separator}lang=el`;
     }
