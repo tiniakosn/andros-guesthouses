@@ -1,6 +1,48 @@
+import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ lang?: string }>;
+}): Promise<Metadata> {
+  const params = await searchParams;
+  const lang = params.lang === "el" ? "el" : "en";
+  const isEl = lang === "el";
+
+  const url = isEl
+    ? "https://www.androsguesthouses.gr/?lang=el"
+    : "https://www.androsguesthouses.gr";
+
+  return {
+    title: isEl
+      ? "Διαμονή στη Χώρα Άνδρου | Ενοικιαζόμενα Δωμάτια | Andros Guesthouses"
+      : "Andros Accommodation | Rooms & Apartments in Chora | Andros Guesthouses",
+    description: isEl
+      ? "Boutique ενοικιαζόμενα δωμάτια και σουίτες στη Χώρα Άνδρου. Πανοραμική θέα στο Αιγαίο, κοντά στο Νειμποριό. Κλείστε απευθείας με καλύτερη τιμή."
+      : "Boutique accommodation in Andros Chora. Sea-view rooms & apartments near Nimborio beach. Book direct for the best rates — no OTA fees.",
+    alternates: {
+      canonical: url,
+      languages: {
+        el: "https://www.androsguesthouses.gr/?lang=el",
+        en: "https://www.androsguesthouses.gr",
+        "x-default": "https://www.androsguesthouses.gr",
+      },
+    },
+    openGraph: {
+      title: isEl
+        ? "Διαμονή στη Χώρα Άνδρου | Andros Guesthouses"
+        : "Andros Accommodation | Sea View Suites in Chora",
+      description: isEl
+        ? "Το ιδιωτικό σας καταφύγιο με θέα στο Αιγαίο."
+        : "Your private stone retreat with panoramic Aegean views.",
+      url,
+      locale: isEl ? "el_GR" : "en_US",
+    },
+  };
+}
 
 // Server-side imports
 const About = dynamic(() => import("@/components/About"));

@@ -39,14 +39,6 @@ export const metadata: Metadata = {
     'andros guesthouses'
   ],
 
-  alternates: {
-    canonical: "https://www.androsguesthouses.gr",
-    languages: {
-      'el': 'https://www.androsguesthouses.gr/?lang=el',
-      'en': 'https://www.androsguesthouses.gr',
-    },
-  },
-
   openGraph: {
     title: "Andros Guesthouses | Accommodation & Sea View Suites in Chora",
     description: "Your private stone retreat in Andros. Panoramic sea views and authentic hospitality. Best rates guaranteed online.",
