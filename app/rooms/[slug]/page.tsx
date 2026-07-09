@@ -30,7 +30,14 @@ export async function generateMetadata({
       ? ['ενοικιαζόμενα δωμάτια άνδρος', 'διαμονή χώρα άνδρου', room.name, 'andros rooms', 'andros διαμονή']
       : ['andros accommodation', 'sea view apartments andros', room.name, 'chora andros stay', 'boutique guesthouse'],
     alternates: {
-      canonical: `https://www.androsguesthouses.gr/rooms/${slug}`,
+      canonical: isGreek
+        ? `https://www.androsguesthouses.gr/rooms/${slug}?lang=el`
+        : `https://www.androsguesthouses.gr/rooms/${slug}`,
+      languages: {
+        el: `https://www.androsguesthouses.gr/rooms/${slug}?lang=el`,
+        en: `https://www.androsguesthouses.gr/rooms/${slug}`,
+        "x-default": `https://www.androsguesthouses.gr/rooms/${slug}`,
+      },
     },
     openGraph: {
       title: content.seoTitle,
