@@ -18,11 +18,11 @@ export async function generateMetadata({
 
   return {
     title: isEl
-      ? "Διαμονή στη Χώρα Άνδρου | Ενοικιαζόμενα Δωμάτια | Andros Guesthouses"
-      : "Andros Accommodation | Rooms & Apartments in Chora | Andros Guesthouses",
+      ? "Διαμονή & Διαμερίσματα στη Χώρα Άνδρου | Andros Guesthouses"
+      : "Andros Apartments & Rooms | Boutique Accommodation in Chora",
     description: isEl
-      ? "Boutique ενοικιαζόμενα δωμάτια και σουίτες στη Χώρα Άνδρου. Πανοραμική θέα στο Αιγαίο, κοντά στο Νειμποριό. Κλείστε απευθείας με καλύτερη τιμή."
-      : "Boutique accommodation in Andros Chora. Sea-view rooms & apartments near Nimborio beach. Book direct for the best rates — no OTA fees.",
+      ? "3 boutique διαμερίσματα & δωμάτια στη Χώρα Άνδρου με θέα. Καλύτερη τιμή εγγυημένη μόνο με απευθείας κράτηση — χωρίς κρυφές χρεώσεις."
+      : "3 boutique apartments & rooms in Andros Chora with Aegean sea views. Best price guaranteed when you book direct — no OTA booking fees.",
     alternates: {
       canonical: url,
       languages: {

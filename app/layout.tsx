@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   
   // SRE SEO Tuning: Στοχευμένος δίγλωσσος τίτλος για "accommodation" & "διαμονή"
   title: {
-    default: "Andros Guesthouses | Accommodation in Chora | Διαμονή Άνδρος",
+    default: "Andros Guesthouses | Apartments & Rooms in Chora | Διαμονή Άνδρος",
     template: "%s | Andros Guesthouses"
   },
   description: "Boutique Andros accommodation in Chora. Sea-view suites & rooms. Ιδανική διαμονή και ενοικιαζόμενα δωμάτια στη Χώρα της Άνδρου. Book direct for best rates.",
