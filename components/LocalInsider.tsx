@@ -9,18 +9,18 @@ const CONTENT = {
     title: "Andros Diary",
     subtitle: "Local Insider",
     guides: [
-      { id: "01", slug: "chora-and-wind", title: "Η Χώρα & ο Άνεμος", tag: "KNOW-HOW", img: "/images/chora-guide-v2.webp" }, // Αλλαγή σε .webp
-      { id: "02", slug: "secret-beaches", title: "Παραλίες & Μυστικά", tag: "NATURE", img: "/images/beaches-guide.webp" }, // Αλλαγή σε .webp
-      { id: "03", slug: "local-flavors", title: "Γεύση Άνδρου", tag: "GASTRONOMY", img: "/images/food-guide.webp" }, // Αλλαγή σε .webp
+      { id: "01", slug: "athens-to-andros-guide", title: "Αθήνα → Άνδρος: Οδηγός Ταξιδιού", tag: "TRAVEL GUIDE", img: "/images/gavrio-andros-greece.webp" },
+      { id: "02", slug: "chora-and-wind", title: "Η Χώρα & ο Άνεμος", tag: "KNOW-HOW", img: "/images/chora-guide-v2.webp" },
+      { id: "03", slug: "secret-beaches", title: "Παραλίες & Μυστικά", tag: "NATURE", img: "/images/beaches-guide.webp" },
     ]
   },
   en: {
     title: "Andros Diary",
     subtitle: "Local Insider",
     guides: [
-      { id: "01", slug: "chora-and-wind", title: "Chora & The Wind", tag: "KNOW-HOW", img: "/images/chora-guide-v2.webp" }, // Αλλαγή σε .webp
-      { id: "02", slug: "secret-beaches", title: "Secret Beaches", tag: "NATURE", img: "/images/beaches-guide.webp" }, // Αλλαγή σε .webp
-      { id: "03", slug: "local-flavors", title: "Local Flavors", tag: "GASTRONOMY", img: "/images/food-guide.webp" }, // Αλλαγή σε .webp
+      { id: "01", slug: "athens-to-andros-guide", title: "Athens → Andros: Travel Guide", tag: "TRAVEL GUIDE", img: "/images/gavrio-andros-greece.webp" },
+      { id: "02", slug: "chora-and-wind", title: "Chora & The Wind", tag: "KNOW-HOW", img: "/images/chora-guide-v2.webp" },
+      { id: "03", slug: "secret-beaches", title: "Secret Beaches", tag: "NATURE", img: "/images/beaches-guide.webp" },
     ]
   }
 };
