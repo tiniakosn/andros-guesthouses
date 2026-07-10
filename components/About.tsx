@@ -27,6 +27,7 @@ export default function About() {
       quote: <>"For us, <span className="text-olive-700 font-medium">Philoxenia</span> is not just a word. It is the ancient Greek art of making a stranger feel like family."</>,
       p2: <>When I’m not ensuring your stay is perfect, you’ll likely find me exploring the island’s stunning natural trails or walking our dog, <strong>Max</strong>.</>,
       p3: "We look forward to welcoming you to our guesthouses and helping you create unforgettable memories in the Aegean!",
+      p4: "Looking for accommodation in Andros? Our apartments in Chora — steps from Neimporio beach — are fully equipped with kitchens, private balconies, and sea views, ideal for couples, families, and small groups exploring the island's beaches and hiking trails.",
       signature: "Leonidas & Family",
       signatureSub: "Your Local Hosts",
       reviews: <>Booking.com <br/> Reviews</>
@@ -38,6 +39,7 @@ export default function About() {
       quote: <>"Για εμάς, η <span className="text-olive-700 font-medium">Φιλοξενία</span> δεν είναι απλά μια λέξη. Είναι η αρχαία ελληνική τέχνη του να κάνεις έναν ξένο να νιώθει οικογένεια."</>,
       p2: <>Όταν δεν φροντίζω για την τέλεια διαμονή σας, πιθανότατα θα με βρείτε να εξερευνώ τα μονοπάτια του νησιού ή να περπατάω τον σκύλο μας, τον <strong>Max</strong>.</>,
       p3: "Ανυπομονούμε να σας καλωσορίσουμε στους ξενώνες μας και να σας βοηθήσουμε να δημιουργήσετε αξέχαστες αναμνήσεις στο Αιγαίο!",
+      p4: "Ψάχνετε διαμονή στην Άνδρο; Τα τρία μας διαμερίσματα στη Χώρα — λίγα βήματα από την παραλία Νειμποριό — διαθέτουν πλήρως εξοπλισμένες κουζίνες, ιδιωτικά μπαλκόνια και θέα στη θάλασσα, ιδανικά για ζευγάρια, οικογένειες και παρέες που εξερευνούν τις παραλίες και τα μονοπάτια του νησιού.",
       signature: "Λεωνίδας & Οικογένεια",
       signatureSub: "Οι Οικοδεσπότες σας",
       reviews: <>Κριτικές <br/> Booking.com</>
@@ -100,6 +102,7 @@ export default function About() {
               </div>
               <p key={lang + "-p2"}>{t.p2}</p>
               <p key={lang + "-p3"}>{t.p3}</p>
+              <p key={lang + "-p4"} className="text-base text-stone-500">{t.p4}</p>
             </div>
 
             <div className="pt-8 flex items-center gap-6">
