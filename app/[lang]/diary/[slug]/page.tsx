@@ -190,7 +190,11 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
     description: article.subtitle,
     keywords: keywords,
     alternates: { 
-      canonical: `https://www.androsguesthouses.gr/${lang}/diary/${slug}` 
+      canonical: `https://www.androsguesthouses.gr/${lang}/diary/${slug}`,
+      languages: {
+        el: `https://www.androsguesthouses.gr/el/diary/${slug}`,
+        en: `https://www.androsguesthouses.gr/en/diary/${slug}`,
+      },
     },
     openGraph: {
       type: "article",
